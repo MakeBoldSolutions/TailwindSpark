@@ -5,12 +5,43 @@ import { BuildInfo } from './BuildInfo';
 import { Logo } from './Logo';
 import { SearchComponent } from './SearchComponent';
 
+/**
+ * Main application layout properties.
+ */
 interface LayoutProps {
+  /**
+   * Child elements to render within the layout.
+   */
   children: React.ReactNode;
+  /**
+   * Current theme state (true for dark mode, false for light mode).
+   */
   isDark: boolean;
+  /**
+   * Function to toggle between light and dark themes.
+   */
   toggleTheme: () => void;
 }
 
+/**
+ * Main application layout with navigation, header, and responsive menu.
+ * 
+ * Provides consistent page structure with sticky header, dropdownnavigation,
+ * search functionality, and keyboard shortcuts support.
+ * 
+ * @param root0 - Component props
+ * @param root0.children - Child elements to render within the layout
+ * @param root0.isDark - Current theme state (true for dark mode, false for light mode)
+ * @param root0.toggleTheme - Function to toggle between light and dark themes
+ * @returns Layout component with navigation and content
+ * 
+ * @example
+ * ```tsx
+ * <Layout isDark={isDark} toggleTheme={toggleTheme}>
+ *   <YourPageContent />
+ * </Layout>
+ * ```
+ */
 export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme }) => {
   const location = useLocation();
   const [isDemosOpen, setIsDemosOpen] = useState(false);

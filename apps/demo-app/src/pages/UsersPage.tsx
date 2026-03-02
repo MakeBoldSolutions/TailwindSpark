@@ -6,14 +6,41 @@ const IconMore = () => <span>⋯</span>;
 const IconEdit = () => <span>✏️</span>;
 const IconDelete = () => <span>🗑️</span>;
 
+/**
+ * User data structure.
+ */
 interface User {
+  /**
+   * Unique user identifier.
+   */
   id: string;
+  /**
+   * User's full name.
+   */
   name: string;
+  /**
+   * User's email address.
+   */
   email: string;
+  /**
+   * User's role in the system.
+   */
   role: 'Admin' | 'Editor' | 'Viewer' | 'Manager';
+  /**
+   * Current user status.
+   */
   status: 'active' | 'inactive' | 'pending';
+  /**
+   * Last activity timestamp.
+   */
   lastActive: string;
+  /**
+   * Avatar image URL or emoji.
+   */
   avatar: string;
+  /**
+   * Account creation date.
+   */
   signupDate: string;
 }
 
@@ -115,6 +142,19 @@ const UserRow: React.FC<{
   );
 };
 
+/**
+ * User management page with filtering, search, and role-based actions.
+ * 
+ * Displays user list with status indicators, role management, search and filter
+ * capabilities, and bulk action support for admin functions.
+ * 
+ * @returns Users page component
+ * 
+ * @example
+ * ```tsx
+ * <UsersPage />
+ * ```
+ */
 export const UsersPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [roleFilter, setRoleFilter] = useState('all');

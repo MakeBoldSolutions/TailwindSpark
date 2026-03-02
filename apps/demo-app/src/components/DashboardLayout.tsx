@@ -11,13 +11,48 @@ const IconBell = () => <span>🔔</span>;
 const IconSearch = () => <span>🔍</span>;
 const IconMenu = () => <span>☰</span>;
 
+/**
+ * Dashboard layout component properties.
+ */
 interface DashboardLayoutProps {
+  /**
+   * Child elements to render within the dashboard layout.
+   */
   children: React.ReactNode;
+  /**
+   * Title displayed in the page header.
+   */
   pageTitle: string;
+  /**
+   * Optional description displayed under the page title.
+   */
   pageDescription?: string;
+  /**
+   * Optional header action buttons or controls.
+   */
   headerActions?: React.ReactNode;
 }
 
+/**
+ * SaaS-style dashboard layout with sidebar navigation and page header.
+ * 
+ * Features collapsible sidebar, responsive mobile menu, and user profile section.
+ * Ideal for admin panels and business applications.
+ * 
+ * @param root0 - Component props
+ * @param root0.children - Child elements to render within the dashboard layout
+ * @param root0.pageTitle - Title displayed in the page header
+ * @param root0.pageDescription - Optional description displayed under the page title
+ * @param root0.headerActions - Optional header action buttons or controls
+ * @returns Dashboard layout component
+ * 
+ * @example
+ * ```tsx
+ * <DashboardLayout pageTitle="Analytics" pageDescription="Track your metrics">
+ *   <AnalyticsContent />
+ * </DashboardLayout>
+ * ```
+ */
 export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   children,
   pageTitle,

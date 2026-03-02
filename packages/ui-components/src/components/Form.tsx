@@ -1,6 +1,11 @@
 import { clsx } from 'clsx';
 import * as React from 'react';
 
+/**
+ * Input component properties.
+ * 
+ * Extends standard HTML input attributes with label, error handling, and icon support.
+ */
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
@@ -18,6 +23,22 @@ const inputVariants = {
     'border-success-300 dark:border-success-600 focus:border-success-500 focus:ring-success-500',
 };
 
+/**
+ * Accessible text input component with label, error states, and icon support.
+ * 
+ * Provides consistent styling, error handling, and helper text display.
+ * Supports left and right icons for enhanced UX. Automatically generates IDs for accessibility.
+ * 
+ * @example
+ * ```tsx
+ * <Input
+ *   label="Email Address"
+ *   type="email"
+ *   error="Please enter a valid email"
+ *   helperText="We'll never share your email"
+ * />
+ * ```
+ */
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     { className, label, error, helperText, leftIcon, rightIcon, variant = 'default', id, ...props },
@@ -82,6 +103,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
 Input.displayName = 'Input';
 
+/**
+ * Textarea component properties.
+ * 
+ * Extends standard HTML textarea attributes with label and error handling.
+ */
 export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   error?: string;
@@ -89,6 +115,22 @@ export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextArea
   variant?: 'default' | 'error' | 'success';
 }
 
+/**
+ * Accessible multi-line text input component with label and error states.
+ * 
+ * Provides vertically resizable text area with consistent styling and error handling.
+ * Automatically generates IDs for accessibility.
+ * 
+ * @example
+ * ```tsx
+ * <Textarea
+ *   label="Description"
+ *   rows={4}
+ *   error="Description is required"
+ *   placeholder="Enter description..."
+ * />
+ * ```
+ */
 export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, label, error, helperText, variant = 'default', id, ...props }, ref) => {
     const generatedId = React.useId();
@@ -136,6 +178,11 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
 Textarea.displayName = 'Textarea';
 
+/**
+ * Select dropdown component properties.
+ * 
+ * Extends standard HTML select attributes with label, error handling, and options.
+ */
 export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   error?: string;
@@ -144,6 +191,24 @@ export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElemen
   options: { value: string; label: string }[];
 }
 
+/**
+ * Accessible select dropdown component with label and error states.
+ * 
+ * Renders a native select element with options from an array of value/label pairs.
+ * Provides consistent styling and error handling. Automatically generates IDs for accessibility.
+ * 
+ * @example
+ * ```tsx
+ * <Select
+ *   label="Country"
+ *   options={[
+ *     { value: 'us', label: 'United States' },
+ *     { value: 'ca', label: 'Canada' }
+ *   ]}
+ *   error="Please select a country"
+ * />
+ * ```
+ */
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   ({ className, label, error, helperText, variant = 'default', options, id, ...props }, ref) => {
     const generatedId = React.useId();
@@ -197,12 +262,33 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 
 Select.displayName = 'Select';
 
+/**
+ * Checkbox component properties.
+ * 
+ * Extends standard HTML input attributes (excludes type) with label and error handling.
+ */
 export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
   label?: string;
   error?: string;
   helperText?: string;
 }
 
+/**
+ * Accessible checkbox component with label and error states.
+ * 
+ * Provides consistent styling for checkbox inputs with optional label and helper text.
+ * Automatically generates IDs for proper label association.
+ * 
+ * @example
+ * ```tsx
+ * <Checkbox
+ *   label="I agree to the terms and conditions"
+ *   error="You must agree to continue"
+ *   checked={agreed}
+ *   onChange={handleChange}
+ * />
+ * ```
+ */
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   ({ className, label, error, helperText, id, ...props }, ref) => {
     const generatedId = React.useId();
@@ -250,10 +336,29 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 
 Checkbox.displayName = 'Checkbox';
 
+/**
+ * Radio button component properties.
+ * 
+ * Extends standard HTML input attributes (excludes type) with label support.
+ */
 export interface RadioProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
   label?: string;
 }
 
+/**
+ * Accessible radio button component with label.
+ * 
+ * Provides consistent styling for radio button inputs as part of a radio group.
+ * Automatically generates IDs for proper label association.
+ * 
+ * @example
+ * ```tsx
+ * <div>
+ *   <Radio name="plan" value="free" label="Free Plan" />
+ *   <Radio name="plan" value="pro" label="Pro Plan" />
+ * </div>
+ * ```
+ */
 export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   ({ className, label, id, ...props }, ref) => {
     const generatedId = React.useId();

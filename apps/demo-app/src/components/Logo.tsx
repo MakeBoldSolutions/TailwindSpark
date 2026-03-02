@@ -1,12 +1,48 @@
 import React from 'react';
 
+/**
+ * Logo component properties.
+ */
 interface LogoProps {
+  /**
+   * Additional CSS classes.
+   */
   className?: string;
+  /**
+   * Logo size variant.
+   * @default 'md'
+   */
   size?: 'sm' | 'md' | 'lg' | 'xl';
+  /**
+   * Whether to show brand text alongside logo.
+   * @default true
+   */
   showText?: boolean;
+  /**
+   * Whether to show only text without logo.
+   * @default false
+   */
   textOnly?: boolean;
 }
 
+/**
+ * TailwindSpark logo component with multiple size variants.
+ * 
+ * Displays the TailwindSpark logo with optional brand text.
+ * Supports various sizes and text-only mode.
+ * 
+ * @param root0 - Component props
+ * @param root0.className - Additional CSS classes
+ * @param root0.size - Logo size (sm, md, lg, xl)
+ * @param root0.showText - Whether to show brand text
+ * @param root0.textOnly - Whether to show only text
+ * @returns Logo component
+ * 
+ * @example
+ * ```tsx
+ * <Logo size="lg" showText={true} />
+ * ```
+ */
 export const Logo: React.FC<LogoProps> = ({
   className = '',
   size = 'md',

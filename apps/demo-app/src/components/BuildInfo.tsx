@@ -1,10 +1,36 @@
 import React from 'react';
 
+/**
+ * Build information component properties.
+ */
 interface BuildInfoProps {
+  /**
+   * Additional CSS classes.
+   */
   className?: string;
+  /**
+   * Display variant.
+   * @default 'full'
+   */
   variant?: 'full' | 'version-only' | 'date-only';
 }
 
+/**
+ * Displays build version and date information.
+ * 
+ * Shows application build metadata with configurable display variants.
+ * Useful for footer or debug information.
+ * 
+ * @param root0 - Component props
+ * @param root0.className - Additional CSS classes
+ * @param root0.variant - Display variant (full, version-only, or date-only)
+ * @returns Build info display component
+ * 
+ * @example
+ * ```tsx
+ * <BuildInfo variant="full" />
+ * ```
+ */
 export const BuildInfo: React.FC<BuildInfoProps> = ({ className = '', variant = 'full' }) => {
   const buildDate = __BUILD_DATE__;
   const buildVersion = __BUILD_VERSION__;
@@ -42,7 +68,7 @@ export const BuildInfo: React.FC<BuildInfoProps> = ({ className = '', variant = 
 
   return (
     <div
-      className={`text-xs text-gray-500 dark:text-gray-500 ${className}`}
+      className={`text-xs text-muted ${className}`}
       title={`Build version ${buildVersion}, built on ${formatDate(buildDate)}`}
     >
       {renderContent()}

@@ -11,8 +11,15 @@ export default defineConfig({
     setupFiles: ['./src/test/setup.ts'],
     css: true,
     coverage: {
-      reporter: ['text', 'json', 'html'],
-      exclude: ['node_modules/', 'dist/', 'src/test/', '**/*.d.ts', '**/*.config.*'],
+      provider: 'v8',
+      reporter: ['text', 'json', 'html', 'lcov'],
+      exclude: ['node_modules/', 'dist/', 'src/test/', '**/*.d.ts', '**/*.config.*', '**/*.test.tsx', '**/*.test.ts'],
+      thresholds: {
+        statements: 80,
+        branches: 80,
+        functions: 80,
+        lines: 80,
+      },
     },
   },
   resolve: {

@@ -31,6 +31,19 @@ const testimonials = [
   },
 ];
 
+/**
+ * Marketing landing page with hero, services, portfolio, and testimonials.
+ * 
+ * Agency-style marketing page featuring parallax scrolling, animated sections,
+ * service highlights, portfolio showcase, and rotating testimonials.
+ * 
+ * @returns Marketing page component
+ * 
+ * @example
+ * ```tsx
+ * <MarketingPage />
+ * ```
+ */
 export const MarketingPage: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
   const [activeTestimonial, setActiveTestimonial] = useState(0);

@@ -2,6 +2,19 @@ import { Button, Modal, ModalContent, ModalFooter } from '@tailwindspark/ui-comp
 import { AlertCircle, CheckCircle, Info } from 'lucide-react';
 import React from 'react';
 
+/**
+ * Modal component showcase section.
+ * 
+ * Demonstrates modal variants including basic, confirmation, alert, form,
+ * and large modals with keyboard navigation and accessibility.
+ * 
+ * @returns Modal showcase section component
+ * 
+ * @example
+ * ```tsx
+ * <ModalShowcase />
+ * ```
+ */
 export const ModalShowcase: React.FC = () => {
   const [basicModal, setBasicModal] = React.useState(false);
   const [confirmModal, setConfirmModal] = React.useState(false);

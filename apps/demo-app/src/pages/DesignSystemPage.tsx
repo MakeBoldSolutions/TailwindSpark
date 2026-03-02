@@ -4,6 +4,19 @@ import { CardShowcase } from '../sections/CardShowcase';
 import { FormShowcase } from '../sections/FormShowcase';
 import { ModalShowcase } from '../sections/ModalShowcase';
 
+/**
+ * Design system showcase page displaying all UI components.
+ * 
+ * Comprehensive component library demonstration featuring buttons, forms,
+ * cards, and modals with interactive examples and variant showcases.
+ * 
+ * @returns Design system page component
+ * 
+ * @example
+ * ```tsx
+ * <DesignSystemShowcase />
+ * ```
+ */
 export const DesignSystemShowcase: React.FC = () => {
   return (
     <div className="min-h-screen bg-surface transition-colors">

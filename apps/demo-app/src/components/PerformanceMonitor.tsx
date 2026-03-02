@@ -1,18 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { onCLS, onFCP, onLCP, onTTFB, type Metric } from 'web-vitals';
 
+/**
+ * Performance metrics data structure.
+ */
 interface PerformanceMetrics {
+  /**
+   * Cumulative Layout Shift score.
+   */
   cls: number | null;
+  /**
+   * First Contentful Paint time in milliseconds.
+   */
   fcp: number | null;
+  /**
+   * Largest Contentful Paint time in milliseconds.
+   */
   lcp: number | null;
+  /**
+   * Time to First Byte in milliseconds.
+   */
   ttfb: number | null;
+  /**
+   * Current memory usage in megabytes (if available).
+   */
   memoryUsage?: number;
+  /**
+   * Estimated bundle size.
+   */
   bundleSize?: string;
 }
 
 /**
  * Development-only component for monitoring real-time performance metrics
  * Displays Core Web Vitals, memory usage, and rendering statistics
+ * 
+ * @returns Performance monitor component with metrics display
  */
 export const PerformanceMonitor: React.FC = () => {
   const [metrics, setMetrics] = useState<PerformanceMetrics>({

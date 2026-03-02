@@ -9,10 +9,25 @@ const IconGlobe = () => <span>🌐</span>;
 const IconMail = () => <span>✉️</span>;
 const IconCreditCard = () => <span>💳</span>;
 
+/**
+ * Settings section component properties.
+ */
 interface SettingsSectionProps {
+  /**
+   * Section title.
+   */
   title: string;
+  /**
+   * Section description.
+   */
   description: string;
+  /**
+   * Icon element for the section.
+   */
   icon: React.ReactNode;
+  /**
+   * Section content.
+   */
   children: React.ReactNode;
 }
 
@@ -50,7 +65,7 @@ const FormField: React.FC<{
 }> = ({ label, type = 'text', value, onChange, placeholder, description, required }) => (
   <div className="space-y-2">
     <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-300">
-      {label} {required && <span className="text-red-500">*</span>}
+      {label} {required && <span className="text-error">*</span>}
     </label>
     <input
       type={type}
@@ -96,6 +111,19 @@ const ToggleField: React.FC<{
   </div>
 );
 
+/**
+ * Settings page with user preferences and account configuration.
+ * 
+ * Comprehensive settings interface for profile, security, notifications,
+ * preferences, and billing management with form validation and save functionality.
+ * 
+ * @returns Settings page component
+ * 
+ * @example
+ * ```tsx
+ * <SettingsPage />
+ * ```
+ */
 export const SettingsPage: React.FC = () => {
   // General Settings State
   const [companyName, setCompanyName] = useState('PromptSpark');

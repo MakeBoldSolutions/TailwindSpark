@@ -6,27 +6,79 @@
 import React, { useEffect, useState } from 'react';
 import { memoryMonitor } from '../utils/memoryMonitor';
 
+/**
+ * Memory metrics data structure.
+ */
 interface MemoryMetrics {
+  /**
+   * Current memory usage statistics.
+   */
   current: {
+    /**
+     * Used JavaScript heap size in bytes.
+     */
     usedJSHeapSize: number;
+    /**
+     * Total JavaScript heap size in bytes.
+     */
     totalJSHeapSize: number;
+    /**
+     * JavaScript heap size limit in bytes.
+     */
     jsHeapSizeLimit: number;
   };
+  /**
+   * Peak memory usage statistics.
+   */
   peak: {
     usedJSHeapSize: number;
     totalJSHeapSize: number;
     jsHeapSizeLimit: number;
   };
+  /**
+   * Memory growth rate percentage.
+   */
   growthRate: number;
+  /**
+   * List of potential memory leaks detected.
+   */
   potentialLeaks: Array<{
+    /**
+     * Component or feature name.
+     */
     name: string;
+    /**
+     * Timestamp when component mounted.
+     */
     mountTime: number;
+    /**
+     * Timestamp when component unmounted (if applicable).
+     */
     unmountTime?: number;
+    /**
+     * Memory usage at mount time in bytes.
+     */
     memoryAtMount: number;
+    /**
+     * Memory usage at unmount time in bytes (if applicable).
+     */
     memoryAtUnmount?: number;
   }>;
 }
 
+/**
+ * Development-only memory monitor with leak detection.
+ * 
+ * Displays real-time memory usage, peak usage, growth rate, and potential
+ * memory leaks. Only renders in development mode when memory API is available.
+ * 
+ * @returns Memory monitor display component
+ * 
+ * @example
+ * ```tsx
+ * <MemoryMonitorDisplay />
+ * ```
+ */
 export const MemoryMonitorDisplay: React.FC = () => {
   const [metrics, setMetrics] = useState<MemoryMetrics | null>(null);
   const [isVisible, setIsVisible] = useState(false);

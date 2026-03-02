@@ -3,10 +3,34 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 import { Logo } from './Logo';
 
+/**
+ * Marketing layout component properties.
+ */
 interface MarketingLayoutProps {
+  /**
+   * Child elements to render within the marketing layout.
+   */
   children: React.ReactNode;
 }
 
+/**
+ * Marketing-focused layout with transparent header and smooth scrolling.
+ * 
+ * Features transparent navigation that becomes opaque on scroll, smooth section
+ * navigation, and optimized for landing pages and promotional content.
+ * 
+ * @param root0 - Component props
+ * @param root0.children - Child elements to render within the marketing layout
+ * @returns Marketing layout component
+ * 
+ * @example
+ * ```tsx
+ * <MarketingLayout>
+ *   <HeroSection />
+ *   <FeaturesSection />
+ * </MarketingLayout>
+ * ```
+ */
 export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

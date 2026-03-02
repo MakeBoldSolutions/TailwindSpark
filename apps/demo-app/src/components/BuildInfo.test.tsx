@@ -102,7 +102,7 @@ describe('BuildInfo', () => {
       render(<BuildInfo />);
       
       const container = screen.getByTitle(/Build version/);
-      expect(container).toHaveClass('text-xs', 'text-gray-500', 'dark:text-gray-500');
+      expect(container).toHaveClass('text-xs', 'text-muted');
     });
 
     it('should apply custom className', () => {
@@ -110,7 +110,7 @@ describe('BuildInfo', () => {
       
       const container = screen.getByTitle(/Build version/);
       expect(container).toHaveClass('custom-class');
-      expect(container).toHaveClass('text-xs', 'text-gray-500', 'dark:text-gray-500');
+      expect(container).toHaveClass('text-xs', 'text-muted');
     });
 
     it('should have correct title attribute', () => {
@@ -129,14 +129,14 @@ describe('BuildInfo', () => {
       render(<BuildInfo className="" />);
       
       const container = screen.getByTitle(/Build version/);
-      expect(container).toHaveClass('text-xs', 'text-gray-500', 'dark:text-gray-500');
+      expect(container).toHaveClass('text-xs', 'text-muted');
     });
 
     it('should handle undefined className gracefully', () => {
       render(<BuildInfo className={undefined} />);
       
       const container = screen.getByTitle(/Build version/);
-      expect(container).toHaveClass('text-xs', 'text-gray-500', 'dark:text-gray-500');
+      expect(container).toHaveClass('text-xs', 'text-muted');
     });
 
     it('should handle invalid date gracefully', () => {

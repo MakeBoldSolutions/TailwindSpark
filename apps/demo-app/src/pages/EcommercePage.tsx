@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import EcommerceLayout from '../components/EcommerceLayout';
 import FilterPanel from '../components/FilterPanel';
@@ -149,6 +149,19 @@ const MOCK_PRODUCTS: Product[] = [
   },
 ];
 
+/**
+ * E-commerce product catalog page with filtering and cart functionality.
+ * 
+ * Complete online store experience with product grid, advanced filtering,
+ * search, quick view modal, and shopping cart integration.
+ * 
+ * @returns E-commerce page component
+ * 
+ * @example
+ * ```tsx
+ * <EcommercePage />
+ * ```
+ */
 const EcommercePage: React.FC = () => {
   const [products] = useState<Product[]>(MOCK_PRODUCTS);
   const [filters, setFilters] = useState<FilterState>({

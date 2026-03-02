@@ -2,6 +2,19 @@ import { Button, Checkbox, Input, Radio, Select, Textarea } from '@tailwindspark
 import { Lock, Mail, Search, User } from 'lucide-react';
 import React from 'react';
 
+/**
+ * Form component showcase section.
+ * 
+ * Demonstrates input fields, textareas, selects, checkboxes, radios, and
+ * complete form layouts with validation and accessibility features.
+ * 
+ * @returns Form showcase section component
+ * 
+ * @example
+ * ```tsx
+ * <FormShowcase />
+ * ```
+ */
 export const FormShowcase: React.FC = () => {
   const [formData, setFormData] = React.useState({
     email: '',

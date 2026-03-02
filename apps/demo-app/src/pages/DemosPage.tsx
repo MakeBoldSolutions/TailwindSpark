@@ -1,6 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * Demos overview page component.
+ * 
+ * Displays gallery of available demo applications (Dashboard, E-commerce, Marketing)
+ * with descriptions and navigation links.
+ * 
+ * @returns Demos page component
+ * 
+ * @example
+ * ```tsx
+ * <DemosPage />
+ * ```
+ */
 export const DemosPage: React.FC = () => {
   const demos = [
     {

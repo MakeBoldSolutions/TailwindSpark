@@ -1,12 +1,36 @@
 import React, { useEffect, useState } from 'react';
 
+/**
+ * Bundle information data structure.
+ */
 interface BundleInfo {
+  /**
+   * Total JavaScript size in kilobytes.
+   */
   jsSize: number;
+  /**
+   * Total CSS size in kilobytes.
+   */
   cssSize: number;
+  /**
+   * Combined total size in kilobytes.
+   */
   totalSize: number;
+  /**
+   * List of loaded resource chunks.
+   */
   chunks: Array<{
+    /**
+     * Resource filename.
+     */
     name: string;
+    /**
+     * Resource size in kilobytes.
+     */
     size: number;
+    /**
+     * Resource type (JavaScript or CSS).
+     */
     type: 'js' | 'css';
   }>;
 }
@@ -14,6 +38,8 @@ interface BundleInfo {
 /**
  * Development-only bundle analyzer component
  * Shows real-time bundle information during development
+ * 
+ * @returns Bundle analyzer component
  */
 export const BundleAnalyzer: React.FC = () => {
   const [bundleInfo, setBundleInfo] = useState<BundleInfo | null>(null);

@@ -1,13 +1,50 @@
 import React from 'react';
 import { Logo } from './Logo';
 
+/**
+ * TailwindSpark brand component properties.
+ */
 interface TailwindSparkBrandProps {
+  /**
+   * Visual variant of the brand display.
+   * @default 'card'
+   */
   variant?: 'hero' | 'footer' | 'card' | 'inline';
+  /**
+   * Additional CSS classes to apply.
+   */
   className?: string;
+  /**
+   * Whether to show the description text.
+   * @default true
+   */
   showDescription?: boolean;
-  logoTitleTogether?: boolean; // New prop to control logo and title placement
+  /**
+   * Whether to position logo and title together (hero variant only).
+   * @default false
+   */
+  logoTitleTogether?: boolean;
 }
 
+/**
+ * TailwindSpark brand display component with multiple layout variants.
+ * 
+ * Provides consistent branding across different contexts with configurable
+ * layouts for hero sections, footers, cards, and inline usage.
+ * 
+ * @param root0 - Component props
+ * @param root0.variant - Visual variant of the brand display
+ * @param root0.className - Additional CSS classes to apply
+ * @param root0.showDescription - Whether to show the description text
+ * @param root0.logoTitleTogether - Whether to position logo and title together (hero variant only)
+ * @returns Brand display component
+ * 
+ * @example
+ * ```tsx
+ * <TailwindSparkBrand variant="hero" logoTitleTogether={true} />
+ * <TailwindSparkBrand variant="inline" showDescription={false} />
+ * ```
+ */
 export const TailwindSparkBrand: React.FC<TailwindSparkBrandProps> = ({
   variant = 'card',
   className = '',

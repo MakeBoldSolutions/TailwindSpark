@@ -1,15 +1,64 @@
 import React, { useState } from 'react';
 import type { Product } from '../types/ecommerce';
 
+/**
+ * Product grid component properties.
+ */
 interface ProductGridProps {
+  /**
+   * Array of products to display.
+   */
   products: Product[];
+  /**
+   * Callback when adding product to cart.
+   */
   onAddToCart: (product: Product, selectedColor?: string, selectedSize?: string) => void;
+  /**
+   * Callback to toggle product wishlist status.
+   */
   onWishlistToggle: (productId: number) => void;
+  /**
+   * Array of product IDs currently in the wishlist.
+   */
   wishlist: number[];
+  /**
+   * Callback to open quick view modal for a product.
+   */
   onQuickView: (product: Product) => void;
+  /**
+   * Loading state indicator.
+   */
   isLoading: boolean;
 }
 
+/**
+ * Responsive product grid with cards, images, and interactive actions.
+ * 
+ * Displays products in a responsive grid with hover effects, wishlist toggle,
+ * quick view, and add to cart functionality. Includes loading skeletons and
+ * empty state handling.
+ * 
+ * @param root0 - Component props
+ * @param root0.products - Array of products to display
+ * @param root0.onAddToCart - Callback when adding product to cart
+ * @param root0.onWishlistToggle - Callback to toggle product wishlist status
+ * @param root0.wishlist - Array of product IDs currently in the wishlist
+ * @param root0.onQuickView - Callback to open quick view modal for a product
+ * @param root0.isLoading - Loading state indicator
+ * @returns Product grid component
+ * 
+ * @example
+ * ```tsx
+ * <ProductGrid
+ *   products={filteredProducts}
+ *   onAddToCart={handleAddToCart}
+ *   onWishlistToggle={handleWishlistToggle}
+ *   wishlist={wishlist}
+ *   onQuickView={handleQuickView}
+ *   isLoading={loading}
+ * />
+ * ```
+ */
 const ProductGrid: React.FC<ProductGridProps> = ({
   products,
   onAddToCart,

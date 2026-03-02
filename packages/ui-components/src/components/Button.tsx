@@ -1,6 +1,11 @@
 import { clsx } from 'clsx';
 import * as React from 'react';
 
+/**
+ * Button component properties.
+ * 
+ * Extends standard HTML button attributes with additional styling and loading state options.
+ */
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'ghost';
   size?: 'sm' | 'md' | 'lg' | 'xl';
@@ -28,6 +33,19 @@ const buttonSizes = {
   xl: 'px-8 py-4 text-lg',
 };
 
+/**
+ * Accessible button component with multiple variants, sizes, and loading states.
+ * 
+ * Supports keyboard navigation, loading indicators, and icon placement.
+ * Follows semantic design token patterns for consistent theming and dark mode support.
+ * 
+ * @example
+ * ```tsx
+ * <Button variant="primary" size="md" onClick={handleClick}>
+ *   Click Me
+ * </Button>
+ * ```
+ */
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {

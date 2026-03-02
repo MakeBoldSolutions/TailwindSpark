@@ -1,10 +1,25 @@
 import { Search, X } from 'lucide-react';
 import React, { useMemo, useState } from 'react';
 
+/**
+ * Search result data structure.
+ */
 interface SearchResult {
+  /**
+   * Display title of the search result.
+   */
   title: string;
+  /**
+   * Brief description of the result.
+   */
   description: string;
+  /**
+   * Navigation URL for the result.
+   */
   url: string;
+  /**
+   * Category classification of the result.
+   */
   category: 'component' | 'animation' | 'demo' | 'page';
 }
 
@@ -102,11 +117,36 @@ const searchData: SearchResult[] = [
   },
 ];
 
+/**
+ * Search component properties.
+ */
 interface SearchComponentProps {
+  /**
+   * Controls visibility of the search modal.
+   */
   isOpen: boolean;
+  /**
+   * Callback to close the search modal.
+   */
   onClose: () => void;
 }
 
+/**
+ * Full-featured search component with keyboard navigation and filtering.
+ * 
+ * Provides instant search across components, animations, demos, and pages
+ * with arrow key navigation and Enter to select functionality.
+ * 
+ * @param root0 - Component props
+ * @param root0.isOpen - Controls visibility of the search modal
+ * @param root0.onClose - Callback to close the search modal
+ * @returns Search component modal
+ * 
+ * @example
+ * ```tsx
+ * <SearchComponent isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+ * ```
+ */
 export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClose }) => {
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);

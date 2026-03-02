@@ -1,6 +1,19 @@
 import React from 'react';
 import { AnimationShowcase } from '../sections/AnimationShowcase';
 
+/**
+ * Animation gallery page showcasing Tailwind CSS animations.
+ * 
+ * Interactive demonstration of CSS animations and transitions including
+ * hover effects, keyframes, and complex multi-property animations.
+ * 
+ * @returns Animation page component
+ * 
+ * @example
+ * ```tsx
+ * <AnimationPage />
+ * ```
+ */
 export const AnimationPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-surface transition-colors">

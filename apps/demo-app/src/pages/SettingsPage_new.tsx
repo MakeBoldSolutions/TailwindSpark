@@ -9,10 +9,25 @@ const IconGlobe = () => <span>🌐</span>;
 const IconMail = () => <span>✉️</span>;
 const IconCreditCard = () => <span>💳</span>;
 
+/**
+ * Settings section component properties.
+ */
 interface SettingsSectionProps {
+  /**
+   * Section title.
+   */
   title: string;
+  /**
+   * Section description.
+   */
   description: string;
+  /**
+   * Icon element for the section.
+   */
   icon: React.ReactNode;
+  /**
+   * Section content.
+   */
   children: React.ReactNode;
 }
 
@@ -94,6 +109,19 @@ const ToggleField: React.FC<{
   </div>
 );
 
+/**
+ * Enhanced settings page with comprehensive configuration options.
+ * 
+ * Alternative settings implementation with general, security, notification,
+ * preference, and billing sections. Features form validation and save states.
+ * 
+ * @returns Enhanced settings page component
+ * 
+ * @example
+ * ```tsx
+ * <SettingsPage />
+ * ```
+ */
 export const SettingsPage: React.FC = () => {
   // General Settings State
   const [companyName, setCompanyName] = useState('PromptSpark');

@@ -3,6 +3,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { TailwindSparkBrand } from '../components/TailwindSparkBrand';
 
+/**
+ * Home page component showcasing TailwindSpark features and navigation.
+ * 
+ * Displays project overview, feature highlights, demo links, and WebSpark ecosystem
+ * integration. Serves as the main landing page for the application.
+ * 
+ * @returns Home page component
+ * 
+ * @example
+ * ```tsx
+ * <HomePage />
+ * ```
+ */
 export const HomePage: React.FC = () => {
   return (
     <div className="bg-surface py-16">

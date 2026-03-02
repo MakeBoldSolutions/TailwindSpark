@@ -10,6 +10,20 @@ declare global {
   }
 }
 
+/**
+ * Analytics hook for tracking page views and performance metrics.
+ * 
+ * Automatically tracks page navigation and Web Vitals metrics (CLS, FCP, LCP, TTFB)
+ * with Google Analytics integration and performance budget monitoring.
+ * 
+ * @example
+ * ```tsx
+ * function App() {
+ *   useAnalytics();
+ *   return <Routes />;
+ * }
+ * ```
+ */
 export const useAnalytics = () => {
   const location = useLocation();
   const budgetMonitor = RuntimePerformanceBudget.getInstance();

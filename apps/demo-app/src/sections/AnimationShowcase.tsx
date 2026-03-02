@@ -1,5 +1,18 @@
 import React, { useState } from 'react';
 
+/**
+ * Animation showcase section.
+ * 
+ * Interactive demonstrations of Tailwind CSS animations including transitions,
+ * keyframes, transforms, and complex multi-property animations with controls.
+ * 
+ * @returns Animation showcase section component
+ * 
+ * @example
+ * ```tsx
+ * <AnimationShowcase />
+ * ```
+ */
 export const AnimationShowcase: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -31,7 +44,7 @@ export const AnimationShowcase: React.FC = () => {
               Scale Transform
             </h3>
             <div className="flex justify-center">
-              <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 transition-transform duration-300 hover:scale-110">
+              <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-brand to-data-viz-3 transition-transform duration-300 hover:scale-110">
                 <span className="font-medium text-white">Hover Me</span>
               </div>
             </div>
@@ -43,7 +56,7 @@ export const AnimationShowcase: React.FC = () => {
               Color Transition
             </h3>
             <div className="flex justify-center">
-              <button className="rounded-lg bg-blue-500 px-6 py-3 font-medium text-white transition-colors duration-500 hover:bg-green-500">
+              <button className="rounded-lg bg-brand px-6 py-3 font-medium text-white transition-colors duration-500 hover:bg-success-600">
                 Hover for Color Change
               </button>
             </div>
@@ -55,7 +68,7 @@ export const AnimationShowcase: React.FC = () => {
               Opacity Fade
             </h3>
             <div className="flex justify-center">
-              <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-red-500 to-pink-600 transition-opacity duration-700 hover:opacity-30">
+              <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-error-600 to-data-viz-7 transition-opacity duration-700 hover:opacity-30">
                 <span className="text-center font-medium text-white">Hover Me</span>
               </div>
             </div>
@@ -67,7 +80,7 @@ export const AnimationShowcase: React.FC = () => {
               Rotate Transform
             </h3>
             <div className="flex justify-center">
-              <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-green-500 to-teal-600 transition-transform duration-500 hover:rotate-180">
+              <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-success-600 to-data-viz-6 transition-transform duration-500 hover:rotate-180">
                 <span className="font-medium text-white">🔄</span>
               </div>
             </div>
@@ -79,7 +92,7 @@ export const AnimationShowcase: React.FC = () => {
               Slide Transform
             </h3>
             <div className="flex justify-center overflow-hidden">
-              <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-yellow-500 to-orange-600 transition-transform duration-300 hover:translate-x-4">
+              <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-warning-500 to-data-viz-5 transition-transform duration-300 hover:translate-x-4">
                 <span className="font-medium text-white">→</span>
               </div>
             </div>
@@ -91,7 +104,7 @@ export const AnimationShowcase: React.FC = () => {
               Shadow Growth
             </h3>
             <div className="flex justify-center">
-              <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 shadow-md transition-shadow duration-300 hover:shadow-2xl">
+              <div className="flex h-24 w-24 cursor-pointer items-center justify-center rounded-lg bg-gradient-to-br from-data-viz-1 to-data-viz-3 shadow-md transition-shadow duration-300 hover:shadow-2xl">
                 <span className="font-medium text-white">✨</span>
               </div>
             </div>
@@ -115,7 +128,7 @@ export const AnimationShowcase: React.FC = () => {
           <div className="rounded-lg border border-border bg-surface p-6 text-center shadow-md">
             <h3 className="mb-4 text-lg font-semibold text-text">Spin</h3>
             <div className="mb-4 flex justify-center">
-              <div className="h-12 w-12 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+              <div className="h-12 w-12 animate-spin rounded-full border-4 border-brand border-t-transparent"></div>
             </div>
             <p className="text-sm text-text-muted">Loading spinner</p>
           </div>
@@ -125,8 +138,8 @@ export const AnimationShowcase: React.FC = () => {
             <h3 className="mb-4 text-lg font-semibold text-text">Ping</h3>
             <div className="mb-4 flex justify-center">
               <div className="relative">
-                <div className="h-4 w-4 rounded-full bg-green-500"></div>
-                <div className="absolute inset-0 h-4 w-4 animate-ping rounded-full bg-green-500 opacity-75"></div>
+                <div className="h-4 w-4 rounded-full bg-success-600"></div>
+                <div className="absolute inset-0 h-4 w-4 animate-ping rounded-full bg-success-600 opacity-75"></div>
               </div>
             </div>
             <p className="text-sm text-text-muted">Notification dot</p>
@@ -138,7 +151,7 @@ export const AnimationShowcase: React.FC = () => {
             <div className="mb-4 flex justify-center">
               <button
                 onClick={() => setPulseActive(!pulseActive)}
-                className={`h-16 w-16 rounded-lg bg-purple-500 font-medium text-white ${pulseActive ? 'animate-pulse' : ''}`}
+                className={`h-16 w-16 rounded-lg bg-data-viz-3 font-medium text-white ${pulseActive ? 'animate-pulse' : ''}`}
               >
                 {pulseActive ? 'ON' : 'OFF'}
               </button>
@@ -152,7 +165,7 @@ export const AnimationShowcase: React.FC = () => {
             <div className="mb-4 flex justify-center">
               <button
                 onClick={() => setBounceActive(!bounceActive)}
-                className={`h-12 w-12 rounded-full bg-red-500 font-medium text-white ${bounceActive ? 'animate-bounce' : ''}`}
+                className={`h-12 w-12 rounded-full bg-error-600 font-medium text-white ${bounceActive ? 'animate-bounce' : ''}`}
               >
                 ⚽
               </button>
@@ -185,8 +198,8 @@ export const AnimationShowcase: React.FC = () => {
                 disabled={isLoading}
                 className={`w-full rounded-lg px-6 py-3 font-medium transition-all duration-200 ${
                   isLoading
-                    ? 'cursor-not-allowed bg-gray-400'
-                    : 'bg-blue-500 hover:scale-105 hover:bg-blue-600 active:scale-95'
+                    ? 'cursor-not-allowed bg-border-strong'
+                    : 'bg-brand hover:scale-105 hover:bg-brand-hover active:scale-95'
                 } flex items-center justify-center gap-2 text-white`}
               >
                 {isLoading ? (
@@ -208,7 +221,7 @@ export const AnimationShowcase: React.FC = () => {
             </h3>
             <button
               onClick={() => setShowModal(true)}
-              className="w-full rounded-lg bg-green-500 px-6 py-3 font-medium text-white transition-colors duration-200 hover:bg-green-600"
+              className="w-full rounded-lg bg-success-600 px-6 py-3 font-medium text-white transition-colors duration-200 hover:bg-success-700"
             >
               Open Animated Modal
             </button>
@@ -235,12 +248,12 @@ export const AnimationShowcase: React.FC = () => {
             </h3>
             <div className="flex justify-center">
               <div className="group relative">
-                <div className="flex h-32 w-32 cursor-pointer items-center justify-center rounded-xl bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 transition-all duration-500 group-hover:rotate-3 group-hover:scale-110 group-hover:shadow-2xl">
+                <div className="flex h-32 w-32 cursor-pointer items-center justify-center rounded-xl bg-gradient-to-br from-data-viz-7 via-data-viz-3 to-data-viz-1 transition-all duration-500 group-hover:rotate-3 group-hover:scale-110 group-hover:shadow-2xl">
                   <span className="text-2xl font-bold text-white transition-transform duration-300 group-hover:scale-125">
                     ✨
                   </span>
                 </div>
-                <div className="absolute inset-0 h-32 w-32 rounded-xl bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-500 opacity-20 blur-xl transition-all duration-500 group-hover:opacity-40 group-hover:blur-2xl"></div>
+                <div className="absolute inset-0 h-32 w-32 rounded-xl bg-gradient-to-br from-data-viz-7 via-data-viz-3 to-data-viz-1 opacity-20 blur-xl transition-all duration-500 group-hover:opacity-40 group-hover:blur-2xl"></div>
               </div>
             </div>
           </div>
@@ -251,11 +264,11 @@ export const AnimationShowcase: React.FC = () => {
               Morphing Button
             </h3>
             <div className="flex justify-center">
-              <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-lg">
+              <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-brand to-data-viz-3 px-8 py-4 font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-lg">
                 <span className="relative z-10 transition-all duration-300 group-hover:scale-110">
                   Hover to Transform
                 </span>
-                <div className="absolute inset-0 origin-left scale-x-0 transform bg-gradient-to-r from-purple-600 to-pink-600 transition-transform duration-300 group-hover:scale-x-100"></div>
+                <div className="absolute inset-0 origin-left scale-x-0 transform bg-gradient-to-r from-data-viz-3 to-data-viz-7 transition-transform duration-300 group-hover:scale-x-100"></div>
               </button>
             </div>
           </div>
@@ -282,7 +295,7 @@ export const AnimationShowcase: React.FC = () => {
             </button>
 
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 animate-pulse items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-teal-600">
+              <div className="mx-auto mb-4 flex h-16 w-16 animate-pulse items-center justify-center rounded-full bg-gradient-to-br from-success-600 to-data-viz-6">
                 <span className="text-2xl text-white">🎉</span>
               </div>
               <h3 className="mb-2 text-xl font-semibold text-text">
@@ -293,7 +306,7 @@ export const AnimationShowcase: React.FC = () => {
               </p>
               <button
                 onClick={() => setShowModal(false)}
-                className="rounded-lg bg-blue-500 px-6 py-2 text-white transition-colors duration-200 hover:bg-blue-600"
+                className="rounded-lg bg-brand px-6 py-2 text-white transition-colors duration-200 hover:bg-brand-hover"
               >
                 Close
               </button>
