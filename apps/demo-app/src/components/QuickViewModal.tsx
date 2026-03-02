@@ -93,12 +93,12 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
-      <div className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-lg bg-white">
-        <div className="flex items-center justify-between border-b border-gray-200 p-6">
-          <h2 className="text-2xl font-bold text-gray-900">Quick View</h2>
+      <div className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-lg bg-surface">
+        <div className="flex items-center justify-between border-b border-border p-6">
+          <h2 className="text-2xl font-bold text-text">Quick View</h2>
           <button
             onClick={onClose}
-            className="text-2xl font-bold text-gray-400 hover:text-gray-600"
+            className="text-2xl font-bold text-text-muted hover:text-text"
             title="Close modal"
           >
             ×
@@ -109,7 +109,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             {/* Product Images */}
             <div className="space-y-4">
-              <div className="aspect-[4/3] overflow-hidden rounded-lg bg-gray-100">
+              <div className="aspect-[4/3] overflow-hidden rounded-lg bg-surface-alt">
                 <img
                   src={selectedImage}
                   alt={product.name}
@@ -123,7 +123,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
                   <button
                     onClick={() => setSelectedImage(product.image)}
                     className={`h-16 w-16 overflow-hidden rounded-md border-2 ${
-                      selectedImage === product.image ? 'border-brand' : 'border-gray-200'
+                      selectedImage === product.image ? 'border-brand' : 'border-border'
                     }`}
                   >
                     <img
@@ -137,7 +137,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
                       key={index}
                       onClick={() => setSelectedImage(image)}
                       className={`h-16 w-16 overflow-hidden rounded-md border-2 ${
-                        selectedImage === image ? 'border-brand' : 'border-gray-200'
+                        selectedImage === image ? 'border-brand' : 'border-border'
                       }`}
                     >
                       <img
@@ -154,8 +154,8 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
             {/* Product Details */}
             <div className="space-y-6">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
-                <p className="mt-2 text-lg text-gray-600">{product.brand}</p>
+                <h1 className="text-3xl font-bold text-text">{product.name}</h1>
+                <p className="mt-2 text-lg text-text-muted">{product.brand}</p>
               </div>
 
               {/* Rating */}

@@ -169,8 +169,7 @@ function AppContent() {
  * - Performance monitoring via PerformanceMonitor component
  * - Persistent theme preference in localStorage
  * 
- * @component
- * @returns {JSX.Element} The complete application with routing and theme support
+ * @returns The complete application with routing and theme support
  * 
  * @example
  * ```tsx

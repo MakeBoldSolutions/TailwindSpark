@@ -14,8 +14,7 @@ import React from 'react';
  * - localStorage-based theme persistence
  * - Minimal UI for theme demonstration
  * 
- * @component
- * @returns {JSX.Element} Minimal app with theme toggle
+ * @returns Minimal app with theme toggle
  * 
  * @example
  * ```tsx

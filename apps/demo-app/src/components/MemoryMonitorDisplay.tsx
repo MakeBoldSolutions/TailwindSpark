@@ -130,7 +130,7 @@ export const MemoryMonitorDisplay: React.FC = () => {
 
   if (!metrics) {
     return (
-      <div className="fixed bottom-4 right-4 bg-gray-100 text-gray-800 p-2 rounded text-xs">
+      <div className="fixed bottom-4 right-4 bg-surface-alt text-text p-2 rounded text-xs">
         Loading memory data...
       </div>
     );
@@ -161,12 +161,12 @@ export const MemoryMonitorDisplay: React.FC = () => {
   const usagePercent = (metrics.current.usedJSHeapSize / metrics.current.jsHeapSizeLimit) * 100;
 
   return (
-    <div className="fixed bottom-4 right-4 bg-white shadow-lg rounded-lg p-4 text-xs max-w-sm z-50 border">
+    <div className="fixed bottom-4 right-4 bg-surface shadow-lg rounded-lg p-4 text-xs max-w-sm z-50 border border-border">
       <div className="flex justify-between items-center mb-2">
-        <h3 className="font-semibold text-gray-800">Memory Monitor</h3>
+        <h3 className="font-semibold text-text">Memory Monitor</h3>
         <button
           onClick={() => setIsVisible(false)}
-          className="text-gray-500 hover:text-gray-700"
+          className="text-text-muted hover:text-text"
           aria-label="Hide memory monitor"
         >
           ×
@@ -179,7 +179,7 @@ export const MemoryMonitorDisplay: React.FC = () => {
             <span>Usage:</span>
             <span className={color}>{formatBytes(metrics.current.usedJSHeapSize)} ({status})</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-1 mt-1">
+          <div className="w-full bg-surface-hover rounded-full h-1 mt-1">
             <div 
               className={`h-1 rounded-full transition-all duration-300 ${
                 usagePercent > 80 ? 'bg-red-500' : 
@@ -205,7 +205,7 @@ export const MemoryMonitorDisplay: React.FC = () => {
 
         <div className="flex justify-between">
           <span>Growth Rate:</span>
-          <span className={metrics.growthRate > 5 ? 'text-red-600' : 'text-gray-600'}>
+          <span className={metrics.growthRate > 5 ? 'text-destructive' : 'text-text-muted'}>
             {metrics.growthRate.toFixed(1)}%
           </span>
         </div>

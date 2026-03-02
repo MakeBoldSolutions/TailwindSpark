@@ -307,53 +307,53 @@ export const DashboardPage: React.FC = () => {
             </h3>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600 dark:text-gray-400">Today's Revenue</span>
+                <span className="text-sm text-text-muted">Today's Revenue</span>
                 <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
                   $12,450
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600 dark:text-gray-400">New Signups</span>
-                <span className="text-sm font-medium text-gray-900 dark:text-gray-100">127</span>
+                <span className="text-sm text-text-muted">New Signups</span>
+                <span className="text-sm font-medium text-text">127</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600 dark:text-gray-400">Active Sessions</span>
-                <span className="text-sm font-medium text-gray-900 dark:text-gray-100">1,847</span>
+                <span className="text-sm text-text-muted">Active Sessions</span>
+                <span className="text-sm font-medium text-text">1,847</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600 dark:text-gray-400">Bounce Rate</span>
-                <span className="text-sm font-medium text-gray-900 dark:text-gray-100">2.4%</span>
+                <span className="text-sm text-text-muted">Bounce Rate</span>
+                <span className="text-sm font-medium text-text">2.4%</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Recent Transactions Table */}
-        <div className="mb-8 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
-          <div className="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
+        <div className="mb-8 overflow-hidden rounded-xl border border-border bg-surface shadow-sm">
+          <div className="border-b border-border px-6 py-4">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
               Recent Transactions
             </h3>
           </div>
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-              <thead className="bg-gray-50 dark:bg-gray-700">
+            <table className="min-w-full divide-y divide-border">
+              <thead className="bg-surface-alt">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-muted">
                     Customer
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-muted">
                     Amount
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-muted">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-text-muted">
                     Date
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-800">
+              <tbody className="divide-y divide-border bg-surface">
                 {transactions.map(transaction => (
                   <TransactionRow key={transaction.id} transaction={transaction} />
                 ))}
@@ -365,8 +365,8 @@ export const DashboardPage: React.FC = () => {
         {/* Activity Feed + User List */}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {/* Activity Feed */}
-          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <div className="rounded-xl border border-border bg-surface p-6 shadow-sm">
+            <h3 className="mb-4 text-lg font-semibold text-text">
               Recent Activity
             </h3>
             <div className="space-y-1">
@@ -377,15 +377,15 @@ export const DashboardPage: React.FC = () => {
           </div>
 
           {/* User List */}
-          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <div className="rounded-xl border border-border bg-surface p-6 shadow-sm">
+            <h3 className="mb-4 text-lg font-semibold text-text">
               Team Members
             </h3>
             <div className="space-y-3">
               {users.map((user, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between rounded-lg p-3 transition-colors hover:bg-gray-50 dark:hover:bg-gray-700"
+                  className="flex items-center justify-between rounded-lg p-3 transition-colors hover:bg-surface-alt"
                 >
                   <div className="flex items-center gap-3">
                     <div className="from-brand to-accent-700 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-sm font-medium text-white">
@@ -395,10 +395,10 @@ export const DashboardPage: React.FC = () => {
                         .join('')}
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                      <p className="text-sm font-medium text-text">
                         {user.name}
                       </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">{user.role}</p>
+                      <p className="text-xs text-text-muted">{user.role}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
@@ -408,10 +408,10 @@ export const DashboardPage: React.FC = () => {
                           ? 'bg-green-500'
                           : user.status === 'away'
                             ? 'bg-yellow-500'
-                            : 'bg-gray-400'
+                            : 'bg-surface-hover'
                       }`}
                     ></div>
-                    <span className="text-xs capitalize text-gray-500 dark:text-gray-400">
+                    <span className="text-xs capitalize text-text-muted">
                       {user.status}
                     </span>
                   </div>

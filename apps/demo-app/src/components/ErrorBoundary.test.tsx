@@ -209,7 +209,7 @@ describe('ErrorBoundary', () => {
     it('should render error icon', () => {
       const errorIcon = screen.getByText('⚠️');
       expect(errorIcon).toBeInTheDocument();
-      expect(errorIcon.parentElement).toHaveClass('bg-red-100', 'dark:bg-red-900');
+      expect(errorIcon.parentElement).toHaveClass('bg-destructive/10');
     });
 
     it('should render error title', () => {
@@ -236,13 +236,13 @@ describe('ErrorBoundary', () => {
       const homeButton = screen.getByText('Go to Homepage');
       expect(homeButton).toBeInTheDocument();
       expect(homeButton.tagName).toBe('BUTTON');
-      expect(homeButton).toHaveClass('bg-gray-200');
+      expect(homeButton).toHaveClass('bg-surface-hover');
     });
 
     it('should have proper CSS classes for layout', () => {
       const container = document.querySelector('.flex.min-h-screen.items-center.justify-center');
       expect(container).toBeInTheDocument();
-      expect(container).toHaveClass('bg-gray-50', 'dark:bg-gray-900');
+      expect(container).toHaveClass('bg-surface-alt');
     });
   });
 
@@ -311,7 +311,7 @@ describe('ErrorBoundary', () => {
 
       const preElement = screen.getByText('Error: Pre format test');
       expect(preElement.tagName).toBe('PRE');
-      expect(preElement).toHaveClass('mt-2', 'overflow-auto', 'rounded', 'bg-gray-100', 'p-4', 'text-xs', 'dark:bg-gray-800');
+      expect(preElement).toHaveClass('mt-2', 'overflow-auto', 'rounded', 'bg-surface-alt', 'p-4', 'text-xs');
     });
   });
 
