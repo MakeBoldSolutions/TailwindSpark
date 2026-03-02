@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { FilterState, Product } from '../types/ecommerce';
 import FilterPanel from './FilterPanel';
 
@@ -65,7 +65,8 @@ describe('FilterPanel', () => {
         setFilters={mockSetFilters}
       />
     );
-    expect(screen.getByText(/Filter|Category/i)).toBeInTheDocument();
+    // Check for the main heading
+    expect(screen.getByRole('heading', { name: /Filters/i })).toBeInTheDocument();
   });
 
   it('displays category filters', () => {
@@ -76,7 +77,8 @@ describe('FilterPanel', () => {
         setFilters={mockSetFilters}
       />
     );
-    expect(screen.getByText(/Category/i)).toBeInTheDocument();
+    // Check for the Category heading
+    expect(screen.getByRole('heading', { name: /Category/i })).toBeInTheDocument();
   });
 
   it('shows all unique categories from products', () => {
@@ -99,7 +101,8 @@ describe('FilterPanel', () => {
         setFilters={mockSetFilters}
       />
     );
-    expect(screen.getByText(/Brand/i)).toBeInTheDocument();
+    // Check for the Brand heading
+    expect(screen.getByRole('heading', { name: /Brand/i })).toBeInTheDocument();
     expect(screen.getByText(/Brand A/i)).toBeInTheDocument();
     expect(screen.getByText(/Brand B/i)).toBeInTheDocument();
   });
