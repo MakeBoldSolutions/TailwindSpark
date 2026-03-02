@@ -34,7 +34,7 @@ npm run lint
 
 # Baseline test status
 npm test
-# Expected: 533 tests, 92.4% pass rate
+# Expected: 533 passing tests of 577 total (92.4% pass rate)
 ```
 
 ---
@@ -545,7 +545,7 @@ Refs: .documentation/specs/002-audit-criticals/spec.md"
 
 - [ ] All 5 files modified correctly
 - [ ] ESLint reports 0 errors
-- [ ] All 533 tests pass
+- [ ] All 533 passing tests continue to pass (92.4% pass rate maintained)
 - [ ] Coverage enforcement configured
 - [ ] Dark mode works correctly on tested pages
 - [ ] IntelliSense shows JSDoc for App components

@@ -32,19 +32,9 @@ description: "Task list for Critical Audit Compliance Fixes"
 
 - [ ] T001 Verify on branch 002-audit-criticals with clean working directory
 - [ ] T002 Run baseline ESLint to confirm 47 violations (45 colors + 2 JSDoc)
-- [ ] T003 [P] Run baseline test suite to confirm 533 tests at 92.4% pass rate
+- [ ] T003 [P] Run baseline test suite to confirm 533 passing tests of 577 total (92.4% pass rate)
 
 **Checkpoint**: Baseline established - ready for implementation
-
----
-
-## Phase 2: Foundational (Blocking Prerequisites)
-
-**Purpose**: No foundational work required - all infrastructure exists
-
-**⚠️ NOTE**: This feature modifies existing files only. No foundational infrastructure needed.
-
-**Checkpoint**: Foundation ready (immediate) - user story implementation can begin
 
 ---
 
@@ -53,6 +43,8 @@ description: "Task list for Critical Audit Compliance Fixes"
 **Goal**: Replace all 45 raw color class violations with semantic design tokens to restore dark mode functionality and achieve design system consistency
 
 **Independent Test**: Run ESLint `no-raw-primary-class` rule and manual dark mode toggle on pages using BundleAnalyzer/EcommerceLayout
+
+**Note**: Tasks T004-T012 replace multiple color class instances per component line/section to address all 45 violations across both files.
 
 ### Implementation for User Story 1
 
@@ -120,7 +112,7 @@ description: "Task list for Critical Audit Compliance Fixes"
 **Purpose**: Final validation, documentation updates, and quality assurance
 
 - [ ] T032 [P] Run full ESLint validation with npm run lint (expect 0 errors, down from 47)
-- [ ] T033 [P] Run full test suite with npm test (expect all 533 tests pass, 92.4%+ pass rate maintained)
+- [ ] T033 [P] Run full test suite with npm test (expect 533 passing tests of 577 total, 92.4% pass rate maintained)
 - [ ] T034 Run complete validation per quickstart.md steps (ESLint, tests, coverage, manual dark mode)
 - [ ] T035 Update .documentation/copilot/audit/ with compliance achievement notes (73% → 100%)
 - [ ] T036 [P] Verify all 5 target files modified correctly (BundleAnalyzer.tsx, EcommerceLayout.tsx, App.tsx, App-clean.tsx, vitest.config.ts)

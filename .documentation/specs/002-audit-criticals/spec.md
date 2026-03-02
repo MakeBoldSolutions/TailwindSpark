@@ -51,7 +51,7 @@
 **I want** test coverage thresholds automatically enforced during test runs  
 **So that** code quality standards are maintained and coverage never drops below constitutional requirements
 
-**Why this priority**: While 533 tests exist with 92.4% pass rate (excellent test infrastructure), coverage thresholds are **not enforced** in vitest.config.ts, violating Constitution Principle II (MANDATORY - 80% minimum coverage). This is lower priority than the other fixes because the test infrastructure and actual tests exist; only the enforcement mechanism is missing. However, it's still CRITICAL to constitutional compliance.
+**Why this priority**: While 533 tests pass of 577 total (92.4% pass rate - excellent test infrastructure), coverage thresholds are **not enforced** in vitest.config.ts, violating Constitution Principle II (MANDATORY - 80% minimum coverage). This is lower priority than the other fixes because the test infrastructure and actual tests exist; only the enforcement mechanism is missing. However, it's still CRITICAL to constitutional compliance.
 
 **Independent Test**: Can be tested by running `npm test -- --coverage` and verifying that builds fail if coverage drops below 80% for any metric (statements, branches, functions, lines). Also verify that coverage reports are generated correctly. Delivers value through automated quality gates and prevention of coverage regression.
 
@@ -90,7 +90,7 @@
 
 - **FR-008**: App.tsx (line 158) MUST have a JSDoc comment block above the component definition
 - **FR-009**: App-clean.tsx (line 3) MUST have a JSDoc comment block above the component definition
-- **FR-010**: JSDoc comments MUST include component description, purpose, and any relevant usage notes
+- **FR-010**: JSDoc comments MUST include: (1) @component tag, (2) description (minimum 1 sentence explaining purpose), (3) @returns with type description, (4) @example demonstrating basic usage
 - **FR-011**: JSDoc comments MUST follow the established style guide in `.documentation/copilot/session=2026-03-01/jsdoc-style-guide.md`
 - **FR-012**: ESLint `require-jsdoc` rule MUST pass with zero violations across entire codebase
 
@@ -102,7 +102,6 @@
 - **FR-016**: vitest.config.ts MUST define coverage thresholds with 80% minimum for lines
 - **FR-017**: Test runs with `--coverage` flag MUST fail if any threshold is not met
 - **FR-018**: Coverage reports MUST be generated in multiple formats (lcov, json, html, text)
-- **FR-019**: GitHub Actions CI/CD workflow MUST run tests with coverage enforcement on all PRs
 
 ### Key Entities *(N/A - Code quality fixes, no new data entities)*
 
@@ -132,23 +131,20 @@ This feature involves code quality fixes and does not introduce new data entitie
 
 - **SC-008**: ESLint `require-jsdoc` rule reports zero violations across entire codebase
 - **SC-009**: JSDoc coverage reaches 100% for all exported components (up from 99.99%)
-- **SC-010**: IntelliSense displays helpful JSDoc tooltips for App and App-clean components in VS Code
-- **SC-011**: Developer onboarding time for understanding main app entry points improves (subjective, verified through code review)
+- **SC-010**: IntelliSense displays JSDoc tooltips with @component, description, @returns, and @example tags for App and App-clean components in VS Code
 
 #### User Story 3 Success Criteria (Coverage)
 
 - **SC-012**: Running `npm test -- --coverage` with coverage below 80% results in exit code 1 (test failure)
 - **SC-013**: Running `npm test -- --coverage` with coverage above 80% results in exit code 0 (success)  
 - **SC-014**: Coverage reports are generated successfully in all configured formats (lcov, json, html, text)
-- **SC-015**: GitHub Actions workflow enforces coverage thresholds and blocks PRs with insufficient coverage
+- **SC-015**: GitHub Actions workflows automatically enforce coverage thresholds via vitest.config.ts (no workflow modifications needed - existing `npm test` commands will respect thresholds)
 - **SC-016**: Manual test: Temporarily reduce test coverage below threshold and verify build fails with clear error message
 
-### Additional Success Criteria
+### Quality & Timeline Criteria
 
-- **SC-017**: All fixes complete in under 2 hours total development time (est. 45min colors + 15min JSDoc + 5min coverage)
-- **SC-018**: Zero regressions introduced (all existing tests continue to pass)
-- **SC-019**: Documentation updated to reflect 100% constitutional compliance achievement
-- **SC-020**: Next site audit (2026-03-09) shows 0 critical violations
+- **SC-017**: All fixes complete in under 2 hours total development time with zero regressions (all 533 passing tests of 577 total continue to pass) and documentation updated to reflect 100% constitutional compliance
+- **SC-018**: Next site audit (2026-03-09) shows 0 critical violations
 
 ## Constraints & Assumptions *(mandatory)*
 
@@ -165,7 +161,7 @@ This feature involves code quality fixes and does not introduce new data entitie
 - ESLint `no-raw-primary-class` rule is already strengthened to catch all patterns (confirmed by PR #90)
 - The semantic color migration guide exists and is current (`.documentation/copilot/session=2026-03-01/semantic-color-migration.md`)
 - The JSDoc style guide exists and is current (`.documentation/copilot/session=2026-03-01/jsdoc-style-guide.md`)
-- Current test pass rate of 92.4% (533/577 tests) will be maintained or improved
+- Current test pass rate of 92.4% (533 passing of 577 total tests) will be maintained or improved
 - The 44 failing tests are unrelated to these fixes and do not need to be addressed in this feature
 
 ### Dependencies
@@ -182,6 +178,7 @@ This feature involves code quality fixes and does not introduce new data entitie
 - Refactoring large page files (MarketingPage.tsx at 568 lines, EcommercePage.tsx at 501 lines)
 - Adding JSDoc to utility files beyond the 2 critical main App components
 - Increasing coverage beyond current levels (only enforcement, not test creation)
+- Modifying GitHub Actions workflows for coverage enforcement (existing workflows already run `npm test` which will enforce thresholds via vitest.config.ts)
 - Resolving the TODO comment in BuildInfo.tsx:22
 - Addressing Dependabot alert #26
 - Performance optimizations or feature additions

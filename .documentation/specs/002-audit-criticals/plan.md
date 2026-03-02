@@ -1,7 +1,7 @@
 # Implementation Plan: Critical Audit Compliance Fixes
 
 **Branch**: `002-audit-criticals` | **Date**: 2026-03-02 | **Spec**: [spec.md](spec.md)
-**Input**: Feature specification from `specs/002-audit-criticals/spec.md`
+**Input**: Feature specification from `.documentation/specs/002-audit-criticals/spec.md`
 
 **Note**: This plan addresses 47 critical violations identified in the 2026-03-02 site audit.
 
@@ -10,7 +10,7 @@
 This feature eliminates all 47 critical constitutional violations blocking 100% compliance:
 - **45 raw color violations** in BundleAnalyzer.tsx (43) and EcommerceLayout.tsx (2)
 - **2 missing JSDoc violations** in App.tsx and App-clean.tsx
-- **1 missing coverage threshold enforcement** in vitest.config.ts
+- **Coverage threshold enforcement** in vitest.config.ts (no workflow changes needed - existing GitHub Actions `npm test` commands will automatically enforce thresholds)
 
 Technical approach involves systematic replacement of raw Tailwind color classes with semantic design tokens, adding comprehensive JSDoc documentation following established style guide, and configuring Vitest coverage thresholds to enforce 80% minimum across all metrics.
 
@@ -19,13 +19,13 @@ Technical approach involves systematic replacement of raw Tailwind color classes
 **Language/Version**: TypeScript 5.x (strict mode enabled)
 **Primary Dependencies**: React 18+, Tailwind CSS 4.1, Vitest, ESLint, @tailwindspark/design-tokens
 **Storage**: N/A (code quality fixes only, no data persistence)
-**Testing**: Vitest with @testing-library/react, 533 existing tests (92.4% pass rate)
+**Testing**: Vitest with @testing-library/react, 533 passing tests of 577 total (92.4% pass rate)
 **Target Platform**: Web (modern browsers, static site hosted on GitHub Pages)
 **Project Type**: Web application (monorepo with apps/ and packages/ structure)
 **Performance Goals**: Zero impact on runtime performance, maintain existing bundle sizes
 **Constraints**: 
   - Must maintain backward compatibility (no breaking API changes)
-  - All 533 existing tests must continue passing
+  - All 533 passing tests must continue passing
   - Dark mode must work in both light and dark themes
   - Changes must be isolated to 5 files only
 **Scale/Scope**: 
