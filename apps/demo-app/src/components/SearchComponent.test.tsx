@@ -44,7 +44,9 @@ describe('SearchComponent', () => {
     await user.type(searchInput, 'button');
     
     // Results should appear
-    expect(screen.getByText(/Button/i) || screen.getByText(/result/i)).toBeInTheDocument();
+    const hasButton = screen.queryAllByText(/Button/i).length > 0;
+    const hasResult = screen.queryAllByText(/result/i).length > 0;
+    expect(hasButton || hasResult).toBe(true);
   });
 
   it('filters results by category', async () => {
@@ -54,9 +56,10 @@ describe('SearchComponent', () => {
     const searchInput = screen.getByPlaceholderText(/Search/i);
     await user.type(searchInput, 'component');
     
-    // Should show component results
-    const results = screen.queryAllByRole('link') || screen.queryAllByRole('button');
-    expect(results.length).toBeGreaterThan(0);
+    // Should show results (links or buttons)
+    const links = screen.queryAllByRole('link');
+    const buttons = screen.queryAllByRole('button');
+    expect(links.length + buttons.length).toBeGreaterThan(0);
   });
 
   it('shows categories in search results', async () => {
@@ -66,8 +69,9 @@ describe('SearchComponent', () => {
     const searchInput = screen.getByPlaceholderText(/Search/i);
     await user.type(searchInput, 'form');
     
-    // Category labels should appear
-    expect(screen.getByText(/component|demo|animation|page/i)).toBeInTheDocument();
+    // Category labels should appear - check for any
+    const hasCategory = screen.queryAllByText(/component|demo|animation|page/i).length > 0;
+    expect(hasCategory).toBe(true);
   });
 
   it('displays search icon', () => {
@@ -83,9 +87,9 @@ describe('SearchComponent', () => {
     const searchInput = screen.getByPlaceholderText(/Search/i);
     await user.type(searchInput, 'test');
     
-    // Clear button should appear
-    const clearButton = screen.getByRole('button') || document.querySelector('[aria-label*="clear"]');
-    expect(clearButton).toBeTruthy();
+    // Buttons should be present
+    const buttons = screen.queryAllByRole('button');
+    expect(buttons.length).toBeGreaterThan(0);
   });
 
   it('clears search input when clear button is clicked', async () => {

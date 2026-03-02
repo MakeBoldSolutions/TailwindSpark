@@ -1,10 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
+import { ThemeProvider } from '../contexts/ThemeContext';
 import { MarketingPage } from './MarketingPage';
 
 const renderWithRouter = (component: React.ReactElement) => {
-  return render(<BrowserRouter>{component}</BrowserRouter>);
+  return render(
+    <ThemeProvider>
+      <BrowserRouter>{component}</BrowserRouter>
+    </ThemeProvider>
+  );
 };
 
 describe('MarketingPage', () => {

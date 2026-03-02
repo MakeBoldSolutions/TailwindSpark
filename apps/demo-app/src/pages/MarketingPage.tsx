@@ -562,7 +562,9 @@ export const MarketingPage: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="mb-2 font-semibold">Email</h4>
-                    <p className="text-white/80">contact@tailwindspark.com</p>
+                    <p className="text-white/80">
+                      contact@tailwindspark.com
+                      <br />
                       hello@tailwindspark.com
                       <br />
                       support@tailwindspark.com

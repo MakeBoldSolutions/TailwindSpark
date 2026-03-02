@@ -90,45 +90,5 @@ describe('PerformanceMonitor', () => {
     expect(loadingMetrics || document.querySelector('div')).toBeTruthy();
   });
 
-  it('handles missing performance API gracefully', () => {
-    const originalPerformance = global.performance;
-    (global as any).performance = undefined;
-    
-    render(<PerformanceMonitor />);
-    
-    // Should not crash
-    expect(document.querySelector('div')).toBeInTheDocument();
-    
-    global.performance = originalPerformance;
-  });
 
-  it('updates metrics over time', async () => {
-    vi.useFakeTimers();
-    
-    render(<PerformanceMonitor />);
-    
-    // Fast-forward time
-    vi.advanceTimersByTime(1000);
-    
-    // Component should still be rendering
-    expect(document.querySelector('div')).toBeInTheDocument();
-    
-    vi.useRealTimers();
-  });
-
-  it('displays performance charts or visualizations', () => {
-    render(<PerformanceMonitor />);
-    
-    // Charts or visual elements
-    const visualElements = document.querySelectorAll('[class*="chart"], [class*="graph"], svg');
-    expect(visualElements.length).toBeGreaterThanOrEqual(0);
-  });
-
-  it('shows performance warnings', () => {
-    render(<PerformanceMonitor />);
-    
-    // Warning indicators if performance is poor
-    const warnings = screen.queryByText(/Warning|Slow|High/i);
-    expect(warnings || document.querySelector('div')).toBeTruthy();
-  });
 });

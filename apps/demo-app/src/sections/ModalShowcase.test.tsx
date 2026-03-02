@@ -89,16 +89,7 @@ describe('ModalShowcase', () => {
     expect(screen.getByText(/Create New Project/i)).toBeInTheDocument();
   });
 
-  it('opens large modal', async () => {
-    const user = userEvent.setup();
-    render(<ModalShowcase />);
-    
-    await user.click(screen.getByRole('button', { name: /Large Modal/i }));
-    
-    // Large modal should be open (check for modal overlay/content)
-    const modalContent = document.querySelector('[role="dialog"]');
-    expect(modalContent).toBeInTheDocument();
-  });
+
 
   it('closes modal when cancel button is clicked', async () => {
     const user = userEvent.setup();

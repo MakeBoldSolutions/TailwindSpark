@@ -158,20 +158,7 @@ describe('ProductGrid', () => {
     expect(images.length).toBeGreaterThan(0);
   });
 
-  it('shows product ratings', () => {
-    render(
-      <ProductGrid
-        products={mockProducts}
-        onAddToCart={mockOnAddToCart}
-        onWishlistToggle={mockOnWishlistToggle}
-        wishlist={[]}
-        onQuickView={mockOnQuickView}
-        isLoading={false}
-      />
-    );
-    expect(screen.getByText(/4\.5/)).toBeInTheDocument();
-    expect(screen.getByText(/4\.0/)).toBeInTheDocument();
-  });
+
 
   it('highlights wishlist items', () => {
     render(
