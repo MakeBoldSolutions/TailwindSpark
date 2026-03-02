@@ -491,7 +491,7 @@ Constitutional compliance: 73% → 100%
 Critical violations: 47 → 0
 
 Closes #[issue-number]
-Refs: specs/002-audit-criticals/spec.md"
+Refs: .documentation/specs/002-audit-criticals/spec.md"
 ```
 
 ---
@@ -562,7 +562,7 @@ After successful implementation:
 1. **Generate tasks.md**: Run `/speckit.tasks` to create actionable task breakdown
 2. **Create Pull Request**: 
    - Title: "Fix: Complete critical audit compliance (47 violations)"
-   - Link to spec: specs/002-audit-criticals/spec.md
+   - Link to spec: .documentation/specs/002-audit-criticals/spec.md
    - Include before/after metrics
 3. **Request Review**: Use `/speckit.pr-review` for constitution-aware review
 4. **Merge to Main**: After approval, merge and delete feature branch

@@ -119,7 +119,7 @@ This feature does not introduce any constitutional violations. All gates either 
 ### Documentation (this feature)
 
 ```text
-specs/[###-feature]/
+.documentation/specs/1-constitution-compliance/
 ├── plan.md              # This file (/speckit.plan command output)
 ├── research.md          # Phase 0 output (/speckit.plan command)
 ├── data-model.md        # Phase 1 output (/speckit.plan command)

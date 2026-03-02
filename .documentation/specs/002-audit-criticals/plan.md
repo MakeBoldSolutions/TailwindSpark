@@ -141,7 +141,7 @@ All 3 constitutional violations have complete, validated implementation specific
 ### Documentation (this feature)
 
 ```text
-specs/002-audit-criticals/
+.documentation/specs/002-audit-criticals/
 ├── spec.md              # Feature specification (complete)
 ├── plan.md              # This file (/speckit.plan command output)
 ├── research.md          # Phase 0 output (semantic token mappings, JSDoc patterns)

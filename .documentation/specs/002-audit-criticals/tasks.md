@@ -124,7 +124,7 @@ description: "Task list for Critical Audit Compliance Fixes"
 - [ ] T034 Run complete validation per quickstart.md steps (ESLint, tests, coverage, manual dark mode)
 - [ ] T035 Update .documentation/copilot/audit/ with compliance achievement notes (73% → 100%)
 - [ ] T036 [P] Verify all 5 target files modified correctly (BundleAnalyzer.tsx, EcommerceLayout.tsx, App.tsx, App-clean.tsx, vitest.config.ts)
-- [ ] T037 Stage and commit all changes with descriptive commit message referencing specs/002-audit-criticals/spec.md
+- [ ] T037 Stage and commit all changes with descriptive commit message referencing .documentation/specs/002-audit-criticals/spec.md
 - [ ] T038 Prepare PR description with before/after metrics (47 violations → 0, 73% compliance → 100%)
 
 **Checkpoint**: Feature complete - Ready for PR and constitution-aware review
