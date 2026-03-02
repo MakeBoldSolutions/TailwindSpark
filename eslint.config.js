@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import jsdoc from 'eslint-plugin-jsdoc';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
@@ -67,6 +68,9 @@ export default [
   // TypeScript-specific rules
   {
     files: ['**/*.{ts,tsx}'],
+    plugins: {
+      jsdoc,
+    },
     rules: {
       '@typescript-eslint/no-unused-vars': [
         'error',
@@ -77,6 +81,40 @@ export default [
         },
       ],
       'no-raw-primary-class/no-raw-primary-class': 'error',
+      // JSDoc enforcement rules
+      'jsdoc/require-jsdoc': [
+        'error',
+        {
+          require: {
+            FunctionDeclaration: true,
+            MethodDefinition: true,
+            ClassDeclaration: true,
+            ArrowFunctionExpression: true,
+            FunctionExpression: true,
+          },
+          publicOnly: true,
+          contexts: [
+            'ExportNamedDeclaration > VariableDeclaration',
+            'ExportNamedDeclaration > FunctionDeclaration',
+            'ExportDefaultDeclaration > FunctionDeclaration',
+            'TSInterfaceDeclaration',
+            'TSTypeAliasDeclaration',
+          ],
+        },
+      ],
+      'jsdoc/require-description': 'error',
+      'jsdoc/require-param': 'error',
+      'jsdoc/require-param-description': 'error',
+      'jsdoc/require-param-type': 'off', // TypeScript provides types
+      'jsdoc/require-returns': 'error',
+      'jsdoc/require-returns-description': 'error',
+      'jsdoc/require-returns-type': 'off', // TypeScript provides types
+      'jsdoc/check-alignment': 'error',
+      'jsdoc/check-indentation': 'error',
+      'jsdoc/check-syntax': 'error',
+      'jsdoc/check-tag-names': 'error',
+      'jsdoc/no-undefined-types': 'off', // TypeScript handles this
+      'jsdoc/valid-types': 'off', // TypeScript handles this
     },
   },
 

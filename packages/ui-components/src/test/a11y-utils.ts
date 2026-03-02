@@ -85,6 +85,7 @@ export const a11yTestConfigs = {
  * Helper to test keyboard navigation
  * @param element - Element to test keyboard navigation on
  * @param expectedFocusableCount - Expected number of focusable elements
+ * @returns Array of focusable HTML elements found within the given element
  */
 export const testKeyboardNavigation = (
   element: HTMLElement,

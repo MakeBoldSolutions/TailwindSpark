@@ -6,14 +6,41 @@ const IconMore = () => <span>⋯</span>;
 const IconEdit = () => <span>✏️</span>;
 const IconDelete = () => <span>🗑️</span>;
 
+/**
+ * User data structure.
+ */
 interface User {
+  /**
+   * Unique user identifier.
+   */
   id: string;
+  /**
+   * User's full name.
+   */
   name: string;
+  /**
+   * User's email address.
+   */
   email: string;
+  /**
+   * User's role in the system.
+   */
   role: 'Admin' | 'Editor' | 'Viewer' | 'Manager';
+  /**
+   * Current user status.
+   */
   status: 'active' | 'inactive' | 'pending';
+  /**
+   * Last activity timestamp.
+   */
   lastActive: string;
+  /**
+   * Avatar image URL or emoji.
+   */
   avatar: string;
+  /**
+   * Account creation date.
+   */
   signupDate: string;
 }
 
@@ -25,14 +52,14 @@ const UserRow: React.FC<{
   const [showActions, setShowActions] = useState(false);
 
   const statusColors = {
-    active: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    active: 'bg-success/10 text-success',
     inactive: 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-300',
-    pending: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+    pending: 'bg-warning/10 text-warning',
   };
 
   const roleColors = {
-    Admin: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
-    Manager: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    Admin: 'bg-error/10 text-error',
+    Manager: 'bg-brand/10 text-brand',
     /* eslint-disable-next-line no-raw-primary-class/no-raw-primary-class */
     Editor: 'bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300',
     Viewer: 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900 dark:text-secondary-300',
@@ -102,7 +129,7 @@ const UserRow: React.FC<{
                     onDelete(user);
                     setShowActions(false);
                   }}
-                  className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-red-700 transition-colors hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
+                  className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-error transition-colors hover:bg-error/10"
                 >
                   <IconDelete /> Delete User
                 </button>
@@ -115,6 +142,19 @@ const UserRow: React.FC<{
   );
 };
 
+/**
+ * User management page with filtering, search, and role-based actions.
+ * 
+ * Displays user list with status indicators, role management, search and filter
+ * capabilities, and bulk action support for admin functions.
+ * 
+ * @returns Users page component
+ * 
+ * @example
+ * ```tsx
+ * <UsersPage />
+ * ```
+ */
 export const UsersPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [roleFilter, setRoleFilter] = useState('all');

@@ -2,6 +2,19 @@ import { Button, Card, CardContent, CardFooter, CardHeader } from '@tailwindspar
 import { Calendar, MapPin, Star, User } from 'lucide-react';
 import React from 'react';
 
+/**
+ * Card component showcase section.
+ * 
+ * Demonstrates card variants, layouts, and compositional patterns with
+ * headers, footers, and various content types.
+ * 
+ * @returns Card showcase section component
+ * 
+ * @example
+ * ```tsx
+ * <CardShowcase />
+ * ```
+ */
 export const CardShowcase: React.FC = () => {
   return (
     <section className="space-y-8">

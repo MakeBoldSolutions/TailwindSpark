@@ -90,6 +90,16 @@
   --color-border-strong: var(--color-secondary-400);
   --color-focus-ring: var(--color-primary-500);
 
+  /* Data Visualization Colors - Chart/Graph Segments */
+  --color-data-viz-1: light-dark(#2563eb, #3b82f6);  /* Blue - Primary series */
+  --color-data-viz-2: light-dark(#059669, #10b981);  /* Green - Secondary */
+  --color-data-viz-3: light-dark(#7c3aed, #a78bfa);  /* Purple - Tertiary */
+  --color-data-viz-4: light-dark(#db2777, #f472b6);  /* Pink - Quaternary */
+  --color-data-viz-5: light-dark(#ea580c, #fb923c);  /* Orange - Accent */
+  --color-data-viz-6: light-dark(#0891b2, #22d3ee);  /* Cyan - Supporting */
+  --color-data-viz-7: light-dark(#ca8a04, #facc15);  /* Yellow - Highlight */
+  --color-data-viz-8: light-dark(#e11d48, #fb7185);  /* Rose - Emphasis */
+
   /* Radii */
   --radius-sm: 0.125rem;
   --radius: 0.25rem;

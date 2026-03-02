@@ -154,7 +154,7 @@ describe('ThemeToggle', () => {
       const icon = screen.getByRole('button').querySelector('svg');
       expect(icon).toBeInTheDocument();
       expect(icon).toHaveClass('h-5', 'w-5');
-      expect(icon).toHaveClass('text-secondary-600', 'dark:text-secondary-400');
+      expect(icon).toHaveClass('text-muted');
     });
 
     it('should display Sun icon when in dark mode (isDark=true)', () => {
@@ -165,7 +165,7 @@ describe('ThemeToggle', () => {
       const icon = screen.getByRole('button').querySelector('svg');
       expect(icon).toBeInTheDocument();
       expect(icon).toHaveClass('h-5', 'w-5');
-      expect(icon).toHaveClass('text-secondary-600', 'dark:text-secondary-400');
+      expect(icon).toHaveClass('text-muted');
     });
 
     it('should have consistent icon styling for both states', () => {
@@ -180,8 +180,8 @@ describe('ThemeToggle', () => {
       const darkIcon = screen.getByRole('button').querySelector('svg');
       
       // Both icons should have the same classes
-      expect(lightIcon).toHaveClass('h-5', 'w-5', 'text-secondary-600', 'dark:text-secondary-400');
-      expect(darkIcon).toHaveClass('h-5', 'w-5', 'text-secondary-600', 'dark:text-secondary-400');
+      expect(lightIcon).toHaveClass('h-5', 'w-5', 'text-muted');
+      expect(darkIcon).toHaveClass('h-5', 'w-5', 'text-muted');
     });
 
     it('should only show one icon at a time', () => {

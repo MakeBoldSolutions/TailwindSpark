@@ -2,6 +2,19 @@ import { Button } from '@tailwindspark/ui-components';
 import { Download, Heart, Star } from 'lucide-react';
 import React from 'react';
 
+/**
+ * Button component showcase section.
+ * 
+ * Demonstrates button variants, sizes, states, and icon usage with
+ * interactive examples and code snippets.
+ * 
+ * @returns Button showcase section component
+ * 
+ * @example
+ * ```tsx
+ * <ButtonShowcase />
+ * ```
+ */
 export const ButtonShowcase: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
 

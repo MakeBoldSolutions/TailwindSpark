@@ -5,12 +5,43 @@ import { BuildInfo } from './BuildInfo';
 import { Logo } from './Logo';
 import { SearchComponent } from './SearchComponent';
 
+/**
+ * Main application layout properties.
+ */
 interface LayoutProps {
+  /**
+   * Child elements to render within the layout.
+   */
   children: React.ReactNode;
+  /**
+   * Current theme state (true for dark mode, false for light mode).
+   */
   isDark: boolean;
+  /**
+   * Function to toggle between light and dark themes.
+   */
   toggleTheme: () => void;
 }
 
+/**
+ * Main application layout with navigation, header, and responsive menu.
+ * 
+ * Provides consistent page structure with sticky header, dropdownnavigation,
+ * search functionality, and keyboard shortcuts support.
+ * 
+ * @param root0 - Component props
+ * @param root0.children - Child elements to render within the layout
+ * @param root0.isDark - Current theme state (true for dark mode, false for light mode)
+ * @param root0.toggleTheme - Function to toggle between light and dark themes
+ * @returns Layout component with navigation and content
+ * 
+ * @example
+ * ```tsx
+ * <Layout isDark={isDark} toggleTheme={toggleTheme}>
+ *   <YourPageContent />
+ * </Layout>
+ * ```
+ */
 export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme }) => {
   const location = useLocation();
   const [isDemosOpen, setIsDemosOpen] = useState(false);
@@ -278,7 +309,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
               </span>
             </h3>
           </div>
-          <p className="mb-4 text-center text-sm text-gray-500 dark:text-gray-500">
+          <p className="mb-4 text-center text-sm text-muted">
             Built with React 19, TypeScript, and Tailwind CSS in a Turborepo monorepo.
           </p>
 
@@ -293,7 +324,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
               href="https://github.com/MarkHazleton/TailwindSpark"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-brand dark:hover:text-brand text-sm text-gray-600 transition-colors dark:text-gray-400"
+              className="hover:text-brand dark:hover:text-brand text-sm text-muted transition-colors"
             >
               GitHub
             </a>
@@ -301,7 +332,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
               href="https://webspark.markhazleton.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-brand dark:hover:text-brand text-sm text-gray-600 transition-colors dark:text-gray-400"
+              className="hover:text-brand dark:hover:text-brand text-sm text-muted transition-colors"
             >
               WebSpark
             </a>
@@ -309,7 +340,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
               href="https://markhazleton.com/articles.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-brand dark:hover:text-brand text-sm text-gray-600 transition-colors dark:text-gray-400"
+              className="hover:text-brand dark:hover:text-brand text-sm text-muted transition-colors"
             >
               Articles
             </a>
@@ -317,7 +348,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
               href="https://tailwindcss.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-brand dark:hover:text-brand text-sm text-gray-600 transition-colors dark:text-gray-400"
+              className="hover:text-brand dark:hover:text-brand text-sm text-muted transition-colors"
             >
               Tailwind CSS
             </a>
@@ -325,7 +356,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
               href="https://reactjs.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-brand dark:hover:text-brand text-sm text-gray-600 transition-colors dark:text-gray-400"
+              className="hover:text-brand dark:hover:text-brand text-sm text-muted transition-colors"
             >
               React
             </a>

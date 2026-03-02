@@ -24,6 +24,11 @@ const X: React.FC<LucideIconProps> = ({ size = 20, className = '' }) => (
   </svg>
 );
 
+/**
+ * Modal dialog component properties.
+ * 
+ * Configures modal behavior, size, and accessibility features.
+ */
 export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -44,6 +49,43 @@ const modalSizes = {
   full: 'max-w-full mx-4',
 };
 
+/**
+ * Accessible modal dialog component with overlay and escape handling.
+ * 
+ * Provides a centered dialog with configurable size, close behaviors, and automatic
+ * focus management. Handles keyboard navigation (Escape key) and overlay clicks.
+ * Prevents body scroll when open.
+ * 
+ * @param props - Modal component properties
+ * @param props.isOpen - Controls modal visibility
+ * @param props.onClose - Callback function when modal should close
+ * @param props.title - Optional title displayed in modal header
+ * @param props.size - Modal width size variant
+ * @param props.closeOnOverlayClick - Whether clicking overlay closes modal
+ * @param props.closeOnEscape - Whether pressing Escape key closes modal
+ * @param props.showCloseButton - Whether to show close button in header
+ * @param props.children - Modal content
+ * @param props.className - Additional CSS classes
+ * @returns Modal dialog element or null if not open
+ * 
+ * @example
+ * ```tsx
+ * <Modal
+ *   isOpen={showModal}
+ *   onClose={() => setShowModal(false)}
+ *   title="Confirm Action"
+ *   size="md"
+ * >
+ *   <ModalContent>
+ *     Are you sure you want to continue?
+ *   </ModalContent>
+ *   <ModalFooter>
+ *     <Button onClick={() => setShowModal(false)}>Cancel</Button>
+ *     <Button variant="primary" onClick={handleConfirm}>Confirm</Button>
+ *   </ModalFooter>
+ * </Modal>
+ * ```
+ */
 export const Modal: React.FC<ModalProps> = ({
   isOpen,
   onClose,
@@ -127,11 +169,34 @@ export const Modal: React.FC<ModalProps> = ({
   );
 };
 
+/**
+ * Modal header component properties.
+ * 
+ * Defines optional title, subtitle, and custom header content.
+ */
 export interface ModalHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
   subtitle?: string;
 }
 
+/**
+ * Modal header section with optional title and subtitle.
+ * 
+ * Provides consistent typography and spacing for modal headers.
+ * Can contain custom content in addition to or instead of title/subtitle props.
+ * 
+ * @param props - Modal header component properties
+ * @param props.className - Additional CSS classes
+ * @param props.title - Optional main heading text
+ * @param props.subtitle - Optional subheading text
+ * @param props.children - Custom header content
+ * @returns Modal header element
+ * 
+ * @example
+ * ```tsx
+ * <ModalHeader title="Delete Item" subtitle="This action cannot be undone" />
+ * ```
+ */
 export const ModalHeader: React.FC<ModalHeaderProps> = ({
   className,
   title,
@@ -152,8 +217,30 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
   );
 };
 
+/**
+ * Modal content component properties.
+ * 
+ * Standard HTML div attributes for modal body content.
+ */
 export type ModalContentProps = React.HTMLAttributes<HTMLDivElement>;
 
+/**
+ * Main content area of a modal dialog.
+ * 
+ * Provides consistent spacing and structure for modal body content.
+ * 
+ * @param props - Modal content component properties
+ * @param props.className - Additional CSS classes
+ * @param props.children - Modal body content
+ * @returns Modal content element
+ * 
+ * @example
+ * ```tsx
+ * <ModalContent>
+ *   <p>This is the main content of the modal.</p>
+ * </ModalContent>
+ * ```
+ */
 export const ModalContent: React.FC<ModalContentProps> = ({ className, children, ...props }) => {
   return (
     <div className={clsx('mb-6', className)} {...props}>
@@ -162,8 +249,31 @@ export const ModalContent: React.FC<ModalContentProps> = ({ className, children,
   );
 };
 
+/**
+ * Modal footer component properties.
+ * 
+ * Standard HTML div attributes for modal footer actions.
+ */
 export type ModalFooterProps = React.HTMLAttributes<HTMLDivElement>;
 
+/**
+ * Footer section of a modal, typically for action buttons.
+ * 
+ * Automatically arranges buttons in a responsive layout (stacked on mobile, horizontal on desktop).
+ * 
+ * @param props - Modal footer component properties
+ * @param props.className - Additional CSS classes
+ * @param props.children - Footer action buttons
+ * @returns Modal footer element
+ * 
+ * @example
+ * ```tsx
+ * <ModalFooter>
+ *   <Button variant="ghost">Cancel</Button>
+ *   <Button variant="primary">Save Changes</Button>
+ * </ModalFooter>
+ * ```
+ */
 export const ModalFooter: React.FC<ModalFooterProps> = ({ className, children, ...props }) => {
   return (
     <div

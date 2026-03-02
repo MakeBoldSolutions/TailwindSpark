@@ -1,14 +1,57 @@
 import React, { useState } from 'react';
 import type { Product } from '../types/ecommerce';
 
+/**
+ * Quick view modal component properties.
+ */
 interface QuickViewModalProps {
+  /**
+   * Product to display in the modal.
+   */
   product: Product;
+  /**
+   * Callback to close the modal.
+   */
   onClose: () => void;
+  /**
+   * Callback when adding product to cart.
+   */
   onAddToCart: (product: Product, selectedColor?: string, selectedSize?: string) => void;
+  /**
+   * Callback to toggle product wishlist status.
+   */
   onWishlistToggle: (productId: number) => void;
+  /**
+   * Whether the product is currently in the wishlist.
+   */
   isInWishlist: boolean;
 }
 
+/**
+ * Product quick view modal with image gallery, options, and cart actions.
+ * 
+ * Displays product details, color/size selection, quantity picker, and reviews
+ * in a modal overlay without leaving the current page.
+ * 
+ * @param root0 - Component props
+ * @param root0.product - Product to display in the modal
+ * @param root0.onClose - Callback to close the modal
+ * @param root0.onAddToCart - Callback when adding product to cart
+ * @param root0.onWishlistToggle - Callback to toggle product wishlist status
+ * @param root0.isInWishlist - Whether the product is currently in the wishlist
+ * @returns Quick view modal component
+ * 
+ * @example
+ * ```tsx
+ * <QuickViewModal
+ *   product={selectedProduct}
+ *   onClose={() => setSelectedProduct(null)}
+ *   onAddToCart={handleAddToCart}
+ *   onWishlistToggle={handleWishlistToggle}
+ *   isInWishlist={wishlist.includes(product.id)}
+ * />
+ * ```
+ */
 const QuickViewModal: React.FC<QuickViewModalProps> = ({
   product,
   onClose,

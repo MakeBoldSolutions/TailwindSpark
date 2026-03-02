@@ -22,7 +22,7 @@
     "type-check": "echo 'Design tokens type-checked'"
   },
   "devDependencies": {
-    "tailwindcss": "^4.1.18",
+    "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3"
   }
 }

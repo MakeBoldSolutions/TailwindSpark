@@ -6,7 +6,13 @@ import { DashboardLayout } from '../components/DashboardLayout';
 const IconArrowUp = () => <span className="text-green-500">↗</span>;
 const IconArrowDown = () => <span className="text-red-500">↘</span>;
 
+/**
+ * Stat card component properties.
+ */
 interface StatCardProps {
+  /**
+   * Card title.
+   */
   title: string;
   value: string;
   change: string;
@@ -113,6 +119,19 @@ const ActivityItem: React.FC<{ activity: { user: string; action: string; time: s
   </div>
 );
 
+/**
+ * Dashboard page with metrics, transactions, and activity tracking.
+ * 
+ * Full-featured SaaS dashboard displaying key statistics, recent transactions,
+ * activity feed, and quick actions. Demonstrates responsive layout and data visualization.
+ * 
+ * @returns Dashboard page component
+ * 
+ * @example
+ * ```tsx
+ * <DashboardPage />
+ * ```
+ */
 export const DashboardPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
 

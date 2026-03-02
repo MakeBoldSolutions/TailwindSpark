@@ -36,6 +36,25 @@ jobs:
         run: npm audit --audit-level moderate
         continue-on-error: true
 
+      - name: Run tests
+        run: npm test -- --run
+        continue-on-error: true
+      
+      - name: Run tests with coverage
+        working-directory: apps/demo-app
+        run: npm run test:coverage -- --run
+        continue-on-error: true
+
+      - name: Upload coverage reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-reports
+          path: |
+            apps/demo-app/coverage/
+            packages/ui-components/coverage/
+          retention-days: 30
+
       - name: Debug workspace info
         run: |
           echo "Workspace packages:"

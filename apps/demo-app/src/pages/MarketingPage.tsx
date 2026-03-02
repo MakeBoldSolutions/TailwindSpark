@@ -31,6 +31,19 @@ const testimonials = [
   },
 ];
 
+/**
+ * Marketing landing page with hero, services, portfolio, and testimonials.
+ * 
+ * Agency-style marketing page featuring parallax scrolling, animated sections,
+ * service highlights, portfolio showcase, and rotating testimonials.
+ * 
+ * @returns Marketing page component
+ * 
+ * @example
+ * ```tsx
+ * <MarketingPage />
+ * ```
+ */
 export const MarketingPage: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
@@ -187,7 +200,7 @@ export const MarketingPage: React.FC = () => {
       {/* Hero Section */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
         {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700">
+        <div className="absolute inset-0 bg-gradient-to-br from-data-viz-3 via-brand to-brand-hover">
           <div className="bg-pattern-dots parallax-element absolute inset-0 transform opacity-30 transition-transform duration-1000 ease-out" />
         </div>
 
@@ -195,24 +208,24 @@ export const MarketingPage: React.FC = () => {
           <div className="translate-y-10 animate-[fadeInUp_1s_ease-out_0.2s_both] opacity-0">
             <h1 className="mb-6 text-5xl font-bold leading-tight text-white md:text-7xl">
               Ignite Your Brand's
-              <span className="block bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-data-viz-7 to-data-viz-5 bg-clip-text text-transparent">
                 Digital Spark
               </span>
             </h1>
           </div>
 
           <div className="translate-y-10 animate-[fadeInUp_1s_ease-out_0.4s_both] opacity-0">
-            <p className="mx-auto mb-8 max-w-3xl text-xl leading-relaxed text-blue-100 md:text-2xl">
+            <p className="mx-auto mb-8 max-w-3xl text-xl leading-relaxed text-white/90 md:text-2xl">
               We craft extraordinary digital experiences that captivate audiences and drive results.
               From stunning brand identities to cutting-edge web development.
             </p>
           </div>
 
           <div className="flex translate-y-10 animate-[fadeInUp_1s_ease-out_0.6s_both] flex-col justify-center gap-4 opacity-0 sm:flex-row">
-            <button className="transform rounded-full bg-white px-8 py-4 font-semibold text-indigo-600 shadow-lg transition-all duration-300 hover:scale-105 hover:bg-gray-100 hover:shadow-xl">
+            <button className="transform rounded-full bg-white px-8 py-4 font-semibold text-brand shadow-lg transition-all duration-300 hover:scale-105 hover:bg-surface-alt hover:shadow-xl">
               Start Your Project
             </button>
-            <button className="rounded-full border-2 border-white px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-white hover:text-indigo-600">
+            <button className="rounded-full border-2 border-white px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-white hover:text-brand">
               View Our Work
             </button>
           </div>
@@ -252,7 +265,7 @@ export const MarketingPage: React.FC = () => {
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center text-text">
                       <svg
-                        className="mr-3 h-5 w-5 text-green-500"
+                        className="mr-3 h-5 w-5 text-success"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -296,11 +309,11 @@ export const MarketingPage: React.FC = () => {
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-75">
                   <div className="translate-y-4 transform p-6 text-center text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                    <span className="mb-2 inline-block rounded-full bg-indigo-600 px-3 py-1 text-sm font-medium">
+                    <span className="mb-2 inline-block rounded-full bg-brand px-3 py-1 text-sm font-medium">
                       {item.category}
                     </span>
                     <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
-                    <p className="text-gray-200">{item.description}</p>
+                    <p className="text-white/80">{item.description}</p>
                   </div>
                 </div>
               </div>
@@ -327,7 +340,7 @@ export const MarketingPage: React.FC = () => {
                 {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
                   <svg
                     key={i}
-                    className="mr-1 h-5 w-5 text-yellow-400"
+                    className="mr-1 h-5 w-5 text-warning"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -362,7 +375,7 @@ export const MarketingPage: React.FC = () => {
                   key={index}
                   onClick={() => setActiveTestimonial(index)}
                   className={`h-3 w-3 rounded-full transition-colors duration-300 ${
-                    index === activeTestimonial ? 'bg-indigo-600' : 'bg-gray-300'
+                    index === activeTestimonial ? 'bg-brand' : 'bg-border-strong'
                   }`}
                 />
               ))}
@@ -373,7 +386,7 @@ export const MarketingPage: React.FC = () => {
 
       {/* Contact Section */}
       <section
-        className="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 py-20"
+        className="bg-gradient-to-br from-brand to-data-viz-3 py-20"
         id="contact"
       >
         <div className="mx-auto max-w-6xl px-4">
@@ -381,7 +394,7 @@ export const MarketingPage: React.FC = () => {
             <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">
               Let's Create Something Amazing
             </h2>
-            <p className="text-xl text-gray-300">
+            <p className="text-xl text-white/80">
               Ready to transform your digital presence? Get in touch with us today.
             </p>
           </div>
@@ -404,13 +417,13 @@ export const MarketingPage: React.FC = () => {
                     onChange={handleInputChange}
                     className={`w-full rounded-lg border-2 px-4 py-3 transition-colors duration-300 ${
                       formErrors.name
-                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
-                        : 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500'
+                        ? 'border-error focus:border-error focus:ring-error'
+                        : 'border focus:border-brand focus:ring-brand'
                     }`}
                     placeholder="Your full name"
                   />
                   {formErrors.name && (
-                    <p className="mt-1 text-sm text-red-600">{formErrors.name}</p>
+                    <p className="mt-1 text-sm text-error">{formErrors.name}</p>
                   )}
                 </div>
 
@@ -426,13 +439,13 @@ export const MarketingPage: React.FC = () => {
                     onChange={handleInputChange}
                     className={`w-full rounded-lg border-2 px-4 py-3 transition-colors duration-300 ${
                       formErrors.email
-                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
-                        : 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500'
+                        ? 'border-error focus:border-error focus:ring-error'
+                        : 'border focus:border-brand focus:ring-brand'
                     }`}
                     placeholder="your@email.com"
                   />
                   {formErrors.email && (
-                    <p className="mt-1 text-sm text-red-600">{formErrors.email}</p>
+                    <p className="mt-1 text-sm text-error">{formErrors.email}</p>
                   )}
                 </div>
 
@@ -446,7 +459,7 @@ export const MarketingPage: React.FC = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full rounded-lg border-2 border-gray-300 px-4 py-3 transition-colors duration-300 focus:border-indigo-500 focus:ring-indigo-500"
+                    className="w-full rounded-lg border-2 border px-4 py-3 transition-colors duration-300 focus:border-brand focus:ring-brand"
                     placeholder="Your company name"
                   />
                 </div>
@@ -463,13 +476,13 @@ export const MarketingPage: React.FC = () => {
                     onChange={handleInputChange}
                     className={`w-full resize-none rounded-lg border-2 px-4 py-3 transition-colors duration-300 ${
                       formErrors.message
-                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
-                        : 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500'
+                        ? 'border-error focus:border-error focus:ring-error'
+                        : 'border focus:border-brand focus:ring-brand'
                     }`}
                     placeholder="Tell us about your project..."
                   />
                   {formErrors.message && (
-                    <p className="mt-1 text-sm text-red-600">{formErrors.message}</p>
+                    <p className="mt-1 text-sm text-error">{formErrors.message}</p>
                   )}
                 </div>
 
@@ -478,10 +491,10 @@ export const MarketingPage: React.FC = () => {
                   disabled={formStatus === 'submitting'}
                   className={`w-full rounded-lg px-6 py-4 font-semibold transition-all duration-300 ${
                     formStatus === 'success'
-                      ? 'bg-green-600 text-white hover:bg-green-700'
+                      ? 'bg-success text-white hover:bg-success/90'
                       : formStatus === 'submitting'
-                        ? 'cursor-not-allowed bg-gray-400 text-white'
-                        : 'transform bg-indigo-600 text-white shadow-lg hover:scale-105 hover:bg-indigo-700 hover:shadow-xl'
+                        ? 'cursor-not-allowed bg-muted text-white'
+                        : 'transform bg-brand text-white shadow-lg hover:scale-105 hover:bg-brand-hover hover:shadow-xl'
                   }`}
                 >
                   {formStatus === 'submitting' && (
@@ -532,7 +545,7 @@ export const MarketingPage: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="mb-2 font-semibold">Office Location</h4>
-                    <p className="text-gray-300">
+                    <p className="text-white/80">
                       123 Innovation Drive
                       <br />
                       Tech City, TC 12345
@@ -548,8 +561,10 @@ export const MarketingPage: React.FC = () => {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="mb-2 font-semibold">Email Us</h4>
-                    <p className="text-gray-300">
+                    <h4 className="mb-2 font-semibold">Email</h4>
+                    <p className="text-white/80">
+                      contact@tailwindspark.com
+                      <br />
                       hello@tailwindspark.com
                       <br />
                       support@tailwindspark.com
@@ -565,7 +580,7 @@ export const MarketingPage: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="mb-2 font-semibold">Call Us</h4>
-                    <p className="text-gray-300">
+                    <p className="text-white/80">
                       +1 (555) 123-4567
                       <br />
                       Mon-Fri 9AM-6PM

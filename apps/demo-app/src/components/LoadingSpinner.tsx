@@ -1,14 +1,55 @@
 import React from 'react';
 import { Logo } from './Logo';
 
+/**
+ * Loading spinner component properties.
+ */
 interface LoadingSpinnerProps {
+  /**
+   * Spinner size.
+   * @default 'md'
+   */
   size?: 'sm' | 'md' | 'lg';
+  /**
+   * Spinner color theme.
+   * @default 'primary'
+   */
   color?: 'primary' | 'secondary' | 'white';
+  /**
+   * Additional CSS classes.
+   */
   className?: string;
+  /**
+   * Whether to show logo with spinner.
+   * @default false
+   */
   withLogo?: boolean;
+  /**
+   * Loading message to display.
+   * @default 'Loading...'
+   */
   message?: string;
 }
 
+/**
+ * Loading spinner with optional logo and message.
+ * 
+ * Displays an animated spinner with configurable size, color, and optional
+ * branding logo and loading message.
+ * 
+ * @param root0 - Component props
+ * @param root0.size - Spinner size (sm, md, lg)
+ * @param root0.color - Color theme (primary, secondary, white)
+ * @param root0.className - Additional CSS classes
+ * @param root0.withLogo - Whether to include logo
+ * @param root0.message - Loading message text
+ * @returns Loading spinner component
+ * 
+ * @example
+ * ```tsx
+ * <LoadingSpinner size="lg" withLogo message="Loading content..." />
+ * ```
+ */
 export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   size = 'md',
   color = 'primary',
@@ -36,7 +77,7 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
           <div className="bg-brand/20 absolute inset-0 animate-pulse rounded-full"></div>
         </div>
         {message && (
-          <p className="animate-pulse text-sm text-gray-600 dark:text-gray-400">{message}</p>
+          <p className="animate-pulse text-sm text-muted">{message}</p>
         )}
       </div>
     );

@@ -1,12 +1,45 @@
 import React from 'react';
 import type { FilterState, Product } from '../types/ecommerce';
 
+/**
+ * Filter panel component properties.
+ */
 interface FilterPanelProps {
+  /**
+   * Complete product list for extracting filter options.
+   */
   products: Product[];
+  /**
+   * Current filter state.
+   */
   filters: FilterState;
+  /**
+   * Function to update filter state.
+   */
   setFilters: React.Dispatch<React.SetStateAction<FilterState>>;
 }
 
+/**
+ * Product filtering panel with multiple filter types.
+ * 
+ * Provides category, brand, color, size, and price range filtering
+ * with clear all functionality. Automatically extracts unique values from products.
+ * 
+ * @param root0 - Component props
+ * @param root0.products - Complete product list for extracting filter options
+ * @param root0.filters - Current filter state
+ * @param root0.setFilters - Function to update filter state
+ * @returns Filter panel component
+ * 
+ * @example
+ * ```tsx
+ * <FilterPanel
+ *   products={allProducts}
+ *   filters={filters}
+ *   setFilters={setFilters}
+ * />
+ * ```
+ */
 const FilterPanel: React.FC<FilterPanelProps> = ({ products, filters, setFilters }) => {
   // Extract unique values from products
   const categories = [...new Set(products.map(p => p.category))];

@@ -3,14 +3,58 @@ import { Link } from 'react-router-dom';
 import type { CartItem } from '../types/ecommerce';
 import { Logo } from './Logo';
 
+/**
+ * E-commerce layout component properties.
+ */
 interface EcommerceLayoutProps {
+  /**
+   * Child elements to render within the e-commerce layout.
+   */
   children: React.ReactNode;
+  /**
+   * Current shopping cart items.
+   */
   cart: CartItem[];
+  /**
+   * Function to update the shopping cart state.
+   */
   setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
+  /**
+   * Current search query string.
+   */
   searchQuery: string;
+  /**
+   * Function to update the search query.
+   */
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
+/**
+ * E-commerce store layout with navigation, cart, and search functionality.
+ * 
+ * Provides complete shopping experience with category navigation, cart preview,
+ * and product search. Includes mobile-responsive design and cart management.
+ * 
+ * @param root0 - Component props
+ * @param root0.children - Child elements to render within the e-commerce layout
+ * @param root0.cart - Current shopping cart items
+ * @param root0.setCart - Function to update the shopping cart state
+ * @param root0.searchQuery - Current search query string
+ * @param root0.setSearchQuery - Function to update the search query
+ * @returns E-commerce layout component
+ * 
+ * @example
+ * ```tsx
+ * <EcommerceLayout 
+ *   cart={cart} 
+ *   setCart={setCart}
+ *   searchQuery={query}
+ *   setSearchQuery={setQuery}
+ * >
+ *   <ProductCatalog />
+ * </EcommerceLayout>
+ * ```
+ */
 const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
   children,
   cart,

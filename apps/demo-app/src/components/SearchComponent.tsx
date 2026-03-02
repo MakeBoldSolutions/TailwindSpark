@@ -1,10 +1,25 @@
 import { Search, X } from 'lucide-react';
 import React, { useMemo, useState } from 'react';
 
+/**
+ * Search result data structure.
+ */
 interface SearchResult {
+  /**
+   * Display title of the search result.
+   */
   title: string;
+  /**
+   * Brief description of the result.
+   */
   description: string;
+  /**
+   * Navigation URL for the result.
+   */
   url: string;
+  /**
+   * Category classification of the result.
+   */
   category: 'component' | 'animation' | 'demo' | 'page';
 }
 
@@ -102,11 +117,36 @@ const searchData: SearchResult[] = [
   },
 ];
 
+/**
+ * Search component properties.
+ */
 interface SearchComponentProps {
+  /**
+   * Controls visibility of the search modal.
+   */
   isOpen: boolean;
+  /**
+   * Callback to close the search modal.
+   */
   onClose: () => void;
 }
 
+/**
+ * Full-featured search component with keyboard navigation and filtering.
+ * 
+ * Provides instant search across components, animations, demos, and pages
+ * with arrow key navigation and Enter to select functionality.
+ * 
+ * @param root0 - Component props
+ * @param root0.isOpen - Controls visibility of the search modal
+ * @param root0.onClose - Callback to close the search modal
+ * @returns Search component modal
+ * 
+ * @example
+ * ```tsx
+ * <SearchComponent isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+ * ```
+ */
 export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClose }) => {
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -152,10 +192,10 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center bg-black bg-opacity-50 pt-20">
-      <div className="mx-4 w-full max-w-2xl rounded-lg bg-white shadow-2xl dark:bg-gray-800">
+      <div className="mx-4 w-full max-w-2xl rounded-lg bg-surface shadow-2xl">
         {/* Search Header */}
-        <div className="flex items-center gap-3 border-b border-gray-200 p-4 dark:border-gray-700">
-          <Search className="h-5 w-5 text-gray-400" />
+        <div className="flex items-center gap-3 border-b border p-4">
+          <Search className="h-5 w-5 text-muted" />
           <input
             type="text"
             placeholder="Search components, animations, demos..."
@@ -165,23 +205,23 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
               setSelectedIndex(0);
             }}
             onKeyDown={handleKeyDown}
-            className="flex-1 border-none bg-transparent text-gray-900 placeholder-gray-500 outline-none dark:text-gray-100"
+            className="flex-1 border-none bg-transparent text-text placeholder-muted outline-none"
             /* eslint-disable-next-line jsx-a11y/no-autofocus */
             autoFocus
           />
           <button
             onClick={onClose}
-            className="rounded p-1 hover:bg-gray-100 dark:hover:bg-gray-700"
+            className="rounded p-1 hover:bg-surface-alt"
             aria-label="Close search"
           >
-            <X className="h-5 w-5 text-gray-400" />
+            <X className="h-5 w-5 text-muted" />
           </button>
         </div>
 
         {/* Search Results */}
         <div className="max-h-96 overflow-y-auto">
           {query.trim() && filteredResults.length === 0 && (
-            <div className="p-4 text-center text-gray-500 dark:text-gray-400">
+            <div className="p-4 text-center text-muted">
               No results found for "{query}"
             </div>
           )}
@@ -190,28 +230,28 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
             <button
               key={`${result.url}-${index}`}
               onClick={() => handleResultClick(result)}
-              className={`w-full p-4 text-left transition-colors hover:bg-gray-50 dark:hover:bg-gray-700 ${
-                index === selectedIndex ? 'bg-gray-50 dark:bg-gray-700' : ''
+              className={`w-full p-4 text-left transition-colors hover:bg-surface-alt ${
+                index === selectedIndex ? 'bg-surface-alt' : ''
               }`}
             >
               <div className="flex items-start gap-3">
                 <div
                   className={`mt-2 h-2 w-2 rounded-full ${
                     result.category === 'component'
-                      ? 'bg-blue-500'
+                      ? 'bg-brand'
                       : result.category === 'animation'
-                        ? 'bg-green-500'
+                        ? 'bg-success'
                         : result.category === 'demo'
                           ? 'bg-primary-500' // eslint-disable-line no-raw-primary-class/no-raw-primary-class
-                          : 'bg-gray-500'
+                          : 'bg-border'
                   }`}
                 />
                 <div className="flex-1">
-                  <div className="font-medium text-gray-900 dark:text-gray-100">{result.title}</div>
-                  <div className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                  <div className="font-medium text-text">{result.title}</div>
+                  <div className="mt-1 text-sm text-muted">
                     {result.description}
                   </div>
-                  <div className="mt-1 text-xs capitalize text-gray-500 dark:text-gray-500">
+                  <div className="mt-1 text-xs capitalize text-muted">
                     {result.category}
                   </div>
                 </div>
@@ -222,7 +262,7 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
 
         {/* Search Tips */}
         {query.trim() && filteredResults.length > 0 && (
-          <div className="border-t border-gray-200 p-4 text-xs text-gray-500 dark:border-gray-700 dark:text-gray-400">
+          <div className="border-t border p-4 text-xs text-muted">
             <div className="flex items-center justify-between">
               <span>Use ↑↓ to navigate, Enter to select, Esc to close</span>
               <span>

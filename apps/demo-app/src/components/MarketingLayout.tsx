@@ -3,10 +3,34 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 import { Logo } from './Logo';
 
+/**
+ * Marketing layout component properties.
+ */
 interface MarketingLayoutProps {
+  /**
+   * Child elements to render within the marketing layout.
+   */
   children: React.ReactNode;
 }
 
+/**
+ * Marketing-focused layout with transparent header and smooth scrolling.
+ * 
+ * Features transparent navigation that becomes opaque on scroll, smooth section
+ * navigation, and optimized for landing pages and promotional content.
+ * 
+ * @param root0 - Component props
+ * @param root0.children - Child elements to render within the marketing layout
+ * @returns Marketing layout component
+ * 
+ * @example
+ * ```tsx
+ * <MarketingLayout>
+ *   <HeroSection />
+ *   <FeaturesSection />
+ * </MarketingLayout>
+ * ```
+ */
 export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -56,7 +80,7 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
                   className={`transform px-3 py-2 text-sm font-medium transition-colors duration-300 hover:scale-105 ${
                     isScrolled
                       ? 'text-text hover:text-brand'
-                      : 'text-white hover:text-blue-200'
+                      : 'text-white hover:text-brand-fg'
                   }`}
                 >
                   ← Back to Demos
@@ -74,7 +98,7 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
                     className={`transform px-3 py-2 text-sm font-medium transition-colors duration-300 hover:scale-105 ${
                       isScrolled
                         ? 'text-text hover:text-brand'
-                        : 'text-white hover:text-blue-200'
+                        : 'text-white hover:text-brand-fg'
                     }`}
                   >
                     {item.name}
@@ -91,7 +115,7 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
                 className={`p-2 rounded-lg transition-colors duration-300 ${
                   isScrolled
                     ? 'text-text hover:text-brand hover:bg-surface-alt'
-                    : 'text-white hover:text-blue-200 hover:bg-white/10'
+                    : 'text-white hover:text-brand-fg hover:bg-white/10'
                 }`}
                 aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
               >
@@ -121,8 +145,8 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
                 onClick={() => scrollToSection('contact')}
                 className={`transform rounded-full px-6 py-2 font-semibold transition-all duration-300 hover:scale-105 ${
                   isScrolled
-                    ? 'bg-indigo-600 text-white shadow-lg hover:bg-indigo-700 hover:shadow-xl'
-                    : 'bg-white text-indigo-600 shadow-lg hover:bg-gray-100 hover:shadow-xl'
+                    ? 'bg-brand text-white shadow-lg hover:bg-brand-hover hover:shadow-xl'
+                    : 'bg-white text-brand shadow-lg hover:bg-surface-alt hover:shadow-xl'
                 }`}
               >
                 Get Started
@@ -135,8 +159,8 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={`rounded-md p-2 transition-colors duration-300 ${
                   isScrolled
-                    ? 'text-gray-600 hover:text-gray-900'
-                    : 'text-white hover:text-blue-200'
+                    ? 'text-muted hover:text-text'
+                    : 'text-white hover:text-brand-fg'
                 }`}
                 aria-label="Toggle mobile menu"
               >
@@ -168,12 +192,12 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
             <div className="space-y-1 bg-white px-2 pb-3 pt-2 shadow-lg backdrop-blur-md">
               <Link
                 to="/demos"
-                className="block w-full rounded-md px-3 py-2 text-left text-base font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-50 hover:text-indigo-600"
+                className="block w-full rounded-md px-3 py-2 text-left text-base font-medium text-text transition-colors duration-200 hover:bg-surface-alt hover:text-brand"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 ← Back to Demos
               </Link>
-              <div className="my-2 border-t border-gray-200"></div>
+              <div className="my-2 border-t border"></div>
               {[
                 { name: 'Home', id: 'home' },
                 { name: 'Services', id: 'services' },
@@ -184,14 +208,14 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.id)}
-                  className="block w-full rounded-md px-3 py-2 text-left text-base font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-50 hover:text-indigo-600"
+                  className="block w-full rounded-md px-3 py-2 text-left text-base font-medium text-text transition-colors duration-200 hover:bg-surface-alt hover:text-brand"
                 >
                   {item.name}
                 </button>
               ))}
               <button
                 onClick={() => scrollToSection('contact')}
-                className="mt-4 w-full rounded-full bg-indigo-600 px-4 py-2 font-semibold text-white transition-colors duration-300 hover:bg-indigo-700"
+                className="mt-4 w-full rounded-full bg-brand px-4 py-2 font-semibold text-white transition-colors duration-300 hover:bg-brand-hover"
               >
                 Get Started
               </button>
@@ -204,7 +228,7 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
       <main>{children}</main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 py-16 text-white">
+      <footer className="bg-surface-inverse py-16 text-text-inverse">
         <div className="mx-auto max-w-7xl px-4">
           <div className="grid gap-8 md:grid-cols-4">
             {/* Company Info */}
@@ -216,7 +240,7 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
                 </div>
                 <span className="text-xl font-bold">TailwindSpark</span>
               </div>
-              <p className="mb-6 max-w-md text-gray-400">
+              <p className="mb-6 max-w-md text-muted">
                 A WebSpark by Mark Hazleton production. We create extraordinary digital experiences
                 that ignite your brand's potential and drive meaningful results.
               </p>
@@ -231,7 +255,7 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
                   <a
                     key={social.name}
                     href="#"
-                    className="transform rounded-lg bg-gray-800 p-3 transition-colors duration-300 hover:scale-110 hover:bg-gray-700"
+                    className="transform rounded-lg bg-surface p-3 transition-colors duration-300 hover:scale-110 hover:bg-border"
                     aria-label={`Follow us on ${social.name}`}
                   >
                     <span className="text-xl">{social.icon}</span>
@@ -253,7 +277,7 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
                   <li key={link.name}>
                     <button
                       onClick={() => scrollToSection(link.id)}
-                      className="text-gray-400 transition-colors duration-300 hover:text-white"
+                      className="text-muted transition-colors duration-300 hover:text-text-inverse"
                     >
                       {link.name}
                     </button>
@@ -265,17 +289,17 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
             {/* Newsletter */}
             <div>
               <h4 className="mb-6 text-lg font-semibold">Stay Updated</h4>
-              <p className="mb-4 text-gray-400">
+              <p className="mb-4 text-muted">
                 Subscribe to our newsletter for the latest updates and insights.
               </p>
               <div className="flex">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 rounded-l-lg border border-gray-700 bg-gray-800 px-4 py-2 text-white focus:border-indigo-500 focus:outline-none"
+                  className="flex-1 rounded-l-lg border border-border bg-surface px-4 py-2 text-text focus:border-brand focus:outline-none"
                 />
                 <button
-                  className="rounded-r-lg bg-indigo-600 px-4 py-2 transition-colors duration-300 hover:bg-indigo-700"
+                  className="rounded-r-lg bg-brand px-4 py-2 transition-colors duration-300 hover:bg-brand-hover"
                   aria-label="Subscribe to newsletter"
                 >
                   <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
@@ -286,22 +310,22 @@ export const MarketingLayout: React.FC<MarketingLayoutProps> = ({ children }) =>
             </div>
           </div>
 
-          <div className="mt-12 flex flex-col items-center justify-between border-t border-gray-800 pt-8 md:flex-row">
-            <p className="text-sm text-gray-400">
+          <div className="mt-12 flex flex-col items-center justify-between border-t border-border pt-8 md:flex-row">
+            <p className="text-sm text-muted">
               © 2025 TailwindSpark. A WebSpark by Mark Hazleton production. All rights reserved.
             </p>
             <div className="mt-4 flex space-x-6 md:mt-0">
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a
                 href="#"
-                className="text-sm text-gray-400 transition-colors duration-300 hover:text-white"
+                className="text-sm text-muted transition-colors duration-300 hover:text-text-inverse"
               >
                 Privacy Policy
               </a>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a
                 href="#"
-                className="text-sm text-gray-400 transition-colors duration-300 hover:text-white"
+                className="text-sm text-muted transition-colors duration-300 hover:text-text-inverse"
               >
                 Terms of Service
               </a>

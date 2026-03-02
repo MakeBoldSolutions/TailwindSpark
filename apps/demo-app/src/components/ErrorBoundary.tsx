@@ -2,25 +2,68 @@ import type { ErrorInfo, ReactNode } from 'react';
 import { Component } from 'react';
 import { Logo } from './Logo';
 
+/**
+ * Error boundary component properties.
+ */
 interface Props {
+  /**
+   * Child components to wrap with error boundary.
+   */
   children: ReactNode;
+  /**
+   * Custom fallback UI to display on error.
+   */
   fallback?: ReactNode;
 }
 
+/**
+ * Error boundary component state.
+ */
 interface State {
+  /**
+   * Whether an error has been caught.
+   */
   hasError: boolean;
+  /**
+   * The caught error object.
+   */
   error?: Error;
 }
 
+/**
+ * Error boundary component for catching and handling React errors.
+ * 
+ * Catches JavaScript errors anywhere in the child component tree,
+ * logs errors, and displays a fallback UI instead of crashing the app.
+ * 
+ * @example
+ * ```tsx
+ * <ErrorBoundary>
+ *   <App />
+ * </ErrorBoundary>
+ * ```
+ */
 export class ErrorBoundary extends Component<Props, State> {
   public state: State = {
     hasError: false,
   };
 
+  /**
+   * Updates state when an error is caught.
+   * 
+   * @param error - The error that was thrown
+   * @returns Updated state with error
+   */
   public static getDerivedStateFromError(error: Error): State {
     return { hasError: true, error };
   }
 
+  /**
+   * Logs error information for debugging and analytics.
+   * 
+   * @param error - The error that was thrown
+   * @param errorInfo - Additional error information
+   */
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('Uncaught error:', error, errorInfo);
 

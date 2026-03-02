@@ -1,3 +1,10 @@
+/**
+ * Semantic color palette for TailwindSpark design system.
+ * 
+ * Provides categorized color scales (50-950) for primary, secondary, success, warning, and error states,
+ * plus data visualization colors with light/dark mode variants for charts and graphs.
+ * All colors are designed for WCAG AA accessibility compliance.
+ */
 export const colors = {
   primary: {
     50: '#f0f9ff',
@@ -64,8 +71,25 @@ export const colors = {
     900: '#7f1d1d',
     950: '#450a0a',
   },
+  // Data Visualization Colors for Charts and Graphs
+  dataViz: {
+    1: { light: '#2563eb', dark: '#3b82f6' }, // Blue - Primary series
+    2: { light: '#059669', dark: '#10b981' }, // Green - Secondary
+    3: { light: '#7c3aed', dark: '#a78bfa' }, // Purple - Tertiary
+    4: { light: '#db2777', dark: '#f472b6' }, // Pink - Quaternary
+    5: { light: '#ea580c', dark: '#fb923c' }, // Orange - Accent
+    6: { light: '#0891b2', dark: '#22d3ee' }, // Cyan - Supporting
+    7: { light: '#ca8a04', dark: '#facc15' }, // Yellow - Highlight
+    8: { light: '#e11d48', dark: '#fb7185' }, // Rose - Emphasis
+  },
 } as const;
 
+/**
+ * Spacing scale for consistent layout and component spacing.
+ * 
+ * Provides a harmonious spacing system from extra-small (0.5rem) to 3xl (4rem).
+ * Use for margin, padding, and gap utilities to maintain visual rhythm.
+ */
 export const spacing = {
   xs: '0.5rem',
   sm: '0.75rem',
@@ -76,6 +100,12 @@ export const spacing = {
   '3xl': '4rem',
 } as const;
 
+/**
+ * Border radius tokens for rounded corners.
+ * 
+ * Provides a range from sharp (none) to fully rounded (full/9999px).
+ * Use for consistent component styling across buttons, cards, inputs, and other UI elements.
+ */
 export const borderRadius = {
   none: '0',
   sm: '0.125rem',
@@ -88,6 +118,12 @@ export const borderRadius = {
   full: '9999px',
 } as const;
 
+/**
+ * Box shadow tokens for elevation and depth.
+ * 
+ * Provides a range from subtle (sm) to dramatic (2xl) shadows with opacity values.
+ * Use for creating visual hierarchy and elevated UI components like cards and modals.
+ */
 export const shadows = {
   sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
   DEFAULT: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',

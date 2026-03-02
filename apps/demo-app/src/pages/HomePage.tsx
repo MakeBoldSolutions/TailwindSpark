@@ -3,6 +3,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { TailwindSparkBrand } from '../components/TailwindSparkBrand';
 
+/**
+ * Home page component showcasing TailwindSpark features and navigation.
+ * 
+ * Displays project overview, feature highlights, demo links, and WebSpark ecosystem
+ * integration. Serves as the main landing page for the application.
+ * 
+ * @returns Home page component
+ * 
+ * @example
+ * ```tsx
+ * <HomePage />
+ * ```
+ */
 export const HomePage: React.FC = () => {
   return (
     <div className="bg-surface py-16">
@@ -35,13 +48,13 @@ export const HomePage: React.FC = () => {
             >
               🌟 WebSpark Portfolio
             </a>
-            <span className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+            <span className="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-sm font-medium text-brand">
               🤖 PromptSpark - AI Prompts
             </span>
-            <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800 dark:bg-green-900 dark:text-green-200">
+            <span className="inline-flex items-center rounded-full bg-success/10 px-3 py-1 text-sm font-medium text-success">
               🍳 RecipeSpark - Recipe Management
             </span>
-            <span className="inline-flex items-center rounded-full bg-orange-100 px-3 py-1 text-sm font-medium text-orange-800 dark:bg-orange-900 dark:text-orange-200">
+            <span className="inline-flex items-center rounded-full bg-warning/10 px-3 py-1 text-sm font-medium text-warning">
               🧠 TriviaSpark - Interactive Quizzes
             </span>
           </div>
@@ -187,7 +200,7 @@ export const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand">
                   <span className="font-semibold text-white">🎨</span>
                 </div>
               </div>
@@ -205,7 +218,7 @@ export const HomePage: React.FC = () => {
 
             <div className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-500">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-success">
                   <span className="font-semibold text-white">⚡</span>
                 </div>
               </div>
@@ -239,7 +252,7 @@ export const HomePage: React.FC = () => {
 
             <div className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-500">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-warning">
                   <span className="font-semibold text-white">📦</span>
                 </div>
               </div>
