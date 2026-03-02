@@ -77,7 +77,7 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
           <div className="bg-brand/20 absolute inset-0 animate-pulse rounded-full"></div>
         </div>
         {message && (
-          <p className="animate-pulse text-sm text-gray-600 dark:text-gray-400">{message}</p>
+          <p className="animate-pulse text-sm text-muted">{message}</p>
         )}
       </div>
     );

@@ -1,5 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
+// Mock web-vitals module before importing component
+vi.mock('web-vitals', () => ({
+  onCLS: vi.fn((callback) => callback({ name: 'CLS', value: 0.1, delta: 0.1, entries: [], id: 'test', navigationType: 'navigate' as const })),
+  onFCP: vi.fn((callback) => callback({ name: 'FCP', value: 1200, delta: 1200, entries: [], id: 'test', navigationType: 'navigate' as const })),
+  onLCP: vi.fn((callback) => callback({ name: 'LCP', value: 2500, delta: 2500, entries: [], id: 'test', navigationType: 'navigate' as const })),
+  onTTFB: vi.fn((callback) => callback({ name: 'TTFB', value: 500, delta: 500, entries: [], id: 'test', navigationType: 'navigate' as const })),
+}));
+
 import { PerformanceMonitor } from './PerformanceMonitor';
 
 // Mock performance APIs

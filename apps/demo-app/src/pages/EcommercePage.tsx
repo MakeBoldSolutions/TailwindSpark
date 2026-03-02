@@ -318,7 +318,7 @@ const EcommercePage: React.FC = () => {
       searchQuery={searchQuery}
       setSearchQuery={handleSearchQueryChange}
     >
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-surface-alt">
         {/* Breadcrumbs */}
         <div className="bg-white shadow-sm">
           <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
@@ -326,7 +326,7 @@ const EcommercePage: React.FC = () => {
               <ol className="flex items-center space-x-2">
                 <li>
                   <div className="flex items-center">
-                    <Link to="/demos" className="font-medium text-indigo-600 hover:text-indigo-700">
+                    <Link to="/demos" className="font-medium text-brand hover:text-brand-hover">
                       ← Back to Demos Overview
                     </Link>
                   </div>
@@ -344,7 +344,7 @@ const EcommercePage: React.FC = () => {
                         clipRule="evenodd"
                       />
                     </svg>
-                    <Link to="/ecommerce" className="ml-2 text-gray-400 hover:text-gray-500">
+                    <Link to="/ecommerce" className="ml-2 text-muted hover:text-text">
                       Home
                     </Link>
                   </div>
@@ -352,7 +352,7 @@ const EcommercePage: React.FC = () => {
                 <li>
                   <div className="flex items-center">
                     <svg
-                      className="h-5 w-5 flex-shrink-0 text-gray-300"
+                      className="h-5 w-5 flex-shrink-0 text-muted"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -362,7 +362,7 @@ const EcommercePage: React.FC = () => {
                         clipRule="evenodd"
                       />
                     </svg>
-                    <span className="ml-2 font-medium text-gray-900">Products</span>
+                    <span className="ml-2 font-medium text-text">Products</span>
                   </div>
                 </li>
               </ol>
@@ -371,12 +371,12 @@ const EcommercePage: React.FC = () => {
         </div>
 
         {/* Page Header */}
-        <div className="border-b border-gray-200 bg-white">
+        <div className="border-b border bg-surface">
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">All Products</h1>
-                <p className="mt-2 text-gray-600">
+                <h1 className="text-3xl font-bold text-text">All Products</h1>
+                <p className="mt-2 text-muted">
                   Showing {startIndex + 1}-
                   {Math.min(startIndex + productsPerPage, filteredProducts.length)} of{' '}
                   {filteredProducts.length} results
@@ -385,14 +385,14 @@ const EcommercePage: React.FC = () => {
 
               {/* Sort Dropdown */}
               <div className="flex items-center space-x-4">
-                <label htmlFor="sort" className="text-sm font-medium text-gray-700">
+                <label htmlFor="sort" className="text-sm font-medium text-text">
                   Sort by:
                 </label>
                 <select
                   id="sort"
                   value={sortBy}
                   onChange={e => handleSortByChange(e.target.value)}
-                  className="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="rounded-md border bg-surface px-3 py-2 text-sm shadow-sm focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
                 >
                   <option value="featured">Featured</option>
                   <option value="newest">Newest</option>
@@ -426,26 +426,26 @@ const EcommercePage: React.FC = () => {
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <div className="mt-12 flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+                <div className="mt-12 flex items-center justify-between border-t border bg-surface px-4 py-3 sm:px-6">
                   <div className="flex flex-1 justify-between sm:hidden">
                     <button
                       onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                       disabled={currentPage === 1}
-                      className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="relative inline-flex items-center rounded-md border bg-surface px-4 py-2 text-sm font-medium text-text hover:bg-surface-alt disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       Previous
                     </button>
                     <button
                       onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                       disabled={currentPage === totalPages}
-                      className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="relative ml-3 inline-flex items-center rounded-md border bg-surface px-4 py-2 text-sm font-medium text-text hover:bg-surface-alt disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       Next
                     </button>
                   </div>
                   <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
                     <div>
-                      <p className="text-sm text-gray-700">
+                      <p className="text-sm text-text">
                         Showing <span className="font-medium">{startIndex + 1}</span> to{' '}
                         <span className="font-medium">
                           {Math.min(startIndex + productsPerPage, filteredProducts.length)}
@@ -462,7 +462,7 @@ const EcommercePage: React.FC = () => {
                         <button
                           onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                           disabled={currentPage === 1}
-                          className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-50"
+                          className="relative inline-flex items-center rounded-l-md px-2 py-2 text-muted ring-1 ring-inset ring-border hover:bg-surface-alt focus:z-20 focus:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-50"
                         >
                           <span className="sr-only">Previous</span>
                           <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -481,8 +481,8 @@ const EcommercePage: React.FC = () => {
                             onClick={() => setCurrentPage(page)}
                             className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
                               page === currentPage
-                                ? 'z-10 bg-indigo-600 text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-                                : 'text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0'
+                                ? 'z-10 bg-brand text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand'
+                                : 'text-text ring-1 ring-inset ring-border hover:bg-surface-alt focus:z-20 focus:outline-offset-0'
                             }`}
                           >
                             {page}
@@ -493,7 +493,7 @@ const EcommercePage: React.FC = () => {
                         <button
                           onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                           disabled={currentPage === totalPages}
-                          className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-50"
+                          className="relative inline-flex items-center rounded-r-md px-2 py-2 text-muted ring-1 ring-inset ring-border hover:bg-surface-alt focus:z-20 focus:outline-offset-0 disabled:cursor-not-allowed disabled:opacity-50"
                         >
                           <span className="sr-only">Next</span>
                           <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

@@ -58,25 +58,25 @@ export const TailwindSparkBrand: React.FC<TailwindSparkBrandProps> = ({
       titleClass: logoTitleTogether
         ? 'text-4xl md:text-5xl font-bold'
         : 'text-4xl md:text-5xl font-bold mt-6 mb-4',
-      descriptionClass: 'text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto',
+      descriptionClass: 'text-xl text-muted max-w-3xl mx-auto',
     },
     footer: {
       containerClass: 'text-center py-8',
       logoSize: 'lg' as const,
       titleClass: 'text-2xl font-bold mt-4 mb-2',
-      descriptionClass: 'text-sm text-gray-500 dark:text-gray-500',
+      descriptionClass: 'text-sm text-muted',
     },
     card: {
       containerClass: 'text-center p-6',
       logoSize: 'lg' as const,
       titleClass: 'text-xl font-bold mt-4 mb-2',
-      descriptionClass: 'text-sm text-gray-600 dark:text-gray-400',
+      descriptionClass: 'text-sm text-muted',
     },
     inline: {
       containerClass: 'flex items-center gap-3',
       logoSize: 'md' as const,
       titleClass: 'text-lg font-bold',
-      descriptionClass: 'text-sm text-gray-600 dark:text-gray-400',
+      descriptionClass: 'text-sm text-muted',
     },
   };
 
@@ -134,7 +134,7 @@ export const TailwindSparkBrand: React.FC<TailwindSparkBrandProps> = ({
                 href="https://webspark.markhazleton.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold" // eslint-disable-line no-raw-primary-class/no-raw-primary-class
+                className="text-brand hover:text-brand-hover font-semibold"
               >
                 WebSpark Portfolio
               </a>{' '}
@@ -143,7 +143,7 @@ export const TailwindSparkBrand: React.FC<TailwindSparkBrandProps> = ({
                 href="https://markhazleton.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold" // eslint-disable-line no-raw-primary-class/no-raw-primary-class
+                className="text-brand hover:text-brand-hover font-semibold"
               >
                 Mark Hazleton
               </a>

@@ -39,8 +39,8 @@ describe('UsersPage', () => {
   it('shows search or filter functionality', () => {
     renderWithRouter(<UsersPage />);
     
-    // Search input for filtering users
-    const searchInput = screen.queryByPlaceholderText(/Search/i);
+    // Search input for filtering users - use exact placeholder text
+    const searchInput = screen.getByPlaceholderText('Search by name or email...');
     expect(searchInput).toBeInTheDocument();
   });
 

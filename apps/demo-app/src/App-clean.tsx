@@ -34,7 +34,7 @@ function App() {
         <div className="container mx-auto px-4">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600"></div>
+            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-brand to-brand-hover"></div>
               <div>
                 <h1 className="font-bold text-secondary-900 dark:text-secondary-100">Tailwind Demo</h1>
                 <p className="text-sm text-secondary-600 dark:text-secondary-400">
@@ -116,7 +116,7 @@ function App() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <div className="mb-4 flex items-center justify-center gap-2">
-              <div className="h-6 w-6 rounded bg-gradient-to-br from-blue-500 to-blue-600"></div>
+              <div className="h-6 w-6 rounded bg-gradient-to-br from-brand to-brand-hover"></div>
               <span className="font-semibold text-secondary-900 dark:text-secondary-100">Tailwind Demo</span>
             </div>
             <p className="mb-4 text-secondary-600 dark:text-secondary-400">

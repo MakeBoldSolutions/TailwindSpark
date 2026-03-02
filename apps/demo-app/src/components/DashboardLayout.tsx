@@ -70,18 +70,18 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   ];
 
   return (
-    <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="flex h-screen bg-surface">
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 w-64 transform border-r border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 ${
+        className={`fixed inset-y-0 left-0 z-50 w-64 transform border-r border bg-white dark:bg-gray-800 ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } transition-transform duration-300 ease-in-out lg:translate-x-0`}
       >
-        <div className="flex items-center gap-3 border-b border-gray-200 p-6 dark:border-gray-700">
+        <div className="flex items-center gap-3 border-b border p-6">
           <Logo size="sm" showText={false} />
           <div>
-            <h1 className="font-bold text-gray-900 dark:text-gray-100">TailwindSpark</h1>
-            <p className="text-xs text-gray-600 dark:text-gray-400">Dashboard Demo</p>
+            <h1 className="font-bold text-text">TailwindSpark</h1>
+            <p className="text-xs text-muted">Dashboard Demo</p>
           </div>
         </div>
 
@@ -94,7 +94,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                   className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ${
                     location.pathname === item.href
                       ? 'bg-brand/10 dark:bg-brand/20 text-brand'
-                      : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100'
+                      : 'text-muted hover:bg-surface-alt hover:text-text'
                   }`}
                 >
                   <span className="text-lg">{item.icon}</span>
@@ -105,10 +105,10 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
           </ul>
 
           {/* Back to Main App */}
-          <div className="mt-8 border-t border-gray-200 pt-4 dark:border-gray-700">
+          <div className="mt-8 border-t border pt-4">
             <Link
               to="/"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition-all duration-200 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-100"
+              className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-muted transition-all duration-200 hover:bg-surface-alt hover:text-text"
             >
               <span className="text-lg">🏠</span>
               Back to Main App
@@ -116,19 +116,19 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
           </div>
         </nav>
 
-        <div className="absolute bottom-0 left-0 right-0 border-t border-gray-200 p-4 dark:border-gray-700">
+        <div className="absolute bottom-0 left-0 right-0 border-t border p-4">
           <div className="flex items-center gap-3">
             <div className="from-brand to-accent-700 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-sm font-medium text-white">
               MH
             </div>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-medium text-gray-900 dark:text-gray-100">
+              <p className="truncate text-sm font-medium text-text">
                 Mark Hazleton
               </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">WebSpark Creator</p>
+              <p className="text-xs text-muted">WebSpark Creator</p>
             </div>
           </div>
-          <div className="mt-2 border-t border-gray-100 pt-2 dark:border-gray-700">
+          <div className="mt-2 border-t border pt-2">
             <a
               href="https://webspark.markhazleton.com"
               target="_blank"
@@ -153,21 +153,21 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       {/* Main Content */}
       <div className="flex flex-1 flex-col overflow-hidden lg:ml-64">
         {/* Header */}
-        <header className="sticky top-0 z-30 border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
+        <header className="sticky top-0 z-30 border-b border bg-surface-alt">
           <div className="flex items-center justify-between px-6 py-4">
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="rounded-lg bg-gray-100 p-2 transition-colors hover:bg-gray-200 lg:hidden dark:bg-gray-700 dark:hover:bg-gray-600"
+                className="rounded-lg bg-surface-alt p-2 transition-colors hover:bg-border lg:hidden"
                 aria-label="Toggle sidebar"
                 title="Toggle sidebar"
               >
                 <IconMenu />
               </button>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{pageTitle}</h1>
+                <h1 className="text-2xl font-bold text-text">{pageTitle}</h1>
                 {pageDescription && (
-                  <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{pageDescription}</p>
+                  <p className="mt-1 text-sm text-muted">{pageDescription}</p>
                 )}
               </div>
             </div>
@@ -177,23 +177,23 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
               {headerActions}
 
               {/* Search */}
-              <div className="hidden max-w-md items-center gap-2 rounded-lg bg-gray-100 px-3 py-2 md:flex dark:bg-gray-700">
+              <div className="hidden max-w-md items-center gap-2 rounded-lg bg-surface-alt px-3 py-2 md:flex">
                 <IconSearch />
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="flex-1 border-none bg-transparent text-sm text-gray-900 placeholder-gray-500 outline-none dark:text-gray-100 dark:placeholder-gray-400"
+                  className="flex-1 border-none bg-transparent text-sm text-text placeholder-muted outline-none"
                 />
               </div>
 
               {/* Notifications */}
               <button
-                className="relative rounded-lg bg-gray-100 p-2 transition-colors hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600"
+                className="relative rounded-lg bg-surface-alt p-2 transition-colors hover:bg-border"
                 aria-label="View notifications"
                 title="View notifications"
               >
                 <IconBell />
-                <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-red-500"></span>
+                <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-error"></span>
               </button>
 
               {/* Profile */}
@@ -201,7 +201,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
                 <div className="from-brand to-accent-700 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-sm font-medium text-white">
                   JD
                 </div>
-                <span className="hidden text-sm font-medium text-gray-900 md:block dark:text-gray-100">
+                <span className="hidden text-sm font-medium text-text md:block">
                   John Doe
                 </span>
               </div>
@@ -210,7 +210,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
         </header>
 
         {/* Main Content Area */}
-        <main className="flex-1 overflow-y-auto overflow-x-hidden bg-gray-50 dark:bg-gray-900">
+        <main className="flex-1 overflow-y-auto overflow-x-hidden bg-surface">
           {children}
         </main>
       </div>

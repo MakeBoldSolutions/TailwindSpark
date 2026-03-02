@@ -74,16 +74,16 @@ const ProductGrid: React.FC<ProductGridProps> = ({
   };
 
   const ProductSkeleton = () => (
-    <div className="group animate-pulse overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-  <div className="aspect-[4/3] bg-gray-200">
-        <div className="h-48 w-full bg-gray-200"></div>
+    <div className="group animate-pulse overflow-hidden rounded-lg border border bg-white shadow-sm">
+  <div className="aspect-[4/3] bg-surface-alt">
+        <div className="h-48 w-full bg-surface-alt"></div>
       </div>
       <div className="p-4">
-        <div className="mb-2 h-4 rounded bg-gray-200"></div>
-        <div className="mb-2 h-3 w-2/3 rounded bg-gray-200"></div>
+        <div className="mb-2 h-4 rounded bg-surface-alt"></div>
+        <div className="mb-2 h-3 w-2/3 rounded bg-surface-alt"></div>
         <div className="flex items-center justify-between">
-          <div className="h-6 w-1/3 rounded bg-gray-200"></div>
-          <div className="h-8 w-1/4 rounded bg-gray-200"></div>
+          <div className="h-6 w-1/3 rounded bg-surface-alt"></div>
+          <div className="h-8 w-1/4 rounded bg-surface-alt"></div>
         </div>
       </div>
     </div>
@@ -103,7 +103,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
     return (
       <div className="py-12 text-center">
         <svg
-          className="mx-auto h-12 w-12 text-gray-400"
+          className="mx-auto h-12 w-12 text-muted"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -115,8 +115,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({
             d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2 2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
           />
         </svg>
-        <h3 className="mt-4 text-lg font-medium text-gray-900">No products found</h3>
-        <p className="mt-2 text-gray-500">Try adjusting your search or filter criteria.</p>
+        <h3 className="mt-4 text-lg font-medium text-text">No products found</h3>
+        <p className="mt-2 text-muted">Try adjusting your search or filter criteria.</p>
       </div>
     );
   }
@@ -126,12 +126,12 @@ const ProductGrid: React.FC<ProductGridProps> = ({
       {products.map(product => (
         <div
           key={product.id}
-          className="group relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg"
+          className="group relative overflow-hidden rounded-lg border border bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg"
         >
           {/* Product Image */}
           <div className="aspect-[4/3] relative overflow-hidden">
             {!imageLoadStates[product.id] && (
-              <div className="absolute inset-0 animate-pulse bg-gray-200"></div>
+              <div className="absolute inset-0 animate-pulse bg-surface-alt"></div>
             )}
             {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
             <img
@@ -145,14 +145,14 @@ const ProductGrid: React.FC<ProductGridProps> = ({
 
             {/* Sale Badge */}
             {product.salePrice && (
-              <div className="absolute left-2 top-2 rounded bg-red-500 px-2 py-1 text-xs font-semibold text-white">
+              <div className="absolute left-2 top-2 rounded bg-error px-2 py-1 text-xs font-semibold text-white">
                 SALE
               </div>
             )}
 
             {/* Stock Badge */}
             {!product.inStock && (
-              <div className="absolute right-2 top-2 rounded bg-gray-900 px-2 py-1 text-xs font-semibold text-white">
+              <div className="absolute right-2 top-2 rounded bg-surface-inverse px-2 py-1 text-xs font-semibold text-white">
                 OUT OF STOCK
               </div>
             )}
@@ -165,7 +165,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
             >
               <svg
                 className={`h-5 w-5 ${
-                  wishlist.includes(product.id) ? 'fill-current text-red-500' : 'text-gray-400'
+                  wishlist.includes(product.id) ? 'fill-current text-error' : 'text-muted'
                 }`}
                 fill={wishlist.includes(product.id) ? 'currentColor' : 'none'}
                 viewBox="0 0 24 24"
@@ -192,10 +192,10 @@ const ProductGrid: React.FC<ProductGridProps> = ({
           {/* Product Info */}
           <div className="p-4">
             <div className="mb-2">
-              <h3 className="line-clamp-2 text-sm font-medium text-gray-900 transition-colors group-hover:text-brand">
+              <h3 className="line-clamp-2 text-sm font-medium text-text transition-colors group-hover:text-brand">
                 {product.name}
               </h3>
-              <p className="text-sm text-gray-500">{product.brand}</p>
+              <p className="text-sm text-muted">{product.brand}</p>
             </div>
 
             {/* Rating */}
@@ -205,7 +205,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
                   <svg
                     key={i}
                     className={`h-4 w-4 ${
-                      i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-300'
+                      i < Math.floor(product.rating) ? 'text-warning' : 'text-border'
                     }`}
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -214,15 +214,17 @@ const ProductGrid: React.FC<ProductGridProps> = ({
                   </svg>
                 ))}
               </div>
-              <span className="ml-1 text-sm text-gray-500">({product.reviewCount})</span>
+              <span className="ml-1 text-sm text-muted">({product.reviewCount})</span>
             </div>
 
             {/* Colors */}
+            {/* Product color swatches represent actual physical product colors, not UI theme colors */}
+            {/* eslint-disable no-raw-primary-class/no-raw-primary-class */}
             <div className="mb-3 flex items-center space-x-1">
               {product.colors.slice(0, 4).map(color => (
                 <div
                   key={color}
-                  className={`h-4 w-4 rounded-full border border-gray-300 ${
+                  className={`h-4 w-4 rounded-full border border ${
                     color.toLowerCase() === 'black'
                       ? 'bg-black'
                       : color.toLowerCase() === 'white'
@@ -255,20 +257,21 @@ const ProductGrid: React.FC<ProductGridProps> = ({
                 />
               ))}
               {product.colors.length > 4 && (
-                <span className="text-xs text-gray-500">+{product.colors.length - 4}</span>
+                <span className="text-xs text-muted">+{product.colors.length - 4}</span>
               )}
             </div>
+            {/* eslint-enable no-raw-primary-class/no-raw-primary-class */}
 
             {/* Price and Add to Cart */}
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 {product.salePrice ? (
                   <>
-                    <span className="text-lg font-bold text-red-600">${product.salePrice}</span>
-                    <span className="text-sm text-gray-500 line-through">${product.price}</span>
+                    <span className="text-lg font-bold text-error">${product.salePrice}</span>
+                    <span className="text-sm text-muted line-through">${product.price}</span>
                   </>
                 ) : (
-                  <span className="text-lg font-bold text-gray-900">${product.price}</span>
+                  <span className="text-lg font-bold text-text">${product.price}</span>
                 )}
               </div>
 
@@ -278,7 +281,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
                 className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
                   product.inStock
                     ? 'bg-brand text-brand-fg hover:bg-brand-hover'
-                    : 'cursor-not-allowed bg-gray-300 text-gray-500'
+                    : 'cursor-not-allowed bg-border text-muted'
                 }`}
                 title={product.inStock ? 'Add to cart' : 'Out of stock'}
               >
@@ -288,7 +291,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
 
             {/* Stock Count */}
             {product.inStock && product.stockCount <= 10 && (
-              <p className="mt-2 text-xs text-orange-600">
+              <p className="mt-2 text-xs text-warning">
                 Only {product.stockCount} left in stock!
               </p>
             )}
