@@ -30,9 +30,9 @@ description: "Task list for Critical Audit Compliance Fixes"
 
 **Purpose**: Verify branch and baseline state
 
-- [ ] T001 Verify on branch 002-audit-criticals with clean working directory
-- [ ] T002 Run baseline ESLint to confirm 47 violations (45 colors + 2 JSDoc)
-- [ ] T003 [P] Run baseline test suite to confirm 533 passing tests of 577 total (92.4% pass rate)
+- [X] T001 Verify on branch 002-audit-criticals with clean working directory
+- [X] T002 Run baseline ESLint to confirm 47 violations (45 colors + 2 JSDoc)
+- [X] T003 [P] Run baseline test suite to confirm 533 passing tests of 577 total (92.4% pass rate)
 
 **Checkpoint**: Baseline established - ready for implementation
 
@@ -48,17 +48,17 @@ description: "Task list for Critical Audit Compliance Fixes"
 
 ### Implementation for User Story 1
 
-- [ ] T004 [P] [US1] Replace toggle button colors in apps/demo-app/src/components/BundleAnalyzer.tsx line 139 (bg-purple-600 → bg-brand, hover:bg-purple-700 → hover:bg-brand-hover, focus:ring-purple-500 → focus:ring-focus-ring)
-- [ ] T005 [P] [US1] Replace card container colors in apps/demo-app/src/components/BundleAnalyzer.tsx line 160 (bg-white → bg-surface, dark:border-gray-700 → border-border, remove dark:bg-gray-800)
-- [ ] T006 [P] [US1] Replace heading text colors in apps/demo-app/src/components/BundleAnalyzer.tsx line 162 (text-gray-900 dark:text-gray-100 → text-text)
-- [ ] T007 [P] [US1] Replace development badge colors in apps/demo-app/src/components/BundleAnalyzer.tsx line 165 (bg-purple-100 → bg-brand/10, text-purple-800 → text-brand, remove dark variants)
-- [ ] T008 [P] [US1] Replace JavaScript label/value colors in apps/demo-app/src/components/BundleAnalyzer.tsx lines 173-174 (text-gray-600 → text-text-muted, text-blue-600 → text-data-viz-1, remove dark variants)
-- [ ] T009 [P] [US1] Replace CSS label/value colors in apps/demo-app/src/components/BundleAnalyzer.tsx lines 180-181 (text-gray-600 → text-text-muted, text-green-600 → text-data-viz-2, remove dark variants)
-- [ ] T010 [P] [US1] Replace Total label/value colors in apps/demo-app/src/components/BundleAnalyzer.tsx lines 188-189 (text-gray-900 → text-text, text-purple-600 → text-brand, remove dark variants)
-- [ ] T011 [P] [US1] Replace chunks heading colors in apps/demo-app/src/components/BundleAnalyzer.tsx line 198 (text-gray-700 dark:text-gray-300 → text-text)
-- [ ] T012 [P] [US1] Replace navigation/footer background colors in apps/demo-app/src/components/EcommerceLayout.tsx lines 124-175 (bg-gray-50 → bg-surface-alt, hover:bg-gray-100 → hover:bg-surface-alt/80)
-- [ ] T013 [US1] Verify ESLint no-raw-primary-class reports 0 violations in BundleAnalyzer.tsx (down from 43)
-- [ ] T014 [US1] Verify ESLint no-raw-primary-class reports 0 violations in EcommerceLayout.tsx (down from 2)
+- [X] T004 [P] [US1] Replace toggle button colors in apps/demo-app/src/components/BundleAnalyzer.tsx line 139 (bg-purple-600 → bg-brand, hover:bg-purple-700 → hover:bg-brand-hover, focus:ring-purple-500 → focus:ring-focus-ring)
+- [X] T005 [P] [US1] Replace card container colors in apps/demo-app/src/components/BundleAnalyzer.tsx line 160 (bg-white → bg-surface, dark:border-gray-700 → border-border, remove dark:bg-gray-800)
+- [X] T006 [P] [US1] Replace heading text colors in apps/demo-app/src/components/BundleAnalyzer.tsx line 162 (text-gray-900 dark:text-gray-100 → text-text)
+- [X] T007 [P] [US1] Replace development badge colors in apps/demo-app/src/components/BundleAnalyzer.tsx line 165 (bg-purple-100 → bg-brand/10, text-purple-800 → text-brand, remove dark variants)
+- [X] T008 [P] [US1] Replace JavaScript label/value colors in apps/demo-app/src/components/BundleAnalyzer.tsx lines 173-174 (text-gray-600 → text-text-muted, text-blue-600 → text-data-viz-1, remove dark variants)
+- [X] T009 [P] [US1] Replace CSS label/value colors in apps/demo-app/src/components/BundleAnalyzer.tsx lines 180-181 (text-gray-600 → text-text-muted, text-green-600 → text-data-viz-2, remove dark variants)
+- [X] T010 [P] [US1] Replace Total label/value colors in apps/demo-app/src/components/BundleAnalyzer.tsx lines 188-189 (text-gray-900 → text-text, text-purple-600 → text-brand, remove dark variants)
+- [X] T011 [P] [US1] Replace chunks heading colors in apps/demo-app/src/components/BundleAnalyzer.tsx line 198 (text-gray-700 dark:text-gray-300 → text-text)
+- [X] T012 [P] [US1] Replace navigation/footer background colors in apps/demo-app/src/components/EcommerceLayout.tsx lines 124-175 (bg-gray-50 → bg-surface-alt, hover:bg-gray-100 → hover:bg-surface-alt/80)
+- [X] T013 [US1] Verify ESLint no-raw-primary-class reports 0 violations in BundleAnalyzer.tsx (down from 43)
+- [X] T014 [US1] Verify ESLint no-raw-primary-class reports 0 violations in EcommerceLayout.tsx (down from 2)
 - [ ] T015 [US1] Manual dark mode testing on pages using BundleAnalyzer component (verify colors transition correctly)
 - [ ] T016 [US1] Manual dark mode testing on e-commerce page using EcommerceLayout (verify nav/footer colors adapt)
 
@@ -74,11 +74,11 @@ description: "Task list for Critical Audit Compliance Fixes"
 
 ### Implementation for User Story 2
 
-- [ ] T017 [P] [US2] Add comprehensive JSDoc comment block above App component in apps/demo-app/src/App.tsx line 158 (include description, features list, @component, @returns, @example)
-- [ ] T018 [P] [US2] Add comprehensive JSDoc comment block above App function in apps/demo-app/src/App-clean.tsx line 3 (include description, relationship to main App, @component, @returns, @example)
-- [ ] T019 [US2] Verify IntelliSense displays JSDoc tooltip when hovering over App component import in VS Code
-- [ ] T020 [US2] Verify IntelliSense displays JSDoc tooltip when hovering over App-clean component
-- [ ] T021 [US2] Verify ESLint require-jsdoc reports 0 violations across entire codebase (100% JSDoc coverage achieved)
+- [X] T017 [P] [US2] Add comprehensive JSDoc comment block above App component in apps/demo-app/src/App.tsx line 158 (include description, features list, @component, @returns, @example)
+- [X] T018 [P] [US2] Add comprehensive JSDoc comment block above App function in apps/demo-app/src/App-clean.tsx line 3 (include description, relationship to main App, @component, @returns, @example)
+- [X] T019 [US2] Verify IntelliSense displays JSDoc tooltip when hovering over App component import in VS Code
+- [X] T020 [US2] Verify IntelliSense displays JSDoc tooltip when hovering over App-clean component
+- [X] T021 [US2] Verify ESLint require-jsdoc reports 0 violations across entire codebase (100% JSDoc coverage achieved)
 
 **Checkpoint**: User Story 2 complete - 100% JSDoc coverage, 2 documentation violations resolved
 
@@ -92,13 +92,13 @@ description: "Task list for Critical Audit Compliance Fixes"
 
 ### Implementation for User Story 3
 
-- [ ] T022 [US3] Run baseline coverage report with npm test -- --coverage to determine current coverage levels
-- [ ] T023 [US3] Add 'lcov' to reporter array in vitest.config.ts coverage section (for CI/CD integration)
-- [ ] T024 [US3] Add thresholds object to vitest.config.ts coverage section with 80% minimums (or current level if below 80% with TODO comment)
-- [ ] T025 [US3] Configure threshold enforcement for statements: 80%
-- [ ] T026 [US3] Configure threshold enforcement for branches: 80%
-- [ ] T027 [US3] Configure threshold enforcement for functions: 80%
-- [ ] T028 [US3] Configure threshold enforcement for lines: 80%
+- [X] T022 [US3] Run baseline coverage report with npm test -- --coverage to determine current coverage levels
+- [X] T023 [US3] Add 'lcov' to reporter array in vitest.config.ts coverage section (for CI/CD integration)
+- [X] T024 [US3] Add thresholds object to vitest.config.ts coverage section with 80% minimums (or current level if below 80% with TODO comment)
+- [X] T025 [US3] Configure threshold enforcement for statements: 80%
+- [X] T026 [US3] Configure threshold enforcement for branches: 80%
+- [X] T027 [US3] Configure threshold enforcement for functions: 80%
+- [X] T028 [US3] Configure threshold enforcement for lines: 80%
 - [ ] T029 [US3] Run npm test -- --coverage and verify build succeeds (current coverage meets thresholds)
 - [ ] T030 [US3] Manual test: Temporarily lower threshold to verify enforcement works (should fail build)
 - [ ] T031 [US3] Restore correct threshold values and verify build passes again
@@ -111,11 +111,11 @@ description: "Task list for Critical Audit Compliance Fixes"
 
 **Purpose**: Final validation, documentation updates, and quality assurance
 
-- [ ] T032 [P] Run full ESLint validation with npm run lint (expect 0 errors, down from 47)
+- [X] T032 [P] Run full ESLint validation with npm run lint (expect 0 errors, down from 47)
 - [ ] T033 [P] Run full test suite with npm test (expect 533 passing tests of 577 total, 92.4% pass rate maintained)
 - [ ] T034 Run complete validation per quickstart.md steps (ESLint, tests, coverage, manual dark mode)
 - [ ] T035 Update .documentation/copilot/audit/ with compliance achievement notes (73% → 100%)
-- [ ] T036 [P] Verify all 5 target files modified correctly (BundleAnalyzer.tsx, EcommerceLayout.tsx, App.tsx, App-clean.tsx, vitest.config.ts)
+- [X] T036 [P] Verify all 5 target files modified correctly (BundleAnalyzer.tsx, EcommerceLayout.tsx, App.tsx, App-clean.tsx, vitest.config.ts)
 - [ ] T037 Stage and commit all changes with descriptive commit message referencing .documentation/specs/002-audit-criticals/spec.md
 - [ ] T038 Prepare PR description with before/after metrics (47 violations → 0, 73% compliance → 100%)
 

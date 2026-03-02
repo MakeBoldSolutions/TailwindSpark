@@ -136,7 +136,7 @@ export const BundleAnalyzer: React.FC = () => {
       {/* Toggle Button */}
       <button
         onClick={() => setIsVisible(!isVisible)}
-        className="mb-2 rounded-full bg-purple-600 p-3 text-white shadow-lg transition-all hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+        className="mb-2 rounded-full bg-brand p-3 text-white shadow-lg transition-all hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus-ring focus:ring-offset-2"
         aria-label={isVisible ? 'Hide bundle analyzer' : 'Show bundle analyzer'}
         title="Bundle Analyzer"
       >
@@ -157,12 +157,12 @@ export const BundleAnalyzer: React.FC = () => {
 
       {/* Bundle Info Panel */}
       {isVisible && (
-        <div className="min-w-80 rounded-lg border bg-white p-4 shadow-lg dark:border-gray-700 dark:bg-gray-800">
+        <div className="min-w-80 rounded-lg border border-border bg-surface p-4 shadow-lg">
           <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+            <h3 className="text-sm font-semibold text-text">
               Bundle Analyzer
             </h3>
-            <span className="rounded-full bg-purple-100 px-2 py-1 text-xs font-medium text-purple-800 dark:bg-purple-900 dark:text-purple-200">
+            <span className="rounded-full bg-brand/10 px-2 py-1 text-xs font-medium text-brand">
               DEV
             </span>
           </div>
@@ -170,23 +170,23 @@ export const BundleAnalyzer: React.FC = () => {
           {/* Bundle Summary */}
           <div className="mb-4 space-y-2 text-sm">
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">JavaScript:</span>
-              <span className="font-mono text-blue-600 dark:text-blue-400">
+              <span className="text-text-muted">JavaScript:</span>
+              <span className="font-mono text-data-viz-1">
                 {bundleInfo.jsSize}KB
               </span>
             </div>
             
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">CSS:</span>
-              <span className="font-mono text-green-600 dark:text-green-400">
+              <span className="text-text-muted">CSS:</span>
+              <span className="font-mono text-data-viz-2">
                 {bundleInfo.cssSize}KB
               </span>
             </div>
             
-            <div className="border-t border-gray-200 pt-2 dark:border-gray-600">
+            <div className="border-t border-border pt-2">
               <div className="flex justify-between font-medium">
-                <span className="text-gray-900 dark:text-gray-100">Total:</span>
-                <span className="font-mono text-purple-600 dark:text-purple-400">
+                <span className="text-text">Total:</span>
+                <span className="font-mono text-brand">
                   {bundleInfo.totalSize}KB
                 </span>
               </div>
@@ -195,7 +195,7 @@ export const BundleAnalyzer: React.FC = () => {
 
           {/* Chunk List */}
           <div>
-            <h4 className="mb-2 text-xs font-medium text-gray-700 dark:text-gray-300">
+            <h4 className="mb-2 text-xs font-medium text-text">
               Loaded Resources ({bundleInfo.chunks.length})
             </h4>
             
@@ -203,16 +203,16 @@ export const BundleAnalyzer: React.FC = () => {
               {bundleInfo.chunks.map((chunk, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between rounded px-2 py-1 bg-gray-50 dark:bg-gray-700"
+                  className="flex items-center justify-between rounded px-2 py-1 bg-surface-alt"
                 >
-                  <span className="truncate text-gray-700 dark:text-gray-300">
+                  <span className="truncate text-text">
                     {chunk.name}
                   </span>
                   <span
                     className={`font-mono ${
                       chunk.type === 'js' 
-                        ? 'text-blue-600 dark:text-blue-400' 
-                        : 'text-green-600 dark:text-green-400'
+                        ? 'text-data-viz-1' 
+                        : 'text-data-viz-2'
                     }`}
                   >
                     {chunk.type.toUpperCase()}
@@ -223,13 +223,13 @@ export const BundleAnalyzer: React.FC = () => {
           </div>
 
           {/* Actions */}
-          <div className="mt-3 border-t border-gray-200 pt-3 dark:border-gray-600">
+          <div className="mt-3 border-t border-border pt-3">
             <div className="flex space-x-2 text-xs">
               <button
                 onClick={() => {
                   window.open('/reports/bundle-analysis.html', '_blank');
                 }}
-                className="rounded bg-purple-600 px-2 py-1 text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="rounded bg-brand px-2 py-1 text-white hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus-ring"
               >
                 View Report
               </button>
@@ -238,7 +238,7 @@ export const BundleAnalyzer: React.FC = () => {
                 onClick={() => {
                   console.warn('Bundle Info:', bundleInfo);
                 }}
-                className="rounded bg-gray-600 px-2 py-1 text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                className="rounded bg-surface-alt px-2 py-1 text-text hover:bg-surface-alt/80 focus:outline-none focus:ring-2 focus:ring-focus-ring"
               >
                 Log Info
               </button>

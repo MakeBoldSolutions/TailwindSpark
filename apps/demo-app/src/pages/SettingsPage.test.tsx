@@ -111,3 +111,4 @@ describe('SettingsPage', () => {
     const layoutElements = document.querySelectorAll('div');
     expect(layoutElements.length).toBeGreaterThan(0);
   });
+});

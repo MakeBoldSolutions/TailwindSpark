@@ -121,7 +121,7 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-surface-alt">
       {/* Navigation */}
       <header className="relative z-40 bg-white shadow-sm">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -142,7 +142,7 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
                   <Link
                     key={category.name}
                     to={category.href}
-                    className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-gray-900"
+                    className="rounded-md px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-surface-alt/80 hover:text-gray-900"
                   >
                     {category.name}
                   </Link>

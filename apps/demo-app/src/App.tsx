@@ -155,6 +155,33 @@ function AppContent() {
   );
 }
 
+/**
+ * Main application component providing routing, theme management, and layout.
+ * 
+ * Implements lazy-loaded routes with Suspense boundaries for code splitting,
+ * dark mode toggle with localStorage persistence, and automatic basename
+ * configuration for GitHub Pages deployment.
+ * 
+ * Features:
+ * - Route-based code splitting with lazy loading
+ * - Theme toggle (light/dark mode) with system preference detection
+ * - Error boundary wrapper for graceful error handling
+ * - Performance monitoring via PerformanceMonitor component
+ * - Persistent theme preference in localStorage
+ * 
+ * @component
+ * @returns {JSX.Element} The complete application with routing and theme support
+ * 
+ * @example
+ * ```tsx
+ * // App is the root component rendered in main.tsx
+ * ReactDOM.createRoot(document.getElementById('root')!).render(
+ *   <React.StrictMode>
+ *     <App />
+ *   </React.StrictMode>
+ * );
+ * ```
+ */
 function App() {
   return (
     <ThemeProvider>

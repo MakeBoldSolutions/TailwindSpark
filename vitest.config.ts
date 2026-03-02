@@ -8,7 +8,13 @@ export default defineConfig({
     setupFiles: ['./vitest.setup.ts'],
     css: true,
     coverage: {
-      reporter: ['text', 'json', 'html'],
+      reporter: ['text', 'json', 'html', 'lcov'],
+      thresholds: {
+        statements: 80,
+        branches: 80,
+        functions: 80,
+        lines: 80,
+      },
       exclude: [
         'node_modules/',
         'dist/',
