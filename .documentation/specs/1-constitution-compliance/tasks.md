@@ -25,7 +25,7 @@ description: "Implementation tasks for Constitution Compliance Remediation"
 
 **Recommended Sequence**: P1 → P2 → P3 → P4 (priority order) OR parallelize US1+US4, then US2+US3
 
-**Total Tasks**: 74 tasks across 6 phases
+**Total Tasks**: 121 tasks across 7 phases
 
 **Estimated Effort**: 54-76 hours (1.5-2 sprint cycles for single developer, 1 week for team of 2)
 

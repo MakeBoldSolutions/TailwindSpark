@@ -153,8 +153,8 @@
 
 - **SC-005**: JSDoc coverage reaches 100% for all exports in `packages/ui-components` (from current ~0%)
 - **SC-006**: JSDoc coverage reaches 100% for all token exports in `packages/design-tokens` (from current ~0%)
-- **SC-007**: 95% or higher developer satisfaction with IDE IntelliSense helpfulness (measured via team survey or feedback)
-- **SC-008**: New contributors can understand component APIs without reading implementation code (measured via onboarding feedback)
+- **SC-007**: 95% or higher developer satisfaction with IDE IntelliSense helpfulness (measured via 3-question Likert scale survey: IntelliSense discoverability, documentation clarity, example usefulness; 3-5 developers, conducted post-PR merge)
+- **SC-008**: New contributors can understand component APIs without reading implementation code (measured via structured onboarding interviews: 3 developers attempt component integration tasks, record time-to-understanding <10 minutes per component)
 
 #### Test Coverage
 
