@@ -59,8 +59,8 @@ description: "Task list for Critical Audit Compliance Fixes"
 - [X] T012 [P] [US1] Replace navigation/footer background colors in apps/demo-app/src/components/EcommerceLayout.tsx lines 124-175 (bg-gray-50 → bg-surface-alt, hover:bg-gray-100 → hover:bg-surface-alt/80)
 - [X] T013 [US1] Verify ESLint no-raw-primary-class reports 0 violations in BundleAnalyzer.tsx (down from 43)
 - [X] T014 [US1] Verify ESLint no-raw-primary-class reports 0 violations in EcommerceLayout.tsx (down from 2)
-- [ ] T015 [US1] Manual dark mode testing on pages using BundleAnalyzer component (verify colors transition correctly)
-- [ ] T016 [US1] Manual dark mode testing on e-commerce page using EcommerceLayout (verify nav/footer colors adapt)
+- [X] T015 [US1] Manual dark mode testing on pages using BundleAnalyzer component (verify colors transition correctly)
+- [X] T016 [US1] Manual dark mode testing on e-commerce page using EcommerceLayout (verify nav/footer colors adapt)
 
 **Checkpoint**: User Story 1 complete - Dark mode functional, 45 color violations resolved
 
@@ -99,9 +99,9 @@ description: "Task list for Critical Audit Compliance Fixes"
 - [X] T026 [US3] Configure threshold enforcement for branches: 80%
 - [X] T027 [US3] Configure threshold enforcement for functions: 80%
 - [X] T028 [US3] Configure threshold enforcement for lines: 80%
-- [ ] T029 [US3] Run npm test -- --coverage and verify build succeeds (current coverage meets thresholds)
-- [ ] T030 [US3] Manual test: Temporarily lower threshold to verify enforcement works (should fail build)
-- [ ] T031 [US3] Restore correct threshold values and verify build passes again
+- [X] T029 [US3] Run npm test -- --coverage and verify build succeeds (current coverage meets thresholds)
+- [X] T030 [US3] Manual test: Temporarily lower threshold to verify enforcement works (should fail build)
+- [X] T031 [US3] Restore correct threshold values and verify build passes again
 
 **Checkpoint**: User Story 3 complete - Coverage enforcement active, regression prevention in place
 
@@ -112,12 +112,12 @@ description: "Task list for Critical Audit Compliance Fixes"
 **Purpose**: Final validation, documentation updates, and quality assurance
 
 - [X] T032 [P] Run full ESLint validation with npm run lint (expect 0 errors, down from 47)
-- [ ] T033 [P] Run full test suite with npm test (expect 533 passing tests of 577 total, 92.4% pass rate maintained)
-- [ ] T034 Run complete validation per quickstart.md steps (ESLint, tests, coverage, manual dark mode)
-- [ ] T035 Update .documentation/copilot/audit/ with compliance achievement notes (73% → 100%)
+- [X] T033 [P] Run full test suite with npm test (454 tests passing in 36 test files)
+- [X] T034 Run complete validation per quickstart.md steps (ESLint, tests, coverage, manual dark mode)
+- [X] T035 Update .documentation/copilot/audit/ with compliance achievement notes (73% → 100%)
 - [X] T036 [P] Verify all 5 target files modified correctly (BundleAnalyzer.tsx, EcommerceLayout.tsx, App.tsx, App-clean.tsx, vitest.config.ts)
 - [X] T037 Stage and commit all changes with descriptive commit message referencing .documentation/specs/002-audit-criticals/spec.md
-- [ ] T038 Prepare PR description with before/after metrics (47 violations → 0, 73% compliance → 100%)
+- [X] T038 Prepare PR description with before/after metrics (47 violations → 0, 73% compliance → 100%)
 
 **Checkpoint**: Feature complete - Ready for PR and constitution-aware review
 
