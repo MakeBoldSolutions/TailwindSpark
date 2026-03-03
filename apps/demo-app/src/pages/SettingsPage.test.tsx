@@ -25,9 +25,9 @@ describe('SettingsPage', () => {
   it('shows settings sections', () => {
     renderWithRouter(<SettingsPage />);
     
-    // Check for any container elements that would organize settings
-    const containers = document.querySelectorAll('div[class*="settings"], section, div[class*="container"]');
-    expect(containers.length).toBeGreaterThan(0);
+    // Check for section headings which indicate settings sections
+    const headings = screen.getAllByRole('heading');
+    expect(headings.length).toBeGreaterThan(1);
   });
 
   it('renders form controls', () => {
@@ -111,3 +111,4 @@ describe('SettingsPage', () => {
     const layoutElements = document.querySelectorAll('div');
     expect(layoutElements.length).toBeGreaterThan(0);
   });
+});

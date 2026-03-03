@@ -24,7 +24,7 @@ interface ThemeToggleProps {
  * @param root0.isDark - Current theme state
  * @param root0.onToggle - Theme toggle callback
  * @returns Theme toggle button component
- *  
+ * 
  * @example
  * ```tsx
  * <ThemeToggle isDark={isDark} onToggle={toggleTheme} />

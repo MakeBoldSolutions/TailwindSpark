@@ -13,7 +13,7 @@ import { PerformanceMonitor } from './PerformanceMonitor';
 
 // Mock performance APIs
 const mockPerformanceObserver = vi.fn();
-global.PerformanceObserver = mockPerformanceObserver as any;
+global.PerformanceObserver = mockPerformanceObserver as unknown as typeof PerformanceObserver;
 
 describe('PerformanceMonitor', () => {
   const originalNodeEnv = process.env.NODE_ENV;
@@ -24,7 +24,7 @@ describe('PerformanceMonitor', () => {
     vi.clearAllMocks();
     
     // Mock performance.getEntriesByType
-    global.performance.getEntriesByType = vi.fn(() => []) as any;
+    global.performance.getEntriesByType = vi.fn(() => []) as unknown as Performance['getEntriesByType'];
     
     // Mock performance.memory
     Object.defineProperty(global.performance, 'memory', {

@@ -122,10 +122,10 @@ export const PerformanceMonitor: React.FC = () => {
   }
 
   const getMetricStatus = (value: number | null, thresholds: { good: number; poor: number }) => {
-    if (value === null) return 'text-gray-500';
-    if (value <= thresholds.good) return 'text-green-600';
-    if (value <= thresholds.poor) return 'text-yellow-600';
-    return 'text-red-600';
+    if (value === null) return 'text-text-muted';
+    if (value <= thresholds.good) return 'text-data-viz-2';
+    if (value <= thresholds.poor) return 'text-data-viz-3';
+    return 'text-destructive';
   };
 
   const formatMetric = (value: number | null, unit: string = 'ms') => {
@@ -138,7 +138,7 @@ export const PerformanceMonitor: React.FC = () => {
       {/* Toggle Button */}
       <button
         onClick={() => setIsVisible(!isVisible)}
-        className="mb-2 rounded-full bg-blue-600 p-3 text-white shadow-lg transition-all hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        className="mb-2 rounded-full bg-brand p-3 text-white shadow-lg transition-all hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus-ring focus:ring-offset-2"
         aria-label={isVisible ? 'Hide performance monitor' : 'Show performance monitor'}
         title="Performance Monitor"
       >
@@ -159,47 +159,47 @@ export const PerformanceMonitor: React.FC = () => {
 
       {/* Performance Panel */}
       {isVisible && (
-        <div className="min-w-80 rounded-lg border bg-white p-4 shadow-lg dark:border-gray-700 dark:bg-gray-800">
+        <div className="min-w-80 rounded-lg border border-border bg-surface p-4 shadow-lg">
           <div className="mb-3 flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+            <h3 className="text-sm font-semibold text-text">
               Performance Monitor
             </h3>
-            <span className="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-200">
+            <span className="rounded-full bg-data-viz-2/10 px-2 py-1 text-xs font-medium text-data-viz-2">
               DEV
             </span>
           </div>
 
           <div className="space-y-2 text-sm">
             {/* Core Web Vitals */}
-            <div className="border-b border-gray-200 pb-2 dark:border-gray-600">
-              <h4 className="mb-1 font-medium text-gray-700 dark:text-gray-300">
+            <div className="border-b border-border pb-2">
+              <h4 className="mb-1 font-medium text-text">
                 Core Web Vitals
               </h4>
               
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <span className="text-gray-600 dark:text-gray-400">LCP:</span>
+                  <span className="text-text-muted">LCP:</span>
                   <span className={`ml-1 font-mono ${getMetricStatus(metrics.lcp, { good: 2500, poor: 4000 })}`}>
                     {formatMetric(metrics.lcp)}
                   </span>
                 </div>
                 
                 <div>
-                  <span className="text-gray-600 dark:text-gray-400">FCP:</span>
+                  <span className="text-text-muted">FCP:</span>
                   <span className={`ml-1 font-mono ${getMetricStatus(metrics.fcp, { good: 1800, poor: 3000 })}`}>
                     {formatMetric(metrics.fcp)}
                   </span>
                 </div>
                 
                 <div>
-                  <span className="text-gray-600 dark:text-gray-400">CLS:</span>
+                  <span className="text-text-muted">CLS:</span>
                   <span className={`ml-1 font-mono ${getMetricStatus(metrics.cls, { good: 0.1, poor: 0.25 })}`}>
                     {formatMetric(metrics.cls, '')}
                   </span>
                 </div>
                 
                 <div>
-                  <span className="text-gray-600 dark:text-gray-400">TTFB:</span>
+                  <span className="text-text-muted">TTFB:</span>
                   <span className={`ml-1 font-mono ${getMetricStatus(metrics.ttfb, { good: 800, poor: 1800 })}`}>
                     {formatMetric(metrics.ttfb)}
                   </span>
@@ -209,15 +209,15 @@ export const PerformanceMonitor: React.FC = () => {
 
             {/* Runtime Metrics */}
             <div>
-              <h4 className="mb-1 font-medium text-gray-700 dark:text-gray-300">
+              <h4 className="mb-1 font-medium text-text">
                 Runtime
               </h4>
               
               <div className="space-y-1">
                 {metrics.memoryUsage && (
                   <div>
-                    <span className="text-gray-600 dark:text-gray-400">Memory:</span>
-                    <span className="ml-1 font-mono text-purple-600 dark:text-purple-400">
+                    <span className="text-text-muted">Memory:</span>
+                    <span className="ml-1 font-mono text-data-viz-4">
                       {metrics.memoryUsage}MB
                     </span>
                   </div>
@@ -225,8 +225,8 @@ export const PerformanceMonitor: React.FC = () => {
                 
                 {metrics.bundleSize && (
                   <div>
-                    <span className="text-gray-600 dark:text-gray-400">Bundle:</span>
-                    <span className="ml-1 font-mono text-orange-600 dark:text-orange-400">
+                    <span className="text-text-muted">Bundle:</span>
+                    <span className="ml-1 font-mono text-data-viz-3">
                       {metrics.bundleSize}
                     </span>
                   </div>
@@ -236,11 +236,11 @@ export const PerformanceMonitor: React.FC = () => {
           </div>
 
           {/* Thresholds Legend */}
-          <div className="mt-3 border-t border-gray-200 pt-2 dark:border-gray-600">
+          <div className="mt-3 border-t border-border pt-2">
             <div className="flex items-center justify-between text-xs">
-              <span className="text-green-600">Good</span>
-              <span className="text-yellow-600">Needs Improvement</span>
-              <span className="text-red-600">Poor</span>
+              <span className="text-data-viz-2">Good</span>
+              <span className="text-data-viz-3">Needs Improvement</span>
+              <span className="text-destructive">Poor</span>
             </div>
           </div>
         </div>

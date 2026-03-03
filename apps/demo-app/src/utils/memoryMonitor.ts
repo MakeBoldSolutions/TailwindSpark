@@ -68,6 +68,7 @@ class MemoryMonitor {
 
   /**
    * Get current memory information from browser API
+   * @returns Current memory info or null if not available
    */
   private getCurrentMemory(): MemoryInfo | null {
     const performanceWithMemory = performance as PerformanceWithMemory;
@@ -84,6 +85,7 @@ class MemoryMonitor {
 
   /**
    * Start continuous memory monitoring
+   * @param intervalMs - Monitoring interval in milliseconds (default: 5000)
    */
   startMonitoring(intervalMs: number = 5000): void {
     if (this.isMonitoring) return;
@@ -110,6 +112,7 @@ class MemoryMonitor {
 
   /**
    * Record memory snapshot and update peak memory
+   * @param memory - Memory information to record
    */
   private recordMemorySnapshot(memory: MemoryInfo): void {
     this.memoryHistory.push(memory);
@@ -127,6 +130,7 @@ class MemoryMonitor {
 
   /**
    * Track component mounting
+   * @param componentName - Name of the component being mounted
    */
   trackComponentMount(componentName: string): void {
     const memory = this.getCurrentMemory();
@@ -143,6 +147,7 @@ class MemoryMonitor {
 
   /**
    * Track component unmounting
+   * @param componentName - Name of the component being unmounted
    */
   trackComponentUnmount(componentName: string): void {
     const memory = this.getCurrentMemory();
@@ -163,6 +168,7 @@ class MemoryMonitor {
 
   /**
    * Calculate memory growth rate
+   * @returns Memory growth rate as a percentage
    */
   private calculateGrowthRate(): number {
     if (this.memoryHistory.length < 2) return 0;
@@ -178,6 +184,7 @@ class MemoryMonitor {
 
   /**
    * Detect potential memory leaks
+   * @returns Array of component memory entries with potential leaks
    */
   private detectPotentialLeaks(): ComponentMemoryEntry[] {
     const leaks: ComponentMemoryEntry[] = [];
@@ -209,6 +216,7 @@ class MemoryMonitor {
 
   /**
    * Get comprehensive memory metrics
+   * @returns Complete memory metrics or null if not available
    */
   getMemoryMetrics(): MemoryMetrics | null {
     const current = this.getCurrentMemory();
@@ -224,6 +232,8 @@ class MemoryMonitor {
 
   /**
    * Format memory size for display
+   * @param bytes - Memory size in bytes
+   * @returns Formatted memory size string with units
    */
   formatMemorySize(bytes: number): string {
     const units = ['B', 'KB', 'MB', 'GB'];
@@ -240,6 +250,7 @@ class MemoryMonitor {
 
   /**
    * Generate memory report
+   * @returns Formatted memory report string
    */
   generateReport(): string {
     const metrics = this.getMemoryMetrics();
@@ -284,11 +295,14 @@ class MemoryMonitor {
   }
 }
 
-// Global memory monitor instance
+/**
+ * Global memory monitor instance
+ */
 export const memoryMonitor = new MemoryMonitor();
 
 /**
  * React hook for component memory tracking
+ * @param componentName - Name of the component to track
  */
 export function useMemoryTracking(componentName: string) {
   React.useEffect(() => {
@@ -304,6 +318,9 @@ export function useMemoryTracking(componentName: string) {
 
 /**
  * Higher-order component for automatic memory tracking
+ * @param WrappedComponent - Component to wrap with memory tracking
+ * @param displayName - Optional display name for the wrapped component
+ * @returns Wrapped component with memory tracking
  */
 export function withMemoryTracking<P extends object>(
   WrappedComponent: React.ComponentType<P>,

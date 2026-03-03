@@ -1,5 +1,29 @@
 import React from 'react';
 
+/**
+ * Clean minimal application component for basic theme demonstration.
+ * 
+ * Simplified version of App.tsx without routing, showcasing dark mode
+ * toggle functionality with localStorage persistence and system preference
+ * detection. Used for testing and demonstrating theme capabilities in
+ * isolation.
+ * 
+ * Features:
+ * - Dark mode toggle with state persistence
+ * - System color scheme preference detection
+ * - localStorage-based theme persistence
+ * - Minimal UI for theme demonstration
+ * 
+ * @returns Minimal app with theme toggle
+ * 
+ * @example
+ * ```tsx
+ * // Alternative minimal entry point
+ * ReactDOM.createRoot(document.getElementById('root')!).render(
+ *   <App />
+ * );
+ * ```
+ */
 function App() {
   const [isDark, setIsDark] = React.useState(() => {
     if (typeof window !== 'undefined') {

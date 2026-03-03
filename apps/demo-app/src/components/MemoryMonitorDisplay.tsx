@@ -110,7 +110,7 @@ export const MemoryMonitorDisplay: React.FC = () => {
 
   if (!isSupported) {
     return (
-      <div className="fixed bottom-4 right-4 bg-amber-100 text-amber-800 p-2 rounded text-xs">
+      <div className="fixed bottom-4 right-4 bg-data-viz-3/10 text-data-viz-3 p-2 rounded text-xs">
         Memory monitoring not supported
       </div>
     );
@@ -120,7 +120,7 @@ export const MemoryMonitorDisplay: React.FC = () => {
     return (
       <button
         onClick={() => setIsVisible(true)}
-        className="fixed bottom-4 right-4 bg-blue-600 text-white p-2 rounded text-xs hover:bg-blue-700 transition-colors"
+        className="fixed bottom-4 right-4 bg-brand text-white p-2 rounded text-xs hover:bg-brand-hover transition-colors"
         aria-label="Show memory monitor"
       >
         Memory
@@ -130,7 +130,7 @@ export const MemoryMonitorDisplay: React.FC = () => {
 
   if (!metrics) {
     return (
-      <div className="fixed bottom-4 right-4 bg-gray-100 text-gray-800 p-2 rounded text-xs">
+      <div className="fixed bottom-4 right-4 bg-surface-alt text-text p-2 rounded text-xs">
         Loading memory data...
       </div>
     );
@@ -152,21 +152,21 @@ export const MemoryMonitorDisplay: React.FC = () => {
   const getMemoryStatus = (): { color: string; status: string } => {
     const usagePercent = (metrics.current.usedJSHeapSize / metrics.current.jsHeapSizeLimit) * 100;
     
-    if (usagePercent > 80) return { color: 'text-red-600', status: 'High' };
-    if (usagePercent > 60) return { color: 'text-amber-600', status: 'Medium' };
-    return { color: 'text-green-600', status: 'Low' };
+    if (usagePercent > 80) return { color: 'text-destructive', status: 'High' };
+    if (usagePercent > 60) return { color: 'text-data-viz-3', status: 'Medium' };
+    return { color: 'text-data-viz-2', status: 'Low' };
   };
 
   const { color, status } = getMemoryStatus();
   const usagePercent = (metrics.current.usedJSHeapSize / metrics.current.jsHeapSizeLimit) * 100;
 
   return (
-    <div className="fixed bottom-4 right-4 bg-white shadow-lg rounded-lg p-4 text-xs max-w-sm z-50 border">
+    <div className="fixed bottom-4 right-4 bg-surface shadow-lg rounded-lg p-4 text-xs max-w-sm z-50 border border-border">
       <div className="flex justify-between items-center mb-2">
-        <h3 className="font-semibold text-gray-800">Memory Monitor</h3>
+        <h3 className="font-semibold text-text">Memory Monitor</h3>
         <button
           onClick={() => setIsVisible(false)}
-          className="text-gray-500 hover:text-gray-700"
+          className="text-text-muted hover:text-text"
           aria-label="Hide memory monitor"
         >
           ×
@@ -179,11 +179,11 @@ export const MemoryMonitorDisplay: React.FC = () => {
             <span>Usage:</span>
             <span className={color}>{formatBytes(metrics.current.usedJSHeapSize)} ({status})</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-1 mt-1">
+          <div className="w-full bg-surface-hover rounded-full h-1 mt-1">
             <div 
               className={`h-1 rounded-full transition-all duration-300 ${
-                usagePercent > 80 ? 'bg-red-500' : 
-                usagePercent > 60 ? 'bg-amber-500' : 'bg-green-500'
+                usagePercent > 80 ? 'bg-destructive' : 
+                usagePercent > 60 ? 'bg-data-viz-3' : 'bg-data-viz-2'
               }`}
               data-width={Math.min(usagePercent, 100)}
               style={{
@@ -205,7 +205,7 @@ export const MemoryMonitorDisplay: React.FC = () => {
 
         <div className="flex justify-between">
           <span>Growth Rate:</span>
-          <span className={metrics.growthRate > 5 ? 'text-red-600' : 'text-gray-600'}>
+          <span className={metrics.growthRate > 5 ? 'text-destructive' : 'text-text-muted'}>
             {metrics.growthRate.toFixed(1)}%
           </span>
         </div>
@@ -213,17 +213,17 @@ export const MemoryMonitorDisplay: React.FC = () => {
         {metrics.potentialLeaks.length > 0 && (
           <div className="border-t pt-2">
             <div className="flex justify-between">
-              <span className="text-red-600 font-medium">Potential Leaks:</span>
-              <span className="text-red-600">{metrics.potentialLeaks.length}</span>
+              <span className="text-destructive font-medium">Potential Leaks:</span>
+              <span className="text-destructive">{metrics.potentialLeaks.length}</span>
             </div>
             <div className="mt-1 max-h-20 overflow-y-auto">
               {metrics.potentialLeaks.slice(0, 3).map((leak, index) => (
-                <div key={index} className="text-red-600 text-xs">
+                <div key={index} className="text-destructive text-xs">
                   {leak.name}
                 </div>
               ))}
               {metrics.potentialLeaks.length > 3 && (
-                <div className="text-red-600 text-xs">
+                <div className="text-destructive text-xs">
                   +{metrics.potentialLeaks.length - 3} more
                 </div>
               )}
@@ -234,7 +234,7 @@ export const MemoryMonitorDisplay: React.FC = () => {
         <div className="border-t pt-2 flex space-x-2">
           <button
             onClick={() => memoryMonitor.clearData()}
-            className="text-xs text-blue-600 hover:text-blue-800"
+            className="text-xs text-brand hover:text-brand-hover"
           >
             Clear Data
           </button>
@@ -243,7 +243,7 @@ export const MemoryMonitorDisplay: React.FC = () => {
               // eslint-disable-next-line no-console
               console.log(memoryMonitor.generateReport());
             }}
-            className="text-xs text-blue-600 hover:text-blue-800"
+            className="text-xs text-brand hover:text-brand-hover"
           >
             Log Report
           </button>

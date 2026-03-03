@@ -81,22 +81,27 @@ export class ErrorBoundary extends Component<Props, State> {
     }
   }
 
+  /**
+   * Renders either the fallback UI or the children components.
+   * 
+   * @returns The fallback UI if error occurred, otherwise children
+   */
   public render() {
     if (this.state.hasError) {
       return (
         this.props.fallback || (
-          <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900">
+          <div className="flex min-h-screen items-center justify-center bg-surface-alt">
             <div className="mx-auto max-w-md px-4 text-center">
               <div className="mb-6">
                 <Logo size="lg" className="mb-4 justify-center opacity-50" />
               </div>
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-100 dark:bg-red-900">
-                <span className="text-2xl text-red-600 dark:text-red-400">⚠️</span>
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
+                <span className="text-2xl text-destructive">⚠️</span>
               </div>
-              <h2 className="mb-2 text-xl font-semibold text-gray-900 dark:text-gray-100">
+              <h2 className="mb-2 text-xl font-semibold text-text">
                 Something went wrong
               </h2>
-              <p className="mb-6 text-gray-600 dark:text-gray-400">
+              <p className="mb-6 text-text-muted">
                 We're sorry, but something unexpected happened in TailwindSpark. Please try
                 refreshing the page.
               </p>
@@ -109,17 +114,17 @@ export class ErrorBoundary extends Component<Props, State> {
                 </button>
                 <button
                   onClick={() => (window.location.href = '/')}
-                  className="w-full rounded-lg bg-gray-200 px-4 py-2 text-gray-900 transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"
+                  className="w-full rounded-lg bg-surface-hover px-4 py-2 text-text transition-colors hover:bg-surface-active"
                 >
                   Go to Homepage
                 </button>
               </div>
               {process.env.NODE_ENV === 'development' && this.state.error && (
                 <details className="mt-4 text-left">
-                  <summary className="cursor-pointer text-sm text-gray-500 dark:text-gray-400">
+                  <summary className="cursor-pointer text-sm text-text-muted">
                     Error Details (Development)
                   </summary>
-                  <pre className="mt-2 overflow-auto rounded bg-gray-100 p-4 text-xs dark:bg-gray-800">
+                  <pre className="mt-2 overflow-auto rounded bg-surface-alt p-4 text-xs">
                     {this.state.error.toString()}
                   </pre>
                 </details>

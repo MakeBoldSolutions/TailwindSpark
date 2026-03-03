@@ -16,10 +16,12 @@ declare global {
  * Automatically tracks page navigation and Web Vitals metrics (CLS, FCP, LCP, TTFB)
  * with Google Analytics integration and performance budget monitoring.
  * 
+ * @returns Object with trackEvent, trackComponentInteraction, trackAnimationInteraction, trackDemoInteraction functions and budgetMonitor instance
+ * 
  * @example
  * ```tsx
  * function App() {
- *   useAnalytics();
+ *   const { trackEvent, trackComponentInteraction } = useAnalytics();
  *   return <Routes />;
  * }
  * ```

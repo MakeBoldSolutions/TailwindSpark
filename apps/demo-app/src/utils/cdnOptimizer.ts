@@ -19,10 +19,17 @@ interface ResourceHint {
   type?: string;
 }
 
+/**
+ * CDN Optimizer class for managing CDN-specific optimizations
+ */
 class CDNOptimizer {
   private config: CDNConfig;
   private appliedHints = new Set<string>();
 
+  /**
+   * Creates a new CDN optimizer instance
+   * @param config - Optional CDN configuration
+   */
   constructor(config: Partial<CDNConfig> = {}) {
     this.config = {
       baseUrl: 'https://markhazleton.github.io/TailwindSpark/',
@@ -164,6 +171,7 @@ class CDNOptimizer {
 
   /**
    * Prefetch resources for a specific page
+   * @param url - URL of the page to prefetch resources for
    */
   private prefetchPageResources(url: string): void {
     // Don't prefetch external links
@@ -236,6 +244,7 @@ class CDNOptimizer {
 
   /**
    * Analyze resource performance and optimize CDN usage
+   * @param entry - Performance resource timing entry to analyze
    */
   private analyzeResourcePerformance(entry: PerformanceResourceTiming): void {
     // Check for slow-loading resources
@@ -273,6 +282,7 @@ class CDNOptimizer {
 
   /**
    * Add a resource hint to the document head
+   * @param hint - Resource hint configuration
    */
   private addResourceHint(hint: ResourceHint): void {
     const key = `${hint.rel}:${hint.href}`;
@@ -320,6 +330,7 @@ class CDNOptimizer {
 
   /**
    * Handle cache updates from service worker
+   * @param updatedAssets - Array of updated asset URLs
    */
   private handleCacheUpdate(updatedAssets: string[]): void {
     // Invalidate prefetch hints for updated assets
@@ -330,6 +341,7 @@ class CDNOptimizer {
 
   /**
    * Flag resource for future preloading
+   * @param resourceUrl - URL of the resource to flag
    */
   private flagForPreloading(resourceUrl: string): void {
     // Store in localStorage for future visits
@@ -342,6 +354,7 @@ class CDNOptimizer {
 
   /**
    * Get critical styles URL
+   * @returns URL for critical CSS file
    */
   private getCriticalStylesUrl(): string {
     // In production, this would be the actual CSS file with hash
@@ -350,6 +363,8 @@ class CDNOptimizer {
 
   /**
    * Extract page name from URL
+   * @param url - URL to extract page name from
+   * @returns Extracted page name or null if not extractable
    */
   private extractPageName(url: string): string | null {
     try {
@@ -367,6 +382,7 @@ class CDNOptimizer {
 
   /**
    * Get current cache strategy configuration
+   * @returns Cache strategy configuration with TTL values in seconds
    */
   getCacheStrategy(): Record<string, number> {
     const strategies = {
@@ -391,7 +407,9 @@ class CDNOptimizer {
   }
 }
 
-// Create global CDN optimizer instance
+/**
+ * Global CDN optimizer instance
+ */
 export const cdnOptimizer = new CDNOptimizer({
   cacheStrategy: process.env.NODE_ENV === 'production' ? 'balanced' : 'conservative',
 });

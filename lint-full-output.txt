@@ -1,0 +1,345 @@
+
+> tailwindspark-monorepo@1.0.23 lint
+> turbo run lint
+
+ΓÇó turbo 2.8.12
+ΓÇó Packages in scope: @tailwindspark/demo-app, @tailwindspark/design-tokens, @tailwindspark/ui-components
+ΓÇó Running lint in 3 packages
+ΓÇó Remote caching disabled
+@tailwindspark/design-tokens:build: cache hit, replaying logs e8e63b67e74feb18
+@tailwindspark/design-tokens:build: 
+@tailwindspark/design-tokens:build: > @tailwindspark/design-tokens@1.0.0 build
+@tailwindspark/design-tokens:build: > echo 'Design tokens built'
+@tailwindspark/design-tokens:build: 
+@tailwindspark/design-tokens:build: 'Design tokens built'
+@tailwindspark/ui-components:lint: cache hit, replaying logs bac3c4be82d1c676
+@tailwindspark/ui-components:lint: 
+@tailwindspark/ui-components:lint: > @tailwindspark/ui-components@1.0.0 lint
+@tailwindspark/ui-components:lint: > eslint src --max-warnings 0
+@tailwindspark/ui-components:lint: 
+@tailwindspark/ui-components:build: cache hit, replaying logs d613e43c78a4d93c
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: > @tailwindspark/ui-components@1.0.0 build
+@tailwindspark/ui-components:build: > tsc && vite build
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: [36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+@tailwindspark/ui-components:build: transforming...
+@tailwindspark/ui-components:build: [32mΓ£ô[39m 15 modules transformed.
+@tailwindspark/ui-components:build: rendering chunks...
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: [vite:dts] Start generate declaration files...
+@tailwindspark/ui-components:build: computing gzip size...
+@tailwindspark/ui-components:build: [2mdist/[22m[36mindex.es.js  [39m[1m[2m24.18 kB[22m[1m[22m[2m Γöé gzip: 6.24 kB[22m
+@tailwindspark/ui-components:build: [vite:dts] Declaration files built in 848ms.
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: [2mdist/[22m[36mindex.umd.js  [39m[1m[2m16.40 kB[22m[1m[22m[2m Γöé gzip: 5.55 kB[22m
+@tailwindspark/ui-components:build: [32mΓ£ô built in 948ms[39m
+@tailwindspark/demo-app:lint: cache miss, executing 004d836ad782aa49
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: > @tailwindspark/demo-app@1.0.0 lint
+@tailwindspark/demo-app:lint: > eslint .
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\ErrorBoundary.test.tsx
+@tailwindspark/demo-app:lint:   212:51  error  Avoid raw "bg-red-100". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   212:65  error  Avoid raw "dark:bg-red-900". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\ErrorBoundary.tsx
+@tailwindspark/demo-app:lint:   84:16  error  Missing JSDoc comment  jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\LoadingSpinner.tsx
+@tailwindspark/demo-app:lint:   107:1  error  Missing JSDoc @param "root0" declaration          jsdoc/require-param
+@tailwindspark/demo-app:lint:   107:1  error  Missing JSDoc @param "root0.message" declaration  jsdoc/require-param
+@tailwindspark/demo-app:lint:   107:1  error  Missing JSDoc @returns declaration                jsdoc/require-returns
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\MemoryMonitorDisplay.test.tsx
+@tailwindspark/demo-app:lint:   70:35  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\MemoryMonitorDisplay.tsx
+@tailwindspark/demo-app:lint:   113:22  error  Avoid raw "bg-amber-100". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   113:22  error  Avoid raw "text-amber-800". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   123:19  error  Avoid raw "bg-blue-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   123:19  error  Avoid raw "hover:bg-blue-700". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   155:44  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   156:44  error  Avoid raw "text-amber-600". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   157:21  error  Avoid raw "text-green-600". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   185:37  error  Avoid raw "bg-red-500". Use semantic brand / surface / text / data-viz tokens instead           no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   186:37  error  Avoid raw "bg-amber-500". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   186:54  error  Avoid raw "bg-green-500". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   216:31  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   217:31  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   221:44  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   226:32  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   237:23  error  Avoid raw "text-blue-600". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   237:23  error  Avoid raw "hover:text-blue-800". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   246:23  error  Avoid raw "text-blue-600". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   246:23  error  Avoid raw "hover:text-blue-800". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\PerformanceMonitor.test.tsx
+@tailwindspark/demo-app:lint:   16:57  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+@tailwindspark/demo-app:lint:   27:62  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\PerformanceMonitor.tsx
+@tailwindspark/demo-app:lint:   175:29  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   175:29  error  Avoid raw "dark:text-gray-300". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\QuickViewModal.tsx
+@tailwindspark/demo-app:lint:    77:14  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    78:12  error  Avoid raw "bg-red-500". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    79:13  error  Avoid raw "bg-blue-500". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    80:13  error  Avoid raw "bg-blue-900". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    81:13  error  Avoid raw "bg-gray-500". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    82:15  error  Avoid raw "bg-gray-400". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    83:14  error  Avoid raw "bg-amber-800". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    84:12  error  Avoid raw "bg-amber-600". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    85:13  error  Avoid raw "bg-pink-500". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    86:20  error  Avoid raw "bg-rose-400". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    87:21  error  Avoid raw "bg-blue-300". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    88:20  error  Avoid raw "bg-blue-800". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    91:45  error  Avoid raw "bg-gray-300". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   168:58  error  Avoid raw "text-yellow-400". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   168:78  error  Avoid raw "text-gray-300". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   177:33  error  Avoid raw "text-gray-600". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   186:37  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   187:37  error  Avoid raw "text-gray-500". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   188:37  error  Avoid raw "bg-red-100". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   188:37  error  Avoid raw "text-red-800". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   193:35  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   199:30  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   204:31  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   205:31  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   215:33  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   224:31  error  Avoid raw "ring-gray-300". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   230:32  error  Avoid raw "text-gray-600". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   237:33  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   246:31  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   246:31  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   246:31  error  Avoid raw "hover:bg-gray-50". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   258:31  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   262:31  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   262:31  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   262:31  error  Avoid raw "hover:bg-gray-50". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   270:31  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   270:31  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   270:31  error  Avoid raw "hover:bg-gray-50". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   276:32  error  Avoid raw "text-orange-600". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   290:25  error  Avoid raw "bg-gray-300". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   290:25  error  Avoid raw "text-gray-500". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   300:25  error  Avoid raw "border-red-500". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   300:25  error  Avoid raw "bg-red-50". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   300:25  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   300:25  error  Avoid raw "hover:bg-red-100". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   301:25  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   301:25  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   301:25  error  Avoid raw "hover:bg-gray-50". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   324:72  error  Avoid raw "bg-green-500". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   324:89  error  Avoid raw "bg-red-500". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   327:71  error  Avoid raw "text-green-700". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   327:90  error  Avoid raw "text-red-700". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\ThemeToggle.tsx
+@tailwindspark/demo-app:lint:   27:1  error  There must be no indentation  jsdoc/check-indentation
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\hooks\useAnalytics.ts
+@tailwindspark/demo-app:lint:   13:1  error  Missing JSDoc @returns declaration  jsdoc/require-returns
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\pages\DashboardPage.tsx
+@tailwindspark/demo-app:lint:     6:43  error  Avoid raw "text-green-500". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:     7:45  error  Avoid raw "text-red-500". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    46:19  error  Avoid raw "text-green-600". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    46:19  error  Avoid raw "dark:text-green-400". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    47:19  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    47:19  error  Avoid raw "dark:text-red-400". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    68:16  error  Avoid raw "bg-green-100". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    68:16  error  Avoid raw "text-green-800". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    68:16  error  Avoid raw "dark:bg-green-900". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    68:16  error  Avoid raw "dark:text-green-300". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    69:14  error  Avoid raw "bg-yellow-100". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    69:14  error  Avoid raw "text-yellow-800". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    69:14  error  Avoid raw "dark:bg-yellow-900". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    69:14  error  Avoid raw "dark:text-yellow-300". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    70:13  error  Avoid raw "bg-red-100". Use semantic brand / surface / text / data-viz tokens instead            no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    70:13  error  Avoid raw "text-red-800". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    70:13  error  Avoid raw "dark:bg-red-900". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    70:13  error  Avoid raw "dark:text-red-300". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   110:20  error  Avoid raw "from-green-500". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   110:20  error  Avoid raw "to-blue-600". Use semantic brand / surface / text / data-viz tokens instead           no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   304:26  error  Avoid raw "border-gray-200". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   304:26  error  Avoid raw "dark:border-gray-700". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   304:26  error  Avoid raw "dark:bg-gray-800". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   305:27  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   305:27  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   311:33  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   311:33  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   334:27  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   334:27  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   408:29  error  Avoid raw "bg-green-500". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   410:31  error  Avoid raw "bg-yellow-500". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\pages\EcommercePage.tsx
+@tailwindspark/demo-app:lint:   337:33  error  Avoid raw "text-gray-300". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\pages\SettingsPage_new.tsx
+@tailwindspark/demo-app:lint:    40:18  error  Avoid raw "border-gray-200". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    40:18  error  Avoid raw "dark:border-gray-700". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    40:18  error  Avoid raw "dark:bg-gray-800". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    41:20  error  Avoid raw "border-gray-200". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    41:20  error  Avoid raw "dark:border-gray-700". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    48:25  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    48:25  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    49:24  error  Avoid raw "text-gray-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    49:24  error  Avoid raw "dark:text-gray-400". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    67:22  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    67:22  error  Avoid raw "dark:text-gray-300". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    68:44  error  Avoid raw "text-red-500". Use semantic brand / surface / text / data-viz tokens instead           no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    76:17  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    76:17  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    76:17  error  Avoid raw "focus:ring-purple-500". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    76:17  error  Avoid raw "dark:border-gray-600". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    76:17  error  Avoid raw "dark:bg-gray-700". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    76:17  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    78:34  error  Avoid raw "text-gray-500". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    78:34  error  Avoid raw "dark:text-gray-400". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    90:21  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    90:21  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    91:20  error  Avoid raw "text-gray-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    91:20  error  Avoid raw "dark:text-gray-400". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    96:19  error  Avoid raw "bg-purple-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    96:37  error  Avoid raw "bg-gray-200". Use semantic brand / surface / text / data-viz tokens instead            no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:    96:37  error  Avoid raw "dark:bg-gray-700". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   173:23  error  Avoid raw "bg-purple-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   173:23  error  Avoid raw "hover:bg-purple-700". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   220:32  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   220:32  error  Avoid raw "dark:text-gray-300". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   229:27  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   229:27  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   229:27  error  Avoid raw "focus:ring-purple-500". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   229:27  error  Avoid raw "dark:border-gray-600". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   229:27  error  Avoid raw "dark:bg-gray-700". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   229:27  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   270:32  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   270:32  error  Avoid raw "dark:text-gray-300". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   282:27  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   282:27  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   282:27  error  Avoid raw "focus:ring-purple-500". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   282:27  error  Avoid raw "dark:border-gray-600". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   282:27  error  Avoid raw "dark:bg-gray-700". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   282:27  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   343:32  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   343:32  error  Avoid raw "dark:text-gray-300". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   351:29  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   351:29  error  Avoid raw "bg-gray-50". Use semantic brand / surface / text / data-viz tokens instead             no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   351:29  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   351:29  error  Avoid raw "dark:border-gray-600". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   351:29  error  Avoid raw "dark:bg-gray-700". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   351:29  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   355:29  error  Avoid raw "bg-gray-600". Use semantic brand / surface / text / data-viz tokens instead            no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   355:29  error  Avoid raw "hover:bg-gray-700". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   390:28  error  Avoid raw "bg-gray-50". Use semantic brand / surface / text / data-viz tokens instead             no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   390:28  error  Avoid raw "dark:bg-gray-700". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   393:33  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   393:33  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   394:32  error  Avoid raw "text-gray-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   394:32  error  Avoid raw "dark:text-gray-400". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   398:35  error  Avoid raw "bg-purple-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   398:35  error  Avoid raw "hover:bg-purple-700". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   404:30  error  Avoid raw "border-gray-200". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   404:30  error  Avoid raw "dark:border-gray-600". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   405:32  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   405:32  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   406:32  error  Avoid raw "text-gray-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   406:32  error  Avoid raw "dark:text-gray-400". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   408:30  error  Avoid raw "border-gray-200". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   408:30  error  Avoid raw "dark:border-gray-600". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   409:32  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   409:32  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   410:32  error  Avoid raw "text-gray-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint:   410:32  error  Avoid raw "dark:text-gray-400". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\types\ecommerce.ts
+@tailwindspark/demo-app:lint:    1:8  error  Missing JSDoc comment  jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint:   20:8  error  Missing JSDoc comment  jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint:   29:8  error  Missing JSDoc comment  jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint:   39:8  error  Missing JSDoc comment  jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\utils\cdnOptimizer.ts
+@tailwindspark/demo-app:lint:    22:1   error  Missing JSDoc comment                             jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint:    26:14  error  Missing JSDoc comment                             jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint:   165:3   error  Missing JSDoc @param "url" declaration            jsdoc/require-param
+@tailwindspark/demo-app:lint:   237:3   error  Missing JSDoc @param "entry" declaration          jsdoc/require-param
+@tailwindspark/demo-app:lint:   274:3   error  Missing JSDoc @param "hint" declaration           jsdoc/require-param
+@tailwindspark/demo-app:lint:   321:3   error  Missing JSDoc @param "updatedAssets" declaration  jsdoc/require-param
+@tailwindspark/demo-app:lint:   331:3   error  Missing JSDoc @param "resourceUrl" declaration    jsdoc/require-param
+@tailwindspark/demo-app:lint:   343:3   error  Missing JSDoc @returns declaration                jsdoc/require-returns
+@tailwindspark/demo-app:lint:   351:3   error  Missing JSDoc @param "url" declaration            jsdoc/require-param
+@tailwindspark/demo-app:lint:   351:3   error  Missing JSDoc @returns declaration                jsdoc/require-returns
+@tailwindspark/demo-app:lint:   368:3   error  Missing JSDoc @returns declaration                jsdoc/require-returns
+@tailwindspark/demo-app:lint:   395:8   error  Missing JSDoc comment                             jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\utils\imageUtils.ts
+@tailwindspark/demo-app:lint:    3:1  error  Missing JSDoc @returns declaration              jsdoc/require-returns
+@tailwindspark/demo-app:lint:   30:1  error  Missing JSDoc @returns declaration              jsdoc/require-returns
+@tailwindspark/demo-app:lint:   44:1  error  Missing JSDoc @param "baseSrc" declaration      jsdoc/require-param
+@tailwindspark/demo-app:lint:   44:1  error  Missing JSDoc @returns declaration              jsdoc/require-returns
+@tailwindspark/demo-app:lint:   64:1  error  Missing JSDoc @param "originalSrc" declaration  jsdoc/require-param
+@tailwindspark/demo-app:lint:   64:1  error  Missing JSDoc @returns declaration              jsdoc/require-returns
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\utils\memoryMonitor.ts
+@tailwindspark/demo-app:lint:    69:3  error  Missing JSDoc @returns declaration                   jsdoc/require-returns
+@tailwindspark/demo-app:lint:    85:3  error  Missing JSDoc @param "intervalMs" declaration        jsdoc/require-param
+@tailwindspark/demo-app:lint:   111:3  error  Missing JSDoc @param "memory" declaration            jsdoc/require-param
+@tailwindspark/demo-app:lint:   128:3  error  Missing JSDoc @param "componentName" declaration     jsdoc/require-param
+@tailwindspark/demo-app:lint:   144:3  error  Missing JSDoc @param "componentName" declaration     jsdoc/require-param
+@tailwindspark/demo-app:lint:   164:3  error  Missing JSDoc @returns declaration                   jsdoc/require-returns
+@tailwindspark/demo-app:lint:   179:3  error  Missing JSDoc @returns declaration                   jsdoc/require-returns
+@tailwindspark/demo-app:lint:   210:3  error  Missing JSDoc @returns declaration                   jsdoc/require-returns
+@tailwindspark/demo-app:lint:   225:3  error  Missing JSDoc @param "bytes" declaration             jsdoc/require-param
+@tailwindspark/demo-app:lint:   225:3  error  Missing JSDoc @returns declaration                   jsdoc/require-returns
+@tailwindspark/demo-app:lint:   241:3  error  Missing JSDoc @returns declaration                   jsdoc/require-returns
+@tailwindspark/demo-app:lint:   288:8  error  Missing JSDoc comment                                jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint:   290:1  error  Missing JSDoc @param "componentName" declaration     jsdoc/require-param
+@tailwindspark/demo-app:lint:   305:1  error  Missing JSDoc @param "WrappedComponent" declaration  jsdoc/require-param
+@tailwindspark/demo-app:lint:   305:1  error  Missing JSDoc @param "displayName" declaration       jsdoc/require-param
+@tailwindspark/demo-app:lint:   305:1  error  Missing JSDoc @returns declaration                   jsdoc/require-returns
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\utils\performanceBudget.ts
+@tailwindspark/demo-app:lint:    15:1   error  Missing JSDoc @param "budget" declaration  jsdoc/require-param
+@tailwindspark/demo-app:lint:    15:1   error  Missing JSDoc @returns declaration         jsdoc/require-returns
+@tailwindspark/demo-app:lint:    95:21  error  Missing JSDoc comment                      jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint:   102:16  error  Missing JSDoc comment                      jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint:   106:14  error  Missing JSDoc comment                      jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint:   119:13  error  Missing JSDoc comment                      jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\utils\resourceHints.ts
+@tailwindspark/demo-app:lint:    13:1   error  Missing JSDoc @param "href" declaration         jsdoc/require-param
+@tailwindspark/demo-app:lint:    13:1   error  Missing JSDoc @param "options" declaration      jsdoc/require-param
+@tailwindspark/demo-app:lint:    29:1   error  Missing JSDoc @param "href" declaration         jsdoc/require-param
+@tailwindspark/demo-app:lint:    39:1   error  Missing JSDoc @param "href" declaration         jsdoc/require-param
+@tailwindspark/demo-app:lint:    39:1   error  Missing JSDoc @param "crossOrigin" declaration  jsdoc/require-param
+@tailwindspark/demo-app:lint:    50:1   error  Missing JSDoc @param "href" declaration         jsdoc/require-param
+@tailwindspark/demo-app:lint:    60:1   error  Missing JSDoc @param "fontUrls" declaration     jsdoc/require-param
+@tailwindspark/demo-app:lint:    73:1   error  Missing JSDoc @param "imageUrls" declaration    jsdoc/require-param
+@tailwindspark/demo-app:lint:   107:21  error  Missing JSDoc comment                           jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint:   114:3   error  Missing JSDoc @param "resources" declaration    jsdoc/require-param
+@tailwindspark/demo-app:lint:   132:3   error  Missing JSDoc @param "urls" declaration         jsdoc/require-param
+@tailwindspark/demo-app:lint:   144:3   error  Missing JSDoc @returns declaration              jsdoc/require-returns
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: Γ£û 246 problems (246 errors, 0 warnings)
+@tailwindspark/demo-app:lint:   43 errors and 0 warnings potentially fixable with the `--fix` option.
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: npm error Lifecycle script `lint` failed with error:
+@tailwindspark/demo-app:lint: npm error code 1
+@tailwindspark/demo-app:lint: npm error path C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app
+@tailwindspark/demo-app:lint: npm error workspace @tailwindspark/demo-app@1.0.0
+@tailwindspark/demo-app:lint: npm error location C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app
+@tailwindspark/demo-app:lint: npm error command failed
+@tailwindspark/demo-app:lint: npm error command C:\WINDOWS\system32\cmd.exe /d /s /c eslint .
+@tailwindspark/demo-app:lint: ERROR: command finished with error: command (C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app) C:\Program Files\nodejs\npm.cmd run lint exited (1)
+@tailwindspark/demo-app#lint: command (C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app) C:\Program Files\nodejs\npm.cmd run lint exited (1)
+
+ Tasks:    3 successful, 4 total
+Cached:    3 cached, 4 total
+  Time:    4.126s 
+Failed:    @tailwindspark/demo-app#lint
+
+ ERROR  run failed: command  exited (1)

@@ -1,0 +1,295 @@
+
+> @tailwindspark/demo-app@1.0.0 lint
+> eslint .
+
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\ErrorBoundary.tsx
+  84:16  error  Missing JSDoc comment  jsdoc/require-jsdoc
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\LoadingSpinner.tsx
+  107:1  error  Missing JSDoc @param "root0" declaration          jsdoc/require-param
+  107:1  error  Missing JSDoc @param "root0.message" declaration  jsdoc/require-param
+  107:1  error  Missing JSDoc @returns declaration                jsdoc/require-returns
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\MemoryMonitorDisplay.test.tsx
+  70:35  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\MemoryMonitorDisplay.tsx
+  113:22  error  Avoid raw "bg-amber-100". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+  113:22  error  Avoid raw "text-amber-800". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+  123:19  error  Avoid raw "bg-blue-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  123:19  error  Avoid raw "hover:bg-blue-700". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+  155:44  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+  156:44  error  Avoid raw "text-amber-600". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+  157:21  error  Avoid raw "text-green-600". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+  185:37  error  Avoid raw "bg-red-500". Use semantic brand / surface / text / data-viz tokens instead           no-raw-primary-class/no-raw-primary-class
+  186:37  error  Avoid raw "bg-amber-500". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+  186:54  error  Avoid raw "bg-green-500". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+  216:31  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+  217:31  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+  221:44  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+  226:32  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+  237:23  error  Avoid raw "text-blue-600". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+  237:23  error  Avoid raw "hover:text-blue-800". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+  246:23  error  Avoid raw "text-blue-600". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+  246:23  error  Avoid raw "hover:text-blue-800". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\PerformanceMonitor.test.tsx
+  16:57  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  27:62  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\PerformanceMonitor.tsx
+  175:29  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+  175:29  error  Avoid raw "dark:text-gray-300". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\QuickViewModal.tsx
+   77:14  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+   78:12  error  Avoid raw "bg-red-500". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+   79:13  error  Avoid raw "bg-blue-500". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+   80:13  error  Avoid raw "bg-blue-900". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+   81:13  error  Avoid raw "bg-gray-500". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+   82:15  error  Avoid raw "bg-gray-400". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+   83:14  error  Avoid raw "bg-amber-800". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+   84:12  error  Avoid raw "bg-amber-600". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+   85:13  error  Avoid raw "bg-pink-500". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+   86:20  error  Avoid raw "bg-rose-400". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+   87:21  error  Avoid raw "bg-blue-300". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+   88:20  error  Avoid raw "bg-blue-800". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+   91:45  error  Avoid raw "bg-gray-300". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+  168:58  error  Avoid raw "text-yellow-400". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+  168:78  error  Avoid raw "text-gray-300". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  177:33  error  Avoid raw "text-gray-600". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  186:37  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+  187:37  error  Avoid raw "text-gray-500". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  188:37  error  Avoid raw "bg-red-100". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+  188:37  error  Avoid raw "text-red-800". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+  193:35  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  199:30  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  204:31  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  205:31  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  215:33  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  224:31  error  Avoid raw "ring-gray-300". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  230:32  error  Avoid raw "text-gray-600". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  237:33  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  246:31  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+  246:31  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  246:31  error  Avoid raw "hover:bg-gray-50". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+  258:31  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  262:31  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+  262:31  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  262:31  error  Avoid raw "hover:bg-gray-50". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+  270:31  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+  270:31  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  270:31  error  Avoid raw "hover:bg-gray-50". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+  276:32  error  Avoid raw "text-orange-600". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+  290:25  error  Avoid raw "bg-gray-300". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+  290:25  error  Avoid raw "text-gray-500". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  300:25  error  Avoid raw "border-red-500". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+  300:25  error  Avoid raw "bg-red-50". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+  300:25  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+  300:25  error  Avoid raw "hover:bg-red-100". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+  301:25  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+  301:25  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  301:25  error  Avoid raw "hover:bg-gray-50". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+  324:72  error  Avoid raw "bg-green-500". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+  324:89  error  Avoid raw "bg-red-500". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+  327:71  error  Avoid raw "text-green-700". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+  327:90  error  Avoid raw "text-red-700". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\components\ThemeToggle.tsx
+  27:1  error  There must be no indentation  jsdoc/check-indentation
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\hooks\useAnalytics.ts
+  13:1  error  Missing JSDoc @returns declaration  jsdoc/require-returns
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\pages\DashboardPage.tsx
+    6:43  error  Avoid raw "text-green-500". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+    7:45  error  Avoid raw "text-red-500". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+   46:19  error  Avoid raw "text-green-600". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+   46:19  error  Avoid raw "dark:text-green-400". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+   47:19  error  Avoid raw "text-red-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+   47:19  error  Avoid raw "dark:text-red-400". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+   68:16  error  Avoid raw "bg-green-100". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+   68:16  error  Avoid raw "text-green-800". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+   68:16  error  Avoid raw "dark:bg-green-900". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+   68:16  error  Avoid raw "dark:text-green-300". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+   69:14  error  Avoid raw "bg-yellow-100". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+   69:14  error  Avoid raw "text-yellow-800". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+   69:14  error  Avoid raw "dark:bg-yellow-900". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+   69:14  error  Avoid raw "dark:text-yellow-300". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+   70:13  error  Avoid raw "bg-red-100". Use semantic brand / surface / text / data-viz tokens instead            no-raw-primary-class/no-raw-primary-class
+   70:13  error  Avoid raw "text-red-800". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+   70:13  error  Avoid raw "dark:bg-red-900". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+   70:13  error  Avoid raw "dark:text-red-300". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  110:20  error  Avoid raw "from-green-500". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+  110:20  error  Avoid raw "to-blue-600". Use semantic brand / surface / text / data-viz tokens instead           no-raw-primary-class/no-raw-primary-class
+  304:26  error  Avoid raw "border-gray-200". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+  304:26  error  Avoid raw "dark:border-gray-700". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+  304:26  error  Avoid raw "dark:bg-gray-800". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+  305:27  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+  305:27  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+  311:33  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+  311:33  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+  334:27  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+  334:27  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+  408:29  error  Avoid raw "bg-green-500". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  410:31  error  Avoid raw "bg-yellow-500". Use semantic brand / surface / text / data-viz tokens instead         no-raw-primary-class/no-raw-primary-class
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\pages\EcommercePage.tsx
+  337:33  error  Avoid raw "text-gray-300". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\pages\SettingsPage_new.tsx
+   40:18  error  Avoid raw "border-gray-200". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+   40:18  error  Avoid raw "dark:border-gray-700". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+   40:18  error  Avoid raw "dark:bg-gray-800". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+   41:20  error  Avoid raw "border-gray-200". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+   41:20  error  Avoid raw "dark:border-gray-700". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+   48:25  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+   48:25  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+   49:24  error  Avoid raw "text-gray-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+   49:24  error  Avoid raw "dark:text-gray-400". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+   67:22  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+   67:22  error  Avoid raw "dark:text-gray-300". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+   68:44  error  Avoid raw "text-red-500". Use semantic brand / surface / text / data-viz tokens instead           no-raw-primary-class/no-raw-primary-class
+   76:17  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+   76:17  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+   76:17  error  Avoid raw "focus:ring-purple-500". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+   76:17  error  Avoid raw "dark:border-gray-600". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+   76:17  error  Avoid raw "dark:bg-gray-700". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+   76:17  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+   78:34  error  Avoid raw "text-gray-500". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+   78:34  error  Avoid raw "dark:text-gray-400". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+   90:21  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+   90:21  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+   91:20  error  Avoid raw "text-gray-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+   91:20  error  Avoid raw "dark:text-gray-400". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+   96:19  error  Avoid raw "bg-purple-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+   96:37  error  Avoid raw "bg-gray-200". Use semantic brand / surface / text / data-viz tokens instead            no-raw-primary-class/no-raw-primary-class
+   96:37  error  Avoid raw "dark:bg-gray-700". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+  173:23  error  Avoid raw "bg-purple-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  173:23  error  Avoid raw "hover:bg-purple-700". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+  220:32  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  220:32  error  Avoid raw "dark:text-gray-300". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  229:27  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+  229:27  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  229:27  error  Avoid raw "focus:ring-purple-500". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+  229:27  error  Avoid raw "dark:border-gray-600". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+  229:27  error  Avoid raw "dark:bg-gray-700". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+  229:27  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  270:32  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  270:32  error  Avoid raw "dark:text-gray-300". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  282:27  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+  282:27  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  282:27  error  Avoid raw "focus:ring-purple-500". Use semantic brand / surface / text / data-viz tokens instead  no-raw-primary-class/no-raw-primary-class
+  282:27  error  Avoid raw "dark:border-gray-600". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+  282:27  error  Avoid raw "dark:bg-gray-700". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+  282:27  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  343:32  error  Avoid raw "text-gray-700". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  343:32  error  Avoid raw "dark:text-gray-300". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  351:29  error  Avoid raw "border-gray-300". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+  351:29  error  Avoid raw "bg-gray-50". Use semantic brand / surface / text / data-viz tokens instead             no-raw-primary-class/no-raw-primary-class
+  351:29  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  351:29  error  Avoid raw "dark:border-gray-600". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+  351:29  error  Avoid raw "dark:bg-gray-700". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+  351:29  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  355:29  error  Avoid raw "bg-gray-600". Use semantic brand / surface / text / data-viz tokens instead            no-raw-primary-class/no-raw-primary-class
+  355:29  error  Avoid raw "hover:bg-gray-700". Use semantic brand / surface / text / data-viz tokens instead      no-raw-primary-class/no-raw-primary-class
+  390:28  error  Avoid raw "bg-gray-50". Use semantic brand / surface / text / data-viz tokens instead             no-raw-primary-class/no-raw-primary-class
+  390:28  error  Avoid raw "dark:bg-gray-700". Use semantic brand / surface / text / data-viz tokens instead       no-raw-primary-class/no-raw-primary-class
+  393:33  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  393:33  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  394:32  error  Avoid raw "text-gray-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  394:32  error  Avoid raw "dark:text-gray-400". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  398:35  error  Avoid raw "bg-purple-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  398:35  error  Avoid raw "hover:bg-purple-700". Use semantic brand / surface / text / data-viz tokens instead    no-raw-primary-class/no-raw-primary-class
+  404:30  error  Avoid raw "border-gray-200". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+  404:30  error  Avoid raw "dark:border-gray-600". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+  405:32  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  405:32  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  406:32  error  Avoid raw "text-gray-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  406:32  error  Avoid raw "dark:text-gray-400". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  408:30  error  Avoid raw "border-gray-200". Use semantic brand / surface / text / data-viz tokens instead        no-raw-primary-class/no-raw-primary-class
+  408:30  error  Avoid raw "dark:border-gray-600". Use semantic brand / surface / text / data-viz tokens instead   no-raw-primary-class/no-raw-primary-class
+  409:32  error  Avoid raw "text-gray-900". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  409:32  error  Avoid raw "dark:text-gray-100". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+  410:32  error  Avoid raw "text-gray-600". Use semantic brand / surface / text / data-viz tokens instead          no-raw-primary-class/no-raw-primary-class
+  410:32  error  Avoid raw "dark:text-gray-400". Use semantic brand / surface / text / data-viz tokens instead     no-raw-primary-class/no-raw-primary-class
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\types\ecommerce.ts
+   1:8  error  Missing JSDoc comment  jsdoc/require-jsdoc
+  20:8  error  Missing JSDoc comment  jsdoc/require-jsdoc
+  29:8  error  Missing JSDoc comment  jsdoc/require-jsdoc
+  39:8  error  Missing JSDoc comment  jsdoc/require-jsdoc
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\utils\cdnOptimizer.ts
+   22:1   error  Missing JSDoc comment                             jsdoc/require-jsdoc
+   26:14  error  Missing JSDoc comment                             jsdoc/require-jsdoc
+  165:3   error  Missing JSDoc @param "url" declaration            jsdoc/require-param
+  237:3   error  Missing JSDoc @param "entry" declaration          jsdoc/require-param
+  274:3   error  Missing JSDoc @param "hint" declaration           jsdoc/require-param
+  321:3   error  Missing JSDoc @param "updatedAssets" declaration  jsdoc/require-param
+  331:3   error  Missing JSDoc @param "resourceUrl" declaration    jsdoc/require-param
+  343:3   error  Missing JSDoc @returns declaration                jsdoc/require-returns
+  351:3   error  Missing JSDoc @param "url" declaration            jsdoc/require-param
+  351:3   error  Missing JSDoc @returns declaration                jsdoc/require-returns
+  368:3   error  Missing JSDoc @returns declaration                jsdoc/require-returns
+  395:8   error  Missing JSDoc comment                             jsdoc/require-jsdoc
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\utils\imageUtils.ts
+   3:1  error  Missing JSDoc @returns declaration              jsdoc/require-returns
+  30:1  error  Missing JSDoc @returns declaration              jsdoc/require-returns
+  44:1  error  Missing JSDoc @param "baseSrc" declaration      jsdoc/require-param
+  44:1  error  Missing JSDoc @returns declaration              jsdoc/require-returns
+  64:1  error  Missing JSDoc @param "originalSrc" declaration  jsdoc/require-param
+  64:1  error  Missing JSDoc @returns declaration              jsdoc/require-returns
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\utils\memoryMonitor.ts
+   69:3  error  Missing JSDoc @returns declaration                   jsdoc/require-returns
+   85:3  error  Missing JSDoc @param "intervalMs" declaration        jsdoc/require-param
+  111:3  error  Missing JSDoc @param "memory" declaration            jsdoc/require-param
+  128:3  error  Missing JSDoc @param "componentName" declaration     jsdoc/require-param
+  144:3  error  Missing JSDoc @param "componentName" declaration     jsdoc/require-param
+  164:3  error  Missing JSDoc @returns declaration                   jsdoc/require-returns
+  179:3  error  Missing JSDoc @returns declaration                   jsdoc/require-returns
+  210:3  error  Missing JSDoc @returns declaration                   jsdoc/require-returns
+  225:3  error  Missing JSDoc @param "bytes" declaration             jsdoc/require-param
+  225:3  error  Missing JSDoc @returns declaration                   jsdoc/require-returns
+  241:3  error  Missing JSDoc @returns declaration                   jsdoc/require-returns
+  288:8  error  Missing JSDoc comment                                jsdoc/require-jsdoc
+  290:1  error  Missing JSDoc @param "componentName" declaration     jsdoc/require-param
+  305:1  error  Missing JSDoc @param "WrappedComponent" declaration  jsdoc/require-param
+  305:1  error  Missing JSDoc @param "displayName" declaration       jsdoc/require-param
+  305:1  error  Missing JSDoc @returns declaration                   jsdoc/require-returns
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\utils\performanceBudget.ts
+   15:1   error  Missing JSDoc @param "budget" declaration  jsdoc/require-param
+   15:1   error  Missing JSDoc @returns declaration         jsdoc/require-returns
+   95:21  error  Missing JSDoc comment                      jsdoc/require-jsdoc
+  102:16  error  Missing JSDoc comment                      jsdoc/require-jsdoc
+  106:14  error  Missing JSDoc comment                      jsdoc/require-jsdoc
+  119:13  error  Missing JSDoc comment                      jsdoc/require-jsdoc
+
+C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app\src\utils\resourceHints.ts
+   13:1   error  Missing JSDoc @param "href" declaration         jsdoc/require-param
+   13:1   error  Missing JSDoc @param "options" declaration      jsdoc/require-param
+   29:1   error  Missing JSDoc @param "href" declaration         jsdoc/require-param
+   39:1   error  Missing JSDoc @param "href" declaration         jsdoc/require-param
+   39:1   error  Missing JSDoc @param "crossOrigin" declaration  jsdoc/require-param
+   50:1   error  Missing JSDoc @param "href" declaration         jsdoc/require-param
+   60:1   error  Missing JSDoc @param "fontUrls" declaration     jsdoc/require-param
+   73:1   error  Missing JSDoc @param "imageUrls" declaration    jsdoc/require-param
+  107:21  error  Missing JSDoc comment                           jsdoc/require-jsdoc
+  114:3   error  Missing JSDoc @param "resources" declaration    jsdoc/require-param
+  132:3   error  Missing JSDoc @param "urls" declaration         jsdoc/require-param
+  144:3   error  Missing JSDoc @returns declaration              jsdoc/require-returns
+
+Γ£û 244 problems (244 errors, 0 warnings)
+  43 errors and 0 warnings potentially fixable with the `--fix` option.
+
+npm error Lifecycle script `lint` failed with error:
+npm error code 1
+npm error path C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app
+npm error workspace @tailwindspark/demo-app@1.0.0
+npm error location C:\GitHub\MarkHazleton\TailwindSpark\apps\demo-app
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c eslint .
