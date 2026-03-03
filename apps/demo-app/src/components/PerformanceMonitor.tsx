@@ -172,7 +172,7 @@ export const PerformanceMonitor: React.FC = () => {
           <div className="space-y-2 text-sm">
             {/* Core Web Vitals */}
             <div className="border-b border-border pb-2">
-              <h4 className="mb-1 font-medium text-gray-700 dark:text-gray-300">
+              <h4 className="mb-1 font-medium text-text">
                 Core Web Vitals
               </h4>
               

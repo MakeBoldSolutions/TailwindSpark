@@ -81,6 +81,11 @@ export class ErrorBoundary extends Component<Props, State> {
     }
   }
 
+  /**
+   * Renders either the fallback UI or the children components.
+   * 
+   * @returns The fallback UI if error occurred, otherwise children
+   */
   public render() {
     if (this.state.hasError) {
       return (

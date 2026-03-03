@@ -72,6 +72,9 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
   };
 
   const getColorClass = (color: string) => {
+    // Product color swatches - these represent actual product colors (red shirt, blue dress, etc.)
+    // not UI theme colors, so raw color classes are intentional here.
+    /* eslint-disable no-raw-primary-class/no-raw-primary-class */
     const colorMap: Record<string, string> = {
       black: 'bg-black',
       white: 'bg-white border-2 border-gray-300',
@@ -89,6 +92,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
     };
 
     return colorMap[color.toLowerCase()] || 'bg-gray-300';
+    /* eslint-enable no-raw-primary-class/no-raw-primary-class */
   };
 
   return (
@@ -165,7 +169,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
                     <svg
                       key={i}
                       className={`h-5 w-5 ${
-                        i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-300'
+                        i < Math.floor(product.rating) ? 'text-data-viz-3' : 'text-text-muted'
                       }`}
                       fill="currentColor"
                       viewBox="0 0 20 20"
@@ -174,7 +178,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
                     </svg>
                   ))}
                 </div>
-                <span className="text-lg text-gray-600">
+                <span className="text-lg text-text-muted">
                   {product.rating} ({product.reviewCount} reviews)
                 </span>
               </div>
@@ -183,26 +187,26 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
               <div className="flex items-center space-x-3">
                 {product.salePrice ? (
                   <>
-                    <span className="text-3xl font-bold text-red-600">${product.salePrice}</span>
-                    <span className="text-xl text-gray-500 line-through">${product.price}</span>
-                    <span className="rounded bg-red-100 px-2 py-1 text-sm font-semibold text-red-800">
+                    <span className="text-3xl font-bold text-destructive">${product.salePrice}</span>
+                    <span className="text-xl text-text-muted line-through">${product.price}</span>
+                    <span className="rounded bg-destructive/10 px-2 py-1 text-sm font-semibold text-destructive">
                       Save ${(product.price - product.salePrice).toFixed(2)}
                     </span>
                   </>
                 ) : (
-                  <span className="text-3xl font-bold text-gray-900">${product.price}</span>
+                  <span className="text-3xl font-bold text-text">${product.price}</span>
                 )}
               </div>
 
               {/* Description */}
               <div>
-                <p className="text-gray-700">{product.description}</p>
+                <p className="text-text">{product.description}</p>
               </div>
 
               {/* Features */}
               <div>
-                <h3 className="mb-2 text-lg font-semibold text-gray-900">Key Features</h3>
-                <ul className="list-inside list-disc space-y-1 text-gray-700">
+                <h3 className="mb-2 text-lg font-semibold text-text">Key Features</h3>
+                <ul className="list-inside list-disc space-y-1 text-text">
                   {product.features.map((feature, index) => (
                     <li key={index}>{feature}</li>
                   ))}
@@ -212,7 +216,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
               {/* Color Selection */}
               {product.colors.length > 1 && (
                 <div>
-                  <h3 className="mb-3 text-lg font-semibold text-gray-900">Color</h3>
+                  <h3 className="mb-3 text-lg font-semibold text-text">Color</h3>
                   <div className="flex space-x-3">
                     {product.colors.map(color => (
                       <button
@@ -221,20 +225,20 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
                         className={`h-8 w-8 rounded-full ${getColorClass(color)} ${
                           selectedColor === color
                             ? 'ring-2 ring-brand ring-offset-2'
-                            : 'ring-1 ring-gray-300'
+                            : 'ring-1 ring-border'
                         } transition-all duration-200`}
                         title={color}
                       />
                     ))}
                   </div>
-                  <p className="mt-2 text-sm text-gray-600">Selected: {selectedColor}</p>
+                  <p className="mt-2 text-sm text-text-muted">Selected: {selectedColor}</p>
                 </div>
               )}
 
               {/* Size Selection */}
               {product.sizes.length > 1 && (
                 <div>
-                  <h3 className="mb-3 text-lg font-semibold text-gray-900">Size</h3>
+                  <h3 className="mb-3 text-lg font-semibold text-text">Size</h3>
                   <div className="flex flex-wrap gap-2">
                     {product.sizes.map(size => (
                       <button
@@ -243,7 +247,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
                         className={`rounded-md border px-4 py-2 text-sm font-medium transition-colors ${
                           selectedSize === size
                             ? 'border-brand bg-brand/10 text-brand'
-                            : 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50'
+                            : 'border-border bg-surface text-text hover:bg-surface-hover'
                         }`}
                       >
                         {size}
@@ -255,11 +259,11 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
 
               {/* Quantity */}
               <div>
-                <h3 className="mb-3 text-lg font-semibold text-gray-900">Quantity</h3>
+                <h3 className="mb-3 text-lg font-semibold text-text">Quantity</h3>
                 <div className="flex items-center space-x-3">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 font-semibold text-gray-700 hover:bg-gray-50"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-border font-semibold text-text hover:bg-surface-hover"
                   >
                     -
                   </button>
@@ -267,13 +271,13 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
                   <button
                     onClick={() => setQuantity(Math.min(product.stockCount, quantity + 1))}
                     disabled={quantity >= product.stockCount}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 font-semibold text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-border font-semibold text-text hover:bg-surface-hover disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     +
                   </button>
                 </div>
                 {product.stockCount <= 10 && (
-                  <p className="mt-2 text-sm text-orange-600">
+                  <p className="mt-2 text-sm text-data-viz-3">
                     Only {product.stockCount} left in stock!
                   </p>
                 )}
@@ -287,7 +291,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
                   className={`flex-1 rounded-md px-6 py-3 font-medium transition-colors ${
                     product.inStock
                       ? 'bg-brand text-brand-fg hover:bg-brand-hover'
-                      : 'cursor-not-allowed bg-gray-300 text-gray-500'
+                      : 'cursor-not-allowed bg-surface-muted text-text-muted'
                   }`}
                 >
                   {product.inStock ? `Add ${quantity} to Cart` : 'Out of Stock'}
@@ -297,8 +301,8 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
                   onClick={() => onWishlistToggle(product.id)}
                   className={`rounded-md border p-3 transition-colors ${
                     isInWishlist
-                      ? 'border-red-500 bg-red-50 text-red-600 hover:bg-red-100'
-                      : 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50'
+                      ? 'border-destructive bg-destructive/10 text-destructive hover:bg-destructive/20'
+                      : 'border-border bg-surface text-text hover:bg-surface-hover'
                   }`}
                   title={isInWishlist ? 'Remove from wishlist' : 'Add to wishlist'}
                 >
@@ -321,10 +325,10 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({
               {/* Stock Status */}
               <div className="flex items-center space-x-2">
                 <div
-                  className={`h-3 w-3 rounded-full ${product.inStock ? 'bg-green-500' : 'bg-red-500'}`}
+                  className={`h-3 w-3 rounded-full ${product.inStock ? 'bg-data-viz-2' : 'bg-destructive'}`}
                 />
                 <span
-                  className={`text-sm font-medium ${product.inStock ? 'text-green-700' : 'text-red-700'}`}
+                  className={`text-sm font-medium ${product.inStock ? 'text-data-viz-2' : 'text-destructive'}`}
                 >
                   {product.inStock ? `In Stock (${product.stockCount} available)` : 'Out of Stock'}
                 </span>

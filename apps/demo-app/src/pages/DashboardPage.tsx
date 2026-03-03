@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { DashboardLayout } from '../components/DashboardLayout';
 
 // Icons (using Unicode symbols for simplicity - in a real app you'd use a proper icon library)
-const IconArrowUp = () => <span className="text-green-500">↗</span>;
-const IconArrowDown = () => <span className="text-red-500">↘</span>;
+const IconArrowUp = () => <span className="text-data-viz-2">↗</span>;
+const IconArrowDown = () => <span className="text-destructive">↘</span>;
 
 /**
  * Stat card component properties.
@@ -43,8 +43,8 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, change, trend, isLoad
           <span
             className={`text-sm font-medium ${
               trend === 'up'
-                ? 'text-green-600 dark:text-green-400'
-                : 'text-red-600 dark:text-red-400'
+                ? 'text-data-viz-2'
+                : 'text-destructive'
             }`}
           >
             {change}
@@ -65,9 +65,9 @@ interface Transaction {
 
 const TransactionRow: React.FC<{ transaction: Transaction }> = ({ transaction }) => {
   const statusColors = {
-    completed: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    pending: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-    failed: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+    completed: 'bg-data-viz-2/10 text-data-viz-2',
+    pending: 'bg-data-viz-3/10 text-data-viz-3',
+    failed: 'bg-destructive/10 text-destructive',
   };
 
   return (
@@ -107,7 +107,7 @@ const ActivityItem: React.FC<{ activity: { user: string; action: string; time: s
   activity,
 }) => (
   <div className="flex items-start gap-3 rounded-lg p-3 transition-colors hover:bg-secondary-50 dark:hover:bg-secondary-700">
-    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-blue-600 text-sm font-medium text-white">
+    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-data-viz-2 to-brand text-sm font-medium text-white">
       {activity.user.charAt(0).toUpperCase()}
     </div>
     <div className="min-w-0 flex-1">
@@ -301,14 +301,14 @@ export const DashboardPage: React.FC = () => {
           </div>
 
           {/* Quick Stats */}
-          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-            <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <div className="rounded-xl border border-border bg-surface p-6 shadow-sm">
+            <h3 className="mb-4 text-lg font-semibold text-text">
               Quick Stats
             </h3>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-text-muted">Today's Revenue</span>
-                <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                <span className="text-sm font-medium text-text">
                   $12,450
                 </span>
               </div>
@@ -331,7 +331,7 @@ export const DashboardPage: React.FC = () => {
         {/* Recent Transactions Table */}
         <div className="mb-8 overflow-hidden rounded-xl border border-border bg-surface shadow-sm">
           <div className="border-b border-border px-6 py-4">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            <h3 className="text-lg font-semibold text-text">
               Recent Transactions
             </h3>
           </div>
@@ -405,9 +405,9 @@ export const DashboardPage: React.FC = () => {
                     <div
                       className={`h-2 w-2 rounded-full ${
                         user.status === 'online'
-                          ? 'bg-green-500'
+                          ? 'bg-data-viz-2'
                           : user.status === 'away'
-                            ? 'bg-yellow-500'
+                            ? 'bg-data-viz-3'
                             : 'bg-surface-hover'
                       }`}
                     ></div>

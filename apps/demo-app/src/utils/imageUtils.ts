@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 
 /**
  * Utility hook for preloading images
+ * @returns An object containing preloadImage and preloadImages functions
  */
 export const useImagePreloader = () => {
   const preloadImage = useCallback((src: string) => {
@@ -29,6 +30,7 @@ export const useImagePreloader = () => {
 
 /**
  * Check if WebP format is supported by the browser
+ * @returns True if WebP is supported, false otherwise
  */
 export const supportsWebP = (): boolean => {
   try {
@@ -43,6 +45,8 @@ export const supportsWebP = (): boolean => {
 
 /**
  * Generate responsive srcSet for different screen densities
+ * @param baseSrc - The base image source path
+ * @returns A srcSet string with 1x, 2x, and 3x variants
  */
 export const generateSrcSet = (baseSrc: string): string => {
   const extension = baseSrc.split('.').pop();
@@ -63,6 +67,8 @@ export const generateSrcSet = (baseSrc: string): string => {
 
 /**
  * Get optimized image source with WebP support
+ * @param originalSrc - The original image source path
+ * @returns The optimized image path (WebP if supported, original otherwise)
  */
 export const getOptimizedSrc = (originalSrc: string): string => {
   if (originalSrc.endsWith('.svg')) {

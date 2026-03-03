@@ -67,7 +67,7 @@ describe('MemoryMonitorDisplay', () => {
 
   it('handles missing performance.memory API', () => {
     // Remove memory API
-    delete (global.performance as any).memory;
+    delete (global.performance as Partial<Performance & { memory?: unknown }>).memory;
     
     render(<MemoryMonitorDisplay />);
     

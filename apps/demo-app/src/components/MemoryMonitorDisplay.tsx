@@ -110,7 +110,7 @@ export const MemoryMonitorDisplay: React.FC = () => {
 
   if (!isSupported) {
     return (
-      <div className="fixed bottom-4 right-4 bg-amber-100 text-amber-800 p-2 rounded text-xs">
+      <div className="fixed bottom-4 right-4 bg-data-viz-3/10 text-data-viz-3 p-2 rounded text-xs">
         Memory monitoring not supported
       </div>
     );
@@ -120,7 +120,7 @@ export const MemoryMonitorDisplay: React.FC = () => {
     return (
       <button
         onClick={() => setIsVisible(true)}
-        className="fixed bottom-4 right-4 bg-blue-600 text-white p-2 rounded text-xs hover:bg-blue-700 transition-colors"
+        className="fixed bottom-4 right-4 bg-brand text-white p-2 rounded text-xs hover:bg-brand-hover transition-colors"
         aria-label="Show memory monitor"
       >
         Memory
@@ -152,9 +152,9 @@ export const MemoryMonitorDisplay: React.FC = () => {
   const getMemoryStatus = (): { color: string; status: string } => {
     const usagePercent = (metrics.current.usedJSHeapSize / metrics.current.jsHeapSizeLimit) * 100;
     
-    if (usagePercent > 80) return { color: 'text-red-600', status: 'High' };
-    if (usagePercent > 60) return { color: 'text-amber-600', status: 'Medium' };
-    return { color: 'text-green-600', status: 'Low' };
+    if (usagePercent > 80) return { color: 'text-destructive', status: 'High' };
+    if (usagePercent > 60) return { color: 'text-data-viz-3', status: 'Medium' };
+    return { color: 'text-data-viz-2', status: 'Low' };
   };
 
   const { color, status } = getMemoryStatus();
@@ -182,8 +182,8 @@ export const MemoryMonitorDisplay: React.FC = () => {
           <div className="w-full bg-surface-hover rounded-full h-1 mt-1">
             <div 
               className={`h-1 rounded-full transition-all duration-300 ${
-                usagePercent > 80 ? 'bg-red-500' : 
-                usagePercent > 60 ? 'bg-amber-500' : 'bg-green-500'
+                usagePercent > 80 ? 'bg-destructive' : 
+                usagePercent > 60 ? 'bg-data-viz-3' : 'bg-data-viz-2'
               }`}
               data-width={Math.min(usagePercent, 100)}
               style={{
@@ -213,17 +213,17 @@ export const MemoryMonitorDisplay: React.FC = () => {
         {metrics.potentialLeaks.length > 0 && (
           <div className="border-t pt-2">
             <div className="flex justify-between">
-              <span className="text-red-600 font-medium">Potential Leaks:</span>
-              <span className="text-red-600">{metrics.potentialLeaks.length}</span>
+              <span className="text-destructive font-medium">Potential Leaks:</span>
+              <span className="text-destructive">{metrics.potentialLeaks.length}</span>
             </div>
             <div className="mt-1 max-h-20 overflow-y-auto">
               {metrics.potentialLeaks.slice(0, 3).map((leak, index) => (
-                <div key={index} className="text-red-600 text-xs">
+                <div key={index} className="text-destructive text-xs">
                   {leak.name}
                 </div>
               ))}
               {metrics.potentialLeaks.length > 3 && (
-                <div className="text-red-600 text-xs">
+                <div className="text-destructive text-xs">
                   +{metrics.potentialLeaks.length - 3} more
                 </div>
               )}
@@ -234,7 +234,7 @@ export const MemoryMonitorDisplay: React.FC = () => {
         <div className="border-t pt-2 flex space-x-2">
           <button
             onClick={() => memoryMonitor.clearData()}
-            className="text-xs text-blue-600 hover:text-blue-800"
+            className="text-xs text-brand hover:text-brand-hover"
           >
             Clear Data
           </button>
@@ -243,7 +243,7 @@ export const MemoryMonitorDisplay: React.FC = () => {
               // eslint-disable-next-line no-console
               console.log(memoryMonitor.generateReport());
             }}
-            className="text-xs text-blue-600 hover:text-blue-800"
+            className="text-xs text-brand hover:text-brand-hover"
           >
             Log Report
           </button>

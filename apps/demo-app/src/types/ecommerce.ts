@@ -1,3 +1,6 @@
+/**
+ * Product data structure for e-commerce displays.
+ */
 export interface Product {
   id: number;
   name: string;
@@ -17,6 +20,9 @@ export interface Product {
   stockCount: number;
 }
 
+/**
+ * Filter state for product filtering.
+ */
 export interface FilterState {
   categories: string[];
   brands: string[];
@@ -26,6 +32,9 @@ export interface FilterState {
   inStockOnly: boolean;
 }
 
+/**
+ * Shopping cart item data structure.
+ */
 export interface CartItem {
   id: number;
   name: string;
@@ -36,6 +45,9 @@ export interface CartItem {
   quantity: number;
 }
 
+/**
+ * User account information.
+ */
 export interface User {
   id: number;
   name: string;

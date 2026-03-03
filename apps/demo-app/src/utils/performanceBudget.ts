@@ -15,6 +15,8 @@ const DEFAULT_BUDGET: PerformanceBudget = {
 /**
  * Vite plugin for enforcing performance budgets
  * Provides warnings when bundle sizes exceed defined thresholds
+ * @param budget - Optional partial performance budget configuration
+ * @returns Vite plugin instance for performance budget enforcement
  */
 export function performanceBudgetPlugin(budget: Partial<PerformanceBudget> = {}): Plugin {
   const config = { ...DEFAULT_BUDGET, ...budget };
@@ -92,6 +94,10 @@ export class RuntimePerformanceBudget {
     fid: 100, // First Input Delay (ms)
   };
 
+  /**
+   * Get the singleton instance of RuntimePerformanceBudget
+   * @returns The RuntimePerformanceBudget instance
+   */
   static getInstance(): RuntimePerformanceBudget {
     if (!RuntimePerformanceBudget.instance) {
       RuntimePerformanceBudget.instance = new RuntimePerformanceBudget();
@@ -99,10 +105,20 @@ export class RuntimePerformanceBudget {
     return RuntimePerformanceBudget.instance;
   }
 
+  /**
+   * Update performance budgets with new values
+   * @param newBudgets - Partial budget configuration to merge with existing budgets
+   */
   updateBudgets(newBudgets: Partial<typeof this.budgets>): void {
     this.budgets = { ...this.budgets, ...newBudgets };
   }
 
+  /**
+   * Check if a metric is within budget
+   * @param name - Name of the performance metric to check
+   * @param value - Current value of the metric
+   * @returns True if within budget, false otherwise
+   */
   checkMetric(name: keyof typeof this.budgets, value: number): boolean {
     const budget = this.budgets[name];
     const isWithinBudget = value <= budget;
@@ -116,6 +132,10 @@ export class RuntimePerformanceBudget {
     return isWithinBudget;
   }
 
+  /**
+   * Get current performance budgets
+   * @returns Copy of current budget configuration
+   */
   getBudgets(): typeof this.budgets {
     return { ...this.budgets };
   }
