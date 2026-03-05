@@ -25,16 +25,22 @@
     "test:coverage": "vitest --coverage"
   },
   "dependencies": {
+    "@microsoft/signalr": "^8.0.17",
     "@tailwindspark/design-tokens": "*",
     "@tailwindspark/ui-components": "*",
+    "@types/leaflet": "^1.9.21",
     "@types/react-router-dom": "^5.3.3",
     "clsx": "^2.1.1",
+    "leaflet": "^1.9.4",
     "lightningcss": "^1.31.1",
     "lucide-react": "^0.575.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "react-leaflet": "^4.2.1",
+    "react-markdown": "^9.1.0",
     "react-router-dom": "^7.13.1",
-    "tailwindcss": "^4.2.1"
+    "tailwindcss": "^4.2.1",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

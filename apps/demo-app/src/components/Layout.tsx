@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
+import { miniAppsData } from '../types/miniapp';
 import { BuildInfo } from './BuildInfo';
 import { Logo } from './Logo';
 import { SearchComponent } from './SearchComponent';
@@ -45,9 +46,11 @@ interface LayoutProps {
 export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme }) => {
   const location = useLocation();
   const [isDemosOpen, setIsDemosOpen] = useState(false);
+  const [isAppsOpen, setIsAppsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const demosRef = useRef<HTMLDivElement>(null);
+  const appsRef = useRef<HTMLDivElement>(null);
 
   // Keyboard shortcuts
   useKeyboardShortcuts({
@@ -56,6 +59,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
     onEscape: () => {
       setIsSearchOpen(false);
       setIsDemosOpen(false);
+      setIsAppsOpen(false);
       setIsMobileMenuOpen(false);
     },
   });
@@ -77,6 +81,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
     const handleClickOutside = (event: MouseEvent) => {
       if (demosRef.current && !demosRef.current.contains(event.target as Node)) {
         setIsDemosOpen(false);
+      }
+      if (appsRef.current && !appsRef.current.contains(event.target as Node)) {
+        setIsAppsOpen(false);
       }
     };
 
@@ -103,6 +110,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
 
   const isDemoPage =
     demoItems.some(item => location.pathname === item.path) || location.pathname === '/demos';
+
+  const isAppsPage =
+    location.pathname === '/apps' || location.pathname.startsWith('/apps/');
 
   return (
     <div className="min-h-screen bg-surface transition-colors">
@@ -135,6 +145,66 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
                     {item.label}
                   </Link>
                 ))}
+
+                {/* Apps Dropdown */}
+                <div className="relative" ref={appsRef}>
+                  <button
+                    onClick={() => setIsAppsOpen(!isAppsOpen)}
+                    aria-haspopup="true"
+                    aria-expanded={isAppsOpen}
+                    className={`flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                      isAppsPage
+                        ? 'bg-brand/10 text-brand'
+                        : 'text-text-muted hover:bg-surface-alt hover:text-text'
+                    }`}
+                  >
+                    Apps
+                    <svg
+                      className={`h-4 w-4 transition-transform ${isAppsOpen ? 'rotate-180' : ''}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+
+                  {isAppsOpen && (
+                    <div className="absolute left-0 top-full z-50 mt-2 w-56 rounded-lg border border-border bg-surface py-2 shadow-lg" role="menu">
+                      <Link
+                        to="/apps"
+                        className="block px-4 py-2 text-sm text-text transition-colors hover:bg-surface-alt"
+                        role="menuitem"
+                        onClick={() => setIsAppsOpen(false)}
+                      >
+                        <div className="font-medium">All Apps</div>
+                        <div className="text-xs text-text-muted">Browse all mini-apps</div>
+                      </Link>
+                      <div className="my-2 border-t border-border"></div>
+                      {miniAppsData.map(app => (
+                        <Link
+                          key={app.id}
+                          to={app.route}
+                          className={`block px-4 py-2 text-sm transition-colors ${
+                            location.pathname === app.route
+                              ? 'bg-brand/10 text-brand'
+                              : 'text-text hover:bg-surface-alt'
+                          }`}
+                          role="menuitem"
+                          onClick={() => setIsAppsOpen(false)}
+                        >
+                          <span className="mr-2">{app.icon}</span>
+                          {app.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
 
                 {/* Demos Dropdown */}
                 <div className="relative" ref={demosRef}>
@@ -257,6 +327,35 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
                   {item.label}
                 </Link>
               ))}
+
+              {/* Mobile Apps Section */}
+              <div className="pt-2">
+                <div className="px-3 py-2 text-sm font-medium uppercase tracking-wider text-text-muted">
+                  Apps
+                </div>
+                <Link
+                  to="/apps"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-text-muted transition-colors hover:bg-surface-alt hover:text-text"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  All Apps
+                </Link>
+                {miniAppsData.map(app => (
+                  <Link
+                    key={app.id}
+                    to={app.route}
+                    className={`block rounded-md px-3 py-2 text-base font-medium transition-colors ${
+                      location.pathname === app.route
+                        ? 'bg-brand/10 text-brand'
+                        : 'text-text-muted hover:bg-surface-alt hover:text-text'
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <span className="mr-2">{app.icon}</span>
+                    {app.name}
+                  </Link>
+                ))}
+              </div>
 
               {/* Mobile Demos Section */}
               <div className="pt-2">

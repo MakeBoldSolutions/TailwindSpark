@@ -6,6 +6,7 @@ import { Layout } from './components/Layout';
 import { PageLoadingSpinner } from './components/LoadingSpinner';
 import { MemoryMonitorDisplay } from './components/MemoryMonitorDisplay';
 import { PerformanceMonitor } from './components/PerformanceMonitor';
+import { SEOProvider } from './contexts/SEOContext';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import { cdnOptimizer } from './utils/cdnOptimizer';
 import { ResourcePriorityManager, setupCdnPreconnections } from './utils/resourceHints';
@@ -21,6 +22,15 @@ const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.H
 const MarketingPage = lazy(() => import('./pages/MarketingPage').then(m => ({ default: m.MarketingPage })));
 const SettingsPage = lazy(() => import('./pages/SettingsPage').then(m => ({ default: m.SettingsPage })));
 const UsersPage = lazy(() => import('./pages/UsersPage').then(m => ({ default: m.UsersPage })));
+const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
+
+// Lazy load mini-app pages
+const AppsHubPage = lazy(() => import('./pages/AppsHubPage'));
+const ProjectsPage = lazy(() => import('./pages/apps/ProjectsPage'));
+const ArticlesPage = lazy(() => import('./pages/apps/ArticlesPage'));
+const JokePage = lazy(() => import('./pages/apps/JokePage'));
+const WeatherPage = lazy(() => import('./pages/apps/WeatherPage'));
+const AIChatPage = lazy(() => import('./pages/apps/AIChatPage'));
 
 function AppContent() {
   const { isDark, toggleTheme } = useTheme();
@@ -142,6 +152,62 @@ function AppContent() {
                       </Suspense>
                     } 
                   />
+                  <Route
+                    path="/about"
+                    element={
+                      <Suspense fallback={<PageLoadingSpinner message="Loading About..." />}>
+                        <AboutPage />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="/apps"
+                    element={
+                      <Suspense fallback={<PageLoadingSpinner message="Loading Apps..." />}>
+                        <AppsHubPage />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="/apps/projects"
+                    element={
+                      <Suspense fallback={<PageLoadingSpinner message="Loading Projects..." />}>
+                        <ProjectsPage />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="/apps/articles"
+                    element={
+                      <Suspense fallback={<PageLoadingSpinner message="Loading Articles..." />}>
+                        <ArticlesPage />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="/apps/joke"
+                    element={
+                      <Suspense fallback={<PageLoadingSpinner message="Loading Joke..." />}>
+                        <JokePage />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="/apps/weather"
+                    element={
+                      <Suspense fallback={<PageLoadingSpinner message="Loading Weather..." />}>
+                        <WeatherPage />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="/apps/ai-chat"
+                    element={
+                      <Suspense fallback={<PageLoadingSpinner message="Loading AI Chat..." />}>
+                        <AIChatPage />
+                      </Suspense>
+                    }
+                  />
                 </Routes>
               </Layout>
             }
@@ -184,7 +250,9 @@ function AppContent() {
 function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <SEOProvider>
+        <AppContent />
+      </SEOProvider>
     </ThemeProvider>
   );
 }

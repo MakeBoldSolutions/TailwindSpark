@@ -114,6 +114,19 @@ export default defineConfig(({ command }) => ({
     fs: {
       strict: false,
     },
+    // Dev proxy for external API calls
+    proxy: {
+      '/api/projects.json': {
+        target: 'https://markhazleton.com',
+        changeOrigin: true,
+        rewrite: (path: string) => path.replace(/^\/api/, ''),
+      },
+      '/api/articles.json': {
+        target: 'https://markhazleton.com',
+        changeOrigin: true,
+        rewrite: (path: string) => path.replace(/^\/api/, ''),
+      },
+    },
     // Security headers for development server
     headers: {
       'X-Frame-Options': 'DENY',

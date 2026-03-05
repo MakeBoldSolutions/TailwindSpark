@@ -173,6 +173,11 @@ export const HomePage: React.FC = () => {
                 Marketing Landing Page
               </Button>
             </Link>
+            <Link to="/apps">
+              <Button variant="ghost" size="lg">
+                Explore Apps
+              </Button>
+            </Link>
           </div>
           <div className="mt-6">
             <a
