@@ -3,7 +3,7 @@ import { useSEO } from '../../contexts/SEOContext';
 import { useVariants } from '../../hooks/useVariants';
 import ChatInterface from '../../sections/ChatInterface';
 import VariantCard from '../../sections/VariantCard';
-import type { AIVariant, AIVariantCategory } from '../../types/chat-api';
+import type { AIVariant } from '../../types/chat-api';
 
 function AIChatPage() {
   const { setSEO } = useSEO();
@@ -17,7 +17,7 @@ function AIChatPage() {
   } = useVariants();
   const [selectedVariant, setSelectedVariant] = useState<AIVariant | null>(null);
   const [search, setSearch] = useState('');
-  const [catFilter, setCatFilter] = useState<AIVariantCategory | null>(null);
+  const [catFilter, setCatFilter] = useState<string | null>(null);
 
   useEffect(() => {
     setSEO({
@@ -26,7 +26,7 @@ function AIChatPage() {
     });
   }, [setSEO]);
 
-  const handleCategoryChange = (cat: AIVariantCategory | null) => {
+  const handleCategoryChange = (cat: string | null) => {
     setCatFilter(cat);
     filterByCategory(cat);
   };
@@ -71,7 +71,7 @@ function AIChatPage() {
           value={catFilter ?? ''}
           onChange={e =>
             handleCategoryChange(
-              e.target.value ? (e.target.value as AIVariantCategory) : null,
+              e.target.value ? e.target.value : null,
             )
           }
           className="rounded-lg border border-border bg-surface px-4 py-2.5 text-text focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
@@ -104,7 +104,7 @@ function AIChatPage() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filteredVariants.map(variant => (
             <VariantCard
-              key={variant.id}
+              key={variant.definitionId}
               variant={variant}
               isSelected={false}
               onSelect={setSelectedVariant}

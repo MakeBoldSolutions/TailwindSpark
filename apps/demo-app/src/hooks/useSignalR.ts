@@ -150,8 +150,8 @@ export function useSignalR(variant: AIVariant | null): UseSignalRReturn {
     (content: string) => {
       if (!variant || !connectionRef.current || !isMessageValid(content)) return;
 
-      const userMsg = createUserMessage(variant.id, content);
-      const assistantMsg = createAssistantMessage(variant.id);
+      const userMsg = createUserMessage(variant.conversationId, content);
+      const assistantMsg = createAssistantMessage(variant.conversationId);
 
       setMessages(prev => [...prev, userMsg, assistantMsg]);
       setIsAssistantTyping(true);
@@ -159,7 +159,7 @@ export function useSignalR(variant: AIVariant | null): UseSignalRReturn {
       connectionRef.current
         .invoke(SIGNALR_CONFIG.METHODS.SEND_MESSAGE, {
           userName: getUserName(),
-          variantId: variant.id,
+          variantId: variant.conversationId,
           message: content,
         })
         .catch(() => {

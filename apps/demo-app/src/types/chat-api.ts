@@ -10,66 +10,84 @@
 import { z } from 'zod';
 
 /**
- * AI Variant Category
- * Categorizes different types of AI assistants
- */
-export type AIVariantCategory =
-  | 'GPT Models'
-  | 'Development'
-  | 'Creative'
-  | 'Data Analysis'
-  | 'General';
-
-/**
  * AI Variant Entity
- * Represents an AI assistant variant/persona
+ * Represents an AI assistant variant/persona from the PromptSpark API
+ * Source: https://webspark.markhazleton.com/api/PromptSpark/Variant
  */
 export interface AIVariant {
-  /** Unique variant identifier (UUID) */
-  id: string;
-  
+  /** Unique variant identifier */
+  definitionId: number;
+
   /** Variant display name */
   name: string;
-  
+
   /** Variant description/purpose */
   description: string;
-  
-  /** Variant category */
-  category: AIVariantCategory;
-  
-  /** Underlying AI model (e.g., "gpt-4", "gpt-3.5-turbo") */
-  model: string;
-  
-  /** Model temperature (0.0-2.0, controls randomness) */
-  temperature: number;
-  
+
+  /** ISO datetime when this variant was created */
+  created: string;
+
+  /** ISO datetime when this variant was last updated */
+  updated: string;
+
+  /** URL-encoded variant name */
+  urlEncodedName: string;
+
+  /** Output type identifier */
+  outputType: number;
+
   /** System prompt/instructions for this variant */
-  system_prompt: string;
-  
-  /** Whether to display in featured section */
-  featured: boolean;
-  
-  /** Icon identifier or URL */
-  icon?: string;
-  
-  /** Searchable tags */
-  tags?: string[];
+  prompt: string;
+
+  /** Hash of the prompt content */
+  promptHash: string;
+
+  /** Primary variant type/category */
+  definitionType: string;
+
+  /** All variant type/category tags */
+  definitionTypes: string[];
+
+  /** Role identifier */
+  role: number;
+
+  /** Underlying AI model (e.g., "gpt-4o", "gpt-3.5-turbo") */
+  model: string;
+
+  /** Model temperature as string (e.g., "0.7") */
+  temperature: string;
+
+  /** Stored responses for this variant */
+  definitionResponses: unknown[];
+
+  /** Conversation identifier (UUID) */
+  conversationId: string;
+
+  /** URL-friendly slug */
+  slug: string;
 }
 
 /**
  * Zod Schema for AI Variant
  */
 export const AIVariantSchema = z.object({
-  id: z.string().uuid(),
-  name: z.string().min(1).max(100),
-  description: z.string().min(1).max(500),
-  category: z.enum(['GPT Models', 'Development', 'Creative', 'Data Analysis', 'General']),
-  model: z.string().min(1),
-  temperature: z.number().min(0).max(2),
-  system_prompt: z.string().min(1),
-  featured: z.boolean(),
-  icon: z.string().optional(),
-  tags: z.array(z.string()).optional(),
+  definitionId: z.number(),
+  name: z.string().min(1),
+  description: z.string(),
+  created: z.string(),
+  updated: z.string(),
+  urlEncodedName: z.string(),
+  outputType: z.number(),
+  prompt: z.string(),
+  promptHash: z.string(),
+  definitionType: z.string(),
+  definitionTypes: z.array(z.string()),
+  role: z.number(),
+  model: z.string(),
+  temperature: z.string(),
+  definitionResponses: z.array(z.unknown()),
+  conversationId: z.string(),
+  slug: z.string(),
 });
 
 /**
@@ -97,7 +115,7 @@ export interface AIVariantsAPIResponse {
  */
 export const AI_VARIANTS_API_CONFIG = {
   /** PromptSpark variants endpoint */
-  VARIANTS_URL: 'https://promptspark.azurewebsites.net/api/variants',
+  VARIANTS_URL: 'https://webspark.markhazleton.com/api/PromptSpark/Variant',
   
   /** Cache key for localStorage */
   CACHE_KEY: 'ai_variants_v1',
@@ -174,7 +192,7 @@ export type SignalRConnectionStatus =
  */
 export const SIGNALR_CONFIG = {
   /** Chat hub URL */
-  HUB_URL: 'https://promptspark.azurewebsites.net/chat-hub',
+  HUB_URL: 'https://webspark.markhazleton.com/chat-hub',
   
   /** Connection retry delays (exponential backoff) */
   RETRY_DELAYS: [0, 2000, 10000, 30000] as number[], // 0s, 2s, 10s, 30s, then give up
@@ -297,9 +315,7 @@ export interface ChatSessionState {
  */
 export interface AIVariantFilters {
   searchTerm?: string;
-  category?: AIVariantCategory;
-  featured?: boolean;
-  tags?: string[];
+  definitionType?: string;
 }
 
 /**
@@ -321,12 +337,12 @@ export const FEATURED_VARIANTS_CONFIG = {
  * Create user message
  */
 export function createUserMessage(
-  variantId: string,
+  variantId: number | string,
   content: string
 ): ChatMessage {
   return {
     id: crypto.randomUUID(),
-    variant_id: variantId,
+    variant_id: String(variantId),
     role: 'user',
     content,
     timestamp: Date.now(),
@@ -337,12 +353,12 @@ export function createUserMessage(
  * Create assistant message (initial, before streaming)
  */
 export function createAssistantMessage(
-  variantId: string,
+  variantId: number | string,
   messageId?: string
 ): ChatMessage {
   return {
     id: messageId || crypto.randomUUID(),
-    variant_id: variantId,
+    variant_id: String(variantId),
     role: 'assistant',
     content: '',
     timestamp: Date.now(),
