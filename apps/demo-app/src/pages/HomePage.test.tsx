@@ -1,10 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
+import { SEOProvider } from '../contexts/SEOContext';
 import { HomePage } from './HomePage';
 
 const renderWithRouter = (component: React.ReactElement) => {
-  return render(<BrowserRouter>{component}</BrowserRouter>);
+  return render(<BrowserRouter><SEOProvider>{component}</SEOProvider></BrowserRouter>);
 };
 
 describe('HomePage', () => {

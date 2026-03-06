@@ -4,6 +4,12 @@ interface ProjectCardProps {
   project: Project;
 }
 
+const statusClasses: Record<string, string> = {
+  Active: 'bg-success-100 text-success-800',
+  Completed: 'bg-primary-100 text-primary-800',
+  Archived: 'bg-secondary-200 text-secondary-700',
+};
+
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <div className="flex flex-col rounded-lg border border-border bg-surface shadow-sm transition-shadow hover:shadow-md">
@@ -19,13 +25,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <div className="mb-2 flex items-center justify-between">
           <h3 className="text-lg font-semibold text-text">{project.name}</h3>
           <span
-            className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-              project.status === 'Active'
-                ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-                : project.status === 'Completed'
-                  ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
-                  : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
-            }`}
+            className={`rounded-full px-2 py-0.5 text-xs font-medium ${statusClasses[project.status] ?? 'bg-surface-alt text-text-muted'}`}
           >
             {project.status}
           </span>

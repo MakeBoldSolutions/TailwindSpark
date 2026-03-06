@@ -3,6 +3,7 @@ import { useSEO } from '../../contexts/SEOContext';
 import { useProjects } from '../../hooks/useProjects';
 import { ProjectCard } from '../../sections/ProjectCard';
 import type { ProjectSortField, ProjectSortOrder } from '../../types/projects-api';
+import { sanitizeInput } from '../../utils/sanitize';
 
 const PAGE_SIZE = 6;
 
@@ -105,7 +106,7 @@ function ProjectsPage() {
           type="text"
           placeholder="Search projects..."
           value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
+          onChange={e => setSearchTerm(sanitizeInput(e.target.value))}
           className="flex-1 rounded-md border border-border bg-surface px-4 py-2 text-text placeholder:text-text-muted focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
         />
         <select

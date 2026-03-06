@@ -9,6 +9,7 @@ interface SEOData {
   ogImage?: string;
   ogUrl?: string;
   canonicalUrl?: string;
+  jsonLd?: Record<string, unknown>;
 }
 
 interface SEOContextType {
@@ -77,6 +78,20 @@ export const SEOProvider: React.FC<SEOProviderProps> = ({ children }) => {
         document.head.appendChild(link);
       }
       link.setAttribute('href', seo.canonicalUrl);
+    }
+
+    // JSON-LD structured data
+    const existingScript = document.querySelector('script[data-seo-jsonld]');
+    if (seo.jsonLd) {
+      const script = existingScript || document.createElement('script');
+      script.setAttribute('type', 'application/ld+json');
+      script.setAttribute('data-seo-jsonld', '');
+      script.textContent = JSON.stringify(seo.jsonLd);
+      if (!existingScript) {
+        document.head.appendChild(script);
+      }
+    } else if (existingScript) {
+      existingScript.remove();
     }
   }, [seo]);
 

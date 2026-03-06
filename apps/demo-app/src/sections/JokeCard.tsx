@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Joke } from '../types/joke-api';
 
 interface JokeCardProps {
@@ -19,6 +20,8 @@ export default function JokeCard({
   onDelete,
   showDeleteBtn = false,
 }: JokeCardProps) {
+  const [showExplain, setShowExplain] = useState(false);
+
   const handleShare = () => {
     const text =
       joke.type === 'single' ? joke.joke : `${joke.setup}\n\n${joke.delivery}`;
@@ -76,6 +79,14 @@ export default function JokeCard({
           📤 Share
         </button>
 
+        <button
+          onClick={() => setShowExplain(prev => !prev)}
+          aria-label={showExplain ? 'Hide explanation' : 'Explain joke'}
+          className="rounded-md bg-surface-alt px-3 py-1.5 text-sm font-medium text-text-muted transition hover:bg-brand/10 hover:text-brand"
+        >
+          {showExplain ? '🔽 Hide' : '💡 Explain'}
+        </button>
+
         {showDeleteBtn && onDelete && (
           <button
             onClick={() => onDelete(joke.id)}
@@ -86,6 +97,17 @@ export default function JokeCard({
           </button>
         )}
       </div>
+
+      {showExplain && (
+        <div className="mt-4 rounded-lg border border-border bg-surface-alt p-4">
+          <h4 className="mb-2 text-sm font-semibold text-text">💡 Why it&apos;s funny</h4>
+          <p className="text-sm text-text-muted">
+            {joke.type === 'twopart'
+              ? `This joke uses a setup-punchline structure. The setup "${joke.setup}" creates an expectation, and the delivery "${joke.delivery}" subverts it with an unexpected twist — a classic comedy technique.`
+              : `This is a one-liner joke in the "${joke.category}" category that plays on programming concepts or stereotypes developers commonly encounter.`}
+          </p>
+        </div>
+      )}
     </div>
   );
 }

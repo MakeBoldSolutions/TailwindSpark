@@ -1,9 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useSEO } from '../contexts/SEOContext';
+import { useArticles } from '../hooks/useArticles';
 
 export function AboutPage() {
   const { setSEO } = useSEO();
+  const { articles, loading: articlesLoading } = useArticles();
 
   useEffect(() => {
     setSEO({
@@ -12,6 +14,14 @@ export function AboutPage() {
         'Learn about TailwindSpark, a comprehensive React TypeScript monorepo demonstrating modern web development with Tailwind CSS.',
     });
   }, [setSEO]);
+
+  // Filter articles to ReactSpark category and show most recent 5
+  const reactSparkArticles = useMemo(() => {
+    return articles
+      .filter(a => a.category?.toLowerCase().includes('reactspark'))
+      .sort((a, b) => new Date(b.pub_date).getTime() - new Date(a.pub_date).getTime())
+      .slice(0, 5);
+  }, [articles]);
 
   return (
     <div className="bg-surface py-16">
@@ -45,6 +55,42 @@ export function AboutPage() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* ReactSpark Articles */}
+        <section className="mb-12">
+          <h2 className="mb-4 text-2xl font-semibold text-text">Recent ReactSpark Articles</h2>
+          {articlesLoading ? (
+            <div className="flex justify-center py-8">
+              <div className="h-6 w-6 animate-spin rounded-full border-4 border-brand border-t-transparent" />
+            </div>
+          ) : reactSparkArticles.length > 0 ? (
+            <div className="space-y-4">
+              {reactSparkArticles.map(article => (
+                <a
+                  key={article.id}
+                  href={article.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg border border-border bg-surface-alt p-4 transition hover:shadow-md"
+                >
+                  <h3 className="font-semibold text-text">{article.title}</h3>
+                  <p className="mt-1 text-sm text-text-muted line-clamp-2">{article.description}</p>
+                  <span className="mt-2 inline-block text-xs text-text-muted">
+                    {new Date(article.pub_date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                  </span>
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p className="text-text-muted">No ReactSpark articles found.</p>
+          )}
+          <Link
+            to="/apps/articles"
+            className="mt-4 inline-flex text-sm font-medium text-brand hover:text-brand-hover"
+          >
+            View all articles →
+          </Link>
         </section>
 
         {/* Mini-Apps */}

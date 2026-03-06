@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSEO } from '../../contexts/SEOContext';
 import { useVariants } from '../../hooks/useVariants';
 import ChatInterface from '../../sections/ChatInterface';
 import VariantCard from '../../sections/VariantCard';
 import type { AIVariant } from '../../types/chat-api';
+import { sanitizeInput } from '../../utils/sanitize';
 
 function AIChatPage() {
   const { setSEO } = useSEO();
@@ -36,6 +37,27 @@ function AIChatPage() {
     searchVariants(term);
   };
 
+  // Featured variants: top 3 by most recent update
+  const featuredVariants = useMemo(() => {
+    return [...filteredVariants]
+      .sort((a, b) => new Date(b.updated).getTime() - new Date(a.updated).getTime())
+      .slice(0, 3);
+  }, [filteredVariants]);
+
+  const featuredIds = useMemo(() => new Set(featuredVariants.map(v => v.definitionId)), [featuredVariants]);
+
+  // Group remaining by category
+  const variantsByCategory = useMemo(() => {
+    const remaining = filteredVariants.filter(v => !featuredIds.has(v.definitionId));
+    const grouped: Record<string, AIVariant[]> = {};
+    for (const v of remaining) {
+      const cat = v.definitionType || 'Other';
+      if (!grouped[cat]) grouped[cat] = [];
+      grouped[cat].push(v);
+    }
+    return grouped;
+  }, [filteredVariants, featuredIds]);
+
   // Chat view when variant is selected
   if (selectedVariant) {
     return (
@@ -62,7 +84,7 @@ function AIChatPage() {
         <input
           type="text"
           value={search}
-          onChange={e => handleSearchChange(e.target.value)}
+          onChange={e => handleSearchChange(sanitizeInput(e.target.value))}
           placeholder="Search variants..."
           className="flex-1 rounded-lg border border-border bg-surface px-4 py-2.5 text-text placeholder:text-text-muted focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
           aria-label="Search AI variants"
@@ -101,16 +123,42 @@ function AIChatPage() {
           No variants found. Try adjusting your filters.
         </p>
       ) : (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredVariants.map(variant => (
-            <VariantCard
-              key={variant.definitionId}
-              variant={variant}
-              isSelected={false}
-              onSelect={setSelectedVariant}
-            />
+        <>
+          {/* Featured Variants */}
+          {featuredVariants.length > 0 && !catFilter && !search && (
+            <section className="mb-10">
+              <h2 className="mb-4 text-xl font-semibold text-text">⭐ Featured Variants</h2>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {featuredVariants.map(variant => (
+                  <VariantCard
+                    key={variant.definitionId}
+                    variant={variant}
+                    isSelected={false}
+                    onSelect={setSelectedVariant}
+                    isFeatured
+                  />
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Variants by Category */}
+          {Object.entries(variantsByCategory).map(([category, variants]) => (
+            <section key={category} className="mb-8">
+              <h2 className="mb-4 text-lg font-semibold text-text">{category}</h2>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {variants.map(variant => (
+                  <VariantCard
+                    key={variant.definitionId}
+                    variant={variant}
+                    isSelected={false}
+                    onSelect={setSelectedVariant}
+                  />
+                ))}
+              </div>
+            </section>
           ))}
-        </div>
+        </>
       )}
     </div>
   );

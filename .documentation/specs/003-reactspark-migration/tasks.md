@@ -32,7 +32,7 @@ Tasks are organized by **user story** to enable independent implementation and t
 
 ### Tasks
 
-- [ ] T001 Create feature branch `003-reactspark-migration` from main
+- [X] T001 Create feature branch `003-reactspark-migration` from main
 - [X] T002 [P] Verify Tailwind CSS 4.x is installed (`tailwindcss@^4.2` already present with @theme directive active)
 - [X] T003 [P] Install React Router: `npm install react-router-dom@^7.1`
 - [X] T004 [P] Install Zod validation: `npm install zod@^3`
@@ -59,12 +59,12 @@ Tasks are organized by **user story** to enable independent implementation and t
 ### Tasks
 
 - [X] T013 Enhance apps/demo-app/src/services/cache.service.ts with version-based invalidation logic
-- [ ] T013.5 Update vitest.config.ts with coverage thresholds: 80% for lines, branches, functions, statements
-- [ ] T014 [P] Update apps/demo-app/src/contexts/ThemeContext.tsx to use localStorage with 'theme' key
+- [X] T013.5 Update vitest.config.ts with coverage thresholds: 80% for lines, branches, functions, statements
+- [X] T014 [P] Update apps/demo-app/src/contexts/ThemeContext.tsx to use localStorage with 'theme' key
 - [X] T015 [P] Update apps/demo-app/src/contexts/SEOContext.tsx for dynamic meta tag management
 - [X] T016 Verify apps/demo-app/src/components/ErrorBoundary.tsx exists and wraps mini-apps
 - [X] T017 Update apps/demo-app/src/App.tsx to configure React Router with lazy loading
-- [ ] T018 [P] Create apps/demo-app/src/components/ThemeToggle.tsx using semantic tokens (bg-brand, text-text)
+- [X] T018 [P] Create apps/demo-app/src/components/ThemeToggle.tsx using semantic tokens (bg-brand, text-text)
 - [ ] T019 Test theme persistence: toggle light/dark, refresh page, verify preference loads from localStorage
 
 ---
@@ -95,8 +95,8 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T024 [US8] Style Header using semantic tokens: bg-surface, border-border, text-text
 - [X] T025 [US8] Add mobile hamburger menu with transition animations
 - [X] T026 [US8] Add active state indicator for current page/mini-app
-- [ ] T027 [US8] Add sticky positioning to Header: sticky top-0 z-50
-- [ ] T028 [US8] Add skip-to-content link at top of Header for screen readers
+- [X] T027 [US8] Add sticky positioning to Header: sticky top-0 z-40
+- [X] T028 [US8] Add skip-to-content link at top of Header for screen readers
 - [X] T029 [US8] Add route definitions to App.tsx for /apps, /apps/projects, /apps/articles, /apps/joke, /apps/weather, /apps/ai-chat
 - [ ] T030 [US8] Test Header in both light and dark themes
 - [ ] T031 [US8] Write apps/demo-app/src/components/AppsDropdown.test.tsx (renders, keyboard nav, ARIA)
@@ -123,15 +123,15 @@ Tasks are organized by **user story** to enable independent implementation and t
 ### Tasks
 
 - [X] T033 [US9] Create apps/demo-app/src/types/miniapp.ts with MiniApp interface
-- [ ] T034 [US9] Create apps/demo-app/src/components/MiniAppCard.tsx component
-- [ ] T035 [US9] Style MiniAppCard using semantic tokens: bg-surface, border-border, hover:shadow-md
-- [ ] T036 [US9] Add ARIA attributes to MiniAppCard: aria-label for Launch button
+- [X] T034 [US9] Create apps/demo-app/src/components/MiniAppCard.tsx component
+- [X] T035 [US9] Style MiniAppCard using semantic tokens: bg-surface, border-border, hover:shadow-md
+- [X] T036 [US9] Add ARIA attributes to MiniAppCard: aria-label for Launch button
 - [X] T037 [US9] Create apps/demo-app/src/pages/AppsHubPage.tsx with grid layout
 - [X] T038 [US9] Define miniAppsData array in AppsHubPage: all 5 apps with icons, names, descriptions, routes
 - [X] T039 [US9] Implement responsive grid: grid-cols-1 md:grid-cols-2 lg:grid-cols-3
 - [X] T040 [US9] Add SEO metadata in AppsHubPage using useSEO hook
 - [ ] T041 [US9] Test AppsHubPage in both light and dark themes
-- [ ] T042 [US9] Write apps/demo-app/src/components/MiniAppCard.test.tsx (renders, Launch click)
+- [X] T042 [US9] Write apps/demo-app/src/components/MiniAppCard.test.tsx (renders, Launch click)
 - [ ] T043 [US9] Write apps/demo-app/src/pages/AppsHubPage.test.tsx (renders 5 cards, grid layout)
 
 ---
@@ -154,16 +154,16 @@ Tasks are organized by **user story** to enable independent implementation and t
 ### Tasks
 
 - [X] T044 [P] [US7] Update apps/demo-app/src/pages/HomePage.tsx with hero content
-- [ ] T045 [P] [US7] Update apps/demo-app/src/sections/HeroSection.tsx using semantic tokens
-- [ ] T046 [US7] Add technology stack icons to HeroSection (React, Vite, TypeScript, Tailwind)
-- [ ] T047 [US7] Add CTA buttons to HeroSection with external links
+- [X] T045 [P] [US7] Update apps/demo-app/src/sections/HeroSection.tsx using semantic tokens
+- [X] T046 [US7] Add technology stack icons to HeroSection (React, Vite, TypeScript, Tailwind)
+- [X] T047 [US7] Add CTA buttons to HeroSection with external links
 - [X] T048 [US7] Update apps/demo-app/src/pages/AboutPage.tsx to fetch ReactSpark articles
-- [ ] T049 [US7] Update apps/demo-app/src/sections/AboutSection.tsx using semantic tokens
-- [ ] T050 [US7] Filter articles by category="ReactSpark" in AboutPage
-- [ ] T051 [US7] Display recent 3-5 ReactSpark articles in AboutSection
+- [X] T049 [US7] Update apps/demo-app/src/sections/AboutSection.tsx using semantic tokens
+- [X] T050 [US7] Filter articles by category="ReactSpark" in AboutPage
+- [X] T051 [US7] Display recent 3-5 ReactSpark articles in AboutSection
 - [X] T052 [US7] Add SEO metadata to HomePage and AboutPage using useSEO hook
 - [ ] T053 [US7] Test both pages in light and dark themes
-- [ ] T054 [US7] Write apps/demo-app/src/pages/HomePage.test.tsx (renders hero, CTA buttons)
+- [X] T054 [US7] Write apps/demo-app/src/pages/HomePage.test.tsx (renders hero, CTA buttons)
 - [ ] T055 [US7] Write apps/demo-app/src/pages/AboutPage.test.tsx (renders about, filters articles)
 
 ---
@@ -194,9 +194,9 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T060 [US1] Create apps/demo-app/src/hooks/useProjects.ts hook
 - [X] T061 [US1] Implement useState for projects, loading, error in useProjects hook
 - [X] T062 [US1] Create apps/demo-app/src/sections/ProjectCard.tsx component
-- [ ] T062.5 [US1] Create apps/demo-app/src/utils/imageUtils.ts with transformImageUrl() for CDN paths + cache busters
-- [ ] T063 [US1] Style ProjectCard using semantic tokens: bg-surface, hover:shadow-md, border-border
-- [ ] T064 [US1] Add image with alt text, title, description, status badge to ProjectCard (use transformImageUrl utility)
+- [X] T062.5 [US1] Create apps/demo-app/src/utils/imageUtils.ts with transformImageUrl() for CDN paths + cache busters
+- [X] T063 [US1] Style ProjectCard using semantic tokens: bg-surface, hover:shadow-md, border-border
+- [X] T064 [US1] Add image with alt text, title, description, status badge to ProjectCard (use transformImageUrl utility)
 - [X] T065 [US1] Create apps/demo-app/src/pages/apps/ProjectsPage.tsx
 - [X] T066 [US1] Implement search input with real-time filtering in ProjectsPage
 - [X] T067 [US1] Implement sort dropdown (name asc/desc, date, status) in ProjectsPage
@@ -208,7 +208,7 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [ ] T073 [US1] Test ProjectsPage in light and dark themes
 - [ ] T074 [US1] Write apps/demo-app/src/services/projects.service.test.ts (fetches, validates, caches, fallback)
 - [ ] T075 [US1] Write apps/demo-app/src/hooks/useProjects.test.ts (returns projects, loading, error states)
-- [ ] T076 [US1] Write apps/demo-app/src/sections/ProjectCard.test.tsx (renders project data)
+- [X] T076 [US1] Write apps/demo-app/src/sections/ProjectCard.test.tsx (renders project data)
 - [ ] T077 [US1] Write apps/demo-app/src/pages/apps/ProjectsPage.test.tsx (search, sort, pagination, refresh)
 
 ---
@@ -235,13 +235,13 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T078 [P] [US2] Create apps/demo-app/src/services/rss.service.ts with singleton pattern
 - [X] T079 [US2] Implement parseRSSFeed() to convert XML → JSON in rss.service.ts
 - [X] T080 [US2] Implement getArticles() with fetch, parse, validate Zod, cache in rss.service.ts
-- [ ] T081 [US2] Implement getFallbackArticles() for local rss.xml fallback
+- [X] T081 [US2] Implement getFallbackArticles() for local rss.xml fallback
 - [X] T082 [US2] Add version-based cache invalidation for articles
 - [X] T083 [US2] Create apps/demo-app/src/hooks/useArticles.ts hook
 - [X] T084 [US2] Implement useState for articles, loading, error in useArticles hook
 - [X] T085 [US2] Create apps/demo-app/src/sections/ArticleCard.tsx component
 - [X] T086 [US2] Style ArticleCard using semantic tokens with category badge
-- [ ] T087 [US2] Add title, pub_date, category, description, external link to ArticleCard
+- [X] T087 [US2] Add title, pub_date, category, description, external link to ArticleCard
 - [X] T088 [US2] Create apps/demo-app/src/pages/apps/ArticlesPage.tsx
 - [X] T089 [US2] Implement category filter dropdown (All, ReactSpark, Technology, etc.)
 - [X] T090 [US2] Implement sort toggle (newest first / oldest first) in ArticlesPage
@@ -252,7 +252,7 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [ ] T095 [US2] Test ArticlesPage in light and dark themes
 - [ ] T096 [US2] Write apps/demo-app/src/services/rss.service.test.ts (parses XML, validates, caches)
 - [ ] T097 [US2] Write apps/demo-app/src/hooks/useArticles.test.ts (returns articles, loading, error)
-- [ ] T098 [US2] Write apps/demo-app/src/sections/ArticleCard.test.tsx (renders article data)
+- [X] T098 [US2] Write apps/demo-app/src/sections/ArticleCard.test.tsx (renders article data)
 - [ ] T099 [US2] Write apps/demo-app/src/pages/apps/ArticlesPage.test.tsx (filter, sort, pagination)
 
 ---
@@ -294,8 +294,8 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T112 [US3] Add like button (heart icon) with filled/unfilled state based on likedJokes
 - [X] T113 [US3] Add bookmark button with click handler to saveJoke()
 - [X] T114 [US3] Add share button with Web Share API integration (navigator.share)
-- [ ] T115 [US3] Add "Explain" button to open AI explainer modal
-- [ ] T116 [US3] Update apps/demo-app/src/components/Modal.tsx to support joke explainer content
+- [X] T115 [US3] Add "Explain" button to open AI explainer modal
+- [X] T116 [US3] Update apps/demo-app/src/components/Modal.tsx to support joke explainer content
 - [X] T117 [US3] Create apps/demo-app/src/pages/apps/JokePage.tsx
 - [X] T118 [US3] Add "Get New Joke" button in JokePage
 - [X] T119 [US3] Add saved jokes section in JokePage showing all saved jokes with delete buttons
@@ -305,7 +305,7 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [ ] T123 [US3] Test JokePage in light and dark themes
 - [ ] T124 [US3] Write apps/demo-app/src/services/joke.service.test.ts (fetches, saves, likes, deletes)
 - [ ] T125 [US3] Write apps/demo-app/src/hooks/useJokes.test.ts (returns joke, saved, liked states)
-- [ ] T126 [US3] Write apps/demo-app/src/sections/JokeCard.test.tsx (renders single/twopart, like, save, share)
+- [X] T126 [US3] Write apps/demo-app/src/sections/JokeCard.test.tsx (renders single/twopart, like, save, share)
 - [ ] T127 [US3] Write apps/demo-app/src/pages/apps/JokePage.test.tsx (fetch, save, delete, explain modal)
 
 ---
@@ -340,9 +340,9 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T135 [US4] Create apps/demo-app/src/sections/WeatherCard.tsx component
 - [X] T136 [US4] Style WeatherCard using semantic tokens to display all weather fields
 - [X] T137 [US4] Add weather icon mapping from OpenWeatherMap icon codes
-- [ ] T138 [US4] Create apps/demo-app/src/sections/WeatherMap.tsx with react-leaflet
-- [ ] T139 [US4] Configure Leaflet map: zoom 10, OpenStreetMap tiles, city marker
-- [ ] T140 [US4] Add map controls: zoom buttons, center on city
+- [X] T138 [US4] Create apps/demo-app/src/sections/WeatherMap.tsx with react-leaflet
+- [X] T139 [US4] Configure Leaflet map: zoom 10, OpenStreetMap tiles, city marker
+- [X] T140 [US4] Add map controls: zoom buttons, center on city
 - [X] T141 [US4] Create apps/demo-app/src/pages/apps/WeatherPage.tsx
 - [X] T142 [US4] Add city search input with search button in WeatherPage
 - [X] T143 [US4] Add recent searches section with clickable city buttons
@@ -385,33 +385,33 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T155 [US5] Implement getVariants() with fetch from PromptSpark Variants API
 - [X] T156 [US5] Implement Zod validation for AIVariant response
 - [X] T157 [US5] Implement cache with version invalidation for variants
-- [ ] T158 [US5] Create apps/demo-app/src/services/chat.service.ts with SignalR HubConnection
-- [ ] T159 [US5] Implement createConnection() with hub URL and transport configuration (WebSocket → SSE → LongPolling)
-- [ ] T160 [US5] Implement startConnection() with automatic retry logic (delays: 0, 2000, 10000, 30000ms)
-- [ ] T161 [US5] Implement sendMessage(variantId, message) with hub.invoke('SendMessage')
-- [ ] T162 [US5] Implement onReceiveMessage(callback) with hub.on('ReceiveMessage')
-- [ ] T163 [US5] Implement onReceiveChunk(callback) for streaming responses with hub.on('ReceiveChunk')
-- [ ] T164 [US5] Implement stopConnection() with cleanup
+- [X] T158 [US5] Create apps/demo-app/src/services/chat.service.ts with SignalR HubConnection
+- [X] T159 [US5] Implement createConnection() with hub URL and transport configuration (WebSocket → SSE → LongPolling)
+- [X] T160 [US5] Implement startConnection() with automatic retry logic (delays: 0, 2000, 10000, 30000ms)
+- [X] T161 [US5] Implement sendMessage(variantId, message) with hub.invoke('SendMessage')
+- [X] T162 [US5] Implement onReceiveMessage(callback) with hub.on('ReceiveMessage')
+- [X] T163 [US5] Implement onReceiveChunk(callback) for streaming responses with hub.on('ReceiveChunk')
+- [X] T164 [US5] Implement stopConnection() with cleanup
 - [X] T165 [US5] Create apps/demo-app/src/hooks/useVariants.ts hook
 - [X] T166 [US5] Implement useState for variants, loading, error in useVariants
 - [X] T167 [US5] Create apps/demo-app/src/hooks/useSignalR.ts hook
 - [X] T168 [US5] Implement useState for connection, messages, isConnected, isTyping in useSignalR
 - [X] T169 [US5] Implement connection lifecycle: connect on mount, disconnect on unmount
 - [X] T170 [US5] Create apps/demo-app/src/sections/VariantCard.tsx component
-- [ ] T171 [US5] Style VariantCard with category badge, temperature indicator, featured badge
-- [ ] T172 [US5] Add "Start Chat" button to VariantCard
+- [X] T171 [US5] Style VariantCard with category badge, temperature indicator, featured badge
+- [X] T172 [US5] Add "Start Chat" button to VariantCard
 - [X] T173 [US5] Create apps/demo-app/src/sections/ChatInterface.tsx component
 - [X] T174 [US5] Style ChatInterface with message bubbles (user right, assistant left)
 - [X] T175 [US5] Add message input with Send button and Enter key handler
 - [X] T176 [US5] Add typing indicator when assistant is responding
 - [X] T177 [US5] Add connection status indicator (connected/connecting/disconnected)
 - [X] T178 [US5] Add auto-scroll to latest message
-- [ ] T179 [US5] Implement user name prompt on first chat (stored in localStorage 'chat_user_name')
+- [X] T179 [US5] Implement user name prompt on first chat (stored in localStorage 'chat_user_name')
 - [X] T180 [US5] Create apps/demo-app/src/pages/apps/AIChatPage.tsx
-- [ ] T181 [US5] Display featured variants section (top 3 with featured: true)
-- [ ] T182 [US5] Display variants by category with collapsible sections
+- [X] T181 [US5] Display featured variants section (top 3 with featured: true)
+- [X] T182 [US5] Display variants by category with collapsible sections
 - [X] T183 [US5] Add category filter dropdown (All, GPT Models, Development, Creative, etc.)
-- [ ] T184 [US5] Implement modal for chat interface (opens on "Start Chat" click)
+- [X] T184 [US5] Implement modal for chat interface (opens on "Start Chat" click)
 - [X] T185 [US5] Add loading spinner during variants fetch
 - [X] T186 [US5] Add error messages for variants fetch failure and SignalR connection errors
 - [X] T187 [US5] Add SEO metadata to AIChatPage using useSEO hook
@@ -420,7 +420,7 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [ ] T190 [US5] Write apps/demo-app/src/services/chat.service.test.ts (connects, sends, receives, reconnects)
 - [ ] T191 [US5] Write apps/demo-app/src/hooks/useVariants.test.ts (returns variants, loading, error)
 - [ ] T192 [US5] Write apps/demo-app/src/hooks/useSignalR.test.ts (connects, messages, status)
-- [ ] T193 [US5] Write apps/demo-app/src/sections/VariantCard.test.tsx (renders variant, Start Chat)
+- [X] T193 [US5] Write apps/demo-app/src/sections/VariantCard.test.tsx (renders variant, Start Chat)
 - [ ] T194 [US5] Write apps/demo-app/src/sections/ChatInterface.test.tsx (sends messages, displays responses)
 - [ ] T195 [US5] Write apps/demo-app/src/pages/apps/AIChatPage.test.tsx (featured, filter, chat modal)
 
@@ -449,31 +449,31 @@ Tasks are organized by **user story** to enable independent implementation and t
 #### SEO & Meta Tags (FR-078–FR-084)
 
 - [ ] T196 Run Lighthouse audit: `npm run lighthouse` and verify scores 90+ for Performance, 100 for Accessibility, Best Practices, SEO
-- [ ] T196.1 [P] Update apps/demo-app/public/sitemap.xml to include all /apps/* routes (/apps, /apps/projects, /apps/articles, /apps/joke, /apps/weather, /apps/ai-chat)
-- [ ] T196.2 [P] Update apps/demo-app/public/robots.txt to reference updated sitemap with mini-app routes
-- [ ] T196.3 Enhance useSEO hook to set Open Graph meta tags (og:title, og:description, og:image, og:url) per route
-- [ ] T196.4 Add canonical URL management to useSEO hook (rel="canonical" per route)
-- [ ] T196.5 Create apps/demo-app/src/components/UpdateNotification.tsx with Update/Dismiss actions
-- [ ] T196.6 Implement version check polling (60s interval) that triggers UpdateNotification on version mismatch
-- [ ] T196.7 [P] Add JSON-LD structured data (WebSite, WebApplication) to HomePage and AppsHubPage
+- [X] T196.1 [P] Update apps/demo-app/public/sitemap.xml to include all /apps/* routes (/apps, /apps/projects, /apps/articles, /apps/joke, /apps/weather, /apps/ai-chat)
+- [X] T196.2 [P] Update apps/demo-app/public/robots.txt to reference updated sitemap with mini-app routes
+- [X] T196.3 Enhance useSEO hook to set Open Graph meta tags (og:title, og:description, og:image, og:url) per route
+- [X] T196.4 Add canonical URL management to useSEO hook (rel="canonical" per route)
+- [X] T196.5 Create apps/demo-app/src/components/UpdateNotification.tsx with Update/Dismiss actions
+- [X] T196.6 Implement version check polling (60s interval) that triggers UpdateNotification on version mismatch
+- [X] T196.7 [P] Add JSON-LD structured data (WebSite, WebApplication) to HomePage and AppsHubPage
 - [ ] T196.8 Write apps/demo-app/src/hooks/useSEO.test.ts (OG tags, canonical URL, title/description updates)
 
 #### Content Security Policy & Security (FR-108–FR-113)
 
-- [ ] T196.9 Configure Content Security Policy (CSP) headers in apps/demo-app/public/_headers for all content retrieval (scripts, styles, images, fonts, connect-src for APIs)
+- [X] T196.9 Configure Content Security Policy (CSP) headers in apps/demo-app/public/_headers for all content retrieval (scripts, styles, images, fonts, connect-src for APIs)
 - [ ] T196.10 [P] Verify all external API calls use HTTPS (no mixed content) across all services
-- [ ] T196.11 [P] Create apps/demo-app/src/utils/sanitize.ts with shared sanitizeInput() utility for XSS prevention
-- [ ] T196.12 Apply sanitizeInput() to all search inputs in ProjectsPage, ArticlesPage, WeatherPage, and chat messages
+- [X] T196.11 [P] Create apps/demo-app/src/utils/sanitize.ts with shared sanitizeInput() utility for XSS prevention
+- [X] T196.12 Apply sanitizeInput() to all search inputs in ProjectsPage, ArticlesPage, WeatherPage, and chat messages
 - [ ] T196.13 [P] Verify no API keys or credentials are exposed in client-side code (audit all .service.ts files)
 - [ ] T196.14 [P] Configure CORS-friendly fetch headers in all API service files for cross-origin requests
 
 #### Performance & Quality
 - [ ] T197 Optimize bundle size: verify total < 500KB gzipped, individual chunks < 100KB
-- [ ] T197.1 Implement environment-based cache TTLs in cache.service.ts: dev (5 min), prod (1 hour) (FR-074)
-- [ ] T197.2 Add loading=\"lazy\" attribute and placeholder images to ProjectCard.tsx and ArticleCard.tsx (FR-102)
-- [ ] T197.3 Update ErrorBoundary.tsx with \"Go Home\" and \"Go to Apps\" recovery navigation buttons (FR-088)
+- [X] T197.1 Implement environment-based cache TTLs in cache.service.ts: dev (5 min), prod (1 hour) (FR-074)
+- [X] T197.2 Add loading=\"lazy\" attribute and placeholder images to ProjectCard.tsx and ArticleCard.tsx (FR-102)
+- [X] T197.3 Update ErrorBoundary.tsx with \"Go Home\" and \"Go to Apps\" recovery navigation buttons (FR-088)
 - [ ] T197.4 Implement hard-refresh cache clearing logic (detect Ctrl+F5 / shift-reload and clear all caches) (FR-093)
-- [ ] T197.5 Verify NotFoundPage.tsx works as catch-all for /apps/* unknown routes (FR-014)
+- [X] T197.5 Verify NotFoundPage.tsx works as catch-all for /apps/* unknown routes (FR-014)
 - [ ] T197.6 [P] Verify console.log statements are removed in production builds via ESLint rule (FR-107)
 - [ ] T198 Run coverage report: `npm test -- --coverage` and verify 80%+ coverage for all files
 - [ ] T199 Run ESLint: `npm run lint` and fix all violations (especially no-raw-primary-class)

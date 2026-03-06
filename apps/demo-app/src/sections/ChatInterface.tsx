@@ -26,11 +26,22 @@ export default function ChatInterface({ variant, onBack }: ChatInterfaceProps) {
     clearMessages,
   } = useSignalR(variant);
   const [input, setInput] = useState('');
+  const [showNamePrompt, setShowNamePrompt] = useState(() => {
+    return !localStorage.getItem(SIGNALR_CONFIG.USER_NAME_KEY);
+  });
+  const [nameInput, setNameInput] = useState('');
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isAssistantTyping]);
+
+  const handleNameSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const name = nameInput.trim() || SIGNALR_CONFIG.DEFAULT_USER_NAME;
+    localStorage.setItem(SIGNALR_CONFIG.USER_NAME_KEY, name);
+    setShowNamePrompt(false);
+  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -39,6 +50,33 @@ export default function ChatInterface({ variant, onBack }: ChatInterfaceProps) {
       setInput('');
     }
   };
+
+  if (showNamePrompt) {
+    return (
+      <div className="flex h-[600px] flex-col items-center justify-center rounded-lg border border-border bg-surface p-8 shadow-sm">
+        <h3 className="mb-2 text-xl font-semibold text-text">Welcome to AI Chat</h3>
+        <p className="mb-6 text-sm text-text-muted">Enter your name to get started</p>
+        <form onSubmit={handleNameSubmit} className="flex w-full max-w-sm gap-2">
+          <input
+            type="text"
+            value={nameInput}
+            onChange={e => setNameInput(e.target.value)}
+            placeholder="Your name..."
+            maxLength={50}
+            className="flex-1 rounded-lg border border-border bg-surface px-4 py-2 text-sm text-text placeholder:text-text-muted focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+            autoFocus
+            aria-label="Your display name"
+          />
+          <button
+            type="submit"
+            className="rounded-lg bg-brand px-5 py-2 text-sm font-medium text-white transition hover:bg-brand/90"
+          >
+            Continue
+          </button>
+        </form>
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-[600px] flex-col rounded-lg border border-border bg-surface shadow-sm">
