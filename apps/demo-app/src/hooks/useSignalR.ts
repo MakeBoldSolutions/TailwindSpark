@@ -45,7 +45,7 @@ export function useSignalR(variant: AIVariant | null): UseSignalRReturn {
       try {
         const signalR = await import('@microsoft/signalr');
         const connection = new signalR.HubConnectionBuilder()
-          .withUrl(SIGNALR_CONFIG.HUB_URL)
+          .withUrl(SIGNALR_CONFIG.HUB_URL, { withCredentials: false })
           .withAutomaticReconnect(SIGNALR_CONFIG.RETRY_DELAYS)
           .build();
 
