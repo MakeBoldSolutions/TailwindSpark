@@ -468,7 +468,7 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T196.14 [P] Configure CORS-friendly fetch headers in all API service files for cross-origin requests
 
 #### Performance & Quality
-- [ ] T197 Optimize bundle size: verify total < 500KB gzipped, individual chunks < 100KB
+- [X] T197 Optimize bundle size: verify total < 500KB gzipped, individual chunks < 100KB
 - [X] T197.1 Implement environment-based cache TTLs in cache.service.ts: dev (5 min), prod (1 hour) (FR-074)
 - [X] T197.2 Add loading=\"lazy\" attribute and placeholder images to ProjectCard.tsx and ArticleCard.tsx (FR-102)
 - [X] T197.3 Update ErrorBoundary.tsx with \"Go Home\" and \"Go to Apps\" recovery navigation buttons (FR-088)
@@ -483,9 +483,9 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T203 [P] Test all mini-apps on mobile viewport (375px width)
 - [X] T204 [P] Test all mini-apps on tablet viewport (768px width)
 - [X] T205 [P] Verify service worker caches all mini-app routes
-- [ ] T206 Update apps/demo-app/README.md with mini-app architecture documentation
-- [ ] T207 [P] Add JSDoc comments to all NEW exported functions and components (mini-app code only: ~50-100 exports)
-- [ ] T208 [P] Update .documentation/specs/003-reactspark-migration/CHANGELOG.md with migration notes
+- [X] T206 Update apps/demo-app/README.md with mini-app architecture documentation
+- [X] T207 [P] Add JSDoc comments to all NEW exported functions and components (mini-app code only: ~50-100 exports)
+- [X] T208 [P] Update .documentation/specs/003-reactspark-migration/CHANGELOG.md with migration notes
 - [ ] T209 Create PR from feature branch to main with full description
 - [ ] T210 Request code review and address feedback
 
