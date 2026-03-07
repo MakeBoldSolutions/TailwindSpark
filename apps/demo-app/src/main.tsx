@@ -23,10 +23,7 @@ async function clearBrowserCaches(): Promise<void> {
 }
 
 function setupHardRefreshCacheClearing(): void {
-  const navigationEntries = performance.getEntriesByType('navigation');
-  const navigation = navigationEntries[0] as PerformanceNavigationTiming | undefined;
-
-  if (sessionStorage.getItem(FORCE_CACHE_CLEAR_KEY) === '1' || navigation?.type === 'reload') {
+  if (sessionStorage.getItem(FORCE_CACHE_CLEAR_KEY) === '1') {
     void clearBrowserCaches();
   }
 
