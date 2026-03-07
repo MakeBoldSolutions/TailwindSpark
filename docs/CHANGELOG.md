@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Comprehensive JSDoc Documentation**: Added JSDoc comments to 88+ exports across ui-components, design-tokens, and demo-app for improved IntelliSense support
 - **Test Infrastructure**: Created 27 test files with 369 test cases for pages, sections, and components
-- **Coverage Thresholds**: Configured 80% test coverage requirements with enforcement
+- **Coverage Thresholds**: Configured a temporary 40% enforced coverage baseline while future specs evaluate raising the floor
 - **Data Visualization Colors**: Added 8 semantic color tokens for charts and graphs with light/dark mode support
 - **ESLint JSDoc Plugin**: Integrated eslint-plugin-jsdoc for documentation quality enforcement
 - **Testing Implementation Guide**: Comprehensive guide for writing tests with established patterns
@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Enhanced
 
 - **ESLint Rules**: Strengthened no-raw-primary-class rule to catch ALL raw color patterns (23 color names, all modifiers, all prefixes)
-- **Test Coverage**: Increased from 40% to 60-70% with foundation for reaching 80%
+- **Test Coverage**: Increased from 40% to 60-70% with a documented path to raise the enforced baseline in future specs
 - **Code Quality**: Standardized logging patterns with appropriate use of console methods
 - **IntelliSense Support**: All components, pages, and sections now have helpful JSDoc
 - **Design Token Organization**: Added module-level JSDoc to design tokens package

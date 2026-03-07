@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import { useSEO } from '../contexts/SEOContext';
 import { useArticles } from '../hooks/useArticles';
 
+/**
+ * Renders the About page and related ReactSpark content.
+ *
+ * @returns About page element
+ */
 export function AboutPage() {
   const { setSEO } = useSEO();
   const { articles, loading: articlesLoading } = useArticles();

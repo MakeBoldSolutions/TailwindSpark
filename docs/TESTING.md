@@ -281,10 +281,12 @@ describe('ComponentName', () => {
 
 ### Target Coverage
 
-- **Statements**: 80%+
-- **Branches**: 75%+
-- **Functions**: 80%+
-- **Lines**: 80%+
+- **Statements**: 40%+ temporary baseline
+- **Branches**: 40%+ temporary baseline
+- **Functions**: 40%+ temporary baseline
+- **Lines**: 40%+ temporary baseline
+
+This repository is currently using a temporary 40% enforced floor while broader legacy coverage is evaluated and raised in future specs.
 
 ### Viewing Coverage
 

@@ -5,6 +5,11 @@ import JokeCard from '../../sections/JokeCard';
 
 type Tab = 'current' | 'saved' | 'history';
 
+/**
+ * Renders the programming joke generator page.
+ *
+ * @returns Joke app page
+ */
 function JokePage() {
   const { setSEO } = useSEO();
   const {
@@ -69,7 +74,7 @@ function JokePage() {
       {tab === 'current' && (
         <div className="space-y-6">
           {error && (
-            <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-900/20 dark:text-red-400">
+            <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive">
               {error}
             </div>
           )}

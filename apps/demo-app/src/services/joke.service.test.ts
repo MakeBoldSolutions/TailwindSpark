@@ -47,7 +47,10 @@ describe('joke.service', () => {
 
       const result = await getRandomJoke();
       expect(result.id).toBe(42);
-      expect(result.joke).toContain('dark mode');
+      expect(result.type).toBe('single');
+      if (result.type === 'single') {
+        expect(result.joke).toContain('dark mode');
+      }
     });
 
     it('returns fallback joke on API error', async () => {

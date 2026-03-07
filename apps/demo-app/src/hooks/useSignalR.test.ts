@@ -3,24 +3,29 @@ import { describe, expect, it, vi } from 'vitest';
 import type { AIVariant } from '../types/chat-api';
 import { useSignalR } from './useSignalR';
 
-// Mock @microsoft/signalr dynamic import
-const mockConnection = {
-  on: vi.fn(),
-  onreconnecting: vi.fn(),
-  onreconnected: vi.fn(),
-  onclose: vi.fn(),
-  start: vi.fn(() => Promise.resolve()),
-  stop: vi.fn(() => Promise.resolve()),
-  invoke: vi.fn(() => Promise.resolve()),
-};
+const signalRMocks = vi.hoisted(() => {
+  const mockConnection = {
+    on: vi.fn(),
+    onreconnecting: vi.fn(),
+    onreconnected: vi.fn(),
+    onclose: vi.fn(),
+    start: vi.fn(() => Promise.resolve()),
+    stop: vi.fn(() => Promise.resolve()),
+    invoke: vi.fn(() => Promise.resolve()),
+  };
+
+  class MockHubConnectionBuilder {
+    withUrl = vi.fn().mockReturnThis();
+    withAutomaticReconnect = vi.fn().mockReturnThis();
+    configureLogging = vi.fn().mockReturnThis();
+    build = vi.fn(() => mockConnection);
+  }
+
+  return { mockConnection, MockHubConnectionBuilder };
+});
 
 vi.mock('@microsoft/signalr', () => ({
-  HubConnectionBuilder: vi.fn(() => ({
-    withUrl: vi.fn().mockReturnThis(),
-    withAutomaticReconnect: vi.fn().mockReturnThis(),
-    configureLogging: vi.fn().mockReturnThis(),
-    build: vi.fn(() => mockConnection),
-  })),
+  HubConnectionBuilder: signalRMocks.MockHubConnectionBuilder,
   HttpTransportType: { WebSockets: 1, ServerSentEvents: 2, LongPolling: 4 },
   LogLevel: { Information: 1 },
 }));

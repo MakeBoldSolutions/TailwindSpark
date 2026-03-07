@@ -11,6 +11,11 @@ interface UseWeatherReturn {
   searchCity: (city: string) => Promise<void>;
 }
 
+/**
+ * Loads default weather cards and exposes city search behavior.
+ *
+ * @returns Weather results, recent searches, and search state
+ */
 export function useWeather(): UseWeatherReturn {
   const [weatherResults, setWeatherResults] = useState<WeatherData[]>([]);
   const [recentSearches, setRecentSearches] = useState<RecentSearch[]>([]);

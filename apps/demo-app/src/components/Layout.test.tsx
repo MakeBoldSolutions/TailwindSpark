@@ -1,159 +1,136 @@
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import { describe, expect, it, vi } from 'vitest';
+import userEvent from '@testing-library/user-event';
+import { useLocation } from 'react-router-dom';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Layout } from './Layout';
 
-const renderWithRouter = (component: React.ReactElement) => {
-  return render(<BrowserRouter>{component}</BrowserRouter>);
+const renderLayout = ({
+  route = '/',
+  isDark = false,
+}: {
+  route?: string;
+  isDark?: boolean;
+} = {}) => {
+  const toggleTheme = vi.fn();
+
+  vi.mocked(useLocation).mockReturnValue({
+    pathname: route,
+    search: '',
+    hash: '',
+    state: null,
+    key: route,
+  });
+
+  const result = render(
+    <Layout isDark={isDark} toggleTheme={toggleTheme}>
+      <div>Test Content</div>
+    </Layout>
+  );
+
+  return {
+    ...result,
+    toggleTheme,
+  };
 };
 
 describe('Layout', () => {
-  const mockToggleTheme = vi.fn();
-
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  it('renders without crashing', () => {
-    renderWithRouter(
-      <Layout isDark={false} toggleTheme={mockToggleTheme}>
-        <div>Test Content</div>
-      </Layout>
-    );
+  it('renders the sticky header and skip link', () => {
+    renderLayout();
+
+    const header = document.querySelector('header');
+
     expect(screen.getByText(/Test Content/i)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Skip to main content/i })).toBeInTheDocument();
+    expect(header).toHaveClass('sticky', 'top-0', 'z-40');
   });
 
-  it('renders children content', () => {
-    renderWithRouter(
-      <Layout isDark={false} toggleTheme={mockToggleTheme}>
-        <div>Page Content Here</div>
-      </Layout>
-    );
-    expect(screen.getByText(/Page Content Here/i)).toBeInTheDocument();
-  });
-
-  it('displays navigation header', () => {
-    renderWithRouter(
-      <Layout isDark={false} toggleTheme={mockToggleTheme}>
+  it('renders navigation links and theme-specific toggle labels', () => {
+    const toggleTheme = vi.fn();
+    const { rerender } = render(
+      <Layout isDark={false} toggleTheme={toggleTheme}>
         <div>Content</div>
       </Layout>
     );
-    
-    // Navigation should be present
-    const nav = document.querySelector('nav') || document.querySelector('header');
-    expect(nav).toBeInTheDocument();
-  });
 
-  it('shows navigation links', () => {
-    renderWithRouter(
-      <Layout isDark={false} toggleTheme={mockToggleTheme}>
-        <div>Content</div>
-      </Layout>
-    );
-    
-    // Home link should be present
     expect(screen.getByRole('link', { name: /Home/i })).toBeInTheDocument();
-  });
+    expect(screen.getByRole('button', { name: /Switch to dark mode/i })).toBeInTheDocument();
 
-  it('displays logo', () => {
-    renderWithRouter(
-      <Layout isDark={false} toggleTheme={mockToggleTheme}>
+    rerender(
+      <Layout isDark={true} toggleTheme={toggleTheme}>
         <div>Content</div>
       </Layout>
     );
-    
-    // Logo should be present
-    const logo = document.querySelector('[data-testid="logo"]') ||
-                document.querySelector('svg') ||
-                screen.queryByText(/TailwindSpark|Logo/i);
-    expect(logo).toBeTruthy();
+
+    expect(screen.getByRole('button', { name: /Switch to light mode/i })).toBeInTheDocument();
   });
 
-  it('shows search functionality', () => {
-    renderWithRouter(
-      <Layout isDark={false} toggleTheme={mockToggleTheme}>
-        <div>Content</div>
-      </Layout>
-    );
-    
-    // Search button or input
-    const searchElement = screen.queryByPlaceholderText(/Search/i) ||
-                         screen.queryByRole('button', { name: /Search/i });
-    expect(searchElement).toBeTruthy();
+  it('opens the Apps menu with keyboard input and exposes ARIA attributes', async () => {
+    const user = userEvent.setup();
+    renderLayout();
+
+    const appsButton = screen.getByRole('button', { name: /Apps/i });
+
+    expect(appsButton).toHaveAttribute('aria-haspopup', 'true');
+    expect(appsButton).toHaveAttribute('aria-expanded', 'false');
+
+    appsButton.focus();
+    await user.keyboard('{Enter}');
+
+    expect(appsButton).toHaveAttribute('aria-expanded', 'true');
+    expect(screen.getByRole('menu')).toBeInTheDocument();
+    expect(screen.getByRole('menuitem', { name: /All Apps/i })).toBeInTheDocument();
+    expect(screen.getByRole('menuitem', { name: /Projects/i })).toBeInTheDocument();
+    expect(screen.getByRole('menuitem', { name: /AI Chat/i })).toBeInTheDocument();
   });
 
-  it('displays theme toggle button', () => {
-    renderWithRouter(
-      <Layout isDark={false} toggleTheme={mockToggleTheme}>
-        <div>Content</div>
-      </Layout>
-    );
-    
-    // Theme toggle should be present
-    const themeButton = screen.queryByRole('button', { name: /theme|dark|light/i }) ||
-                       document.querySelector('[aria-label*="theme"]');
-    expect(themeButton).toBeTruthy();
+  it('closes the Apps menu when Escape is pressed', async () => {
+    const user = userEvent.setup();
+    renderLayout();
+
+    const appsButton = screen.getByRole('button', { name: /Apps/i });
+    await user.click(appsButton);
+
+    expect(screen.getByRole('menu')).toBeInTheDocument();
+
+    await user.keyboard('{Escape}');
+
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+    expect(appsButton).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('shows mobile menu button on mobile', () => {
-    renderWithRouter(
-      <Layout isDark={false} toggleTheme={mockToggleTheme}>
-        <div>Content</div>
-      </Layout>
-    );
-    
-    // Mobile menu toggle
-    const mobileButton = screen.queryByRole('button', { name: /menu/i }) ||
-                        document.querySelector('[class*="mobile"]');
-    expect(mobileButton).toBeTruthy();
+  it('shows active styling for the current apps route', async () => {
+    const user = userEvent.setup();
+    renderLayout({ route: '/apps/projects' });
+
+    const appsButton = screen.getByRole('button', { name: /Apps/i });
+
+    await user.click(appsButton);
+
+    const projectsLink = screen.getByRole('menuitem', { name: /Projects/i });
+    expect(projectsLink.className).toContain('bg-brand/10');
+    expect(projectsLink.className).toContain('text-brand');
   });
 
-  it('renders BuildInfo component', () => {
-    renderWithRouter(
-      <Layout isDark={false} toggleTheme={mockToggleTheme}>
-        <div>Content</div>
-      </Layout>
-    );
-    
-    // BuildInfo should be present (version info)
-    const buildInfo = screen.queryByText(/v\d+\.\d+/) ||
-                     screen.queryByText(/Build|Version/i);
-    expect(buildInfo).toBeTruthy();
-  });
+  it('opens and closes the mobile menu', async () => {
+    const user = userEvent.setup();
+    renderLayout();
 
-  it('displays demos dropdown menu', () => {
-    renderWithRouter(
-      <Layout isDark={false} toggleTheme={mockToggleTheme}>
-        <div>Content</div>
-      </Layout>
-    );
-    
-    // Demos link or dropdown
-    const demosLink = screen.queryByText(/Demo/i);
-    expect(demosLink).toBeTruthy();
-  });
+    const mobileMenuButton = screen.getByRole('button', { name: /Toggle mobile menu/i });
 
-  it('shows sticky header', () => {
-    renderWithRouter(
-      <Layout isDark={false} toggleTheme={mockToggleTheme}>
-        <div>Content</div>
-      </Layout>
-    );
-    
-    // Header with sticky positioning
-    const header = document.querySelector('header') || document.querySelector('nav');
-    expect(header).toBeInTheDocument();
-  });
+    expect(screen.queryByText(/^All Apps$/i)).not.toBeInTheDocument();
 
-  it('has proper responsive classes', () => {
-    renderWithRouter(
-      <Layout isDark={false} toggleTheme={mockToggleTheme}>
-        <div>Content</div>
-      </Layout>
-    );
-    
-    // Responsive classes
-    const responsiveElements = document.querySelectorAll('[class*="md:"], [class*="lg:"]');
-    expect(responsiveElements.length).toBeGreaterThan(0);
+    await user.click(mobileMenuButton);
+
+    expect(screen.getAllByText(/^Apps$/i).length).toBeGreaterThan(0);
+    expect(screen.getByText(/^All Apps$/i)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Projects/i })).toBeInTheDocument();
+
+    await user.keyboard('{Escape}');
+
+    expect(screen.queryByText(/^All Apps$/i)).not.toBeInTheDocument();
   });
 });

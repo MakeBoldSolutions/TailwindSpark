@@ -232,7 +232,10 @@ export const SAVED_JOKES_CONFIG = {
  */
 
 /**
- * Get joke text for display
+ * Returns the full joke text for display or sharing.
+ *
+ * @param joke - Joke entity to format
+ * @returns Plain text joke content
  */
 export function getJokeText(joke: Joke): string {
   if (joke.type === 'single') {
@@ -242,7 +245,10 @@ export function getJokeText(joke: Joke): string {
 }
 
 /**
- * Check if joke is safe for all audiences
+ * Determines whether a joke is safe for all audiences.
+ *
+ * @param joke - Joke entity to inspect
+ * @returns True when no unsafe flags are set
  */
 export function isJokeSafe(joke: Joke): boolean {
   const { flags } = joke;
@@ -250,7 +256,7 @@ export function isJokeSafe(joke: Joke): boolean {
 }
 
 /**
- * Format joke for sharing (Web Share API)
+ * Share payload used by the Web Share API.
  */
 export interface ShareJokeParams {
   title?: string;
@@ -258,6 +264,12 @@ export interface ShareJokeParams {
   url?: string;
 }
 
+/**
+ * Formats a joke for the Web Share API.
+ *
+ * @param joke - Joke entity to share
+ * @returns Share payload for the selected joke
+ */
 export function formatJokeForSharing(joke: Joke): ShareJokeParams {
   const text = getJokeText(joke);
   return {
@@ -268,7 +280,7 @@ export function formatJokeForSharing(joke: Joke): ShareJokeParams {
 }
 
 /**
- * Joke Statistics (for analytics)
+ * Joke statistics used for analytics-style summaries.
  */
 export interface JokeStats {
   totalFetched: number;

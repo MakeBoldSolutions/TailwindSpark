@@ -5,7 +5,15 @@ interface WeatherCardProps {
   data: WeatherData;
 }
 
-export default function WeatherCard({ data }: WeatherCardProps) {
+/**
+ * Displays current weather details for a city.
+ *
+ * @param props - Component props
+ * @param props.data - Weather data to present
+ * @returns Weather card element
+ */
+export default function WeatherCard(props: WeatherCardProps) {
+  const { data } = props;
   const iconInfo = WEATHER_ICONS[data.weather.icon as WeatherIconCode];
   const emoji = iconInfo?.emoji ?? '🌡️';
 
@@ -13,9 +21,9 @@ export default function WeatherCard({ data }: WeatherCardProps) {
     <div className="rounded-lg border border-border bg-surface p-6 shadow-sm transition hover:shadow-md">
       <div className="mb-4 flex items-start justify-between">
         <div>
-          <h3 className="text-xl font-bold text-text">
+          <h2 className="text-xl font-bold text-text">
             {data.city_name}{data.country_code ? `, ${data.country_code}` : ''}
-          </h3>
+          </h2>
           <p className="text-sm capitalize text-text-muted">
             {data.weather.description}
           </p>

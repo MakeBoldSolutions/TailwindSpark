@@ -345,14 +345,10 @@ if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
   // Add console commands for debugging
   window.memoryMonitor = {
     getReport: () => {
-      // Development-only console usage
-      // eslint-disable-next-line no-console
-      console.log(memoryMonitor.generateReport());
+      console.warn(memoryMonitor.generateReport());
     },
     getMetrics: () => {
-      // Development-only console usage
-      // eslint-disable-next-line no-console
-      console.log(memoryMonitor.getMemoryMetrics());
+      console.warn(memoryMonitor.getMemoryMetrics());
     },
     clearData: () => memoryMonitor.clearData(),
     stop: () => memoryMonitor.stopMonitoring(),

@@ -5,7 +5,16 @@ interface MiniAppCardProps {
   app: MiniApp;
 }
 
-export const MiniAppCard: React.FC<MiniAppCardProps> = ({ app }) => {
+/**
+ * Renders a launch card for a mini-app entry.
+ *
+ * @param props - Component props
+ * @param props.app - Mini-app metadata to display
+ * @returns Mini-app card element
+ */
+export const MiniAppCard: React.FC<MiniAppCardProps> = (props) => {
+  const { app } = props;
+
   return (
     <div className="flex flex-col rounded-lg border border-border bg-surface p-6 shadow-sm transition-shadow hover:shadow-md">
       <div className="mb-4 text-4xl">{app.icon}</div>

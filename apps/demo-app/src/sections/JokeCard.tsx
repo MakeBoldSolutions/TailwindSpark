@@ -11,6 +11,19 @@ interface JokeCardProps {
   showDeleteBtn?: boolean;
 }
 
+/**
+ * Displays a joke card with like, save, share, and delete actions.
+ *
+ * @param props - Joke card props
+ * @param props.joke - Joke content to display
+ * @param props.isLiked - Whether the joke is currently liked
+ * @param props.isSaved - Whether the joke is already saved
+ * @param props.onLike - Callback for like toggles
+ * @param props.onSave - Callback for saving a joke
+ * @param props.onDelete - Optional callback for deleting a saved joke
+ * @param props.showDeleteBtn - Whether to render the delete action
+ * @returns Joke card UI
+ */
 export default function JokeCard({
   joke,
   isLiked,
@@ -53,7 +66,7 @@ export default function JokeCard({
           aria-label={isLiked ? 'Unlike joke' : 'Like joke'}
           className={`rounded-md px-3 py-1.5 text-sm font-medium transition ${
             isLiked
-              ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
+              ? 'bg-error/10 text-error hover:bg-error/20'
               : 'bg-surface-alt text-text-muted hover:bg-brand/10 hover:text-brand'
           }`}
         >
@@ -91,7 +104,7 @@ export default function JokeCard({
           <button
             onClick={() => onDelete(joke.id)}
             aria-label="Remove saved joke"
-            className="rounded-md bg-red-100 px-3 py-1.5 text-sm font-medium text-red-700 transition hover:bg-red-200 dark:bg-red-900/30 dark:text-red-400 dark:hover:bg-red-900/50"
+            className="rounded-md bg-error/10 px-3 py-1.5 text-sm font-medium text-error transition hover:bg-error/20"
           >
             🗑️ Remove
           </button>

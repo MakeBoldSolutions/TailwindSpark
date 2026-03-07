@@ -64,6 +64,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "jest-axe": "^10.0.0",
     "jsdom": "^28.1.0",
+    "lighthouse": "^13.0.3",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "rimraf": "^6.1.3",

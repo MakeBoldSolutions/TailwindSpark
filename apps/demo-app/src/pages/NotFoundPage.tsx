@@ -1,5 +1,10 @@
 import { Link } from 'react-router-dom';
 
+/**
+ * Renders the fallback page for unknown routes.
+ *
+ * @returns Not found page element
+ */
 function NotFoundPage() {
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">

@@ -3,6 +3,11 @@ import { MiniAppCard } from '../components/MiniAppCard';
 import { useSEO } from '../contexts/SEOContext';
 import { miniAppsData } from '../types/miniapp';
 
+/**
+ * Renders the mini-app hub landing page.
+ *
+ * @returns Apps hub page element
+ */
 function AppsHubPage() {
   const { setSEO } = useSEO();
 

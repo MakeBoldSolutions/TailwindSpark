@@ -4,7 +4,15 @@ interface ArticleCardProps {
   article: Article;
 }
 
-export const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
+/**
+ * Displays a summary card for an article.
+ *
+ * @param props - Component props
+ * @param props.article - Article metadata to display
+ * @returns Article card element
+ */
+export const ArticleCard: React.FC<ArticleCardProps> = (props) => {
+  const { article } = props;
   const formattedDate = new Date(article.pub_date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
@@ -19,7 +27,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
         </span>
         <span className="text-xs text-text-muted">{formattedDate}</span>
       </div>
-      <h3 className="mb-2 text-lg font-semibold text-text">{article.title}</h3>
+      <h2 className="mb-2 text-lg font-semibold text-text">{article.title}</h2>
       <p className="mb-4 flex-1 text-sm text-text-muted line-clamp-3">{article.description}</p>
       {article.author && (
         <p className="mb-3 text-xs text-text-muted">By {article.author}</p>

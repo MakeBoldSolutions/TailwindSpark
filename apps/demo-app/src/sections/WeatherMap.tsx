@@ -8,7 +8,17 @@ interface WeatherMapProps {
   cityName: string;
 }
 
-export const WeatherMap: React.FC<WeatherMapProps> = ({ lat, lon, cityName }) => {
+/**
+ * Renders a Leaflet map centered on the requested city.
+ *
+ * @param props - Component props
+ * @param props.lat - City latitude
+ * @param props.lon - City longitude
+ * @param props.cityName - City label for the map marker
+ * @returns Weather map element
+ */
+export const WeatherMap: React.FC<WeatherMapProps> = (props) => {
+  const { lat, lon, cityName } = props;
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
 

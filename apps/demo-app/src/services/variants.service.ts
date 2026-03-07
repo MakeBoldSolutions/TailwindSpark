@@ -1,5 +1,6 @@
 import type { AIVariant } from '../types/chat-api';
 import { AIVariantsResponseSchema, AI_VARIANTS_API_CONFIG } from '../types/chat-api';
+import { getPublicJsonFetchOptions } from './fetchOptions';
 
 function getCached(): AIVariant[] | null {
   try {
@@ -27,11 +28,16 @@ function setCache(data: AIVariant[]): void {
   }
 }
 
+/**
+ * Returns AI variants from cache or the remote API.
+ *
+ * @returns Available AI variants
+ */
 export async function getVariants(): Promise<AIVariant[]> {
   const cached = getCached();
   if (cached) return cached;
 
-  const res = await fetch(AI_VARIANTS_API_CONFIG.VARIANTS_URL);
+  const res = await fetch(AI_VARIANTS_API_CONFIG.VARIANTS_URL, getPublicJsonFetchOptions());
   if (!res.ok) throw new Error(`Variants API error: ${res.status}`);
   const json = await res.json();
   const data = AIVariantsResponseSchema.parse(json);

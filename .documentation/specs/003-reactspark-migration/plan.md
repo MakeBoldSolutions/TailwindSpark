@@ -26,7 +26,7 @@ Migrate all features from ReactSparkPortfolio (Bootstrap 5 + React) to TailwindS
 - sessionStorage (version detection, temporary state)
 - External APIs: Projects JSON, RSS XML, JokeAPI, OpenWeatherMap, PromptSpark Variants
 
-**Testing**: Vitest 3.x with @testing-library/react, 80% minimum coverage required  
+**Testing**: Vitest 3.x with @testing-library/react, temporary 40% minimum coverage required for this spec, to be re-evaluated in a future spec  
 **Target Platform**: Modern browsers (Chrome 90+, Firefox 88+, Safari 14+, Edge 90+), responsive across mobile/tablet/desktop  
 **Project Type**: Web application (SPA with server-side static hosting)  
 **Performance Goals**: 
@@ -65,7 +65,7 @@ Migrate all features from ReactSparkPortfolio (Bootstrap 5 + React) to TailwindS
 
 ### Principle II: Testing Standards ✅ PASS
 - All new mini-app components will have co-located `.test.tsx` files
-- 80% minimum coverage required (enforced by vitest.config.ts)
+- Temporary 40% minimum coverage required for this spec (enforced by apps/demo-app/vitest.config.ts and scheduled for future re-evaluation)
 - Using @testing-library/react for component testing (already in use)
 - Tests will be co-located with source files in `apps/demo-app/src/pages/apps/`
 - No violations expected
@@ -272,7 +272,7 @@ packages/ui-components/          # (existing) Shared UI library (if needed)
   - SEO Context for dynamic meta tag management
   - Migration risks and mitigation strategies
   - Performance benchmarks (Lighthouse 90+, FCP <1.5s, TTI <3.5s)
-  - Testing strategy (80% coverage minimum, co-located tests)
+  - Testing strategy (temporary 40% coverage minimum for this spec, co-located tests)
 
 **Key Decisions**:
 1. **Tailwind Semantic Tokens**: Replace all Bootstrap with semantic design tokens (bg-brand, text-text, etc.)

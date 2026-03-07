@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState, type FormEvent } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useState, type FormEvent } from 'react';
 import { useSEO } from '../../contexts/SEOContext';
 import { useWeather } from '../../hooks/useWeather';
 import WeatherCard from '../../sections/WeatherCard';
@@ -6,19 +6,33 @@ import { sanitizeInput } from '../../utils/sanitize';
 
 const WeatherMap = lazy(() => import('../../sections/WeatherMap').then(m => ({ default: m.WeatherMap })));
 
+/**
+ * Renders the weather search app with map selection.
+ *
+ * @returns Weather app page
+ */
 function WeatherPage() {
   const { setSEO } = useSEO();
   const { weatherResults, recentSearches, loading, error, searchCity } = useWeather();
   const [query, setQuery] = useState('');
-  const [selectedCity, setSelectedCity] = useState<{ lat: number; lon: number; name: string } | null>(null);
+  const [selectedCityName, setSelectedCityName] = useState<string | null>(null);
 
-  // Auto-select first result for the map
-  useEffect(() => {
-    if (weatherResults.length > 0) {
-      const first = weatherResults[0];
-      setSelectedCity({ lat: first.coordinates.lat, lon: first.coordinates.lon, name: first.city_name });
+  const selectedCity = useMemo(() => {
+    if (weatherResults.length === 0) {
+      return null;
     }
-  }, [weatherResults]);
+
+    const matchedCity = selectedCityName
+      ? weatherResults.find(result => result.city_name === selectedCityName)
+      : weatherResults[0];
+    const activeCity = matchedCity ?? weatherResults[0];
+
+    return {
+      lat: activeCity.coordinates.lat,
+      lon: activeCity.coordinates.lon,
+      name: activeCity.city_name,
+    };
+  }, [weatherResults, selectedCityName]);
 
   useEffect(() => {
     setSEO({
@@ -80,7 +94,7 @@ function WeatherPage() {
       )}
 
       {error && (
-        <div className="mx-auto mb-6 max-w-md rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-900/20 dark:text-red-400">
+        <div className="mx-auto mb-6 max-w-md rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive">
           {error}
         </div>
       )}
@@ -106,7 +120,7 @@ function WeatherPage() {
               <button
                 key={w.city_name}
                 className="text-left"
-                onClick={() => setSelectedCity({ lat: w.coordinates.lat, lon: w.coordinates.lon, name: w.city_name })}
+                onClick={() => setSelectedCityName(w.city_name)}
               >
                 <WeatherCard data={w} />
               </button>

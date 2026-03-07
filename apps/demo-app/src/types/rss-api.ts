@@ -55,9 +55,17 @@ export const RawArticleSchema = z.object({
   keywords: z.string().optional(),
 }).passthrough();
 
+/**
+ * Zod schema for the articles collection response.
+ */
 export const RawArticlesResponseSchema = z.array(RawArticleSchema);
 
-/** Map a raw API article to the normalized Article interface */
+/**
+ * Maps a raw feed entry to the normalized article interface.
+ *
+ * @param raw - Raw article returned by the articles feed
+ * @returns Normalized article entity used by the UI
+ */
 export function mapRawArticle(raw: z.infer<typeof RawArticleSchema>): Article {
   const baseUrl = 'https://markhazleton.com';
   const link = raw.slug.startsWith('http') ? raw.slug : `${baseUrl}/${raw.slug}`;
@@ -127,8 +135,15 @@ export interface ArticleFilters {
  * Article Sort Options
  */
 export type ArticleSortField = 'pub_date' | 'title' | 'category';
+
+/**
+ * Supported article sort directions.
+ */
 export type ArticleSortOrder = 'asc' | 'desc';
 
+/**
+ * Article sort configuration used by the articles page.
+ */
 export interface ArticleSort {
   field: ArticleSortField;
   order: ArticleSortOrder;
@@ -146,6 +161,9 @@ export const ARTICLE_CATEGORIES = {
   NEWS: 'News',
 } as const;
 
+/**
+ * Union of known article categories.
+ */
 export type ArticleCategory = typeof ARTICLE_CATEGORIES[keyof typeof ARTICLE_CATEGORIES];
 
 /**
@@ -158,6 +176,9 @@ export interface ArticlesPagination {
   totalPages: number;
 }
 
+/**
+ * Shared pagination defaults for the articles page.
+ */
 export const ARTICLES_PAGINATION_CONFIG = {
   DEFAULT_PAGE_SIZE: 6,
   PAGE_SIZE_OPTIONS: [6, 12, 24],

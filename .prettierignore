@@ -1,9 +1,13 @@
 node_modules
 dist
+build
 .turbo
 .next
 .cache
 coverage
 *.log
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
 .env.local
 .env.*.local

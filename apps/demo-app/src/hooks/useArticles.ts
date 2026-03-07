@@ -2,7 +2,19 @@ import { useCallback, useEffect, useState } from 'react';
 import { clearArticlesCache, getArticles } from '../services/rss.service';
 import type { Article } from '../types/rss-api';
 
-export function useArticles() {
+interface UseArticlesReturn {
+  articles: Article[];
+  loading: boolean;
+  error: string | null;
+  refreshCache: () => Promise<void>;
+}
+
+/**
+ * Loads article data and exposes a cache refresh action.
+ *
+ * @returns Article results, loading state, and refresh handler
+ */
+export function useArticles(): UseArticlesReturn {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

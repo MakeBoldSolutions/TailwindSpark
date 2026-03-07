@@ -12,6 +12,11 @@ interface UseVariantsReturn {
   filteredVariants: AIVariant[];
 }
 
+/**
+ * Loads AI variants and exposes derived filters for the chat UI.
+ *
+ * @returns Variant data, filters, and loading state
+ */
 export function useVariants(): UseVariantsReturn {
   const [variants, setVariants] = useState<AIVariant[]>([]);
   const [loading, setLoading] = useState(true);
@@ -21,7 +26,6 @@ export function useVariants(): UseVariantsReturn {
 
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
     getVariants()
       .then(data => {
         if (!cancelled) setVariants(data);

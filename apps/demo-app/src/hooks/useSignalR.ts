@@ -1,4 +1,13 @@
+import type { HubConnection } from '@microsoft/signalr';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+    createConnection,
+    onReceiveChunk,
+    onReceiveMessage,
+    sendMessage as sendChatMessage,
+    startConnection,
+    stopConnection,
+} from '../services/chat.service';
 import type { AIVariant, ChatMessage, SignalRConnectionStatus } from '../types/chat-api';
 import {
     SIGNALR_CONFIG,
@@ -16,13 +25,18 @@ interface UseSignalRReturn {
   clearMessages: () => void;
 }
 
+/**
+ * Manages the SignalR chat connection state for a selected AI variant.
+ *
+ * @param variant - Selected AI variant or null when the chat is closed
+ * @returns SignalR chat state and actions
+ */
 export function useSignalR(variant: AIVariant | null): UseSignalRReturn {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [connectionStatus, setConnectionStatus] = useState<SignalRConnectionStatus>('disconnected');
   const [isAssistantTyping, setIsAssistantTyping] = useState(false);
   const [connectionError, setConnectionError] = useState<string | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const connectionRef = useRef<any>(null);
+  const connectionRef = useRef<HubConnection | null>(null);
 
   const getUserName = (): string => {
     return localStorage.getItem(SIGNALR_CONFIG.USER_NAME_KEY) ?? SIGNALR_CONFIG.DEFAULT_USER_NAME;
@@ -31,7 +45,6 @@ export function useSignalR(variant: AIVariant | null): UseSignalRReturn {
   // Connect to SignalR hub
   useEffect(() => {
     if (!variant) {
-      setConnectionStatus('disconnected');
       return;
     }
 
@@ -42,25 +55,13 @@ export function useSignalR(variant: AIVariant | null): UseSignalRReturn {
       setConnectionError(null);
 
       try {
-        const signalR = await import('@microsoft/signalr');
-        const connection = new signalR.HubConnectionBuilder()
-          .withUrl(SIGNALR_CONFIG.HUB_URL, {
-            withCredentials: false,
-            timeout: 30000,
-            transport:
-              signalR.HttpTransportType.WebSockets |
-              signalR.HttpTransportType.ServerSentEvents |
-              signalR.HttpTransportType.LongPolling,
-          })
-          .withAutomaticReconnect(SIGNALR_CONFIG.RETRY_DELAYS)
-          .configureLogging(signalR.LogLevel.Information)
-          .build();
+        const connection = createConnection();
 
         // Server sends ReceiveMessage(user: string, messageChunk: string)
         // Chunks stream in and are appended; a 1s debounce marks streaming complete
         let streamTimer: ReturnType<typeof setTimeout> | null = null;
 
-        connection.on(SIGNALR_CONFIG.METHODS.RECEIVE_MESSAGE, (_user: string, messageChunk: string) => {
+        const handleIncomingMessage = (_user: string, messageChunk: string) => {
           if (cancelled) return;
           const chunk = sanitizeMessageContent(messageChunk);
 
@@ -97,7 +98,10 @@ export function useSignalR(variant: AIVariant | null): UseSignalRReturn {
             );
             setIsAssistantTyping(false);
           }, 1000);
-        });
+        };
+
+        onReceiveMessage(connection, handleIncomingMessage);
+        onReceiveChunk(connection, handleIncomingMessage);
 
         connection.onreconnecting(() => {
           if (!cancelled) setConnectionStatus('reconnecting');
@@ -111,12 +115,12 @@ export function useSignalR(variant: AIVariant | null): UseSignalRReturn {
           if (!cancelled) setConnectionStatus('disconnected');
         });
 
-        await connection.start();
+        await startConnection(connection);
         if (!cancelled) {
           connectionRef.current = connection;
           setConnectionStatus('connected');
         } else {
-          await connection.stop();
+          await stopConnection(connection);
         }
       } catch {
         if (!cancelled) {
@@ -131,9 +135,10 @@ export function useSignalR(variant: AIVariant | null): UseSignalRReturn {
     return () => {
       cancelled = true;
       if (connectionRef.current) {
-        connectionRef.current.stop();
+        void stopConnection(connectionRef.current);
         connectionRef.current = null;
       }
+      setConnectionStatus('disconnected');
     };
   }, [variant]);
 
@@ -147,15 +152,19 @@ export function useSignalR(variant: AIVariant | null): UseSignalRReturn {
       setIsAssistantTyping(true);
 
       const conversationId = new Date().getTime().toString();
+      const activeConnection = connectionRef.current;
 
-      connectionRef.current
-        .invoke(
-          SIGNALR_CONFIG.METHODS.SEND_MESSAGE,
-          getUserName(),
-          content,
-          conversationId,
-          variant.name,
-        )
+      if (!activeConnection) {
+        return;
+      }
+
+      void sendChatMessage(
+        activeConnection,
+        getUserName(),
+        content,
+        variant.name,
+        conversationId,
+      )
         .catch(() => {
           setMessages(prev => [
             ...prev,
@@ -180,7 +189,7 @@ export function useSignalR(variant: AIVariant | null): UseSignalRReturn {
 
   return {
     messages,
-    connectionStatus,
+    connectionStatus: variant ? connectionStatus : 'disconnected',
     isAssistantTyping,
     connectionError,
     sendMessage,

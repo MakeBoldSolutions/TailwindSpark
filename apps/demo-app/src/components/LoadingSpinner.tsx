@@ -107,8 +107,8 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
 /**
  * Full page loading component for route-level lazy loading.
  * 
- * @param props - Component properties
- * @param props.message - Optional loading message
+ * @param root0 - Component properties
+ * @param root0.message - Optional loading message
  * @returns Page loading spinner component
  */
 export const PageLoadingSpinner: React.FC<{ message?: string }> = ({ 

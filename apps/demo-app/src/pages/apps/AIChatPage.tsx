@@ -6,6 +6,11 @@ import VariantCard from '../../sections/VariantCard';
 import type { AIVariant } from '../../types/chat-api';
 import { sanitizeInput } from '../../utils/sanitize';
 
+/**
+ * Renders the AI chat app landing page and variant browser.
+ *
+ * @returns AI chat app page
+ */
 function AIChatPage() {
   const { setSEO } = useSEO();
   const {
@@ -109,7 +114,7 @@ function AIChatPage() {
       </div>
 
       {error && (
-        <div className="mb-6 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-900/20 dark:text-red-400">
+        <div className="mb-6 rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive">
           {error}
         </div>
       )}

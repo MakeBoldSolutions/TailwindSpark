@@ -1,9 +1,12 @@
 import type { RecentSearch, WeatherData, WebSparkWeatherResponse } from '../types/weather-api';
 import { WEATHER_API_CONFIG, WeatherDataSchema } from '../types/weather-api';
+import { getPublicJsonFetchOptions } from './fetchOptions';
 
 /**
- * Map weather conditions to OpenWeatherMap-style icon codes
- * so existing WEATHER_ICONS mapping continues to work.
+ * Maps a weather description to an OpenWeather-style icon code.
+ *
+ * @param conditions - Weather description returned by the API
+ * @returns Weather icon code compatible with the shared icon map
  */
 function conditionsToIconCode(conditions: string): string {
   const hour = new Date().getHours();
@@ -71,6 +74,12 @@ function setCachedWeather(city: string, data: WeatherData): void {
   }
 }
 
+/**
+ * Returns current weather for a city and stores the result in cache.
+ *
+ * @param city - City name to query
+ * @returns Normalized weather data for the requested city
+ */
 export async function getWeatherByCity(city: string): Promise<WeatherData> {
   const cached = getCachedWeather(city);
   if (cached) return cached;
@@ -81,6 +90,7 @@ export async function getWeatherByCity(city: string): Promise<WeatherData> {
 
   const res = await fetch(
     `${WEATHER_API_CONFIG.BASE_URL}${WEATHER_API_CONFIG.CURRENT_ENDPOINT}?${params}`,
+    getPublicJsonFetchOptions(),
   );
 
   if (res.status === 429) throw new Error('API rate limit exceeded. Please try again in a few minutes.');
@@ -98,6 +108,11 @@ export async function getWeatherByCity(city: string): Promise<WeatherData> {
   return data;
 }
 
+/**
+ * Returns the recent weather search history.
+ *
+ * @returns Recent city searches
+ */
 export function getRecentSearches(): RecentSearch[] {
   try {
     const raw = localStorage.getItem(WEATHER_API_CONFIG.RECENT_SEARCHES_KEY);

@@ -6,10 +6,17 @@ interface ProjectCardProps {
 
 const statusClasses: Record<string, string> = {
   Active: 'bg-success-100 text-success-800',
-  Completed: 'bg-primary-100 text-primary-800',
+  Completed: 'bg-brand/10 text-brand',
   Archived: 'bg-secondary-200 text-secondary-700',
 };
 
+/**
+ * Displays a portfolio project summary card.
+ *
+ * @param props - Project card props
+ * @param props.project - Project data to render
+ * @returns Project card UI
+ */
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <div className="flex flex-col rounded-lg border border-border bg-surface shadow-sm transition-shadow hover:shadow-md">
@@ -23,7 +30,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       )}
       <div className="flex flex-1 flex-col p-4">
         <div className="mb-2 flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-text">{project.name}</h3>
+          <h2 className="text-lg font-semibold text-text">{project.name}</h2>
           <span
             className={`rounded-full px-2 py-0.5 text-xs font-medium ${statusClasses[project.status] ?? 'bg-surface-alt text-text-muted'}`}
           >

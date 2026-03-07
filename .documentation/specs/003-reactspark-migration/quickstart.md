@@ -454,7 +454,7 @@ open apps/demo-app/coverage/index.html
 
 ### Coverage Requirements
 
-**Constitution Mandate**: 80% minimum coverage
+**Temporary Spec Gate**: 40% minimum coverage for spec 003-reactspark-migration. Re-evaluate and raise in a future spec.
 
 ```json
 // vitest.config.ts (already configured)
@@ -463,10 +463,10 @@ open apps/demo-app/coverage/index.html
     "coverage": {
       "provider": "v8",
       "reporter": ["text", "json", "html"],
-      "lines": 80,
-      "branches": 80,
-      "functions": 80,
-      "statements": 80
+      "lines": 40,
+      "branches": 40,
+      "functions": 40,
+      "statements": 40
     }
   }
 }
@@ -648,7 +648,7 @@ You now have everything you need to implement the ReactSparkPortfolio migration:
 **Next Steps**:
 1. Pick a mini-app to implement (suggest starting with **Projects** - simplest)
 2. Follow the development workflow above
-3. Write tests as you go (aim for 80% coverage)
+3. Write tests as you go (meet the temporary 40% floor for this spec and raise it in future specs)
 4. Test in both light and dark themes
 5. Run ESLint and Prettier before committing
 

@@ -7,7 +7,18 @@ interface VariantCardProps {
   isFeatured?: boolean;
 }
 
-export default function VariantCard({ variant, isSelected, onSelect, isFeatured = false }: VariantCardProps) {
+/**
+ * Displays a selectable AI variant card.
+ *
+ * @param props - Component props
+ * @param props.variant - Variant details to render
+ * @param props.isSelected - Whether the card is currently selected
+ * @param props.onSelect - Selection callback for the card
+ * @param props.isFeatured - Whether the variant should show a featured badge
+ * @returns Variant card element
+ */
+export default function VariantCard(props: VariantCardProps) {
+  const { variant, isSelected, onSelect, isFeatured = false } = props;
   const temp = parseFloat(variant.temperature);
 
   return (

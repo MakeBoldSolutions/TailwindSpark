@@ -15,6 +15,14 @@ function getCacheKey(key: string): string {
   return `${key}_${APP_VERSION}`;
 }
 
+/**
+ * Returns cached data when the entry exists and has not expired.
+ *
+ * @param key - Logical cache key
+ * @param devTTL - Development cache lifetime in milliseconds
+ * @param prodTTL - Production cache lifetime in milliseconds
+ * @returns Cached value when present and valid
+ */
 export function getFromCache<T>(key: string, devTTL: number, prodTTL: number): T | null {
   try {
     const raw = localStorage.getItem(getCacheKey(key));
@@ -38,6 +46,13 @@ export function getFromCache<T>(key: string, devTTL: number, prodTTL: number): T
   }
 }
 
+/**
+ * Stores data in localStorage with the active build version.
+ *
+ * @param key - Logical cache key
+ * @param data - Serializable data to cache
+ * @returns Nothing
+ */
 export function setInCache<T>(key: string, data: T): void {
   try {
     const entry: CacheEntry<T> = {
@@ -51,6 +66,12 @@ export function setInCache<T>(key: string, data: T): void {
   }
 }
 
+/**
+ * Clears a single versioned cache entry.
+ *
+ * @param key - Logical cache key to remove
+ * @returns Nothing
+ */
 export function clearCache(key: string): void {
   try {
     localStorage.removeItem(getCacheKey(key));
@@ -59,6 +80,11 @@ export function clearCache(key: string): void {
   }
 }
 
+/**
+ * Clears all versioned cache entries created by the app.
+ *
+ * @returns Nothing
+ */
 export function clearAllCaches(): void {
   try {
     const keysToRemove: string[] = [];

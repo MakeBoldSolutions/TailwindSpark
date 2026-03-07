@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
+import type { AIVariant } from '../types/chat-api';
 import ChatInterface from './ChatInterface';
 
 const mockSendMessage = vi.fn();
@@ -24,16 +25,24 @@ vi.mock('react-markdown', () => ({
   default: ({ children }: { children: string }) => <span>{children}</span>,
 }));
 
-const mockVariant = {
-  definitionId: '1',
+const mockVariant: AIVariant = {
+  definitionId: 1,
   name: 'Test Bot',
   description: 'A test bot',
+  created: '2025-01-01T00:00:00.000Z',
   definitionType: 'Test',
-  systemMessage: 'You are a test bot',
-  promptOverride: '',
-  responseControl: '',
-  updated: '2025-01-01',
-  tags: [],
+  definitionTypes: ['Test'],
+  updated: '2025-01-01T00:00:00.000Z',
+  urlEncodedName: 'Test%20Bot',
+  outputType: 1,
+  prompt: 'You are a test bot',
+  promptHash: 'hash',
+  role: 1,
+  model: 'gpt-4o-mini',
+  temperature: '0.7',
+  definitionResponses: [],
+  conversationId: '11111111-1111-1111-1111-111111111111',
+  slug: 'test-bot',
 };
 
 describe('ChatInterface', () => {
@@ -53,24 +62,24 @@ describe('ChatInterface', () => {
 
   it('renders variant name in header', () => {
     render(<ChatInterface variant={mockVariant} onBack={vi.fn()} />);
-    expect(screen.getByText('Test Bot')).toBeInTheDocument();
+    expect(screen.getByText('Test Bot')).toBeTruthy();
   });
 
   it('renders messages', () => {
     render(<ChatInterface variant={mockVariant} onBack={vi.fn()} />);
-    expect(screen.getByText('Hello')).toBeInTheDocument();
-    expect(screen.getByText('Hi there!')).toBeInTheDocument();
+    expect(screen.getByText('Hello')).toBeTruthy();
+    expect(screen.getByText('Hi there!')).toBeTruthy();
   });
 
   it('renders connection status', () => {
     render(<ChatInterface variant={mockVariant} onBack={vi.fn()} />);
-    expect(screen.getByText('connected')).toBeInTheDocument();
+    expect(screen.getByText('connected')).toBeTruthy();
   });
 
   it('has back button', () => {
     const onBack = vi.fn();
     render(<ChatInterface variant={mockVariant} onBack={onBack} />);
-    expect(screen.getByLabelText('Back to variant selection')).toBeInTheDocument();
+    expect(screen.getByLabelText('Back to variant selection')).toBeTruthy();
   });
 
   it('calls onBack when back button clicked', async () => {
@@ -83,23 +92,23 @@ describe('ChatInterface', () => {
 
   it('has chat input field', () => {
     render(<ChatInterface variant={mockVariant} onBack={vi.fn()} />);
-    expect(screen.getByLabelText('Chat message')).toBeInTheDocument();
+    expect(screen.getByLabelText('Chat message')).toBeTruthy();
   });
 
   it('has Send button', () => {
     render(<ChatInterface variant={mockVariant} onBack={vi.fn()} />);
-    expect(screen.getByRole('button', { name: 'Send' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Send' })).toBeTruthy();
   });
 
   it('has Clear button', () => {
     render(<ChatInterface variant={mockVariant} onBack={vi.fn()} />);
-    expect(screen.getByRole('button', { name: 'Clear' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Clear' })).toBeTruthy();
   });
 
   it('shows name prompt when no user name is set', () => {
     vi.mocked(localStorage.getItem).mockReturnValue(null);
     render(<ChatInterface variant={mockVariant} onBack={vi.fn()} />);
-    expect(screen.getByText('Welcome to AI Chat')).toBeInTheDocument();
-    expect(screen.getByLabelText('Your display name')).toBeInTheDocument();
+    expect(screen.getByText('Welcome to AI Chat')).toBeTruthy();
+    expect(screen.getByLabelText('Your display name')).toBeTruthy();
   });
 });

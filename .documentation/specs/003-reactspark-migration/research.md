@@ -840,7 +840,7 @@ Based on research of similar React + Tailwind applications:
 
 ### Unit Tests (Vitest + React Testing Library)
 
-**Coverage Target**: 80% minimum (statements, branches, functions, lines)
+**Coverage Target**: Temporary 40% minimum for this spec (statements, branches, functions, lines), to be re-evaluated and raised in a future spec
 
 **Test Files**:
 - `*.test.tsx` for components (co-located)

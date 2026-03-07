@@ -24,6 +24,11 @@ interface UseJokesReturn {
   handleLike: (jokeId: number) => void;
 }
 
+/**
+ * Manages joke fetching, history, and saved state for the joke app.
+ *
+ * @returns Joke state and user actions
+ */
 export function useJokes(): UseJokesReturn {
   const [currentJoke, setCurrentJoke] = useState<Joke | null>(null);
   const [savedJokes, setSavedJokes] = useState<Joke[]>([]);

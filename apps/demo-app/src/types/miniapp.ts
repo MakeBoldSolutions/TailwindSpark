@@ -1,3 +1,6 @@
+/**
+ * Describes a mini-app entry shown in the apps hub.
+ */
 export interface MiniApp {
   id: string;
   name: string;
@@ -6,6 +9,9 @@ export interface MiniApp {
   icon: string;
 }
 
+/**
+ * Static metadata for the demo app mini-app navigation.
+ */
 export const miniAppsData: MiniApp[] = [
   {
     id: 'projects',

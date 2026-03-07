@@ -10,13 +10,21 @@ interface ChatInterfaceProps {
 }
 
 const statusColors: Record<SignalRConnectionStatus, string> = {
-  connected: 'bg-green-500',
-  connecting: 'bg-yellow-500 animate-pulse',
-  reconnecting: 'bg-yellow-500 animate-pulse',
-  disconnected: 'bg-red-500',
-  disconnecting: 'bg-gray-400',
+  connected: 'bg-success',
+  connecting: 'bg-warning animate-pulse',
+  reconnecting: 'bg-warning animate-pulse',
+  disconnected: 'bg-error',
+  disconnecting: 'bg-border',
 };
 
+/**
+ * Renders the interactive chat view for a selected AI variant.
+ *
+ * @param props - Chat interface props
+ * @param props.variant - Selected AI variant definition
+ * @param props.onBack - Callback used to return to the variant list
+ * @returns Chat interface UI
+ */
 export default function ChatInterface({ variant, onBack }: ChatInterfaceProps) {
   const {
     messages,
@@ -32,10 +40,17 @@ export default function ChatInterface({ variant, onBack }: ChatInterfaceProps) {
   });
   const [nameInput, setNameInput] = useState('');
   const endRef = useRef<HTMLDivElement>(null);
+  const nameInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isAssistantTyping]);
+
+  useEffect(() => {
+    if (showNamePrompt) {
+      nameInputRef.current?.focus();
+    }
+  }, [showNamePrompt]);
 
   const handleNameSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -59,13 +74,13 @@ export default function ChatInterface({ variant, onBack }: ChatInterfaceProps) {
         <p className="mb-6 text-sm text-text-muted">Enter your name to get started</p>
         <form onSubmit={handleNameSubmit} className="flex w-full max-w-sm gap-2">
           <input
+            ref={nameInputRef}
             type="text"
             value={nameInput}
             onChange={e => setNameInput(e.target.value)}
             placeholder="Your name..."
             maxLength={50}
             className="flex-1 rounded-lg border border-border bg-surface px-4 py-2 text-sm text-text placeholder:text-text-muted focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
-            autoFocus
             aria-label="Your display name"
           />
           <button
@@ -109,7 +124,7 @@ export default function ChatInterface({ variant, onBack }: ChatInterfaceProps) {
 
       {/* Error */}
       {connectionError && (
-        <div className="border-b border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700 dark:border-red-900 dark:bg-red-900/20 dark:text-red-400">
+        <div className="border-b border-destructive/30 bg-destructive/5 px-4 py-2 text-sm text-destructive">
           {connectionError}
         </div>
       )}

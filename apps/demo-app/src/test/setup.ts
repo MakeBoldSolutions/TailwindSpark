@@ -1,6 +1,9 @@
 import '@testing-library/jest-dom';
+import { toHaveNoViolations } from 'jest-axe';
 import React from 'react';
 import { vi } from 'vitest';
+
+expect.extend(toHaveNoViolations);
 
 // Mock react-router-dom
 vi.mock('react-router-dom', async importOriginal => {

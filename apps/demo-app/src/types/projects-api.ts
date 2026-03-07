@@ -66,9 +66,17 @@ export const RawProjectSchema = z.object({
   }).optional(),
 }).passthrough();
 
+/**
+ * Zod schema for the projects collection response.
+ */
 export const RawProjectsResponseSchema = z.array(RawProjectSchema);
 
-/** Map a raw API project to the normalized Project interface */
+/**
+ * Maps a raw API project to the normalized project interface.
+ *
+ * @param raw - Raw project returned by the projects feed
+ * @returns Normalized project entity used by the UI
+ */
 export function mapRawProject(raw: z.infer<typeof RawProjectSchema>): Project {
   const apiStatus = raw.promotion?.status;
   let status: ProjectStatus = 'Active';
@@ -92,9 +100,13 @@ export function mapRawProject(raw: z.infer<typeof RawProjectSchema>): Project {
 }
 
 /**
- * Type inference from Zod schema
+ * Type inference for a single raw project record.
  */
 export type RawProjectSchemaType = z.infer<typeof RawProjectSchema>;
+
+/**
+ * Type inference for the raw projects response.
+ */
 export type RawProjectsResponseType = z.infer<typeof RawProjectsResponseSchema>;
 
 /**
@@ -145,8 +157,15 @@ export interface ProjectFilters {
  * Project Sort Options
  */
 export type ProjectSortField = 'name' | 'id' | 'created_date' | 'updated_date';
+
+/**
+ * Supported project sort directions.
+ */
 export type ProjectSortOrder = 'asc' | 'desc';
 
+/**
+ * Project sort configuration used by the projects page.
+ */
 export interface ProjectSort {
   field: ProjectSortField;
   order: ProjectSortOrder;
@@ -169,6 +188,9 @@ export interface ProjectsPagination {
   totalPages: number;
 }
 
+/**
+ * Shared pagination defaults for the projects page.
+ */
 export const PROJECTS_PAGINATION_CONFIG = {
   /** Default items per page */
   DEFAULT_PAGE_SIZE: 6,

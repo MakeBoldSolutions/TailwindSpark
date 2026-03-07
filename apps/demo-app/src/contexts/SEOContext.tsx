@@ -24,8 +24,13 @@ const defaultSEO: SEOData = {
 
 const SEOContext = createContext<SEOContextType | undefined>(undefined);
 
+/**
+ * Returns the current SEO state and updater from context.
+ *
+ * @returns SEO context value for the active page
+ */
 // eslint-disable-next-line react-refresh/only-export-components
-export function useSEO() {
+export function useSEO(): SEOContextType {
   const context = useContext(SEOContext);
   if (!context) {
     throw new Error('useSEO must be used within a SEOProvider');
@@ -37,7 +42,15 @@ interface SEOProviderProps {
   children: React.ReactNode;
 }
 
-export const SEOProvider: React.FC<SEOProviderProps> = ({ children }) => {
+/**
+ * Provides SEO metadata state for route-level pages.
+ *
+ * @param props - Component props
+ * @param props.children - Descendant elements that consume SEO state
+ * @returns SEO provider wrapper
+ */
+export const SEOProvider: React.FC<SEOProviderProps> = (props) => {
+  const { children } = props;
   const [seo, setSEOState] = useState<SEOData>(defaultSEO);
 
   const setSEO = useCallback((data: Partial<SEOData>) => {

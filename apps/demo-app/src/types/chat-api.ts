@@ -99,6 +99,10 @@ export const AIVariantsResponseSchema = z.array(AIVariantSchema);
  * Type inference from Zod schema
  */
 export type AIVariantSchemaType = z.infer<typeof AIVariantSchema>;
+
+/**
+ * Type inference for the AI variants response schema.
+ */
 export type AIVariantsResponseType = z.infer<typeof AIVariantsResponseSchema>;
 
 /**
@@ -334,7 +338,11 @@ export const FEATURED_VARIANTS_CONFIG = {
  */
 
 /**
- * Create user message
+ * Creates a user-authored chat message.
+ *
+ * @param variantId - Variant identifier associated with the message
+ * @param content - Message content entered by the user
+ * @returns User chat message payload
  */
 export function createUserMessage(
   variantId: number | string,
@@ -350,7 +358,11 @@ export function createUserMessage(
 }
 
 /**
- * Create assistant message (initial, before streaming)
+ * Creates an empty assistant message before streamed content arrives.
+ *
+ * @param variantId - Variant identifier associated with the response
+ * @param messageId - Optional existing message identifier
+ * @returns Assistant chat message payload
  */
 export function createAssistantMessage(
   variantId: number | string,
@@ -367,7 +379,10 @@ export function createAssistantMessage(
 }
 
 /**
- * Sanitize message content to prevent XSS
+ * Sanitizes message content before rendering in the UI.
+ *
+ * @param content - Raw message content to sanitize
+ * @returns Sanitized message content
  */
 export function sanitizeMessageContent(content: string): string {
   return content
@@ -379,7 +394,10 @@ export function sanitizeMessageContent(content: string): string {
 }
 
 /**
- * Validate message length
+ * Validates chat input against configured length limits.
+ *
+ * @param content - Message text to validate
+ * @returns True when the message can be sent
  */
 export function isMessageValid(content: string): boolean {
   const trimmed = content.trim();
@@ -390,7 +408,10 @@ export function isMessageValid(content: string): boolean {
 }
 
 /**
- * Format message timestamp for display
+ * Formats a chat timestamp for display.
+ *
+ * @param timestamp - Unix timestamp in milliseconds
+ * @returns Display-friendly timestamp string
  */
 export function formatMessageTime(timestamp: number): string {
   const date = new Date(timestamp);
@@ -415,7 +436,7 @@ export function formatMessageTime(timestamp: number): string {
 }
 
 /**
- * SignalR Transport Type
+ * SignalR transport type flags.
  */
 export const SignalRTransportType = {
   WebSockets: 1,

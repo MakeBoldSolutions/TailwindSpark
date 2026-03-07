@@ -212,6 +212,9 @@ export const WEATHER_ICONS = {
   '50n': { name: 'Mist', emoji: '🌫️' },
 } as const;
 
+/**
+ * Weather icon codes supported by the shared weather icon map.
+ */
 export type WeatherIconCode = keyof typeof WEATHER_ICONS;
 
 /**
@@ -245,20 +248,36 @@ export interface RecentSearch {
 }
 
 /**
- * Temperature Conversion Helpers
+ * Temperature conversion helpers for the weather UI.
  */
 export const TemperatureUtils = {
-  /** Convert Fahrenheit to Celsius */
+  /**
+   * Converts Fahrenheit to Celsius.
+   *
+   * @param fahrenheit - Temperature in Fahrenheit
+   * @returns Temperature in Celsius
+   */
   fahrenheitToCelsius(fahrenheit: number): number {
     return (fahrenheit - 32) * (5 / 9);
   },
   
-  /** Convert Celsius to Fahrenheit */
+  /**
+   * Converts Celsius to Fahrenheit.
+   *
+   * @param celsius - Temperature in Celsius
+   * @returns Temperature in Fahrenheit
+   */
   celsiusToFahrenheit(celsius: number): number {
     return (celsius * 9) / 5 + 32;
   },
   
-  /** Format temperature for display */
+  /**
+   * Formats a temperature for display.
+   *
+   * @param temp - Temperature value to format
+   * @param unit - Temperature unit label
+   * @returns Formatted temperature string
+   */
   formatTemperature(temp: number, unit: 'F' | 'C' = 'F'): string {
     return `${Math.round(temp)}°${unit}`;
   },
@@ -268,17 +287,32 @@ export const TemperatureUtils = {
  * Wind Speed Conversion Helpers
  */
 export const WindUtils = {  
-  /** Convert mph to km/h */
+  /**
+   * Converts miles per hour to kilometers per hour.
+   *
+   * @param mph - Wind speed in miles per hour
+   * @returns Wind speed in kilometers per hour
+   */
   mphToKmh(mph: number): number {
     return mph * 1.60934;
   },
   
-  /** Convert m/s to mph */
+  /**
+   * Converts meters per second to miles per hour.
+   *
+   * @param ms - Wind speed in meters per second
+   * @returns Wind speed in miles per hour
+   */
   msToMph(ms: number): number {
     return ms * 2.23694;
   },
   
-  /** Get wind direction from degrees */
+  /**
+   * Converts wind direction degrees to a cardinal label.
+   *
+   * @param degrees - Wind direction in degrees
+   * @returns Cardinal direction label
+   */
   getWindDirection(degrees: number): string {
     const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
     const index = Math.round(degrees / 45) % 8;

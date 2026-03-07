@@ -5,6 +5,14 @@ interface UpdateNotificationProps {
   checkInterval?: number;
 }
 
+/**
+ * Displays a refresh prompt when a newer deployed version is detected.
+ *
+ * @param props - Component props
+ * @param props.currentVersion - Current app version shown to the user
+ * @param props.checkInterval - Polling interval in milliseconds
+ * @returns Update notification element when a new version is available
+ */
 export const UpdateNotification: React.FC<UpdateNotificationProps> = ({
   currentVersion,
   checkInterval = 60_000,
