@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { axe } from 'jest-axe';
 import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
 import { SEOProvider } from '../../contexts/SEOContext';
@@ -84,5 +85,11 @@ describe('JokePage', () => {
     renderPage();
     await user.click(screen.getByRole('tab', { name: /History/i }));
     expect(screen.getByRole('tab', { name: /History/i })).toHaveAttribute('aria-selected', 'true');
+  });
+
+  it('renders without critical axe violations', async () => {
+    const { container } = renderPage();
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

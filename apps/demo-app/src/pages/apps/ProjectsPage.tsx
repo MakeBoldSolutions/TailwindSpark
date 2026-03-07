@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type FC } from 'react';
 import { useSEO } from '../../contexts/SEOContext';
 import { useProjects } from '../../hooks/useProjects';
 import { ProjectCard } from '../../sections/ProjectCard';
@@ -12,7 +12,7 @@ const PAGE_SIZE = 6;
  *
  * @returns Projects app page
  */
-function ProjectsPage() {
+const ProjectsPage: FC = (): React.JSX.Element => {
   const { setSEO } = useSEO();
   const { projects, loading, error, refreshCache } = useProjects();
 
@@ -202,6 +202,6 @@ function ProjectsPage() {
       </p>
     </div>
   );
-}
+};
 
 export default ProjectsPage;

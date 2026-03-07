@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import { axe } from 'jest-axe';
 import { vi } from 'vitest';
 import App from './App';
 
@@ -19,5 +20,11 @@ describe('App', () => {
     render(<App />);
     // The app should render without throwing an error
     expect(document.body).toBeInTheDocument();
+  });
+
+  it('renders the app shell without critical axe violations', async () => {
+    const { container } = render(<App />);
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

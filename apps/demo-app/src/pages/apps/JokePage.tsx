@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type FC } from 'react';
 import { useSEO } from '../../contexts/SEOContext';
 import { useJokes } from '../../hooks/useJokes';
 import JokeCard from '../../sections/JokeCard';
@@ -10,7 +10,7 @@ type Tab = 'current' | 'saved' | 'history';
  *
  * @returns Joke app page
  */
-function JokePage() {
+const JokePage: FC = (): React.JSX.Element => {
   const { setSEO } = useSEO();
   const {
     currentJoke,
@@ -152,6 +152,6 @@ function JokePage() {
       )}
     </div>
   );
-}
+};
 
 export default JokePage;

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type FC } from 'react';
 import { useSEO } from '../../contexts/SEOContext';
 import { useVariants } from '../../hooks/useVariants';
 import ChatInterface from '../../sections/ChatInterface';
@@ -11,7 +11,7 @@ import { sanitizeInput } from '../../utils/sanitize';
  *
  * @returns AI chat app page
  */
-function AIChatPage() {
+const AIChatPage: FC = (): React.JSX.Element => {
   const { setSEO } = useSEO();
   const {
     categories,
@@ -167,6 +167,6 @@ function AIChatPage() {
       )}
     </div>
   );
-}
+};
 
 export default AIChatPage;

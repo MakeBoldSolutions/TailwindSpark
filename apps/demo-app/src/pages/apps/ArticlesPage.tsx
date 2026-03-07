@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type FC } from 'react';
 import { useSEO } from '../../contexts/SEOContext';
 import { useArticles } from '../../hooks/useArticles';
 import { ArticleCard } from '../../sections/ArticleCard';
@@ -11,7 +11,7 @@ const PAGE_SIZE = 6;
  *
  * @returns Articles app page
  */
-function ArticlesPage() {
+const ArticlesPage: FC = (): React.JSX.Element => {
   const { setSEO } = useSEO();
   const { articles, loading, error, refreshCache } = useArticles();
 
@@ -173,6 +173,6 @@ function ArticlesPage() {
       </p>
     </div>
   );
-}
+};
 
 export default ArticlesPage;

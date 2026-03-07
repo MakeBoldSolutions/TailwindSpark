@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, type FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useSEO } from '../contexts/SEOContext';
 import { useArticles } from '../hooks/useArticles';
@@ -8,7 +8,7 @@ import { useArticles } from '../hooks/useArticles';
  *
  * @returns About page element
  */
-export function AboutPage() {
+export const AboutPage: FC = (): React.JSX.Element => {
   const { setSEO } = useSEO();
   const { articles, loading: articlesLoading } = useArticles();
 
@@ -136,4 +136,4 @@ export function AboutPage() {
       </div>
     </div>
   );
-}
+};

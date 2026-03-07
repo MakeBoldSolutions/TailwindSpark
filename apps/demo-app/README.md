@@ -60,7 +60,6 @@ apps/demo-app/
 │   │   └── apps/       # Mini-app pages mounted at /apps/*
 │   ├── sections/       # Feature presentation components used by mini-apps
 │   ├── services/       # Fetch, caching, and SignalR service layer
-│   ├── test/           # Shared test setup and accessibility harnesses
 │   ├── types/          # TypeScript definitions and API contracts
 │   └── assets/         # Static assets
 ├── public/             # Static files and service worker
@@ -187,7 +186,7 @@ Current validation for the ReactSpark migration includes:
 
 - Vitest component and service coverage with a temporary 40% enforced floor for this spec
 - ESLint with semantic-token and accessibility enforcement
-- Axe-based accessibility smoke tests for the app shell and mini-app pages
+- Axe-based accessibility smoke tests co-located with the app shell and affected mini-app page test suites
 - Keyboard-only verification in light and dark themes
 - Manual responsive checks for mobile and tablet mini-app flows
 

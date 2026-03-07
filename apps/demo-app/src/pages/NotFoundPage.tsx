@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 /**
@@ -5,7 +6,7 @@ import { Link } from 'react-router-dom';
  *
  * @returns Not found page element
  */
-function NotFoundPage() {
+const NotFoundPage: FC = (): React.JSX.Element => {
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
       <span className="mb-4 text-6xl" aria-hidden="true">🔍</span>
@@ -29,6 +30,6 @@ function NotFoundPage() {
       </div>
     </div>
   );
-}
+};
 
 export default NotFoundPage;

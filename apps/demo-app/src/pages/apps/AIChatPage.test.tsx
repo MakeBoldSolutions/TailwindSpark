@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { axe } from 'jest-axe';
 import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
 import { SEOProvider } from '../../contexts/SEOContext';
@@ -105,5 +106,11 @@ describe('AIChatPage', () => {
     await user.click(screen.getByTestId('variant-1'));
     await user.click(screen.getByRole('button', { name: 'Back' }));
     expect(screen.getByRole('heading', { level: 1, name: /AI Chat/i })).toBeInTheDocument();
+  });
+
+  it('renders without critical axe violations', async () => {
+    const { container } = renderPage();
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

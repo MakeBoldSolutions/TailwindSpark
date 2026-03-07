@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { axe } from 'jest-axe';
 import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
 import { SEOProvider } from '../../contexts/SEOContext';
@@ -71,5 +72,11 @@ describe('ProjectsPage', () => {
   it('shows result count', () => {
     renderPage();
     expect(screen.getByText(/Showing \d+ of \d+ project/i)).toBeInTheDocument();
+  });
+
+  it('renders without critical axe violations', async () => {
+    const { container } = renderPage();
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

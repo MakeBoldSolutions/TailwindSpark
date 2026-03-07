@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, type FC } from 'react';
 import { MiniAppCard } from '../components/MiniAppCard';
 import { useSEO } from '../contexts/SEOContext';
 import { miniAppsData } from '../types/miniapp';
@@ -8,7 +8,7 @@ import { miniAppsData } from '../types/miniapp';
  *
  * @returns Apps hub page element
  */
-function AppsHubPage() {
+const AppsHubPage: FC = (): React.JSX.Element => {
   const { setSEO } = useSEO();
 
   useEffect(() => {
@@ -45,6 +45,6 @@ function AppsHubPage() {
       </div>
     </div>
   );
-}
+};
 
 export default AppsHubPage;

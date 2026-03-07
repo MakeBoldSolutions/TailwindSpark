@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useMemo, useState, type FormEvent } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useState, type FC, type FormEvent } from 'react';
 import { useSEO } from '../../contexts/SEOContext';
 import { useWeather } from '../../hooks/useWeather';
 import WeatherCard from '../../sections/WeatherCard';
@@ -11,7 +11,7 @@ const WeatherMap = lazy(() => import('../../sections/WeatherMap').then(m => ({ d
  *
  * @returns Weather app page
  */
-function WeatherPage() {
+const WeatherPage: FC = (): React.JSX.Element => {
   const { setSEO } = useSEO();
   const { weatherResults, recentSearches, loading, error, searchCity } = useWeather();
   const [query, setQuery] = useState('');
@@ -130,6 +130,6 @@ function WeatherPage() {
       )}
     </div>
   );
-}
+};
 
 export default WeatherPage;
