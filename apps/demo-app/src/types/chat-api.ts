@@ -8,6 +8,7 @@
  */
 
 import { z } from 'zod';
+import { normalizeUserText } from '../utils/sanitize';
 
 /**
  * AI Variant Entity
@@ -385,12 +386,7 @@ export function createAssistantMessage(
  * @returns Sanitized message content
  */
 export function sanitizeMessageContent(content: string): string {
-  return content
-    .replace(/<script[^>]*>.*?<\/script>/gi, '')
-    .replace(/<iframe[^>]*>.*?<\/iframe>/gi, '')
-    .replace(/javascript:/gi, '')
-    .replace(/<[^>]+>/g, '')
-    .trim();
+  return normalizeUserText(content);
 }
 
 /**

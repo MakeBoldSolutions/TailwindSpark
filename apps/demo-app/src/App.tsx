@@ -61,8 +61,9 @@ function AppContent() {
     ]);
   }, []);
 
-  // Use basename only in production (GitHub Pages)
-  const basename = import.meta.env.PROD ? '/TailwindSpark' : '';
+  const basename = import.meta.env.BASE_URL === '/'
+    ? ''
+    : import.meta.env.BASE_URL.replace(/\/$/, '');
 
   return (
     <ErrorBoundary>

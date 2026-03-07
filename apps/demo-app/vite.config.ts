@@ -4,7 +4,10 @@ import { defineConfig } from 'vite';
 import { performanceBudgetPlugin } from './src/utils/performanceBudget';
 
 // https://vite.dev/config/
-export default defineConfig(({ command }) => ({
+export default defineConfig(({ command }) => {
+  const basePath = process.env.VITE_BASE_URL ?? '/';
+
+  return {
   plugins: [
     react(),
     // Performance budget monitoring for builds
@@ -23,7 +26,7 @@ export default defineConfig(({ command }) => ({
         template: 'treemap', // Options: treemap, sunburst, network
       }),
   ].filter(Boolean),
-  base: command === 'build' ? '/TailwindSpark/' : '/',
+  base: command === 'build' ? basePath : '/',
   build: {
     outDir: '../../dist',
     emptyOutDir: true,
@@ -155,4 +158,5 @@ export default defineConfig(({ command }) => ({
       'Permissions-Policy': 'geolocation=(), microphone=(), camera=(), payment=(), usb=()',
     },
   },
-}));
+};
+});
