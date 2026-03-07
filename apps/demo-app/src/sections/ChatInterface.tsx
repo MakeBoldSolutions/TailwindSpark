@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
+import Markdown from 'react-markdown';
 import { useSignalR } from '../hooks/useSignalR';
 import type { AIVariant, SignalRConnectionStatus } from '../types/chat-api';
 import { formatMessageTime, SIGNALR_CONFIG } from '../types/chat-api';
@@ -132,9 +133,15 @@ export default function ChatInterface({ variant, onBack }: ChatInterfaceProps) {
                   : 'bg-surface-alt text-text'
               }`}
             >
-              <p className="whitespace-pre-wrap text-sm">
-                {msg.content || (msg.streaming ? '...' : '')}
-              </p>
+              {msg.role === 'assistant' ? (
+                <div className="prose prose-sm dark:prose-invert max-w-none text-sm [&>p]:my-1 [&>ol]:my-1 [&>ul]:my-1">
+                  <Markdown>{msg.content || (msg.streaming ? '...' : '')}</Markdown>
+                </div>
+              ) : (
+                <p className="whitespace-pre-wrap text-sm">
+                  {msg.content || ''}
+                </p>
+              )}
               <span className="mt-1 block text-right text-xs opacity-60">
                 {formatMessageTime(msg.timestamp)}
               </span>

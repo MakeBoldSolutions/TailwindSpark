@@ -192,7 +192,7 @@ export type SignalRConnectionStatus =
  */
 export const SIGNALR_CONFIG = {
   /** Chat hub URL */
-  HUB_URL: 'https://webspark.markhazleton.com/chat-hub',
+  HUB_URL: 'https://webspark.markhazleton.com/chatHub',
   
   /** Connection retry delays (exponential backoff) */
   RETRY_DELAYS: [0, 2000, 10000, 30000] as number[], // 0s, 2s, 10s, 30s, then give up
@@ -370,11 +370,11 @@ export function createAssistantMessage(
  * Sanitize message content to prevent XSS
  */
 export function sanitizeMessageContent(content: string): string {
-  // Basic sanitization - ReactMarkdown will handle full sanitization
   return content
     .replace(/<script[^>]*>.*?<\/script>/gi, '')
     .replace(/<iframe[^>]*>.*?<\/iframe>/gi, '')
     .replace(/javascript:/gi, '')
+    .replace(/<[^>]+>/g, '')
     .trim();
 }
 
