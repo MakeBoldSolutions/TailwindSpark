@@ -482,7 +482,7 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T202 [P] Test all pages in dark theme with keyboard-only navigation
 - [X] T203 [P] Test all mini-apps on mobile viewport (375px width)
 - [X] T204 [P] Test all mini-apps on tablet viewport (768px width)
-- [ ] T205 [P] Verify service worker caches all mini-app routes
+- [X] T205 [P] Verify service worker caches all mini-app routes
 - [ ] T206 Update apps/demo-app/README.md with mini-app architecture documentation
 - [ ] T207 [P] Add JSDoc comments to all NEW exported functions and components (mini-app code only: ~50-100 exports)
 - [ ] T208 [P] Update .documentation/specs/003-reactspark-migration/CHANGELOG.md with migration notes
