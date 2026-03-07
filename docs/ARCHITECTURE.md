@@ -37,8 +37,9 @@ TailwindSpark/
 │   ├── design-tokens/      # Design system tokens
 │   └── ui-components/      # Reusable components
 ├── docs/                   # Documentation
+├── .documentation/         # SpecKit artifacts, audit reports, and AI session docs
 ├── .github/                # GitHub workflows and config
-└── copilot/               # AI assistant sessions
+└── scripts/                # Build and maintenance automation
 ```
 
 ### Package Architecture

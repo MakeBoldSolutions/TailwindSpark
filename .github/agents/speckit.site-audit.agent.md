@@ -46,7 +46,7 @@ If no scope specified, default to `--scope=full`.
 
 ### 1. Initialize Audit Context
 
-Run `scripts/powershell/site-audit.ps1 $ARGUMENTS -Json` to gather codebase data and parse JSON output for:
+Run `.documentation/scripts/powershell/site-audit.ps1 $ARGUMENTS -Json` to gather codebase data and parse JSON output for:
 - `REPO_ROOT`: Repository root path
 - `CONSTITUTION_PATH`: Path to constitution file
 - `FILES`: Categorized file listings

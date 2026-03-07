@@ -132,7 +132,7 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T040 [US9] Add SEO metadata in AppsHubPage using useSEO hook
 - [ ] T041 [US9] Test AppsHubPage in both light and dark themes
 - [X] T042 [US9] Write apps/demo-app/src/components/MiniAppCard.test.tsx (renders, Launch click)
-- [ ] T043 [US9] Write apps/demo-app/src/pages/AppsHubPage.test.tsx (renders 5 cards, grid layout)
+- [X] T043 [US9] Write apps/demo-app/src/pages/AppsHubPage.test.tsx (renders 5 cards, grid layout)
 
 ---
 
@@ -164,7 +164,7 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T052 [US7] Add SEO metadata to HomePage and AboutPage using useSEO hook
 - [ ] T053 [US7] Test both pages in light and dark themes
 - [X] T054 [US7] Write apps/demo-app/src/pages/HomePage.test.tsx (renders hero, CTA buttons)
-- [ ] T055 [US7] Write apps/demo-app/src/pages/AboutPage.test.tsx (renders about, filters articles)
+- [X] T055 [US7] Write apps/demo-app/src/pages/AboutPage.test.tsx (renders about, filters articles)
 
 ---
 
@@ -206,10 +206,10 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T071 [US1] Add error message display with retry button
 - [X] T072 [US1] Add SEO metadata to ProjectsPage using useSEO hook
 - [ ] T073 [US1] Test ProjectsPage in light and dark themes
-- [ ] T074 [US1] Write apps/demo-app/src/services/projects.service.test.ts (fetches, validates, caches, fallback)
-- [ ] T075 [US1] Write apps/demo-app/src/hooks/useProjects.test.ts (returns projects, loading, error states)
+- [X] T074 [US1] Write apps/demo-app/src/services/projects.service.test.ts (fetches, validates, caches, fallback)
+- [X] T075 [US1] Write apps/demo-app/src/hooks/useProjects.test.ts (returns projects, loading, error states)
 - [X] T076 [US1] Write apps/demo-app/src/sections/ProjectCard.test.tsx (renders project data)
-- [ ] T077 [US1] Write apps/demo-app/src/pages/apps/ProjectsPage.test.tsx (search, sort, pagination, refresh)
+- [X] T077 [US1] Write apps/demo-app/src/pages/apps/ProjectsPage.test.tsx (search, sort, pagination, refresh)
 
 ---
 
@@ -250,10 +250,10 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T093 [US2] Add error message display for RSS parse failures
 - [X] T094 [US2] Add SEO metadata to ArticlesPage using useSEO hook
 - [ ] T095 [US2] Test ArticlesPage in light and dark themes
-- [ ] T096 [US2] Write apps/demo-app/src/services/rss.service.test.ts (parses XML, validates, caches)
-- [ ] T097 [US2] Write apps/demo-app/src/hooks/useArticles.test.ts (returns articles, loading, error)
+- [X] T096 [US2] Write apps/demo-app/src/services/rss.service.test.ts (parses XML, validates, caches)
+- [X] T097 [US2] Write apps/demo-app/src/hooks/useArticles.test.ts (returns articles, loading, error)
 - [X] T098 [US2] Write apps/demo-app/src/sections/ArticleCard.test.tsx (renders article data)
-- [ ] T099 [US2] Write apps/demo-app/src/pages/apps/ArticlesPage.test.tsx (filter, sort, pagination)
+- [X] T099 [US2] Write apps/demo-app/src/pages/apps/ArticlesPage.test.tsx (filter, sort, pagination)
 
 ---
 
@@ -303,10 +303,10 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T121 [US3] Add error message for API failures
 - [X] T122 [US3] Add SEO metadata to JokePage using useSEO hook
 - [ ] T123 [US3] Test JokePage in light and dark themes
-- [ ] T124 [US3] Write apps/demo-app/src/services/joke.service.test.ts (fetches, saves, likes, deletes)
-- [ ] T125 [US3] Write apps/demo-app/src/hooks/useJokes.test.ts (returns joke, saved, liked states)
+- [X] T124 [US3] Write apps/demo-app/src/services/joke.service.test.ts (fetches, saves, likes, deletes)
+- [X] T125 [US3] Write apps/demo-app/src/hooks/useJokes.test.ts (returns joke, saved, liked states)
 - [X] T126 [US3] Write apps/demo-app/src/sections/JokeCard.test.tsx (renders single/twopart, like, save, share)
-- [ ] T127 [US3] Write apps/demo-app/src/pages/apps/JokePage.test.tsx (fetch, save, delete, explain modal)
+- [X] T127 [US3] Write apps/demo-app/src/pages/apps/JokePage.test.tsx (fetch, save, delete, explain modal)
 
 ---
 
@@ -351,11 +351,11 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T146 [US4] Add error messages for: city not found, rate limit exceeded, API failure
 - [X] T147 [US4] Add SEO metadata to WeatherPage using useSEO hook
 - [ ] T148 [US4] Test WeatherPage in light and dark themes
-- [ ] T149 [US4] Write apps/demo-app/src/services/weather.service.test.ts (fetches, validates, recent searches)
-- [ ] T150 [US4] Write apps/demo-app/src/hooks/useWeather.test.ts (returns weather, loading, error)
-- [ ] T151 [US4] Write apps/demo-app/src/sections/WeatherCard.test.tsx (renders weather data)
-- [ ] T152 [US4] Write apps/demo-app/src/sections/WeatherMap.test.tsx (renders map, marker)
-- [ ] T153 [US4] Write apps/demo-app/src/pages/apps/WeatherPage.test.tsx (search, recent, defaults)
+- [X] T149 [US4] Write apps/demo-app/src/services/weather.service.test.ts (fetches, validates, recent searches)
+- [X] T150 [US4] Write apps/demo-app/src/hooks/useWeather.test.ts (returns weather, loading, error)
+- [X] T151 [US4] Write apps/demo-app/src/sections/WeatherCard.test.tsx (renders weather data)
+- [X] T152 [US4] Write apps/demo-app/src/sections/WeatherMap.test.tsx (renders map, marker)
+- [X] T153 [US4] Write apps/demo-app/src/pages/apps/WeatherPage.test.tsx (search, recent, defaults)
 
 ---
 
@@ -416,13 +416,13 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T186 [US5] Add error messages for variants fetch failure and SignalR connection errors
 - [X] T187 [US5] Add SEO metadata to AIChatPage using useSEO hook
 - [ ] T188 [US5] Test AIChatPage in light and dark themes
-- [ ] T189 [US5] Write apps/demo-app/src/services/variants.service.test.ts (fetches, validates, caches)
+- [X] T189 [US5] Write apps/demo-app/src/services/variants.service.test.ts (fetches, validates, caches)
 - [ ] T190 [US5] Write apps/demo-app/src/services/chat.service.test.ts (connects, sends, receives, reconnects)
-- [ ] T191 [US5] Write apps/demo-app/src/hooks/useVariants.test.ts (returns variants, loading, error)
-- [ ] T192 [US5] Write apps/demo-app/src/hooks/useSignalR.test.ts (connects, messages, status)
+- [X] T191 [US5] Write apps/demo-app/src/hooks/useVariants.test.ts (returns variants, loading, error)
+- [X] T192 [US5] Write apps/demo-app/src/hooks/useSignalR.test.ts (connects, messages, status)
 - [X] T193 [US5] Write apps/demo-app/src/sections/VariantCard.test.tsx (renders variant, Start Chat)
-- [ ] T194 [US5] Write apps/demo-app/src/sections/ChatInterface.test.tsx (sends messages, displays responses)
-- [ ] T195 [US5] Write apps/demo-app/src/pages/apps/AIChatPage.test.tsx (featured, filter, chat modal)
+- [X] T194 [US5] Write apps/demo-app/src/sections/ChatInterface.test.tsx (sends messages, displays responses)
+- [X] T195 [US5] Write apps/demo-app/src/pages/apps/AIChatPage.test.tsx (featured, filter, chat modal)
 
 ---
 
@@ -456,7 +456,7 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T196.5 Create apps/demo-app/src/components/UpdateNotification.tsx with Update/Dismiss actions
 - [X] T196.6 Implement version check polling (60s interval) that triggers UpdateNotification on version mismatch
 - [X] T196.7 [P] Add JSON-LD structured data (WebSite, WebApplication) to HomePage and AppsHubPage
-- [ ] T196.8 Write apps/demo-app/src/hooks/useSEO.test.ts (OG tags, canonical URL, title/description updates)
+- [X] T196.8 Write apps/demo-app/src/contexts/SEOContext.test.tsx (OG tags, canonical URL, title/description updates)
 
 #### Content Security Policy & Security (FR-108–FR-113)
 

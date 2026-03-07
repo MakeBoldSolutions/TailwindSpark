@@ -48,7 +48,7 @@ Parse `$ARGUMENTS` for options:
 
 ### 1. Initialize Release Context
 
-Run `scripts/powershell/release-context.ps1 $ARGUMENTS -Json` to gather context and parse JSON output for:
+Run `.documentation/scripts/powershell/release-context.ps1 $ARGUMENTS -Json` to gather context and parse JSON output for:
 
 - `REPO_ROOT`: Repository root path
 - `SPECS_DIR`: Path to specs directory
