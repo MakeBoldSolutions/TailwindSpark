@@ -14,7 +14,7 @@ on:
                 type: boolean
 
 env:
-    NODE_VERSION: "22"
+  NODE_VERSION: "22.12.0"
 
 jobs:
     lighthouse-ci:
@@ -36,15 +36,21 @@ jobs:
             - name: Install dependencies
               run: npm ci
 
-            - name: Install Chrome dependencies
+            - name: Detect Chrome binary
               run: |
-                  sudo apt-get update
-                  sudo apt-get install -y xvfb
-
-            - name: Start Xvfb
-              run: |
-                  Xvfb :99 -screen 0 1280x1024x24 &
-                  sleep 3
+                  if command -v google-chrome >/dev/null 2>&1; then
+                    echo "CHROME_PATH=$(command -v google-chrome)" >> "$GITHUB_ENV"
+                    google-chrome --version
+                  elif command -v chromium >/dev/null 2>&1; then
+                    echo "CHROME_PATH=$(command -v chromium)" >> "$GITHUB_ENV"
+                    chromium --version
+                  elif command -v chromium-browser >/dev/null 2>&1; then
+                    echo "CHROME_PATH=$(command -v chromium-browser)" >> "$GITHUB_ENV"
+                    chromium-browser --version
+                  else
+                    echo "Chrome binary not found on runner" >&2
+                    exit 1
+                  fi
 
             - name: Build application
               run: npm run build
@@ -55,18 +61,35 @@ jobs:
               run: npm install -g @lhci/cli@0.12.x
 
             - name: Run Lighthouse CI
-              run: lhci autorun
+              run: |
+                  mkdir -p artifacts/lighthouse
+                  set -o pipefail
+                  lhci autorun 2>&1 | tee artifacts/lighthouse/lhci.log
+                  status=${PIPESTATUS[0]}
+                  if [ -d .lighthouseci ]; then
+                    cp -R .lighthouseci/. artifacts/lighthouse/
+                  fi
+                  exit "$status"
               env:
-                  DISPLAY: :99
                   LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
                   LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
+                  CHROME_PATH: ${{ env.CHROME_PATH }}
+
+            - name: Flag NO_FCP diagnostics
+              if: always()
+              run: |
+                  if grep -q "NO_FCP\|The page did not paint any content" artifacts/lighthouse/lhci.log; then
+                    echo "::warning title=Lighthouse runtime error::Detected NO_FCP in LHCI output. See lighthouse-results artifact for lhci.log."
+                  else
+                    echo "::notice title=Lighthouse runtime error::NO_FCP was not detected in lhci.log. Review the retained Lighthouse artifact for the full failure output."
+                  fi
 
             - name: Upload Lighthouse results
               uses: actions/upload-artifact@v7
               if: always()
               with:
                   name: lighthouse-results
-                  path: .lighthouseci/
+                  path: artifacts/lighthouse/
                   retention-days: 30
 
             - name: Comment PR with Lighthouse results

@@ -15,7 +15,7 @@ concurrency:
     cancel-in-progress: false
 
 env:
-    NODE_VERSION: "18"
+  NODE_VERSION: "22.12.0"
 
 jobs:
     build-and-deploy:
@@ -245,7 +245,7 @@ jobs:
               uses: actions/deploy-pages@v4
 
             - name: Update deployment status
-              if: always()
+              if: ${{ success() && steps.deployment.outcome == 'success' }}
               run: |
                   echo "::notice title=Deployment Status::Deployment completed with CDN optimization"
                   echo "::notice title=Website URL::https://markhazleton.github.io/TailwindSpark/"
