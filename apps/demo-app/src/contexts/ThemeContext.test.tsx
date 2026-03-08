@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
 import { ThemeProvider, useTheme } from './ThemeContext';
@@ -17,9 +17,24 @@ const TestComponent = () => {
 };
 
 describe('ThemeProvider', () => {
+  let store: Record<string, string>;
+
   beforeEach(() => {
+    vi.clearAllMocks();
+
     // Clear localStorage before each test
     localStorage.clear();
+    store = {};
+    vi.mocked(localStorage.getItem).mockImplementation((key: string) => store[key] ?? null);
+    vi.mocked(localStorage.setItem).mockImplementation((key: string, value: string) => {
+      store[key] = value;
+    });
+    vi.mocked(localStorage.removeItem).mockImplementation((key: string) => {
+      delete store[key];
+    });
+    vi.mocked(localStorage.clear).mockImplementation(() => {
+      store = {};
+    });
     
     // Mock matchMedia
     Object.defineProperty(window, 'matchMedia', {
@@ -125,6 +140,37 @@ describe('ThemeProvider', () => {
     );
 
     expect(screen.getByTestId('theme-status')).toHaveTextContent('dark');
+  });
+
+  it('persists theme selection across remounts using localStorage', async () => {
+    const user = userEvent.setup();
+
+    const { unmount } = render(
+      <ThemeProvider>
+        <TestComponent />
+      </ThemeProvider>
+    );
+
+    await user.click(screen.getByTestId('toggle-theme'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('theme-status')).toHaveTextContent('dark');
+      expect(localStorage.getItem('theme')).toBe('dark');
+      expect(document.documentElement.classList.contains('dark')).toBe(true);
+    });
+
+    unmount();
+
+    render(
+      <ThemeProvider>
+        <TestComponent />
+      </ThemeProvider>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId('theme-status')).toHaveTextContent('dark');
+      expect(localStorage.getItem('theme')).toBe('dark');
+    });
   });
 });
 

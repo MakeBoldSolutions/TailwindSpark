@@ -4,7 +4,10 @@ import { defineConfig } from 'vite';
 import { performanceBudgetPlugin } from './src/utils/performanceBudget';
 
 // https://vite.dev/config/
-export default defineConfig(({ command }) => ({
+export default defineConfig(({ command }) => {
+  const basePath = process.env.VITE_BASE_URL ?? '/';
+
+  return {
   plugins: [
     react(),
     // Performance budget monitoring for builds
@@ -23,7 +26,7 @@ export default defineConfig(({ command }) => ({
         template: 'treemap', // Options: treemap, sunburst, network
       }),
   ].filter(Boolean),
-  base: command === 'build' ? '/TailwindSpark/' : '/',
+  base: command === 'build' ? basePath : '/',
   build: {
     outDir: '../../dist',
     emptyOutDir: true,
@@ -50,14 +53,33 @@ export default defineConfig(({ command }) => ({
         manualChunks: id => {
           // Vendor chunks for long-term caching
           if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'react-vendor';
+            if (
+              id.includes('react-router') ||
+              id.includes('@remix-run/router') ||
+              id.includes('react-dom') ||
+              id.includes('react/') ||
+              id.includes('scheduler') ||
+              id.includes('use-sync-external-store')
+            ) {
+              return 'framework-vendor';
             }
-            if (id.includes('react-router')) {
-              return 'router-vendor';
+            if (id.includes('@microsoft/signalr')) {
+              return 'signalr-vendor';
             }
-            if (id.includes('web-vitals') || id.includes('performance')) {
-              return 'performance-vendor';
+            if (id.includes('leaflet') || id.includes('react-leaflet')) {
+              return 'maps-vendor';
+            }
+            if (
+              id.includes('react-markdown') ||
+              id.includes('remark-') ||
+              id.includes('rehype-') ||
+              id.includes('mdast-') ||
+              id.includes('hast-')
+            ) {
+              return 'markdown-vendor';
+            }
+            if (id.includes('lucide-react')) {
+              return 'icons-vendor';
             }
             return 'vendor';
           }
@@ -114,6 +136,19 @@ export default defineConfig(({ command }) => ({
     fs: {
       strict: false,
     },
+    // Dev proxy for external API calls
+    proxy: {
+      '/api/projects.json': {
+        target: 'https://markhazleton.com',
+        changeOrigin: true,
+        rewrite: (path: string) => path.replace(/^\/api/, ''),
+      },
+      '/api/articles.json': {
+        target: 'https://markhazleton.com',
+        changeOrigin: true,
+        rewrite: (path: string) => path.replace(/^\/api/, ''),
+      },
+    },
     // Security headers for development server
     headers: {
       'X-Frame-Options': 'DENY',
@@ -123,4 +158,5 @@ export default defineConfig(({ command }) => ({
       'Permissions-Policy': 'geolocation=(), microphone=(), camera=(), payment=(), usb=()',
     },
   },
-}));
+};
+});

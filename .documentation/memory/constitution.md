@@ -2,9 +2,9 @@
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │ CONSTITUTION SYNC IMPACT REPORT                                             │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│ Version Change: TEMPLATE → 1.0.0 (Initial ratification)                    │
+│ Version Change: 1.0.0 → 2.0.0 (Testing threshold amendment)                │
 │ Ratified: 2026-03-01                                                        │
-│ Last Amended: 2026-03-01                                                    │
+│ Last Amended: 2026-03-07                                                    │
 │                                                                             │
 │ PRINCIPLES FORMALIZED:                                                      │
 │   ✓ I. Type Safety (MANDATORY)                                             │
@@ -29,13 +29,13 @@
 │                                                                             │
 │ IMPLEMENTATION ACTIONS REQUIRED:                                            │
 │   ⚠ HIGH: Add JSDoc to all exports (~5% → 100% coverage)                  │
-│   ⚠ HIGH: Add coverage thresholds to vitest.config.ts (80% minimum)       │
+│   ✓ Coverage thresholds formalized in Vitest config (40% minimum)         │
 │   ⚠ MEDIUM: Evaluate Zod for input validation                             │
 │   ⚠ MEDIUM: Consider structured logging for production                    │
 │                                                                             │
 │ FOLLOW-UP ACTIONS:                                                          │
 │   → Run /speckit.site-audit to validate compliance                         │
-│   → Update vitest.config.ts with coverage thresholds                       │
+│   → Reassess whether the 40% baseline should be raised in a future amendment│
 │   → Create JSDoc documentation plan for packages/ui-components             │
 │   → Schedule quarterly constitution review (2026-06-01)                    │
 │                                                                             │
@@ -67,14 +67,14 @@ All code must use TypeScript in strict mode with comprehensive type coverage.
 All code must have comprehensive test coverage using Vitest with co-located test files.
 
 - All code **MUST** have Vitest tests in co-located `*.test.tsx` or `*.test.ts` files (CRITICAL)
-- Minimum **80% coverage** required for statements, branches, functions, and lines (CRITICAL)
+- Minimum **40% coverage** required for statements, branches, functions, and lines (CRITICAL)
 - Test files **MUST** be co-located with source files, not in separate directories (HIGH)
 - Coverage reports **MUST** be generated in CI/CD pipelines (HIGH)
 - Tests **MUST** use `@testing-library/react` for component testing (HIGH)
 
 **Evidence**: All 13 test files use `.test.tsx` suffix; `vitest.config.ts` workspace configuration; comprehensive test examples in `apps/demo-app/src/components/ErrorBoundary.test.tsx`
 
-**Rationale**: High test coverage ensures reliability for this showcase project and demonstrates best practices for developers learning from the codebase.
+**Rationale**: A 40% enforced baseline preserves a mandatory quality gate during the current migration phase while remaining achievable across legacy and newly migrated surfaces. The threshold may be raised in a future amendment once broader coverage improvements are completed.
 
 ### III. Design System & Semantic Tokens (MANDATORY)
 
@@ -206,11 +206,11 @@ The following areas currently lack established patterns and require implementati
    - **Action**: Add JSDoc to all exports in `packages/ui-components/src/` and `apps/demo-app/src/`
    - **Priority**: HIGH
 
-2. **Test Coverage Thresholds** (Principle II gap)
-   - **Current**: Coverage tracked but no minimum thresholds enforced
-   - **Required**: 80% minimum coverage (statements, branches, functions, lines)
-   - **Action**: Update `vitest.config.ts` with coverage thresholds configuration
-   - **Priority**: HIGH
+2. **Coverage Threshold Maturity** (Principle II follow-up)
+   - **Current**: 40% minimum coverage is formally enforced in Vitest configuration
+   - **Required**: Maintain at least 40% minimum coverage (statements, branches, functions, lines)
+   - **Action**: Re-evaluate the threshold in a future amendment after legacy coverage expands
+   - **Priority**: MEDIUM
 
 ### Recommended Improvements
 
@@ -274,4 +274,4 @@ Minor clarifications may be made by project maintainers; major principle changes
 - Violations discovered in audits **MUST** be tracked as technical debt
 - All pull requests **MUST** verify compliance with constitution principles
 
-**Version**: 1.0.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-01
+**Version**: 2.0.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-07

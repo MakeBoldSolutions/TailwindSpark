@@ -1,9 +1,9 @@
 {
   "ci": {
     "collect": {
-      "startServerCommand": "npm run preview",
-      "startServerReadyPattern": "Local:.*http://localhost:4173",
-      "startServerReadyTimeout": 60000,
+      "startServerCommand": "npm run preview --workspace=@tailwindspark/demo-app -- --host 127.0.0.1 --port 4173 --strictPort",
+      "startServerReadyPattern": "127.0.0.1:4173",
+      "startServerReadyTimeout": 120000,
       "url": [
         "http://localhost:4173/",
         "http://localhost:4173/dashboard",
@@ -11,7 +11,11 @@
         "http://localhost:4173/demos",
         "http://localhost:4173/marketing",
         "http://localhost:4173/ecommerce",
-        "http://localhost:4173/animations"
+        "http://localhost:4173/animations",
+        "http://localhost:4173/apps",
+        "http://localhost:4173/apps/projects",
+        "http://localhost:4173/apps/weather",
+        "http://localhost:4173/apps/ai-chat"
       ],
       "numberOfRuns": 3,
       "settings": {
@@ -30,7 +34,9 @@
         "blockedUrlPatterns": [
           "*.googletagmanager.com",
           "*.google-analytics.com",
-          "*.googlesyndication.com"
+          "*.googlesyndication.com",
+          "*googletagmanager*",
+          "*google-analytics*"
         ]
       }
     },

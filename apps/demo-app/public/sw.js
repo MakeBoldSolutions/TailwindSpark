@@ -20,6 +20,22 @@ const coreFiles = [
   './site.webmanifest',
 ];
 
+// Application routes that should be available from the cache for SPA navigation
+const appRoutes = [
+  '/about',
+  '/apps',
+  '/apps/projects',
+  '/apps/articles',
+  '/apps/joke',
+  '/apps/weather',
+  '/apps/ai-chat',
+];
+
+const buildPrecacheUrls = () => {
+  const scope = self.registration?.scope || self.location.origin + '/';
+  return [...coreFiles, ...appRoutes].map(path => new URL(path, scope).toString());
+};
+
 // Runtime caching patterns
 const cachePatterns = {
   // Static assets (CSS, JS, fonts)
@@ -57,8 +73,20 @@ const getCacheStrategy = url => {
 self.addEventListener('install', event => {
   event.waitUntil(
     caches
-      .open(CACHE_NAME)
-      .then(cache => cache.addAll(coreFiles))
+      .open(STATIC_CACHE)
+      .then(cache => Promise.all(
+        buildPrecacheUrls().map(async url => {
+          try {
+            const response = await fetch(url, { cache: 'no-store' });
+            if (response.ok) {
+              await cache.put(url, response.clone());
+            }
+          } catch {
+            return null;
+          }
+          return null;
+        })
+      ))
       .then(() => self.skipWaiting())
   );
 });

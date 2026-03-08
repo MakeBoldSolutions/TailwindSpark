@@ -118,6 +118,12 @@ export class ErrorBoundary extends Component<Props, State> {
                 >
                   Go to Homepage
                 </button>
+                <button
+                  onClick={() => (window.location.href = '/apps')}
+                  className="w-full rounded-lg border border-border bg-surface px-4 py-2 text-text transition-colors hover:bg-surface-alt"
+                >
+                  Go to Apps
+                </button>
               </div>
               {process.env.NODE_ENV === 'development' && this.state.error && (
                 <details className="mt-4 text-left">

@@ -240,8 +240,7 @@ export const MemoryMonitorDisplay: React.FC = () => {
           </button>
           <button
             onClick={() => {
-              // eslint-disable-next-line no-console
-              console.log(memoryMonitor.generateReport());
+              console.warn(memoryMonitor.generateReport());
             }}
             className="text-xs text-brand hover:text-brand-hover"
           >

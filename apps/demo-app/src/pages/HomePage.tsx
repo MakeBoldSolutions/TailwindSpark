@@ -1,7 +1,8 @@
 import { Button } from '@tailwindspark/ui-components';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { TailwindSparkBrand } from '../components/TailwindSparkBrand';
+import { useSEO } from '../contexts/SEOContext';
 
 /**
  * Home page component showcasing TailwindSpark features and navigation.
@@ -17,6 +18,24 @@ import { TailwindSparkBrand } from '../components/TailwindSparkBrand';
  * ```
  */
 export const HomePage: React.FC = () => {
+  const { setSEO } = useSEO();
+
+  useEffect(() => {
+    setSEO({
+      title: 'TailwindSpark - Modern React Components',
+      description: 'Interactive showcase of Tailwind CSS components, design system, and mini-apps built with React, TypeScript, and Vite.',
+      canonicalUrl: 'https://markhazleton.github.io/TailwindSpark/',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'TailwindSpark',
+        url: 'https://markhazleton.github.io/TailwindSpark/',
+        description: 'Modern React components with Tailwind CSS',
+        author: { '@type': 'Person', name: 'Mark Hazleton' },
+      },
+    });
+  }, [setSEO]);
+
   return (
     <div className="bg-surface py-16">
       <div className="container mx-auto max-w-4xl px-4">
@@ -26,6 +45,24 @@ export const HomePage: React.FC = () => {
             <p className="text-lg italic text-text-muted">
               "Making technology work for business - lifelong learner, not sidetracked by sizzle."
             </p>
+          </div>
+
+          {/* Technology Stack Icons */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+            {[
+              { name: 'React', icon: '⚛️' },
+              { name: 'TypeScript', icon: '🔷' },
+              { name: 'Tailwind CSS', icon: '🎨' },
+              { name: 'Vite', icon: '⚡' },
+            ].map(({ name, icon }) => (
+              <span
+                key={name}
+                className="inline-flex items-center gap-1.5 rounded-full bg-surface-alt px-3 py-1 text-sm font-medium text-text-muted"
+              >
+                <span aria-hidden="true">{icon}</span>
+                {name}
+              </span>
+            ))}
           </div>
         </div>
 
@@ -153,26 +190,20 @@ export const HomePage: React.FC = () => {
                 Explore Components
               </Button>
             </Link>
-            <Link to="/animations">
+            <Link to="/apps">
               <Button variant="secondary" size="lg">
-                View Animations
+                Explore Apps
               </Button>
             </Link>
-            <Link to="/dashboard">
+            <a
+              href="https://webspark.markhazleton.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button variant="ghost" size="lg">
-                SaaS Dashboard Demo
+                WebSpark Portfolio ↗
               </Button>
-            </Link>
-            <Link to="/ecommerce">
-              <Button variant="ghost" size="lg">
-                E-commerce Store Demo
-              </Button>
-            </Link>
-            <Link to="/marketing">
-              <Button variant="ghost" size="lg">
-                Marketing Landing Page
-              </Button>
-            </Link>
+            </a>
           </div>
           <div className="mt-6">
             <a
