@@ -10,19 +10,24 @@ function parseAndMapProjects(json: unknown): Project[] {
   return raw.map(mapRawProject);
 }
 
-async function fetchProjects(): Promise<Project[]> {
-  const url = import.meta.env.DEV ? PROJECTS_API_CONFIG.DEV_URL : PROD_URL;
+async function fetchProjectsFromUrl(url: string): Promise<Project[]> {
   const response = await fetch(url, getPublicJsonFetchOptions());
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   const json = await response.json();
   return parseAndMapProjects(json);
 }
 
-async function fetchFallbackProjects(): Promise<Project[]> {
-  const response = await fetch(FALLBACK_URL, getPublicJsonFetchOptions());
-  if (!response.ok) throw new Error('Fallback fetch failed');
-  const json = await response.json();
-  return parseAndMapProjects(json);
+async function fetchProjects(): Promise<Project[]> {
+  const url = import.meta.env.DEV ? PROJECTS_API_CONFIG.DEV_URL : PROD_URL;
+  return fetchProjectsFromUrl(url);
+}
+
+async function fetchFallbackProjects(primaryUrl: string): Promise<Project[]> {
+  if (primaryUrl === FALLBACK_URL) {
+    throw new Error('Fallback URL matches primary URL');
+  }
+
+  return fetchProjectsFromUrl(FALLBACK_URL);
 }
 
 /**
@@ -34,13 +39,15 @@ export async function getProjects(): Promise<Project[]> {
   const cached = getFromCache<Project[]>(CACHE_KEY, CACHE_TTL.DEV, CACHE_TTL.PROD);
   if (cached) return cached;
 
+  const primaryUrl = import.meta.env.DEV ? PROJECTS_API_CONFIG.DEV_URL : PROD_URL;
+
   try {
     const data = await fetchProjects();
     setInCache(CACHE_KEY, data);
     return data;
   } catch {
     try {
-      const fallback = await fetchFallbackProjects();
+      const fallback = await fetchFallbackProjects(primaryUrl);
       setInCache(CACHE_KEY, fallback);
       return fallback;
     } catch {

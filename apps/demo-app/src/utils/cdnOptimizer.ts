@@ -25,6 +25,7 @@ interface ResourceHint {
 class CDNOptimizer {
   private config: CDNConfig;
   private appliedHints = new Set<string>();
+  private initialized = false;
 
   /**
    * Creates a new CDN optimizer instance
@@ -46,6 +47,9 @@ class CDNOptimizer {
    */
   init(): void {
     if (typeof window === 'undefined') return;
+    if (this.initialized) return;
+
+    this.initialized = true;
 
     this.setupPreconnections();
     this.optimizeResourceLoading();
@@ -92,9 +96,6 @@ class CDNOptimizer {
    * Optimize resource loading based on CDN strategy
    */
   private optimizeResourceLoading(): void {
-    // Preload critical CSS
-    this.preloadCriticalResources();
-
     // Setup lazy loading for non-critical resources
     this.setupLazyLoading();
 
@@ -218,9 +219,6 @@ class CDNOptimizer {
   private setupCacheManagement(): void {
     // Monitor performance and adjust caching strategy
     this.monitorPerformance();
-
-    // Setup cache warming for critical resources
-    this.warmCache();
   }
 
   /**

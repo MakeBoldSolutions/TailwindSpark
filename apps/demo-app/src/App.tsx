@@ -46,13 +46,7 @@ function AppContent() {
       cdnOptimizer.init();
     }
 
-    // Preload critical resources
     const resourceManager = ResourcePriorityManager.getInstance();
-    resourceManager.preloadCritical([
-      { url: '/TailwindSpark.svg', type: 'image' },
-      { url: '/og-image.svg', type: 'image' },
-    ]);
-
     // Prefetch likely future pages
     resourceManager.prefetchFuture([
       '/demos',

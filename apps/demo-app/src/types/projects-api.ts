@@ -123,8 +123,11 @@ export interface ProjectsAPIResponse {
  * Projects API Configuration
  */
 export const PROJECTS_API_CONFIG = {
-  /** Production API endpoint */
-  PROD_URL: 'https://markhazleton.com/projects.json',
+  /** Production same-origin data endpoint */
+  PROD_URL: '/data/projects.json',
+
+  /** Remote source used to refresh the local snapshot during builds */
+  REMOTE_URL: 'https://markhazleton.com/projects.json',
   
   /** Development proxy endpoint (configured in vite.config.ts) */
   DEV_URL: '/api/projects.json',
