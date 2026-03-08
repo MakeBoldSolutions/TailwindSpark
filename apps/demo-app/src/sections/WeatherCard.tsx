@@ -1,3 +1,4 @@
+import React from 'react';
 import type { WeatherData, WeatherIconCode } from '../types/weather-api';
 import { TemperatureUtils, WEATHER_ICONS } from '../types/weather-api';
 
@@ -12,7 +13,7 @@ interface WeatherCardProps {
  * @param props.data - Weather data to present
  * @returns Weather card element
  */
-export default function WeatherCard(props: WeatherCardProps) {
+const WeatherCard: React.FC<WeatherCardProps> = (props): React.JSX.Element => {
   const { data } = props;
   const iconInfo = WEATHER_ICONS[data.weather.icon as WeatherIconCode];
   const emoji = iconInfo?.emoji ?? '🌡️';
@@ -54,4 +55,6 @@ export default function WeatherCard(props: WeatherCardProps) {
       </div>
     </div>
   );
-}
+};
+
+export default WeatherCard;

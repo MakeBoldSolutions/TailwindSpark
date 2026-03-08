@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type FormEvent } from 'react';
+import React, { useEffect, useRef, useState, type FormEvent } from 'react';
 import Markdown from 'react-markdown';
 import { useSignalR } from '../hooks/useSignalR';
 import type { AIVariant, SignalRConnectionStatus } from '../types/chat-api';
@@ -25,7 +25,10 @@ const statusColors: Record<SignalRConnectionStatus, string> = {
  * @param props.onBack - Callback used to return to the variant list
  * @returns Chat interface UI
  */
-export default function ChatInterface({ variant, onBack }: ChatInterfaceProps) {
+const ChatInterface: React.FC<ChatInterfaceProps> = ({
+  variant,
+  onBack,
+}): React.JSX.Element => {
   const {
     messages,
     connectionStatus,
@@ -199,4 +202,6 @@ export default function ChatInterface({ variant, onBack }: ChatInterfaceProps) {
       </form>
     </div>
   );
-}
+};
+
+export default ChatInterface;

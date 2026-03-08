@@ -1,3 +1,4 @@
+import React from 'react';
 import type { AIVariant } from '../types/chat-api';
 
 interface VariantCardProps {
@@ -17,7 +18,7 @@ interface VariantCardProps {
  * @param props.isFeatured - Whether the variant should show a featured badge
  * @returns Variant card element
  */
-export default function VariantCard(props: VariantCardProps) {
+const VariantCard: React.FC<VariantCardProps> = (props): React.JSX.Element => {
   const { variant, isSelected, onSelect, isFeatured = false } = props;
   const temp = parseFloat(variant.temperature);
 
@@ -60,4 +61,6 @@ export default function VariantCard(props: VariantCardProps) {
       </button>
     </div>
   );
-}
+};
+
+export default VariantCard;

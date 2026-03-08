@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import type { Joke } from '../types/joke-api';
 
 interface JokeCardProps {
@@ -24,7 +24,7 @@ interface JokeCardProps {
  * @param props.showDeleteBtn - Whether to render the delete action
  * @returns Joke card UI
  */
-export default function JokeCard({
+const JokeCard: React.FC<JokeCardProps> = ({
   joke,
   isLiked,
   isSaved,
@@ -32,7 +32,7 @@ export default function JokeCard({
   onSave,
   onDelete,
   showDeleteBtn = false,
-}: JokeCardProps) {
+}): React.JSX.Element => {
   const [showExplain, setShowExplain] = useState(false);
 
   const handleShare = () => {
@@ -123,4 +123,6 @@ export default function JokeCard({
       )}
     </div>
   );
-}
+};
+
+export default JokeCard;
