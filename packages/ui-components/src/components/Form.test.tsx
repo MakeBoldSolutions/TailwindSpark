@@ -306,7 +306,7 @@ describe('Checkbox Component', () => {
   });
 
   it('accepts checked prop', () => {
-    render(<Checkbox checked label="Pre-checked" />);
+    render(<Checkbox checked readOnly label="Pre-checked" />);
     expect(screen.getByRole('checkbox')).toBeChecked();
   });
 });
@@ -367,7 +367,7 @@ describe('Radio Component', () => {
   });
 
   it('accepts checked prop', () => {
-    render(<Radio checked label="Pre-selected" name="test" value="selected" />);
+    render(<Radio checked readOnly label="Pre-selected" name="test" value="selected" />);
     expect(screen.getByRole('radio')).toBeChecked();
   });
 

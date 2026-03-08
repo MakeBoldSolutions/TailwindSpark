@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react';
+import { renderHook, waitFor } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import type { AIVariant } from '../types/chat-api';
 import { useSignalR } from './useSignalR';
@@ -65,18 +65,24 @@ describe('useSignalR', () => {
     expect(result.current.connectionError).toBeNull();
   });
 
-  it('provides sendMessage function with variant', () => {
+  it('provides sendMessage function with variant', async () => {
     const { result } = renderHook(() => useSignalR(mockVariant));
     expect(typeof result.current.sendMessage).toBe('function');
+
+    await waitFor(() => expect(result.current.connectionStatus).toBe('connected'));
   });
 
-  it('provides clearMessages function with variant', () => {
+  it('provides clearMessages function with variant', async () => {
     const { result } = renderHook(() => useSignalR(mockVariant));
     expect(typeof result.current.clearMessages).toBe('function');
+
+    await waitFor(() => expect(result.current.connectionStatus).toBe('connected'));
   });
 
-  it('initializes with empty messages', () => {
+  it('initializes with empty messages', async () => {
     const { result } = renderHook(() => useSignalR(mockVariant));
     expect(result.current.messages).toEqual([]);
+
+    await waitFor(() => expect(result.current.connectionStatus).toBe('connected'));
   });
 });

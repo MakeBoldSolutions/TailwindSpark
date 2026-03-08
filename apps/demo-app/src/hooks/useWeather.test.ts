@@ -1,4 +1,4 @@
-import { renderHook, waitFor } from '@testing-library/react';
+import { act, renderHook, waitFor } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { useWeather } from './useWeather';
 
@@ -21,16 +21,20 @@ vi.mock('../services/weather.service', () => ({
 }));
 
 describe('useWeather', () => {
-  it('returns initial state', () => {
+  it('returns initial state', async () => {
     const { result } = renderHook(() => useWeather());
     expect(result.current.loading).toBe(false);
     expect(result.current.error).toBeNull();
     expect(Array.isArray(result.current.weatherResults)).toBe(true);
+
+    await waitFor(() => expect(result.current.weatherResults.length).toBeGreaterThan(0));
   });
 
-  it('provides searchCity function', () => {
+  it('provides searchCity function', async () => {
     const { result } = renderHook(() => useWeather());
     expect(typeof result.current.searchCity).toBe('function');
+
+    await waitFor(() => expect(result.current.weatherResults.length).toBeGreaterThan(0));
   });
 
   it('loads default cities on mount', async () => {
@@ -42,7 +46,9 @@ describe('useWeather', () => {
   it('searchCity updates results', async () => {
     const { result } = renderHook(() => useWeather());
 
-    await result.current.searchCity('Paris');
+    await act(async () => {
+      await result.current.searchCity('Paris');
+    });
 
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
@@ -60,7 +66,9 @@ describe('useWeather', () => {
     // Now mock rejection for the next call
     vi.mocked(getWeatherByCity).mockRejectedValueOnce(new Error('City not found'));
 
-    await result.current.searchCity('FakeCity');
+    await act(async () => {
+      await result.current.searchCity('FakeCity');
+    });
 
     await waitFor(() => {
       expect(result.current.error).toBe('City not found');
@@ -72,7 +80,9 @@ describe('useWeather', () => {
     vi.mocked(getWeatherByCity).mockClear();
 
     const { result } = renderHook(() => useWeather());
-    await result.current.searchCity('   ');
+    await act(async () => {
+      await result.current.searchCity('   ');
+    });
 
     // Should not have called the service for empty input
     expect(result.current.loading).toBe(false);

@@ -1,4 +1,4 @@
-import { renderHook, waitFor } from '@testing-library/react';
+import { act, renderHook, waitFor } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { useVariants } from './useVariants';
 
@@ -71,7 +71,10 @@ describe('useVariants', () => {
     const { result } = renderHook(() => useVariants());
     await waitFor(() => expect(result.current.loading).toBe(false));
 
-    result.current.filterByCategory('Creative');
+    act(() => {
+      result.current.filterByCategory('Creative');
+    });
+
     await waitFor(() => {
       expect(result.current.filteredVariants).toHaveLength(1);
       expect(result.current.filteredVariants[0].name).toBe('Beta');
@@ -82,7 +85,10 @@ describe('useVariants', () => {
     const { result } = renderHook(() => useVariants());
     await waitFor(() => expect(result.current.loading).toBe(false));
 
-    result.current.searchVariants('alpha');
+    act(() => {
+      result.current.searchVariants('alpha');
+    });
+
     await waitFor(() => {
       expect(result.current.filteredVariants).toHaveLength(1);
       expect(result.current.filteredVariants[0].name).toBe('Alpha');
