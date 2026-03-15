@@ -6,6 +6,7 @@ paths-ignore:
   - dist/**
   - coverage/**
   - node_modules/**
+  - "**/node_modules/**"
   - "**/*.min.js"
   - "**/*.bundle.js"
 
