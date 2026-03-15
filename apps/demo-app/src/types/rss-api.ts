@@ -48,6 +48,9 @@ export const RawArticleSchema = z.object({
   name: z.string().min(1),
   description: z.string(),
   slug: z.string(),
+  seo: z.object({
+    canonical: z.string().optional().nullable(),
+  }).passthrough().optional().nullable(),
   Section: z.string().optional(),
   publishedDate: z.string().optional(),
   author: z.string().optional(),
@@ -68,7 +71,9 @@ export const RawArticlesResponseSchema = z.array(RawArticleSchema);
  */
 export function mapRawArticle(raw: z.infer<typeof RawArticleSchema>): Article {
   const baseUrl = 'https://markhazleton.com';
-  const link = raw.slug.startsWith('http') ? raw.slug : `${baseUrl}/${raw.slug}`;
+  const canonicalLink = raw.seo?.canonical?.trim();
+  const fallbackLink = raw.slug.startsWith('http') ? raw.slug : `${baseUrl}/${raw.slug}`;
+  const link = canonicalLink || fallbackLink;
   const imageUrl = raw.img_src
     ? (raw.img_src.startsWith('http') ? raw.img_src : `${baseUrl}${raw.img_src}`)
     : undefined;

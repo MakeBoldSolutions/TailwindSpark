@@ -96,6 +96,8 @@ class CDNOptimizer {
    * Optimize resource loading based on CDN strategy
    */
   private optimizeResourceLoading(): void {
+    this.preloadCriticalResources();
+
     // Setup lazy loading for non-critical resources
     this.setupLazyLoading();
 
@@ -217,6 +219,10 @@ class CDNOptimizer {
    * Setup cache management for CDN optimization
    */
   private setupCacheManagement(): void {
+    if (this.config.cacheStrategy !== 'conservative') {
+      this.warmCache();
+    }
+
     // Monitor performance and adjust caching strategy
     this.monitorPerformance();
   }
