@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import { performanceBudgetPlugin } from './src/utils/performanceBudget';
@@ -26,6 +27,12 @@ export default defineConfig(({ command }) => {
         template: 'treemap', // Options: treemap, sunburst, network
       }),
   ].filter(Boolean),
+  resolve: {
+    alias: {
+      // Use package source in the workspace during app development so Vite handles JSX runtime imports directly.
+      '@tailwindspark/ui-components': resolve(__dirname, '../../packages/ui-components/src/index.ts'),
+    },
+  },
   base: command === 'build' ? basePath : '/',
   build: {
     outDir: '../../dist',
