@@ -68,7 +68,7 @@ Given that feature description, do this:
    - The JSON output will contain BRANCH_NAME and SPEC_FILE paths
    - For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot")
 
-3. Load `templates/spec-template.md` to understand required sections.
+3. Load `.documentation/templates/spec-template.md` to understand required sections.
 
 4. Follow this execution flow:
 
@@ -232,7 +232,7 @@ When creating this spec from a user prompt:
 - Performance targets: Standard web/mobile app expectations unless specified
 - Error handling: User-friendly messages with appropriate fallbacks
 - Authentication method: Standard session-based or OAuth2 for web apps
-- Integration patterns: RESTful APIs unless specified otherwise
+- Integration patterns: Use project-appropriate patterns (REST/GraphQL for web services, function calls for libraries, CLI args for tools, etc.)
 
 ### Success Criteria Guidelines
 
