@@ -1,6 +1,6 @@
 {
   "name": "tailwindspark-monorepo",
-  "version": "1.0.49",
+  "version": "1.0.51",
   "description": "TailwindSpark - A comprehensive Tailwind CSS showcase monorepo with React and TypeScript. Part of the WebSpark portfolio by Mark Hazleton.",
   "keywords": [
     "tailwind",
