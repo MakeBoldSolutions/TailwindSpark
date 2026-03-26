@@ -1,0 +1,1989 @@
+{
+  "docs": {
+    "stale_drafts": [],
+    "legacy_root_docs": [
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 27,
+          "operational_relevance": 10,
+          "freshness": 4,
+          "authority": 5,
+          "uniqueness": 8
+        },
+        "extension": ".md",
+        "path": "docs/ARCHITECTURE.md",
+        "last_modified": "2026-03-08",
+        "taxon": "STALE_REFERENCE",
+        "category": "legacy_root_doc",
+        "usefulness_score": 27,
+        "name": "ARCHITECTURE.md",
+        "size_bytes": 6398
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 27,
+          "operational_relevance": 10,
+          "freshness": 4,
+          "authority": 5,
+          "uniqueness": 8
+        },
+        "extension": ".md",
+        "path": "docs/BRANDING.md",
+        "last_modified": "2026-02-09",
+        "taxon": "STALE_REFERENCE",
+        "category": "legacy_root_doc",
+        "usefulness_score": 27,
+        "name": "BRANDING.md",
+        "size_bytes": 6060
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 27,
+          "operational_relevance": 10,
+          "freshness": 4,
+          "authority": 5,
+          "uniqueness": 8
+        },
+        "extension": ".md",
+        "path": "docs/CHANGELOG.md",
+        "last_modified": "2026-03-08",
+        "taxon": "STALE_REFERENCE",
+        "category": "legacy_root_doc",
+        "usefulness_score": 27,
+        "name": "CHANGELOG.md",
+        "size_bytes": 7417
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 27,
+          "operational_relevance": 10,
+          "freshness": 4,
+          "authority": 5,
+          "uniqueness": 8
+        },
+        "extension": ".md",
+        "path": "docs/DEPLOYMENT.md",
+        "last_modified": "2026-02-09",
+        "taxon": "STALE_REFERENCE",
+        "category": "legacy_root_doc",
+        "usefulness_score": 27,
+        "name": "DEPLOYMENT.md",
+        "size_bytes": 3936
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 27,
+          "operational_relevance": 10,
+          "freshness": 4,
+          "authority": 5,
+          "uniqueness": 8
+        },
+        "extension": ".md",
+        "path": "docs/GETTING_STARTED.md",
+        "last_modified": "2026-02-09",
+        "taxon": "STALE_REFERENCE",
+        "category": "legacy_root_doc",
+        "usefulness_score": 27,
+        "name": "GETTING_STARTED.md",
+        "size_bytes": 2890
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 27,
+          "operational_relevance": 10,
+          "freshness": 4,
+          "authority": 5,
+          "uniqueness": 8
+        },
+        "extension": ".md",
+        "path": "docs/TESTING.md",
+        "last_modified": "2026-03-08",
+        "taxon": "STALE_REFERENCE",
+        "category": "legacy_root_doc",
+        "usefulness_score": 27,
+        "name": "TESTING.md",
+        "size_bytes": 8292
+      }
+    ],
+    "session_notes": [
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 46,
+          "operational_relevance": 15,
+          "freshness": 10,
+          "authority": 9,
+          "uniqueness": 12
+        },
+        "extension": ".md",
+        "path": ".documentation/copilot/session=2026-03-07/session-summary.md",
+        "last_modified": "2026-03-08",
+        "taxon": "RESEARCH_OR_CONTEXT",
+        "category": "session_notes",
+        "usefulness_score": 46,
+        "name": "session-summary.md",
+        "size_bytes": 771
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 46,
+          "operational_relevance": 15,
+          "freshness": 10,
+          "authority": 9,
+          "uniqueness": 12
+        },
+        "extension": ".md",
+        "path": ".documentation/copilot/session=2026-03-07/test-completion-summary.md",
+        "last_modified": "2026-03-08",
+        "taxon": "RESEARCH_OR_CONTEXT",
+        "category": "session_notes",
+        "usefulness_score": 46,
+        "name": "test-completion-summary.md",
+        "size_bytes": 589
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 46,
+          "operational_relevance": 15,
+          "freshness": 10,
+          "authority": 9,
+          "uniqueness": 12
+        },
+        "extension": ".md",
+        "path": ".documentation/copilot/session=2026-03-07/documentation/pr-003-reactspark-migration.md",
+        "last_modified": "2026-03-08",
+        "taxon": "RESEARCH_OR_CONTEXT",
+        "category": "session_notes",
+        "usefulness_score": 46,
+        "name": "pr-003-reactspark-migration.md",
+        "size_bytes": 1501
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 46,
+          "operational_relevance": 15,
+          "freshness": 10,
+          "authority": 9,
+          "uniqueness": 12
+        },
+        "extension": ".md",
+        "path": ".documentation/copilot/session=2026-03-07/documentation/speckit-path-and-archive-instructions.md",
+        "last_modified": "2026-03-08",
+        "taxon": "RESEARCH_OR_CONTEXT",
+        "category": "session_notes",
+        "usefulness_score": 46,
+        "name": "speckit-path-and-archive-instructions.md",
+        "size_bytes": 5018
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 46,
+          "operational_relevance": 15,
+          "freshness": 10,
+          "authority": 9,
+          "uniqueness": 12
+        },
+        "extension": ".md",
+        "path": ".documentation/copilot/session=2026-03-07/plans/pr-94-remediation-plan.md",
+        "last_modified": "2026-03-08",
+        "taxon": "RESEARCH_OR_CONTEXT",
+        "category": "session_notes",
+        "usefulness_score": 46,
+        "name": "pr-94-remediation-plan.md",
+        "size_bytes": 6575
+      }
+    ],
+    "quickfix_records": [],
+    "orphaned_files": [],
+    "release_docs": [],
+    "living_reference": [
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 95,
+          "operational_relevance": 38,
+          "freshness": 15,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": "",
+        "path": ".documentation/SPECKIT_VERSION",
+        "last_modified": "2026-03-26",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 95,
+        "name": "SPECKIT_VERSION",
+        "size_bytes": 46
+      },
+      {
+        "disposition": "consolidate",
+        "score_breakdown": {
+          "total": 48,
+          "operational_relevance": 15,
+          "freshness": 12,
+          "authority": 9,
+          "uniqueness": 12
+        },
+        "extension": ".json",
+        "path": ".documentation/copilot/harvest-scan-2026-03-26.json",
+        "last_modified": "2026-03-26",
+        "taxon": "RESEARCH_OR_CONTEXT",
+        "category": "living_reference",
+        "usefulness_score": 48,
+        "name": "harvest-scan-2026-03-26.json",
+        "size_bytes": 0
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 95,
+          "operational_relevance": 38,
+          "freshness": 15,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/memory/constitution.md",
+        "last_modified": "2026-03-26",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 95,
+        "name": "constitution.md",
+        "size_bytes": 16581
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/archive-context.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "archive-context.ps1",
+        "size_bytes": 6378
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/check-prerequisites.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "check-prerequisites.ps1",
+        "size_bytes": 4785
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/common.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "common.ps1",
+        "size_bytes": 3879
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/create-new-feature.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "create-new-feature.ps1",
+        "size_bytes": 9516
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/evolution-context.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "evolution-context.ps1",
+        "size_bytes": 6065
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/get-pr-context.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "get-pr-context.ps1",
+        "size_bytes": 7010
+      },
+      {
+        "disposition": "rewrite",
+        "score_breakdown": {
+          "total": 18,
+          "operational_relevance": 10,
+          "freshness": 0,
+          "authority": 0,
+          "uniqueness": 8
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/harvest.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "STALE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 18,
+        "name": "harvest.ps1",
+        "size_bytes": 26978
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/migrate-to-documentation.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "migrate-to-documentation.ps1",
+        "size_bytes": 19246
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/quickfix-context.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "quickfix-context.ps1",
+        "size_bytes": 4238
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/release-context.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "release-context.ps1",
+        "size_bytes": 7217
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/setup-plan.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "setup-plan.ps1",
+        "size_bytes": 1849
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/site-audit.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "site-audit.ps1",
+        "size_bytes": 21623
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/sync-upstream.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "sync-upstream.ps1",
+        "size_bytes": 35130
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/update-agent-context.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "update-agent-context.ps1",
+        "size_bytes": 20210
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/CHANGELOG.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "CHANGELOG.md",
+        "size_bytes": 1865
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/clarification-report.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "clarification-report.md",
+        "size_bytes": 9959
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/data-model.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "data-model.md",
+        "size_bytes": 30959
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/plan.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "plan.md",
+        "size_bytes": 22341
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/quickstart.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "quickstart.md",
+        "size_bytes": 20003
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/research.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "research.md",
+        "size_bytes": 35986
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/spec.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "spec.md",
+        "size_bytes": 32187
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/tasks.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "tasks.md",
+        "size_bytes": 33796
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/checklists/requirements.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "requirements.md",
+        "size_bytes": 6451
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".ts",
+        "path": ".documentation/specs/003-reactspark-migration/contracts/chat-api.ts",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "chat-api.ts",
+        "size_bytes": 9823
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".ts",
+        "path": ".documentation/specs/003-reactspark-migration/contracts/joke-api.ts",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "joke-api.ts",
+        "size_bytes": 5761
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".ts",
+        "path": ".documentation/specs/003-reactspark-migration/contracts/projects-api.ts",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "projects-api.ts",
+        "size_bytes": 3924
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".ts",
+        "path": ".documentation/specs/003-reactspark-migration/contracts/rss-api.ts",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "rss-api.ts",
+        "size_bytes": 4507
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".ts",
+        "path": ".documentation/specs/003-reactspark-migration/contracts/weather-api.ts",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "weather-api.ts",
+        "size_bytes": 7579
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/1-constitution-compliance/spec.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "spec.md",
+        "size_bytes": 16413
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 84,
+          "operational_relevance": 31,
+          "freshness": 15,
+          "authority": 22,
+          "uniqueness": 16
+        },
+        "extension": ".md",
+        "path": ".documentation/templates/agent-file-template.md",
+        "last_modified": "2026-03-26",
+        "taxon": "ENGINEERING_PATTERN",
+        "category": "living_reference",
+        "usefulness_score": 84,
+        "name": "agent-file-template.md",
+        "size_bytes": 464
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 84,
+          "operational_relevance": 31,
+          "freshness": 15,
+          "authority": 22,
+          "uniqueness": 16
+        },
+        "extension": ".md",
+        "path": ".documentation/templates/checklist-template.md",
+        "last_modified": "2026-03-26",
+        "taxon": "ENGINEERING_PATTERN",
+        "category": "living_reference",
+        "usefulness_score": 84,
+        "name": "checklist-template.md",
+        "size_bytes": 1312
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 84,
+          "operational_relevance": 31,
+          "freshness": 15,
+          "authority": 22,
+          "uniqueness": 16
+        },
+        "extension": ".md",
+        "path": ".documentation/templates/plan-template.md",
+        "last_modified": "2026-03-26",
+        "taxon": "ENGINEERING_PATTERN",
+        "category": "living_reference",
+        "usefulness_score": 84,
+        "name": "plan-template.md",
+        "size_bytes": 3744
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 84,
+          "operational_relevance": 31,
+          "freshness": 15,
+          "authority": 22,
+          "uniqueness": 16
+        },
+        "extension": ".md",
+        "path": ".documentation/templates/spec-template.md",
+        "last_modified": "2026-03-26",
+        "taxon": "ENGINEERING_PATTERN",
+        "category": "living_reference",
+        "usefulness_score": 84,
+        "name": "spec-template.md",
+        "size_bytes": 3960
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 84,
+          "operational_relevance": 31,
+          "freshness": 15,
+          "authority": 22,
+          "uniqueness": 16
+        },
+        "extension": ".md",
+        "path": ".documentation/templates/tasks-template.md",
+        "last_modified": "2026-03-26",
+        "taxon": "ENGINEERING_PATTERN",
+        "category": "living_reference",
+        "usefulness_score": 84,
+        "name": "tasks-template.md",
+        "size_bytes": 9202
+      }
+    ],
+    "impl_plans": [],
+    "completed_audits": [
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 52,
+          "operational_relevance": 18,
+          "freshness": 10,
+          "authority": 14,
+          "uniqueness": 10
+        },
+        "extension": ".md",
+        "path": ".documentation/copilot/audit/2026-03-02_results.md",
+        "last_modified": "2026-03-02",
+        "taxon": "HISTORICAL_RECORD",
+        "category": "completed_audit",
+        "usefulness_score": 52,
+        "name": "2026-03-02_results.md",
+        "size_bytes": 18338
+      }
+    ],
+    "backup_files": [],
+    "all": [
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 95,
+          "operational_relevance": 38,
+          "freshness": 15,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": "",
+        "path": ".documentation/SPECKIT_VERSION",
+        "last_modified": "2026-03-26",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 95,
+        "name": "SPECKIT_VERSION",
+        "size_bytes": 46
+      },
+      {
+        "disposition": "consolidate",
+        "score_breakdown": {
+          "total": 48,
+          "operational_relevance": 15,
+          "freshness": 12,
+          "authority": 9,
+          "uniqueness": 12
+        },
+        "extension": ".json",
+        "path": ".documentation/copilot/harvest-scan-2026-03-26.json",
+        "last_modified": "2026-03-26",
+        "taxon": "RESEARCH_OR_CONTEXT",
+        "category": "living_reference",
+        "usefulness_score": 48,
+        "name": "harvest-scan-2026-03-26.json",
+        "size_bytes": 0
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 52,
+          "operational_relevance": 18,
+          "freshness": 10,
+          "authority": 14,
+          "uniqueness": 10
+        },
+        "extension": ".md",
+        "path": ".documentation/copilot/audit/2026-03-02_results.md",
+        "last_modified": "2026-03-02",
+        "taxon": "HISTORICAL_RECORD",
+        "category": "completed_audit",
+        "usefulness_score": 52,
+        "name": "2026-03-02_results.md",
+        "size_bytes": 18338
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 46,
+          "operational_relevance": 15,
+          "freshness": 10,
+          "authority": 9,
+          "uniqueness": 12
+        },
+        "extension": ".md",
+        "path": ".documentation/copilot/session=2026-03-07/session-summary.md",
+        "last_modified": "2026-03-08",
+        "taxon": "RESEARCH_OR_CONTEXT",
+        "category": "session_notes",
+        "usefulness_score": 46,
+        "name": "session-summary.md",
+        "size_bytes": 771
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 46,
+          "operational_relevance": 15,
+          "freshness": 10,
+          "authority": 9,
+          "uniqueness": 12
+        },
+        "extension": ".md",
+        "path": ".documentation/copilot/session=2026-03-07/test-completion-summary.md",
+        "last_modified": "2026-03-08",
+        "taxon": "RESEARCH_OR_CONTEXT",
+        "category": "session_notes",
+        "usefulness_score": 46,
+        "name": "test-completion-summary.md",
+        "size_bytes": 589
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 46,
+          "operational_relevance": 15,
+          "freshness": 10,
+          "authority": 9,
+          "uniqueness": 12
+        },
+        "extension": ".md",
+        "path": ".documentation/copilot/session=2026-03-07/documentation/pr-003-reactspark-migration.md",
+        "last_modified": "2026-03-08",
+        "taxon": "RESEARCH_OR_CONTEXT",
+        "category": "session_notes",
+        "usefulness_score": 46,
+        "name": "pr-003-reactspark-migration.md",
+        "size_bytes": 1501
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 46,
+          "operational_relevance": 15,
+          "freshness": 10,
+          "authority": 9,
+          "uniqueness": 12
+        },
+        "extension": ".md",
+        "path": ".documentation/copilot/session=2026-03-07/documentation/speckit-path-and-archive-instructions.md",
+        "last_modified": "2026-03-08",
+        "taxon": "RESEARCH_OR_CONTEXT",
+        "category": "session_notes",
+        "usefulness_score": 46,
+        "name": "speckit-path-and-archive-instructions.md",
+        "size_bytes": 5018
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 46,
+          "operational_relevance": 15,
+          "freshness": 10,
+          "authority": 9,
+          "uniqueness": 12
+        },
+        "extension": ".md",
+        "path": ".documentation/copilot/session=2026-03-07/plans/pr-94-remediation-plan.md",
+        "last_modified": "2026-03-08",
+        "taxon": "RESEARCH_OR_CONTEXT",
+        "category": "session_notes",
+        "usefulness_score": 46,
+        "name": "pr-94-remediation-plan.md",
+        "size_bytes": 6575
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 95,
+          "operational_relevance": 38,
+          "freshness": 15,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/memory/constitution.md",
+        "last_modified": "2026-03-26",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 95,
+        "name": "constitution.md",
+        "size_bytes": 16581
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/archive-context.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "archive-context.ps1",
+        "size_bytes": 6378
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/check-prerequisites.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "check-prerequisites.ps1",
+        "size_bytes": 4785
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/common.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "common.ps1",
+        "size_bytes": 3879
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/create-new-feature.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "create-new-feature.ps1",
+        "size_bytes": 9516
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/evolution-context.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "evolution-context.ps1",
+        "size_bytes": 6065
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/get-pr-context.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "get-pr-context.ps1",
+        "size_bytes": 7010
+      },
+      {
+        "disposition": "rewrite",
+        "score_breakdown": {
+          "total": 18,
+          "operational_relevance": 10,
+          "freshness": 0,
+          "authority": 0,
+          "uniqueness": 8
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/harvest.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "STALE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 18,
+        "name": "harvest.ps1",
+        "size_bytes": 26978
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/migrate-to-documentation.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "migrate-to-documentation.ps1",
+        "size_bytes": 19246
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/quickfix-context.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "quickfix-context.ps1",
+        "size_bytes": 4238
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/release-context.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "release-context.ps1",
+        "size_bytes": 7217
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/setup-plan.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "setup-plan.ps1",
+        "size_bytes": 1849
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/site-audit.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "site-audit.ps1",
+        "size_bytes": 21623
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/sync-upstream.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "sync-upstream.ps1",
+        "size_bytes": 35130
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 83,
+          "operational_relevance": 34,
+          "freshness": 14,
+          "authority": 20,
+          "uniqueness": 15
+        },
+        "extension": ".ps1",
+        "path": ".documentation/scripts/powershell/update-agent-context.ps1",
+        "last_modified": "2026-03-26",
+        "taxon": "OPERATIONS_RUNBOOK",
+        "category": "living_reference",
+        "usefulness_score": 83,
+        "name": "update-agent-context.ps1",
+        "size_bytes": 20210
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/CHANGELOG.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "CHANGELOG.md",
+        "size_bytes": 1865
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/clarification-report.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "clarification-report.md",
+        "size_bytes": 9959
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/data-model.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "data-model.md",
+        "size_bytes": 30959
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/plan.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "plan.md",
+        "size_bytes": 22341
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/quickstart.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "quickstart.md",
+        "size_bytes": 20003
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/research.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "research.md",
+        "size_bytes": 35986
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/spec.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "spec.md",
+        "size_bytes": 32187
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/tasks.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "tasks.md",
+        "size_bytes": 33796
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/003-reactspark-migration/checklists/requirements.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "requirements.md",
+        "size_bytes": 6451
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".ts",
+        "path": ".documentation/specs/003-reactspark-migration/contracts/chat-api.ts",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "chat-api.ts",
+        "size_bytes": 9823
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".ts",
+        "path": ".documentation/specs/003-reactspark-migration/contracts/joke-api.ts",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "joke-api.ts",
+        "size_bytes": 5761
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".ts",
+        "path": ".documentation/specs/003-reactspark-migration/contracts/projects-api.ts",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "projects-api.ts",
+        "size_bytes": 3924
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".ts",
+        "path": ".documentation/specs/003-reactspark-migration/contracts/rss-api.ts",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "rss-api.ts",
+        "size_bytes": 4507
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".ts",
+        "path": ".documentation/specs/003-reactspark-migration/contracts/weather-api.ts",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "weather-api.ts",
+        "size_bytes": 7579
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 93,
+          "operational_relevance": 38,
+          "freshness": 13,
+          "authority": 24,
+          "uniqueness": 18
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/1-constitution-compliance/spec.md",
+        "last_modified": "2026-03-08",
+        "taxon": "AUTHORITATIVE_REFERENCE",
+        "category": "living_reference",
+        "usefulness_score": 93,
+        "name": "spec.md",
+        "size_bytes": 16413
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 52,
+          "operational_relevance": 18,
+          "freshness": 10,
+          "authority": 14,
+          "uniqueness": 10
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/pr-review/pr-94.md",
+        "last_modified": "2026-03-08",
+        "taxon": "HISTORICAL_RECORD",
+        "category": "completed_review",
+        "usefulness_score": 52,
+        "name": "pr-94.md",
+        "size_bytes": 9489
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 84,
+          "operational_relevance": 31,
+          "freshness": 15,
+          "authority": 22,
+          "uniqueness": 16
+        },
+        "extension": ".md",
+        "path": ".documentation/templates/agent-file-template.md",
+        "last_modified": "2026-03-26",
+        "taxon": "ENGINEERING_PATTERN",
+        "category": "living_reference",
+        "usefulness_score": 84,
+        "name": "agent-file-template.md",
+        "size_bytes": 464
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 84,
+          "operational_relevance": 31,
+          "freshness": 15,
+          "authority": 22,
+          "uniqueness": 16
+        },
+        "extension": ".md",
+        "path": ".documentation/templates/checklist-template.md",
+        "last_modified": "2026-03-26",
+        "taxon": "ENGINEERING_PATTERN",
+        "category": "living_reference",
+        "usefulness_score": 84,
+        "name": "checklist-template.md",
+        "size_bytes": 1312
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 84,
+          "operational_relevance": 31,
+          "freshness": 15,
+          "authority": 22,
+          "uniqueness": 16
+        },
+        "extension": ".md",
+        "path": ".documentation/templates/plan-template.md",
+        "last_modified": "2026-03-26",
+        "taxon": "ENGINEERING_PATTERN",
+        "category": "living_reference",
+        "usefulness_score": 84,
+        "name": "plan-template.md",
+        "size_bytes": 3744
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 84,
+          "operational_relevance": 31,
+          "freshness": 15,
+          "authority": 22,
+          "uniqueness": 16
+        },
+        "extension": ".md",
+        "path": ".documentation/templates/spec-template.md",
+        "last_modified": "2026-03-26",
+        "taxon": "ENGINEERING_PATTERN",
+        "category": "living_reference",
+        "usefulness_score": 84,
+        "name": "spec-template.md",
+        "size_bytes": 3960
+      },
+      {
+        "disposition": "keep",
+        "score_breakdown": {
+          "total": 84,
+          "operational_relevance": 31,
+          "freshness": 15,
+          "authority": 22,
+          "uniqueness": 16
+        },
+        "extension": ".md",
+        "path": ".documentation/templates/tasks-template.md",
+        "last_modified": "2026-03-26",
+        "taxon": "ENGINEERING_PATTERN",
+        "category": "living_reference",
+        "usefulness_score": 84,
+        "name": "tasks-template.md",
+        "size_bytes": 9202
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 27,
+          "operational_relevance": 10,
+          "freshness": 4,
+          "authority": 5,
+          "uniqueness": 8
+        },
+        "extension": ".md",
+        "path": "docs/ARCHITECTURE.md",
+        "last_modified": "2026-03-08",
+        "taxon": "STALE_REFERENCE",
+        "category": "legacy_root_doc",
+        "usefulness_score": 27,
+        "name": "ARCHITECTURE.md",
+        "size_bytes": 6398
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 27,
+          "operational_relevance": 10,
+          "freshness": 4,
+          "authority": 5,
+          "uniqueness": 8
+        },
+        "extension": ".md",
+        "path": "docs/BRANDING.md",
+        "last_modified": "2026-02-09",
+        "taxon": "STALE_REFERENCE",
+        "category": "legacy_root_doc",
+        "usefulness_score": 27,
+        "name": "BRANDING.md",
+        "size_bytes": 6060
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 27,
+          "operational_relevance": 10,
+          "freshness": 4,
+          "authority": 5,
+          "uniqueness": 8
+        },
+        "extension": ".md",
+        "path": "docs/CHANGELOG.md",
+        "last_modified": "2026-03-08",
+        "taxon": "STALE_REFERENCE",
+        "category": "legacy_root_doc",
+        "usefulness_score": 27,
+        "name": "CHANGELOG.md",
+        "size_bytes": 7417
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 27,
+          "operational_relevance": 10,
+          "freshness": 4,
+          "authority": 5,
+          "uniqueness": 8
+        },
+        "extension": ".md",
+        "path": "docs/DEPLOYMENT.md",
+        "last_modified": "2026-02-09",
+        "taxon": "STALE_REFERENCE",
+        "category": "legacy_root_doc",
+        "usefulness_score": 27,
+        "name": "DEPLOYMENT.md",
+        "size_bytes": 3936
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 27,
+          "operational_relevance": 10,
+          "freshness": 4,
+          "authority": 5,
+          "uniqueness": 8
+        },
+        "extension": ".md",
+        "path": "docs/GETTING_STARTED.md",
+        "last_modified": "2026-02-09",
+        "taxon": "STALE_REFERENCE",
+        "category": "legacy_root_doc",
+        "usefulness_score": 27,
+        "name": "GETTING_STARTED.md",
+        "size_bytes": 2890
+      },
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 27,
+          "operational_relevance": 10,
+          "freshness": 4,
+          "authority": 5,
+          "uniqueness": 8
+        },
+        "extension": ".md",
+        "path": "docs/TESTING.md",
+        "last_modified": "2026-03-08",
+        "taxon": "STALE_REFERENCE",
+        "category": "legacy_root_doc",
+        "usefulness_score": 27,
+        "name": "TESTING.md",
+        "size_bytes": 8292
+      }
+    ],
+    "completed_reviews": [
+      {
+        "disposition": "archive",
+        "score_breakdown": {
+          "total": 52,
+          "operational_relevance": 18,
+          "freshness": 10,
+          "authority": 14,
+          "uniqueness": 10
+        },
+        "extension": ".md",
+        "path": ".documentation/specs/pr-review/pr-94.md",
+        "last_modified": "2026-03-08",
+        "taxon": "HISTORICAL_RECORD",
+        "category": "completed_review",
+        "usefulness_score": 52,
+        "name": "pr-94.md",
+        "size_bytes": 9489
+      }
+    ],
+    "disposition_counts": {
+      "consolidate": 1,
+      "archive": 13,
+      "keep": 35,
+      "rewrite": 1
+    },
+    "taxonomy_counts": {
+      "HISTORICAL_RECORD": 2,
+      "ENGINEERING_PATTERN": 5,
+      "RESEARCH_OR_CONTEXT": 6,
+      "OPERATIONS_RUNBOOK": 13,
+      "AUTHORITATIVE_REFERENCE": 17,
+      "STALE_REFERENCE": 7
+    }
+  },
+  "bak_files": [],
+  "report_path": ".documentation/copilot/harvest-2026-03-26.md",
+  "archive_existing": [
+    ".archive/README.md",
+    ".archive/2026-03-07/.documentation/copilot/audit/2026-03-01_results.md",
+    ".archive/2026-03-07/.documentation/copilot/audit/2026-03-02_compliance-achievement.md",
+    ".archive/2026-03-07/.documentation/copilot/session=2026-03-01/implementation-progress-update.md",
+    ".archive/2026-03-07/.documentation/copilot/session=2026-03-01/implementation-session-summary.md",
+    ".archive/2026-03-07/.documentation/copilot/session=2026-03-01/implementation-summary.md",
+    ".archive/2026-03-07/.documentation/copilot/session=2026-03-01/jsdoc-style-guide.md",
+    ".archive/2026-03-07/.documentation/copilot/session=2026-03-01/pre-commit-hook-setup.md",
+    ".archive/2026-03-07/.documentation/copilot/session=2026-03-01/raw-color-violations-audit.md",
+    ".archive/2026-03-07/.documentation/copilot/session=2026-03-01/semantic-color-migration.md",
+    ".archive/2026-03-07/.documentation/copilot/session=2026-03-01/testing-implementation.md",
+    ".archive/2026-03-07/.documentation/copilot/session=2026-03-01/us3-testing-completion-summary.md",
+    ".archive/2026-03-07/.documentation/specs/002-audit-criticals/plan.md",
+    ".archive/2026-03-07/.documentation/specs/002-audit-criticals/PR-DESCRIPTION.md",
+    ".archive/2026-03-07/.documentation/specs/002-audit-criticals/quickstart.md",
+    ".archive/2026-03-07/.documentation/specs/002-audit-criticals/research.md",
+    ".archive/2026-03-07/.documentation/specs/002-audit-criticals/spec.md",
+    ".archive/2026-03-07/.documentation/specs/002-audit-criticals/tasks.md",
+    ".archive/2026-03-07/.documentation/specs/002-audit-criticals/VALIDATION-COMPLETE.md",
+    ".archive/2026-03-07/.documentation/specs/002-audit-criticals/checklists/requirements.md",
+    ".archive/2026-03-07/.documentation/specs/1-constitution-compliance/plan.md",
+    ".archive/2026-03-07/.documentation/specs/1-constitution-compliance/quickstart.md",
+    ".archive/2026-03-07/.documentation/specs/1-constitution-compliance/research.md",
+    ".archive/2026-03-07/.documentation/specs/1-constitution-compliance/spec.md",
+    ".archive/2026-03-07/.documentation/specs/1-constitution-compliance/tasks.md",
+    ".archive/2026-03-07/.documentation/specs/1-constitution-compliance/checklists/requirements.md",
+    ".archive/2026-03-07/copilot/README.md",
+    ".archive/2026-03-07/copilot/session=2025-01-07/session-summary.md",
+    ".archive/2026-03-07/copilot/session=2025-01-07/analysis/best-practices-review.md",
+    ".archive/2026-03-07/copilot/session=2025-01-07/analysis/final-research-summary.md",
+    ".archive/2026-03-07/copilot/session=2025-01-07/analysis/migration-status-report.md",
+    ".archive/2026-03-07/copilot/session=2025-01-07/analysis/tailwindcss-v4-best-practices.md",
+    ".archive/2026-03-07/copilot/session=2025-01-07/analysis/tailwindcss-v4-postcss-best-practices.md",
+    ".archive/2026-03-07/copilot/session=2025-01-07/plans/file-organization-plan.md",
+    ".archive/2026-03-07/copilot/session=2025-01-07/plans/quick-implementation-guide.md",
+    ".archive/2026-03-07/copilot/session=2025-01-07/plans/tailwindcss-v4-migration-plan.md",
+    ".archive/2026-03-07/copilot/session=2025-01-07/plans/tailwindcss-v4-quick-start.md",
+    ".archive/2026-03-07/copilot/session=2025-01-14/session-summary.md",
+    ".archive/2026-03-07/copilot/session=2025-01-14/analysis/comprehensive-best-practices-audit.md",
+    ".archive/2026-03-07/copilot/session=2025-01-14/analysis/phase1-implementation-summary.md",
+    ".archive/2026-03-07/copilot/session=2025-01-14/analysis/phase1-testing-checklist.md",
+    ".archive/2026-03-07/copilot/session=2025-01-14/analysis/test-fixes-summary.md",
+    ".archive/2026-03-07/copilot/session=2025-01-14/analysis/theme-switcher-fix.md",
+    ".archive/2026-03-07/copilot/session=2025-01-14/plans/implementation-plan-best-practices.md",
+    ".archive/2026-03-07/copilot/session=2025-09-07/session-summary.md",
+    ".archive/2026-03-07/copilot/session=2025-09-07/analysis/post-upgrade-fixes.md",
+    ".archive/2026-03-07/copilot/session=2025-09-07/documentation/token-migration-notes.md",
+    ".archive/2026-03-07/copilot/session=2025-09-07/plans/tailwind-v4-upgrade-implementation.md",
+    ".archive/2026-03-07/copilot/session=2025-09-14/completion-summary.md",
+    ".archive/2026-03-07/copilot/session=2025-09-14/session-summary.md",
+    ".archive/2026-03-07/copilot/session=2025-09-14/test-fixes-summary.md",
+    ".archive/2026-03-07/copilot/session=2025-09-14/analysis/tailwindcss-v4-performance-analysis.md",
+    ".archive/2026-03-07/copilot/session=2025-09-14/documentation/tailwindcss-v4-migration-summary.md",
+    ".archive/2026-03-07/copilot/session=2025-10-04/completion-summary.md",
+    ".archive/2026-03-07/copilot/session=2025-10-04/session-review-summary.md",
+    ".archive/2026-03-07/copilot/session=2025-10-04/session-summary.md",
+    ".archive/2026-03-07/copilot/session=2025-10-04/theme-switcher-review.md",
+    ".archive/2026-03-07/copilot/session=2025-10-04/analysis/dark-mode-and-build-issues.md",
+    ".archive/2026-03-07/copilot/session=2025-10-04/plans/dark-mode-fixes.md",
+    ".archive/2026-03-07/copilot/session=2025-10-12/analysis/best-practices-comprehensive-review.md",
+    ".archive/2026-03-07/copilot/session=2025-10-19/session-summary.md",
+    ".archive/2026-03-07/copilot/session=2026-03-01/completion-summary.md",
+    ".archive/2026-03-07/copilot/session=2026-03-01/session-summary.md",
+    ".archive/2026-03-07/copilot/session=2026-03-01/test-fixes-summary.md",
+    ".archive/2026-03-07/copilot/session=2026-03-01/plans/package-update-plan.md"
+  ],
+  "code_comments": [],
+  "harvest_timestamp": "2026-03-26T09:23:19Z",
+  "changelog_gaps": [],
+  "scope": "full",
+  "specs": [
+    {
+      "total_tasks": 237,
+      "has_tasks": true,
+      "pr_review": "pr-94.md",
+      "has_spec": true,
+      "files": [
+        ".documentation/specs/003-reactspark-migration/CHANGELOG.md",
+        ".documentation/specs/003-reactspark-migration/clarification-report.md",
+        ".documentation/specs/003-reactspark-migration/data-model.md",
+        ".documentation/specs/003-reactspark-migration/plan.md",
+        ".documentation/specs/003-reactspark-migration/quickstart.md",
+        ".documentation/specs/003-reactspark-migration/research.md",
+        ".documentation/specs/003-reactspark-migration/spec.md",
+        ".documentation/specs/003-reactspark-migration/tasks.md",
+        ".documentation/specs/003-reactspark-migration/checklists/requirements.md",
+        ".documentation/specs/003-reactspark-migration/contracts/chat-api.ts",
+        ".documentation/specs/003-reactspark-migration/contracts/joke-api.ts",
+        ".documentation/specs/003-reactspark-migration/contracts/projects-api.ts",
+        ".documentation/specs/003-reactspark-migration/contracts/rss-api.ts",
+        ".documentation/specs/003-reactspark-migration/contracts/weather-api.ts"
+      ],
+      "completed_tasks": 235,
+      "name": "003-reactspark-migration",
+      "has_plan": true,
+      "path": ".documentation/specs/003-reactspark-migration",
+      "in_changelog": false,
+      "number": "003",
+      "status": "in-progress",
+      "incomplete_tasks": 2
+    },
+    {
+      "total_tasks": 0,
+      "has_tasks": false,
+      "pr_review": "(archived) README.md",
+      "has_spec": true,
+      "files": ".documentation/specs/1-constitution-compliance/spec.md",
+      "completed_tasks": 0,
+      "name": "1-constitution-compliance",
+      "has_plan": false,
+      "path": ".documentation/specs/1-constitution-compliance",
+      "in_changelog": false,
+      "number": "",
+      "status": "draft",
+      "incomplete_tasks": 0
+    }
+  ],
+  "summary": {
+    "specs_draft": 1,
+    "docs_to_archive": 13,
+    "specs_in_progress": 1,
+    "code_comments_found": 0,
+    "bak_files_found": 0,
+    "changelog_gaps": 0,
+    "specs_completed": 0
+  },
+  "changelog_entries": [
+    {
+      "status": "in-progress",
+      "pr_review": "pr-94.md",
+      "in_changelog": false,
+      "spec_name": "003-reactspark-migration",
+      "spec_number": "003"
+    },
+    {
+      "status": "draft",
+      "pr_review": "(archived) README.md",
+      "in_changelog": false,
+      "spec_name": "1-constitution-compliance",
+      "spec_number": ""
+    }
+  ],
+  "repo_root": "C:/GitHub/MarkHazleton/TailwindSpark",
+  "harvest_date": "2026-03-26",
+  "path_roots": {
+    "legacy_roots": [
+      "docs/"
+    ],
+    "canonical_documentation": ".documentation/"
+  }
+}
