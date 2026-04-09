@@ -266,13 +266,13 @@
   },
   {
     "id": 24,
-    "p": "Spec Kit Spark: Constitutional AI Governance Framework",
-    "d": "Spec Kit Spark is a community fork of GitHub's Spec Kit that extends Specification-Driven Development with constitution-based PR reviews, codebase-wide compliance auditing, adversarial risk analysis, brownfield constitution discovery, and adaptive lifecycle management. Unlike the original Spec Kit which focuses on greenfield feature development, Spec Kit Spark makes project constitutions valuable throughout the entire development lifecycle.",
-    "h": "https://github.com/markhazleton/spec-kit",
-    "image": "/img/spec-kit-analysis.jpg",
-    "slug": "spec-kit-spark",
-    "summary": "A fork of GitHub's Spec Kit that extends Specification-Driven Development (SDD) beyond greenfield planning into continuous constitutional governance. Adds PR reviews, site auditing, risk analysis, brownfield discovery, quickfix workflows, release management, and automated upstream synchronization — making project constitutions enforce standards at every stage of the development lifecycle.",
-    "keywords": "Spec Kit Spark, Specification-Driven Development, AI governance, project constitution, PR review, site audit, brownfield development, code compliance, risk analysis, GitHub fork"
+    "p": "DevSpark: Constitutional AI Governance Framework",
+    "d": "DevSpark is a standalone AI-assisted development framework that extends Specification-Driven Development with constitution-based PR reviews, codebase-wide compliance auditing, adversarial risk analysis, brownfield constitution discovery, and adaptive lifecycle management. DevSpark makes project constitutions valuable throughout the entire development lifecycle — from greenfield planning through continuous constitutional governance.",
+    "h": "https://github.com/markhazleton/devspark",
+    "image": "/img/devspark-analysis.jpg",
+    "slug": "devspark",
+    "summary": "A standalone AI-assisted development framework that extends Specification-Driven Development (SDD) beyond greenfield planning into continuous constitutional governance. Adds PR reviews, site auditing, risk analysis, brownfield discovery, quickfix workflows, release management, and automated upstream synchronization — making project constitutions enforce standards at every stage of the development lifecycle.",
+    "keywords": "DevSpark, Specification-Driven Development, AI governance, project constitution, PR review, site audit, brownfield development, code compliance, risk analysis, AI-assisted development"
   },
   {
     "id": 25,
