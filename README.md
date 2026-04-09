@@ -6,138 +6,86 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.18-38bdf8.svg)](https://tailwindcss.com/)
 
-A comprehensive Tailwind CSS showcase built as a modern React TypeScript monorepo. Part of the WebSpark portfolio by Mark Hazleton.
+A comprehensive Tailwind CSS showcase and learning resource built as a production-ready React TypeScript monorepo. Demonstrates modern web development patterns, design systems, and component architecture.
+
+**[Live Demo](https://markhazleton.github.io/TailwindSpark/)** • **[Full Documentation](./.documentation/guides/)** • **[Repository Story](./.documentation/repo-story/repo-story-2026-04-08.md)**
 
 ![TailwindSpark Demo](https://raw.githubusercontent.com/markhazleton/TailwindSpark/main/apps/demo-app/public/TailwindSpark.png)
 
+## Why TailwindSpark?
+
+**Learn by Example**: Explore cutting-edge React patterns with Tailwind CSS 4's @theme directive, semantic design tokens, and comprehensive component examples.
+
+**Production Quality**: Built with strict TypeScript, 40% test coverage minimum, WCAG AA accessibility, automated CI/CD, and formal code governance via a [project constitution](./.documentation/memory/constitution.md).
+
+**Modern Architecture**: Turborepo monorepo with shared design tokens, reusable UI components, and optimized build pipeline demonstrating scalable patterns.
+
+**Active Maintenance**: Automated dependency updates via Dependabot, security scanning, performance monitoring, and regular constitutional compliance audits.
+
+📊 **[Read the full development history and metrics analysis](./.documentation/repo-story/repo-story-2026-04-08.md)**
+
 ## 🚀 Quick Start
 
-Get up and running in under 5 minutes:
-
 ```bash
-# Clone the repository
 git clone https://github.com/markhazleton/TailwindSpark.git
 cd TailwindSpark
-
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) to view the demo.
-
-## ✨ Features
-
-- **🎨 Complete Design System** - Comprehensive Tailwind CSS v4 components with @theme directive and design tokens
-- **🏗️ Monorepo Architecture** - Turborepo 2.7 with shared packages and optimized builds
-- **⚡ Modern Stack** - React 19.1, TypeScript 5.9, Vite 7.1, and cutting-edge tooling
-- **🔧 Developer Experience** - Hot reload, strict type safety, ESLint, Prettier, and comprehensive testing
-- **📱 Responsive Design** - Mobile-first approach with dark mode support and cross-browser compatibility
-- **🚀 Performance** - Real-time monitoring, code splitting, lazy loading, and optimized builds
-- **🔍 SEO Optimized** - Meta tags, structured data, sitemap, and social media optimization
-- **⌨️ Keyboard Navigation** - Full keyboard support with search shortcuts (Ctrl/Cmd + K)
-- **♿ Accessibility** - WCAG 2.1 AA compliant with screen reader support
-- **🛡️ Production Ready** - CI/CD pipeline, security scanning, and automated deployments
+Open [http://localhost:5173](http://localhost:5173) to explore interactive components, design system examples, and production patterns.
 
 ## 📁 Project Structure
 
-```
+```text
 TailwindSpark/
 ├── apps/demo-app/              # Main React application
 ├── packages/
 │   ├── design-tokens/          # Shared design system
 │   └── ui-components/          # Reusable UI components
-├── .documentation/guides/      # Documentation
-└── .github/                    # CI/CD workflows
+├──🏗️ Project Structure
+
+```
+
+TailwindSpark/
+├── apps/demo-app/              # Showcase application
+├── packages/
+│   ├── design-tokens/          # Tailwind CSS 4 @theme definitions
+│   └── ui-components/          # Reusable component library
+└── .documentation/             # Guides, governance, and history
+
 ```
 
 ## 📚 Documentation
 
-- **[Getting Started](./.documentation/guides/GETTING_STARTED.md)** - Setup and development guide
-- **[Architecture](./.documentation/guides/ARCHITECTURE.md)** - Technical architecture overview
-- **[Testing](./.documentation/guides/TESTING.md)** - Testing strategies and best practices
-- **[Deployment](./.documentation/guides/DEPLOYMENT.md)** - Deployment and CI/CD information
-- **[Branding](./.documentation/guides/BRANDING.md)** - Brand guidelines and assets
-- **[Changelog](./.documentation/guides/CHANGELOG.md)** - Version history and updates
+**Getting Started**
+- [Setup & Development Guide](./.documentation/guides/GETTING_STARTED.md)
+- [Architecture Overview](./.documentation/guides/ARCHITECTURE.md)
+- [Testing Standards](./.documentation/guides/TESTING.md)
 
-## 🛠️ Available Scripts
+**Project Governance**
+- [Constitution](./.documentation/memory/constitution.md) - Formal coding standards and principles
+- [Repository Story](./.documentation/repo-story/repo-story-2026-04-08.md) - Development history and metrics
+
+**Resources**
+- [Deployment Guide](./.documentation/guides/DEPLOYMENT.md)
+- [Branding Guidelines](./.documentation/guides/BRANDING.md)
+- [Changelog](./.documentation/guides/CHANGELOG.md)
+
+## 🛠️ Key Scripts
 
 ```bash
-npm run dev          # Start development server
-npm run build        # Build all packages
-npm run test         # Run tests with coverage
-npm run lint         # Run ESLint
-npm run type-check   # Run TypeScript checks
+npm run dev          # Development server with HMR
+npm run build        # Production build (all packages)
+npm run test         # Vitest with coverage reporting
+npm run lint         # ESLint + custom rules
 ```
 
-## 🌐 Live Demo
-
-Visit the live demo: **[TailwindSpark Demo](https://markhazleton.github.io/TailwindSpark/)**
-
-Explore the showcase of:
-
-- **Interactive Components** - Buttons, forms, cards, modals, and navigation
-- **Design System** - Complete Tailwind CSS v4 design tokens and utilities
-- **Animations** - CSS transitions, transforms, and keyframe animations
-- **Dashboard** - Business analytics with charts, metrics, and data visualization
-- **E-commerce** - Product catalog, cart, and checkout flow
-- **Marketing** - Landing pages, features, testimonials, and CTAs
-- **Analytics** - Real-time metrics, user tracking, and performance insights
-- **Settings** - User preferences, security options, and notifications
-- **Users** - User directory, roles, and team management
-- **Performance Monitoring** - Real-time Core Web Vitals and memory usage (dev mode)
-
-## 🏆 Highlights
-
-### Technology Excellence
-
-- **React 19.1.1** with concurrent features and modern hooks
-- **TypeScript 5.9** with strict mode and type safety
-- **Tailwind CSS 4.1.18** with @theme directive and CSS custom properties
-- **Vite 7.1.12** for lightning-fast HMR and builds
-- **Vitest 4.0** with coverage reporting and UI
-- **React Router 7.9** for advanced routing patterns
-- **Lucide React 0.545** for consistent icon system
-- **Web Vitals 5.1** for performance monitoring
-
-### Development Quality
-
-- **100% TypeScript** - Strict type checking with no implicit any
-- **ESLint 9.39 + Prettier 3.7** - Consistent code style and quality
-- **React Hooks Rules** - Enforced best practices for hooks
-- **Automated Testing** - Vitest with coverage reporting and UI
-- **Accessibility Testing** - Jest-axe and ESLint jsx-a11y
-- **Security Scanning** - CodeQL analysis and Dependabot alerts
-- **Performance Monitoring** - Bundle analysis and Web Vitals tracking
-- **Code Splitting** - Route-based lazy loading with Suspense
-- **Error Boundaries** - Graceful error handling throughout
-
-### Production Ready
-
-- **GitHub Actions CI/CD** - Automated testing, building, and deployment to GitHub Pages
-- **Dependency Management** - Automated updates with Dependabot and security audits
-- **Performance Monitoring** - Real-time Core Web Vitals, memory tracking, and bundle analysis
-- **SEO Optimization** - Sitemap, robots.txt, structured data, and Open Graph tags
-- **Service Worker** - Offline support and intelligent caching strategies
-- **Resource Optimization** - CDN preconnections, resource hints, and lazy loading
-- **Browser Compatibility** - Tested across Chrome, Firefox, Safari, and Edge
-- **Accessibility** - WCAG 2.1 AA compliant with keyboard navigation and ARIA support
-- **Error Handling** - Error boundaries, fallback UI, and comprehensive logging
-- **Dark Mode** - System preference detection with manual toggle and CSS variables
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md) for details.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+For detailed technical specifications, architecture decisions, and development quality metrics, see the [Repository Story](./.documentation/repo-story/repo-story-2026-04-08.md).or details.
 
 ## 👨‍💻 Author
 
-**Mark Hazleton**
+Mark Hazleton
 
 - Website: [markhazleton.com](https://markhazleton.com)
 - GitHub: [@markhazleton](https://github.com/markhazleton)
@@ -145,10 +93,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-<div align="center">
-
 **[View Demo](https://markhazleton.github.io/TailwindSpark/)** • **[Documentation](./.documentation/guides/)** • **[Report Bug](https://github.com/markhazleton/TailwindSpark/issues)**
 
 Built with ❤️ using React, TypeScript, and Tailwind CSS
+Contributions welcome! Review the [Constitution](./.documentation/memory/constitution.md) for coding standards, then see [CONTRIBUTING.md](./CONTRIBUTING.md) for workflow details.
 
-</div>
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+---
+
+**Part of the WebSpark Portfolio** • Created by [Mark Hazleton](https://markhazleton.com) • Built with React 19, TypeScript 5, and Tailwind CSS 4
