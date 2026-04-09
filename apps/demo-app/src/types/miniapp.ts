@@ -48,4 +48,11 @@ export const miniAppsData: MiniApp[] = [
     route: '/apps/ai-chat',
     icon: '🤖',
   },
+  {
+    id: 'repos',
+    name: 'Repositories',
+    description: 'Explore Mark Hazleton GitHub repositories with search, filtering, and detailed analytics.',
+    route: '/apps/repos',
+    icon: '📊',
+  },
 ];
