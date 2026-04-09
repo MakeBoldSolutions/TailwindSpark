@@ -46,7 +46,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ) => {
     const generatedId = React.useId();
     const inputId = id || `input-${generatedId}`;
+    const descriptionId = `${inputId}-description`;
     const actualVariant = error ? 'error' : variant;
+    const hasDescription = !!(error || helperText);
 
     return (
       <div className="space-y-2">
@@ -67,6 +69,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             id={inputId}
+            aria-invalid={!!error}
+            aria-describedby={hasDescription ? descriptionId : undefined}
             className={clsx(
               'text-text bg-surface placeholder-text-muted block w-full rounded-lg border px-3 py-2',
               'transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0',
@@ -84,8 +88,10 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             </div>
           )}
         </div>
-        {(error || helperText) && (
+        {hasDescription && (
           <p
+            id={descriptionId}
+            role={error ? 'alert' : undefined}
             className={clsx(
               'text-sm',
               error
@@ -135,7 +141,9 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, label, error, helperText, variant = 'default', id, ...props }, ref) => {
     const generatedId = React.useId();
     const textareaId = id || `textarea-${generatedId}`;
+    const descriptionId = `${textareaId}-description`;
     const actualVariant = error ? 'error' : variant;
+    const hasDescription = !!(error || helperText);
 
     return (
       <div className="space-y-2">
@@ -150,6 +158,8 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         <textarea
           ref={ref}
           id={textareaId}
+          aria-invalid={!!error}
+          aria-describedby={hasDescription ? descriptionId : undefined}
           className={clsx(
             'text-text bg-surface placeholder-text-muted block w-full rounded-lg border px-3 py-2',
             'resize-vertical transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0',
@@ -159,8 +169,10 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           )}
           {...props}
         />
-        {(error || helperText) && (
+        {hasDescription && (
           <p
+            id={descriptionId}
+            role={error ? 'alert' : undefined}
             className={clsx(
               'text-sm',
               error
@@ -213,7 +225,9 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   ({ className, label, error, helperText, variant = 'default', options, id, ...props }, ref) => {
     const generatedId = React.useId();
     const selectId = id || `select-${generatedId}`;
+    const descriptionId = `${selectId}-description`;
     const actualVariant = error ? 'error' : variant;
+    const hasDescription = !!(error || helperText);
 
     return (
       <div className="space-y-2">
@@ -228,6 +242,8 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         <select
           ref={ref}
           id={selectId}
+          aria-invalid={!!error}
+          aria-describedby={hasDescription ? descriptionId : undefined}
           className={clsx(
             'text-text bg-surface block w-full rounded-lg border px-3 py-2',
             'transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0',
@@ -243,8 +259,10 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             </option>
           ))}
         </select>
-        {(error || helperText) && (
+        {hasDescription && (
           <p
+            id={descriptionId}
+            role={error ? 'alert' : undefined}
             className={clsx(
               'text-sm',
               error
@@ -293,6 +311,8 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   ({ className, label, error, helperText, id, ...props }, ref) => {
     const generatedId = React.useId();
     const checkboxId = id || `checkbox-${generatedId}`;
+    const descriptionId = `${checkboxId}-description`;
+    const hasDescription = !!(error || helperText);
 
     return (
       <div className="space-y-2">
@@ -301,6 +321,8 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             ref={ref}
             id={checkboxId}
             type="checkbox"
+            aria-invalid={!!error}
+            aria-describedby={hasDescription ? descriptionId : undefined}
             className={clsx(
               'border-border dark:border-border-strong text-brand focus:ring-brand h-4 w-4 rounded focus:ring-offset-0',
               'disabled:cursor-not-allowed disabled:opacity-50',
@@ -317,8 +339,10 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             </label>
           )}
         </div>
-        {(error || helperText) && (
+        {hasDescription && (
           <p
+            id={descriptionId}
+            role={error ? 'alert' : undefined}
             className={clsx(
               'text-sm',
               error
