@@ -5,6 +5,27 @@ All notable changes to TailwindSpark will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2026-04-08
+
+### Changed
+
+- **Development Framework Migration**: Migrated from SpecKit 1.4.3 to DevSpark 1.3.0
+  - Created `.devspark/` directory structure with 24 stock commands, 6 templates, and 14 bash scripts
+  - Migrated all agent and prompt shims from `speckit.*` to `devspark.*` (19 agents, 19 prompts)
+  - Updated VS Code settings to use DevSpark commands and script paths
+  - All framework references updated to DevSpark naming
+- **Documentation Structure**: Reorganized documentation from `/docs/` to `.documentation/guides/`
+  - Moved 6 documentation files (ARCHITECTURE, BRANDING, CHANGELOG, DEPLOYMENT, GETTING_STARTED, TESTING)
+  - Updated all references in README.md and internal documentation
+  - Aligned with DevSpark canonical documentation structure
+
+### Technical
+
+- Archived `SPECKIT_VERSION` to `.old` backup
+- Created `.devspark/VERSION` stamp (v1.3.0, installed 2026-04-08)
+- Updated `.gitignore` with DevSpark personal overrides pattern
+- Migration method: copilot-quickstart from <https://github.com/markhazleton/devspark>
+
 ## [Unreleased] - 2026-03-01
 
 ### Added

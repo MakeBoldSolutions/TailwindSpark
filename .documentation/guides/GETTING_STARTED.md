@@ -50,7 +50,7 @@ TailwindSpark/
 ├── packages/
 │   ├── design-tokens/      # Shared design system
 │   └── ui-components/      # Reusable UI components
-├── docs/                   # Documentation
+├── .documentation/guides/   # Documentation
 └── .github/                # CI/CD workflows
 ```
 

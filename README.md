@@ -49,18 +49,18 @@ TailwindSpark/
 ├── packages/
 │   ├── design-tokens/          # Shared design system
 │   └── ui-components/          # Reusable UI components
-├── docs/                       # Documentation
+├── .documentation/guides/      # Documentation
 └── .github/                    # CI/CD workflows
 ```
 
 ## 📚 Documentation
 
-- **[Getting Started](./docs/GETTING_STARTED.md)** - Setup and development guide
-- **[Architecture](./docs/ARCHITECTURE.md)** - Technical architecture overview
-- **[Testing](./docs/TESTING.md)** - Testing strategies and best practices
-- **[Deployment](./docs/DEPLOYMENT.md)** - Deployment and CI/CD information
-- **[Branding](./docs/BRANDING.md)** - Brand guidelines and assets
-- **[Changelog](./docs/CHANGELOG.md)** - Version history and updates
+- **[Getting Started](./.documentation/guides/GETTING_STARTED.md)** - Setup and development guide
+- **[Architecture](./.documentation/guides/ARCHITECTURE.md)** - Technical architecture overview
+- **[Testing](./.documentation/guides/TESTING.md)** - Testing strategies and best practices
+- **[Deployment](./.documentation/guides/DEPLOYMENT.md)** - Deployment and CI/CD information
+- **[Branding](./.documentation/guides/BRANDING.md)** - Brand guidelines and assets
+- **[Changelog](./.documentation/guides/CHANGELOG.md)** - Version history and updates
 
 ## 🛠️ Available Scripts
 
@@ -147,7 +147,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-**[View Demo](https://markhazleton.github.io/TailwindSpark/)** • **[Documentation](./docs/)** • **[Report Bug](https://github.com/markhazleton/TailwindSpark/issues)**
+**[View Demo](https://markhazleton.github.io/TailwindSpark/)** • **[Documentation](./.documentation/guides/)** • **[Report Bug](https://github.com/markhazleton/TailwindSpark/issues)**
 
 Built with ❤️ using React, TypeScript, and Tailwind CSS
 
