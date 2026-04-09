@@ -74,7 +74,7 @@ All checklist items are complete. The specification:
 
 ### Ready for Next Phase
 
-✅ Proceed to `/speckit.plan` or `/speckit.clarify` as needed
+✅ Proceed to `/devspark.plan` or `/devspark.clarify` as needed
 
 No blocking issues identified. Specification provides sufficient detail for implementation planning.
 

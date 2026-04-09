@@ -2,7 +2,7 @@
 
 **Feature**: ReactSparkPortfolio Migration to TailwindSpark  
 **Session Date**: March 2, 2026  
-**Workflow**: speckit.clarify  
+**Workflow**: devspark.clarify  
 **Status**: ✅ Complete
 
 ---
@@ -252,7 +252,7 @@ The specification is **ready for implementation planning**. Recommended next act
 
 ### Option 1: Proceed to Planning
 ```
-/speckit.plan
+/devspark.plan
 ```
 Generate detailed implementation plan with:
 - Component architecture for Apps hub
@@ -262,7 +262,7 @@ Generate detailed implementation plan with:
 
 ### Option 2: Generate Tasks
 ```
-/speckit.tasks
+/devspark.tasks
 ```
 Create actionable task breakdown:
 - Apps hub page implementation
@@ -273,7 +273,7 @@ Create actionable task breakdown:
 
 ### Option 3: Additional Validation
 ```
-/speckit.analyze
+/devspark.analyze
 ```
 Run cross-artifact consistency analysis to verify all sections align.
 
@@ -293,7 +293,7 @@ Run cross-artifact consistency analysis to verify all sections align.
 
 ## Recommendation
 
-✅ **Proceed to `/speckit.plan`** 
+✅ **Proceed to `/devspark.plan`** 
 
 The specification now has complete architectural clarity with:
 - Well-defined mini-app structure

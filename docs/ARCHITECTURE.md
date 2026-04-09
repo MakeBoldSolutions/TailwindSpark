@@ -37,7 +37,7 @@ TailwindSpark/
 │   ├── design-tokens/      # Design system tokens
 │   └── ui-components/      # Reusable components
 ├── docs/                   # Documentation
-├── .documentation/         # SpecKit artifacts, audit reports, and AI session docs
+├── .documentation/         # DevSpark artifacts, audit reports, and AI session docs
 ├── .github/                # GitHub workflows and config
 └── scripts/                # Build and maintenance automation
 ```

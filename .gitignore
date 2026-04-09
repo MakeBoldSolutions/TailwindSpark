@@ -478,3 +478,6 @@ FakesAssemblies/
 *.msix
 *.msm
 *.msp
+
+# DevSpark — personal overrides (never commit)
+.documentation/*/commands/

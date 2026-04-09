@@ -34,13 +34,13 @@
 │   ⚠ MEDIUM: Consider structured logging for production                    │
 │                                                                             │
 │ FOLLOW-UP ACTIONS:                                                          │
-│   → Run /speckit.site-audit to validate compliance                         │
+│   → Run /devspark.site-audit to validate compliance                        │
 │   → Reassess whether the 40% baseline should be raised in a future amendment│
 │   → Create JSDoc documentation plan for packages/ui-components             │
 │   → Schedule quarterly constitution review (2026-06-01)                    │
 │                                                                             │
 │ SOURCE: Generated from codebase analysis of 74 TypeScript files            │
-│ METHOD: /speckit.discover-constitution (8 interactive questions)           │
+│ METHOD: /devspark.discover-constitution (8 interactive questions)          │
 └─────────────────────────────────────────────────────────────────────────────┘
 -->
 
@@ -178,6 +178,7 @@ Components must be organized into three clear categories:
 - `sections/` - Feature-specific sections within pages
 
 File naming conventions:
+
 - Components **MUST** use PascalCase (e.g., `ButtonShowcase.tsx`)
 - Hooks **MUST** use camelCase starting with "use" (e.g., `useAnalytics.ts`)
 - Pages **MAY** use kebab-case or PascalCase consistently within each application
@@ -214,22 +215,22 @@ The following areas currently lack established patterns and require implementati
 
 ### Recommended Improvements
 
-3. **Input Validation Library**
+1. **Input Validation Library**
    - **Gap**: No Zod, Yup, or similar validation library detected
    - **Recommendation**: Add Zod for runtime type validation and form schemas
    - **Priority**: MEDIUM
 
-4. **Structured Logging**
+2. **Structured Logging**
    - **Gap**: Using plain console.warn/error methods
    - **Recommendation**: Implement structured logging for production environments
    - **Priority**: MEDIUM
 
-5. **API Mocking for Integration Tests**
+3. **API Mocking for Integration Tests**
    - **Gap**: No MSW or similar mocking tool found
    - **Recommendation**: Add Mock Service Worker (MSW) for API integration testing
    - **Priority**: LOW
 
-6. **Import Order Enforcement**
+4. **Import Order Enforcement**
    - **Gap**: No enforced import sorting standard
    - **Recommendation**: Add ESLint import sorting plugin (e.g., `eslint-plugin-import`)
    - **Priority**: LOW
@@ -269,7 +270,7 @@ Minor clarifications may be made by project maintainers; major principle changes
 
 ### Compliance Auditing
 
-- Run `/speckit.site-audit` to check codebase compliance with constitution
+- Run `/devspark.site-audit` to check codebase compliance with constitution
 - Audit reports **SHOULD** be generated before major releases
 - Violations discovered in audits **MUST** be tracked as technical debt
 - All pull requests **MUST** verify compliance with constitution principles
