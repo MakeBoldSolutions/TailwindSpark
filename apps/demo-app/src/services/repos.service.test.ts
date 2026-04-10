@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { clearReposCache, getRepositories } from './repos.service';
 import type { ReposProfile, Repository } from '../types/repos-api';
+import { clearReposCache, getRepositories } from './repos.service';
 
 // Mock the cache service
 vi.mock('./cache.service', () => ({

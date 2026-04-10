@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import { RepoFilters } from './RepoFilters';
 import type { RepoSortField, RepoStatusFilter } from '../types/repos-api';
+import { RepoFilters } from './RepoFilters';
 
 describe('RepoFilters', () => {
   const defaultProps = {
