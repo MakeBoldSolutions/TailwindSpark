@@ -28,8 +28,14 @@ async function fetchReposFromUrl(url: string): Promise<ReposData> {
 
 /**
  * Returns repositories and profile data from cache or local data file.
+ * 
+ * Attempts to retrieve data from cache first. If cache is expired or missing,
+ * fetches fresh data from the github-stats-spark data source. On fetch failure,
+ * returns empty repositories array with default profile values to prevent UI crashes.
  *
- * @returns Normalized repositories and profile data
+ * @returns {Promise<ReposData>} Promise resolving to normalized repositories and profile data.
+ *   Returns empty arrays with default profile (username: '', zeros for all counters) if fetch fails.
+ * @throws Never throws - all errors are caught and return empty data to maintain UI stability
  */
 export async function getRepositories(): Promise<ReposData> {
   const cachedRepos = getFromCache<Repository[]>(CACHE_KEY, CACHE_TTL.DEV, CACHE_TTL.PROD);
@@ -43,13 +49,20 @@ export async function getRepositories(): Promise<ReposData> {
     setInCache(CACHE_KEY, data.repositories);
     setInCache(PROFILE_CACHE_KEY, data.profile);
     return data;
-  } catch {
+  } catch (error) {
+    console.error('Failed to fetch repositories from data source:', error);
     return { repositories: [], profile: { username: '', totalRepositories: 0, totalStars: 0, totalForks: 0, totalCommits: 0 } };
   }
 }
 
 /**
- * Clears the cached repositories payload.
+ * Clears the cached repositories payload and profile data.
+ * 
+ * Removes both repository array and profile data from browser storage cache.
+ * Call this when implementing a manual cache refresh feature or after data
+ * source updates that require bypassing stale cached data.
+ * 
+ * @returns {void}
  */
 export function clearReposCache(): void {
   clearCache(CACHE_KEY);
