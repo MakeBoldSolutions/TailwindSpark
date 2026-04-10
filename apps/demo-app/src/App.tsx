@@ -48,11 +48,12 @@ function AppContent() {
     }
 
     const resourceManager = ResourcePriorityManager.getInstance();
-    // Prefetch likely future pages
+    // Prefetch likely future pages (with BASE_URL for GitHub Pages compatibility)
+    const baseUrl = import.meta.env.BASE_URL;
     resourceManager.prefetchFuture([
-      '/demos',
-      '/design-system',
-      '/animations',
+      `${baseUrl}demos`,
+      `${baseUrl}design-system`,
+      `${baseUrl}animations`,
     ]);
   }, []);
 

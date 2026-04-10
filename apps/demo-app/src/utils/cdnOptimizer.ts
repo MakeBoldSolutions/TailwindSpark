@@ -109,9 +109,18 @@ class CDNOptimizer {
 
   /**
    * Preload critical resources for faster page load
+   * 
+   * NOTE: Disabled because the referenced resources don't exist in the build output:
+   * - Fonts are loaded from Google Fonts or embedded in CSS by Vite
+   * - CSS files have unpredictable hash-based names that can't be hardcoded
+   * 
+   * Attempting to preload non-existent resources generates 404 errors.
    */
   private preloadCriticalResources(): void {
-    // Preload critical fonts
+    // Disabled - see method documentation
+    return;
+    
+    /* Disabled implementation:
     const criticalFonts = [
       { href: '/assets/fonts/inter.woff2', type: 'font/woff2' },
       { href: '/assets/fonts/inter-bold.woff2', type: 'font/woff2' },
@@ -127,12 +136,12 @@ class CDNOptimizer {
       });
     });
 
-    // Preload critical CSS
     this.addResourceHint({
       href: this.getCriticalStylesUrl(),
       rel: 'preload',
       as: 'style',
     });
+    */
   }
 
   /**
@@ -265,8 +274,15 @@ class CDNOptimizer {
 
   /**
    * Warm cache with critical resources
+   * 
+   * NOTE: Disabled because Vite generates unpredictable hash-based filenames.
+   * Attempting to fetch '[hash]' placeholders generates 404 errors in console.
    */
   private warmCache(): void {
+    // Early return - cache warming disabled
+    return;
+    
+    /* Disabled implementation:
     const criticalResources = [
       '/assets/js/react-vendor-[hash].js',
       '/assets/js/components-[hash].js',
@@ -274,7 +290,6 @@ class CDNOptimizer {
     ];
 
     criticalResources.forEach(resource => {
-      // Use fetch to warm the cache without blocking rendering
       fetch(this.config.baseUrl + resource.slice(1), {
         mode: 'no-cors',
         priority: 'low',
@@ -282,6 +297,7 @@ class CDNOptimizer {
         // Ignore errors as this is just cache warming
       });
     });
+    */
   }
 
   /**
@@ -360,7 +376,7 @@ class CDNOptimizer {
    * Get critical styles URL
    * @returns URL for critical CSS file
    */
-  private getCriticalStylesUrl(): string {
+  /** private */ getCriticalStylesUrl(): string {
     // In production, this would be the actual CSS file with hash
     return `${this.config.assetUrl}styles/index-[hash].css`;
   }
