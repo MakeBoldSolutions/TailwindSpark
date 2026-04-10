@@ -1,7 +1,7 @@
-const CACHE_NAME = 'tailwindspark-v1.3.0';
-const STATIC_CACHE = 'static-v1.3.0';
-const RUNTIME_CACHE = 'runtime-v1.3.0';
-const IMAGES_CACHE = 'images-v1.3.0';
+const CACHE_NAME = 'tailwindspark-v1.3.1';
+const STATIC_CACHE = 'static-v1.3.1';
+const RUNTIME_CACHE = 'runtime-v1.3.1';
+const IMAGES_CACHE = 'images-v1.3.1';
 
 // Cache duration in milliseconds
 const CACHE_DURATION = {
@@ -48,6 +48,8 @@ const cachePatterns = {
   fonts: /^https:\/\/fonts\.(googleapis|gstatic)\.com\//,
   // Google Analytics
   analytics: /^https:\/\/www\.(google-analytics|googletagmanager)\.com\//,
+  // JokeAPI - should NOT be cached (needs fresh jokes each time)
+  jokeAPI: /^https:\/\/v2\.jokeapi\.dev\//,
 };
 
 // Utility functions
@@ -65,6 +67,7 @@ const getCacheStrategy = url => {
   if (cachePatterns.fonts.test(url))
     return { cache: STATIC_CACHE, duration: CACHE_DURATION.STATIC };
   if (cachePatterns.analytics.test(url)) return null; // Don't cache analytics
+  if (cachePatterns.jokeAPI.test(url)) return null; // Don't cache jokes (need fresh content)
 
   return { cache: RUNTIME_CACHE, duration: CACHE_DURATION.RUNTIME };
 };
