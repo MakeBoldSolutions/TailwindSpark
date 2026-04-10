@@ -106,14 +106,14 @@ export interface ArticlesAPIResponse {
  * Articles API Configuration
  */
 export const ARTICLES_API_CONFIG = {
-  /** Production API endpoint */
+  /** Production API endpoint (external CORS-enabled source, falls back to local on failure) */
   PROD_URL: 'https://markhazleton.com/articles.json',
   
   /** Development proxy endpoint (configured in vite.config.ts) */
   DEV_URL: '/api/articles.json',
   
-  /** Fallback local file path (relative to public/) */
-  FALLBACK_URL: '/data/articles.json',
+  /** Fallback local file path (uses Vite BASE_URL for GitHub Pages compatibility) */
+  FALLBACK_URL: `${import.meta.env.BASE_URL}data/articles.json`,
   
   /** Cache key for localStorage */
   CACHE_KEY: 'articles_v2',

@@ -123,8 +123,8 @@ export interface ProjectsAPIResponse {
  * Projects API Configuration
  */
 export const PROJECTS_API_CONFIG = {
-  /** Production same-origin data endpoint */
-  PROD_URL: '/data/projects.json',
+  /** Production same-origin data endpoint (uses Vite BASE_URL for GitHub Pages compatibility) */
+  PROD_URL: `${import.meta.env.BASE_URL}data/projects.json`,
 
   /** Remote source used to refresh the local snapshot during builds */
   REMOTE_URL: 'https://markhazleton.com/projects.json',
@@ -132,8 +132,8 @@ export const PROJECTS_API_CONFIG = {
   /** Development proxy endpoint (configured in vite.config.ts) */
   DEV_URL: '/api/projects.json',
   
-  /** Fallback local file path (relative to public/) */
-  FALLBACK_URL: '/data/projects.json',
+  /** Fallback local file path (uses Vite BASE_URL for GitHub Pages compatibility) */
+  FALLBACK_URL: `${import.meta.env.BASE_URL}data/projects.json`,
   
   /** Cache key for localStorage */
   CACHE_KEY: 'projects_v1',
