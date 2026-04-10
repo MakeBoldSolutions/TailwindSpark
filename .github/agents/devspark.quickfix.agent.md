@@ -306,8 +306,6 @@ The project constitution defines validation criteria. Create one first:
 1. Run: /devspark.constitution
 2. Define your project's core principles
 3. Then retry: /devspark.quickfix {description}
-
-Learn more: https://github.com/MarkHazleton/spec-kit
 ```
 
 **High Risk Classification:**

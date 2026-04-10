@@ -112,21 +112,21 @@ current. Stale installations may have outdated command files or missing framewor
 
 #### A. Read Version Stamp
 
-Check for `.documentation/SPECKIT_VERSION`:
+Check for `.documentation/DEVSPARK_VERSION`:
 
-- **If missing**: Flag `VER1` — stamp absent, version unknown (HIGH)
+- **If missing**: Flag `VER1` — version file absent, version unknown (HIGH)
 - **If present**: Parse `version`, `installed`, and `agent` fields
 
 #### B. Detect Latest Version
 
-Read the most recent `## [X.Y.Z]` entry in `CHANGELOG.md` (repo root) to get
-`LATEST_VERSION`. Fallback: read `version = "..."` from `pyproject.toml`.
+Read the most recent `## [X.Y.Z]` entry in `CHANGELOG.md` or `.documentation/guides/CHANGELOG.md` to get
+`LATEST_VERSION`. Fallback: read `DevSpark Version: X.Y.Z` from `.documentation/Guide.md` footer.
 
 #### C. Compare and Flag
 
 | Condition | Finding ID | Severity |
 |-----------|-----------|---------|
-| `.documentation/SPECKIT_VERSION` absent | VER1 | HIGH |
+| `.documentation/DEVSPARK_VERSION` absent | VER1 | HIGH |
 | Installed version < latest version | VER2 | MEDIUM |
 | Agent command files reference `.documentation/` or root `memory/`, `scripts/`, `templates/`, or `specs/` paths | VER3 | HIGH |
 | Root-level `memory/`, `scripts/`, `templates/`, or `specs/` directories exist | VER4 | HIGH |
@@ -147,7 +147,7 @@ Include in the audit report under a **Spec Kit Spark Version** section:
 ```
 
 If VER1 or VER2 is present, add to the Recommendations section:
-> Run `/devspark.upgrade` or `specify upgrade` to update Spec Kit Spark.
+> Run `/devspark.upgrade` to update DevSpark framework files.
 
 ### 5. Constitution Compliance Audit
 
@@ -346,11 +346,11 @@ Use this format:
 |----|-----------|-----------|-------|----------|----------------|
 | SEC1 | Security | src/config.py:45 | Hardcoded API key | CRITICAL | Use environment variable |
 
-## Spec Kit Spark Version
+## DevSpark Version
 
 | Field | Value |
 |-------|-------|
-| Installed Version | [version from SPECKIT_VERSION, or "absent"] |
+| Installed Version | [version from DEVSPARK_VERSION, or "absent"] |
 | Latest Version | [LATEST_VERSION] |
 | Install Date | [installed field] |
 | Agent | [agent field] |
@@ -360,7 +360,7 @@ Use this format:
 
 | ID | Issue | Severity | Recommendation |
 |----|-------|----------|----------------|
-| VER1 | SPECKIT_VERSION absent | HIGH | Run `specify upgrade` to install version stamp |
+| VER1 | DEVSPARK_VERSION absent | HIGH | Run `/devspark.upgrade` to create version file |
 | VER2 | Version X.Y.Z installed, X.Y.Z available | MEDIUM | Run `/devspark.upgrade` to update |
 
 ## Security Findings
