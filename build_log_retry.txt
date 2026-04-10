@@ -1,0 +1,109 @@
+
+> tailwindspark-monorepo@1.0.80 build
+> npm run preversion && turbo run build
+
+
+> tailwindspark-monorepo@1.0.80 preversion
+> node scripts/increment-version.js
+
+
+   ΓÇó Packages in scope: @tailwindspark/demo-app, @tailwindspark/design-tokens, @tailwindspark/ui-components
+   ΓÇó Running build in 3 packages
+   ΓÇó Remote caching disabled
+
+@tailwindspark/design-tokens:build: cache hit, replaying logs 83efe0bb101e5588
+@tailwindspark/design-tokens:build: 
+@tailwindspark/design-tokens:build: > @tailwindspark/design-tokens@1.0.0 build
+@tailwindspark/design-tokens:build: > echo 'Design tokens built'
+@tailwindspark/design-tokens:build: 
+@tailwindspark/design-tokens:build: 'Design tokens built'
+@tailwindspark/ui-components:build: cache hit, replaying logs 0b20eb8d45dd00ac
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: > @tailwindspark/ui-components@1.0.0 build
+@tailwindspark/ui-components:build: > tsc -p tsconfig.build.json && vite build
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: [36mvite v8.0.7 [32mbuilding client environment for production...[36m[39m
+@tailwindspark/ui-components:build: [2K
+@tailwindspark/ui-components:build: transforming...Γ£ô 7 modules transformed.
+@tailwindspark/ui-components:build: rendering chunks...
+@tailwindspark/ui-components:build: computing gzip size...
+@tailwindspark/ui-components:build: dist/index.es.js  13.44 kB Γöé gzip: 3.60 kB
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: [2K
+@tailwindspark/ui-components:build: transforming...Γ£ô 7 modules transformed.
+@tailwindspark/ui-components:build: rendering chunks...
+@tailwindspark/ui-components:build: computing gzip size...
+@tailwindspark/ui-components:build: dist/index.umd.js  11.30 kB Γöé gzip: 3.48 kB
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: [32mΓ£ô built in 31ms[39m
+@tailwindspark/demo-app:build: cache miss, executing 2c1dadf26fecd5f1
+@tailwindspark/demo-app:build: 
+@tailwindspark/demo-app:build: > @tailwindspark/demo-app@1.0.0 prebuild
+@tailwindspark/demo-app:build: > node ../../scripts/sync-projects-data.mjs && node ../../scripts/sync-repos-data.mjs && node ../../scripts/sync-articles-data.mjs
+@tailwindspark/demo-app:build: 
+@tailwindspark/demo-app:build: [sync-projects-data] Snapshot already current: C:\GitHub\MarkHazleton\tailwind-demo\apps\demo-app\public\data\projects.json
+@tailwindspark/demo-app:build: [sync-repos-data] Snapshot already current: C:\GitHub\MarkHazleton\tailwind-demo\apps\demo-app\public\data\repositories.json
+@tailwindspark/demo-app:build: [sync-articles-data] Failed to fetch from https://markhazleton.com/articles.json: Article at index 0 has an invalid title
+@tailwindspark/demo-app:build: [sync-articles-data] Creating empty fallback instead...
+@tailwindspark/demo-app:build: [sync-articles-data] Empty fallback already exists: C:\GitHub\MarkHazleton\tailwind-demo\apps\demo-app\public\data\articles.json
+@tailwindspark/demo-app:build: 
+@tailwindspark/demo-app:build: > @tailwindspark/demo-app@1.0.0 build
+@tailwindspark/demo-app:build: > tsc -b && vite build
+@tailwindspark/demo-app:build: 
+@tailwindspark/demo-app:build: [36mvite v8.0.7 [32mbuilding client environment for production...[36m[39m
+@tailwindspark/demo-app:build: [2K
+@tailwindspark/demo-app:build: transforming...Γ£ô 2086 modules transformed.
+@tailwindspark/demo-app:build: rendering chunks...
+@tailwindspark/demo-app:build: [33m[plugin performance-budget] ΓÜá∩╕Å  Performance Budget: Total bundle size (1017.19KB) exceeds limit (1000KB)[39m
+@tailwindspark/demo-app:build: computing gzip size...
+@tailwindspark/demo-app:build: ../../dist/index.html                                     8.45 kB Γöé gzip:  2.35 kB
+@tailwindspark/demo-app:build: ../../dist/assets/styles/maps-vendor-DtQ6Dmri.css        14.83 kB Γöé gzip:  6.32 kB
+@tailwindspark/demo-app:build: ../../dist/assets/styles/index-Do1wC4X0.css              92.46 kB Γöé gzip: 15.83 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/AIChatPage-Dt_QHBpd.js               0.06 kB Γöé gzip:  0.07 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/ArticlesPage-DbFzC2yr.js             0.06 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/JokePage-CD5MpREL.js                 0.06 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/ProjectsPage-B1aO9Lz9.js             0.06 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/ReposPage-DmPm-ASb.js                0.06 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/WeatherPage-BJqes3Tz.js              0.06 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/AboutPage-Cy537_Wm.js                0.06 kB Γöé gzip:  0.07 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/NotFoundPage-C-bnp4L0.js             0.06 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/HomePage-DFbEQUV2.js                 0.07 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/AppsHubPage-Bs9_bhv_.js              0.07 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/DemosPage-Cxd52Tuf.js                0.07 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/UsersPage-DL1zwV0p.js                0.07 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/EcommercePage-CU-WZqj2.js            0.07 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/AnimationPage-BX32T7kB.js            0.07 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/MarketingPage-Bh-9vtTl.js            0.07 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/SettingsPage-DBOUfq5r.js             0.07 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/AnalyticsPage-DlIx7kCV.js            0.08 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/DashboardPage-CU5TQ6UD.js            0.08 kB Γöé gzip:  0.08 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/DesignSystemPage-DrRTeja6.js         0.09 kB Γöé gzip:  0.09 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/page-notfoundpage-kNOhN7zK.js        0.85 kB Γöé gzip:  0.45 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/WeatherMap-Cw-cyVt3.js               1.04 kB Γöé gzip:  0.60 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/rolldown-runtime-DmMX61E0.js         1.07 kB Γöé gzip:  0.61 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/page-appshubpage-DxC2nBkm.js         1.25 kB Γöé gzip:  0.65 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/utils-B_W_sumX.js                    5.44 kB Γöé gzip:  2.05 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/page-userspage-BGaaSDbg.js           8.74 kB Γöé gzip:  2.19 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/index-K3HqQucK.js                    8.79 kB Γöé gzip:  2.46 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/page-analyticspage-B5FhdD3U.js       8.79 kB Γöé gzip:  2.19 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/page-homepage-1lZfSO2K.js            9.42 kB Γöé gzip:  2.32 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/page-settingspage-DR2qzpM_.js        9.51 kB Γöé gzip:  2.58 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/page-demospage-BPGxv_xB.js          10.81 kB Γöé gzip:  3.34 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/page-dashboardpage-w7MgtjJU.js      11.40 kB Γöé gzip:  2.78 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/page-ecommercepage-BE_cJcBJ.js      11.63 kB Γöé gzip:  3.47 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/page-animationpage-CPIVqOu7.js      12.52 kB Γöé gzip:  2.31 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/page-marketingpage-BJm3Ohts.js      17.61 kB Γöé gzip:  5.36 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/page-designsystempage-CVG0maW-.js   23.50 kB Γöé gzip:  4.95 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/page-aboutpage-D0ZmIeyq.js          79.35 kB Γöé gzip: 22.34 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/markdown-vendor-DWo8OcHY.js        117.03 kB Γöé gzip: 36.17 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/page-apps-lRXpyL6l.js              122.79 kB Γöé gzip: 31.75 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/components-MSEyxGEz.js             136.90 kB Γöé gzip: 37.68 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/maps-vendor-BUEI485h.js            149.38 kB Γöé gzip: 43.50 kB
+@tailwindspark/demo-app:build: ../../dist/assets/js/framework-vendor-BovpElxb.js       187.03 kB Γöé gzip: 59.81 kB
+@tailwindspark/demo-app:build: 
+@tailwindspark/demo-app:build: [32mΓ£ô built in 1.71s[39m
+
+ Tasks:    3 successful, 3 total
+Cached:    2 cached, 3 total
+  Time:    5.183s 
+
