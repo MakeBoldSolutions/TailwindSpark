@@ -416,8 +416,8 @@ export type RepoSortDirection = 'asc' | 'desc';
  * Repositories API Configuration.
  */
 export const REPOS_API_CONFIG = {
-  /** Same-origin data endpoint */
-  DATA_URL: '/data/repositories.json',
+  /** Same-origin data endpoint (uses Vite BASE_URL for GitHub Pages compatibility) */
+  DATA_URL: `${import.meta.env.BASE_URL}data/repositories.json`,
 
   /** Cache key for localStorage */
   CACHE_KEY: 'repos_v1',
