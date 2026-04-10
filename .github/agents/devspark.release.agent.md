@@ -67,8 +67,8 @@ Run `.documentation/scripts/powershell/release-context.ps1 $ARGUMENTS -Json` to 
 - `COMMITS_SINCE_RELEASE`: Commit count since last release
 - `CONTRIBUTORS`: List of contributors
 - `DRY_RUN`: Whether this is a preview run
-- `SPECKIT_VERSION_PATH`: Path to `.documentation/SPECKIT_VERSION`
-- `INSTALLED_VERSION`: Version recorded in the stamp file (blank if absent)
+- `DEVSPARK_VERSION_PATH`: Path to `.documentation/DEVSPARK_VERSION`
+- `INSTALLED_VERSION`: Version recorded in the version file (blank if absent)
 
 ### 2. Version Confirmation
 
@@ -336,38 +336,40 @@ Create `/.documentation/releases/v{NEXT_VERSION}/metrics.json`:
 ### 9. Bump Version in Source Files
 
 After generating the CHANGELOG entry and release archive, and **before** committing,
-update the canonical version number so the next `specify upgrade` stamps the new
-version into consumer projects.
+update the version number in documentation.
 
 **Skip if DRY_RUN.**
 
-#### A. Bump `pyproject.toml` (Spec Kit Spark source repo)
+#### A. Update `.documentation/DEVSPARK_VERSION`
 
-Edit `pyproject.toml` at the repository root:
+Create or update `.documentation/DEVSPARK_VERSION` with:
 
-```toml
-[project]
-version = "{NEXT_VERSION}"   # was {CURRENT_VERSION}
+```
+{NEXT_VERSION}
+installed: {TODAY}
+agent: copilot
 ```
 
-Make this edit now if {NEXT_VERSION} differs from {CURRENT_VERSION}.
+This version file is tracked in the repository and serves as the canonical version
+reference for `/devspark.upgrade` and `/devspark.site-audit`.
 
-#### B. Confirm `.documentation/SPECKIT_VERSION` (consumer repos)
+#### B. Update `.documentation/Guide.md`
 
-`.documentation/SPECKIT_VERSION` is **written automatically** by `specify init` and
-`specify upgrade` from the CLI version. Maintainers do not need to update it manually
-in the source repo — it is a per-consumer-project stamp.
+Update the footer of Guide.md:
 
-After bumping `pyproject.toml` and publishing the new release, consumer projects
-will receive the correct version stamp the next time they run `specify upgrade`.
+```markdown
+**Last Updated**: {TODAY}
+**DevSpark Version**: {NEXT_VERSION}
+```
 
 #### C. Verify version consistency
 
-Confirm these three sources agree on {NEXT_VERSION}:
+Confirm these sources agree on {NEXT_VERSION}:
 
 | Source | Expected Value |
 |--------|----------------|
-| `pyproject.toml` → `version` | {NEXT_VERSION} |
+| `.documentation/DEVSPARK_VERSION` | {NEXT_VERSION} |
+| `.documentation/Guide.md` footer | `DevSpark Version: {NEXT_VERSION}` |
 | `CHANGELOG.md` top entry | `## [{NEXT_VERSION}]` |
 | Git tag (to be created) | `v{NEXT_VERSION}` |
 
@@ -460,41 +462,33 @@ To execute this release:
 
 ### Next Steps
 
-1. Confirm `pyproject.toml` has been bumped to `{NEXT_VERSION}` (Step 9A above).
-
-2. Review generated documentation:
+1. Review generated documentation:
    - `/.documentation/releases/v{NEXT_VERSION}/release-notes.md`
    - `CHANGELOG.md`
 
-3. Commit changes:
+2. Commit changes:
 
    ```bash
    git add -A
    git commit -m "docs: release v{NEXT_VERSION}"
    ```
 
-4. Tag release:
+3. Tag release:
 
    ```bash
    git tag -a v{NEXT_VERSION} -m "Release v{NEXT_VERSION}"
    ```
 
-5. Push to remote:
+4. Push to remote:
 
    ```bash
    git push origin main --tags
    ```
 
-6. Create GitHub Release (optional):
+5. Create GitHub Release (optional):
 
    ```bash
    gh release create v{NEXT_VERSION} --notes-file .documentation/releases/v{NEXT_VERSION}/release-notes.md
-   ```
-
-7. Consumer projects will receive the new version stamp the next time they run:
-
-   ```bash
-   specify upgrade
    ```
 
 ## Guidelines

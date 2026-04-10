@@ -535,8 +535,6 @@ The project constitution defines the review criteria. Create one first:
 1. Run: /devspark.constitution
 2. Define your project's core principles
 3. Then retry: /devspark.pr-review #{PR_NUMBER}
-
-Learn more: <https://github.com/MarkHazleton/spec-kit>
 ```
 
 **If PR not found**:

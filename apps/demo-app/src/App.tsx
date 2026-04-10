@@ -31,6 +31,7 @@ const ArticlesPage = lazy(() => import('./pages/apps/ArticlesPage'));
 const JokePage = lazy(() => import('./pages/apps/JokePage'));
 const WeatherPage = lazy(() => import('./pages/apps/WeatherPage'));
 const AIChatPage = lazy(() => import('./pages/apps/AIChatPage'));
+const ReposPage = lazy(() => import('./pages/apps/ReposPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function AppContent() {
@@ -201,6 +202,14 @@ function AppContent() {
                     element={
                       <Suspense fallback={<PageLoadingSpinner message="Loading AI Chat..." />}>
                         <AIChatPage />
+                      </Suspense>
+                    }
+                  />
+                  <Route
+                    path="/apps/repos"
+                    element={
+                      <Suspense fallback={<PageLoadingSpinner message="Loading Repositories..." />}>
+                        <ReposPage />
                       </Suspense>
                     }
                   />

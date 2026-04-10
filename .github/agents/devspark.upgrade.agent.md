@@ -1,5 +1,5 @@
 ---
-description: Check the installed Spec Kit Spark version, identify stale framework files, and guide a safe upgrade to the latest release
+description: Check the installed DevSpark version, identify stale framework files, and guide a safe upgrade to the latest release
 ---
 
 ## User Input
@@ -20,15 +20,15 @@ You **MUST** consider the user input before proceeding (if not empty). Supported
 
 ## Overview
 
-This command checks whether the consumer project's installed Spec Kit Spark matches the
+This command checks whether the consumer project's installed DevSpark version matches the
 latest available version and guides you through a safe upgrade. It:
 
-1. Reads `.documentation/SPECKIT_VERSION` to find the installed version
-2. Detects the latest version from `CHANGELOG.md` or `pyproject.toml`
+1. Reads `.documentation/DEVSPARK_VERSION` to find the installed version
+2. Detects the latest version from `.documentation/Guide.md` or `CHANGELOG.md`
 3. Classifies files under `.documentation/` as framework-owned vs. user-owned
 4. Identifies stale or missing framework files
-5. Runs `specify upgrade` (or `specify init --here --force`) to apply updates
-6. Verifies the stamp file was updated after the upgrade
+5. Guides manual update of framework files from the DevSpark repository
+6. Verifies the version file was updated after the upgrade
 
 ---
 
@@ -36,10 +36,10 @@ latest available version and guides you through a safe upgrade. It:
 
 ### 1. Read Installed Version
 
-Check for `.documentation/SPECKIT_VERSION`:
+Check for `.documentation/DEVSPARK_VERSION`:
 
 ```text
-.documentation/SPECKIT_VERSION
+.documentation/DEVSPARK_VERSION
 ```
 
 Expected format (three lines):
@@ -50,22 +50,22 @@ agent: <agent-key>
 ```
 
 **If the file is missing:**
-- Report: `SPECKIT_VERSION not found — version unknown`
-- The project was installed before v1.2.4 or the stamp was not written
+- Report: `DEVSPARK_VERSION not found — version unknown`
+- Check `.documentation/Guide.md` for version information
 - Proceed to Step 2 to determine what version is actually present
 
 **If the file exists**, extract:
-- `INSTALLED_VERSION` — e.g., `1.1.0`
-- `INSTALL_DATE` — e.g., `2026-02-08`
+- `INSTALLED_VERSION` — e.g., `1.3.0`
+- `INSTALL_DATE` — e.g., `2026-04-08`
 - `INSTALLED_AGENT` — e.g., `copilot`
 
 ### 2. Detect Latest Available Version
 
-Read `CHANGELOG.md` at the repo root (or `.documentation/CHANGELOG.md`):
-- Find the most recent `## [X.Y.Z]` heading
+Read `.documentation/Guide.md` at the end of the file:
+- Find the line with `**DevSpark Version**: X.Y.Z`
 - That is `LATEST_VERSION`
 
-Fallback: read `pyproject.toml` `version = "..."` if CHANGELOG is absent.
+Fallback: read `CHANGELOG.md` (or `.documentation/guides/CHANGELOG.md`) for the most recent `## [X.Y.Z]` heading if Guide.md doesn't have version info.
 
 ### 3. Compare Versions
 
@@ -73,7 +73,7 @@ Fallback: read `pyproject.toml` `version = "..."` if CHANGELOG is absent.
 |-----------|--------|
 | `INSTALLED_VERSION == LATEST_VERSION` | Up to date |
 | `INSTALLED_VERSION < LATEST_VERSION` | Upgrade available |
-| `SPECKIT_VERSION` absent | Unknown — treat as upgrade needed |
+| `DEVSPARK_VERSION` absent | Unknown — treat as upgrade needed |
 
 Display the comparison result clearly:
 
@@ -91,17 +91,13 @@ Separate framework-owned files (overwritten on upgrade) from user-owned files (n
 touched). Use this classification:
 
 #### Framework-owned (safe to overwrite)
-These come from the Spec Kit Spark release package and should match the latest version:
+These come from the DevSpark framework repository and should match the latest version:
 
 - `.documentation/scripts/bash/*.sh`
 - `.documentation/scripts/powershell/*.ps1`
 - `.documentation/templates/`
-- `.documentation/SPECKIT_VERSION`
-- `.documentation/README.md`
-- `.documentation/index.md`
-- `.documentation/upgrade.md`
-- `.documentation/migration-guide.md`
-- `.documentation/MIGRATION-QUICKREF.md`
+- `.documentation/DEVSPARK_VERSION`
+- `.documentation/Guide.md`
 - Agent command files:
   - `.github/agents/*.agent.md`
   - `.github/prompts/*.prompt.md`
@@ -116,10 +112,8 @@ These are written by the project team and must be preserved:
 - `.documentation/specs/` — all feature specifications, plans, and tasks
 - `.documentation/memory/constitution.md` — project constitution
 - `.documentation/copilot/` — session artifacts and audit history
-- `.documentation/decisions/` — ADRs
-- `.documentation/releases/` — release archives
-- `.documentation/quickfixes/` — active quickfixes
-- `CHANGELOG.md` (repo root)
+- `.documentation/repo-story/` — repository narrative documentation
+- `.documentation/guides/` — user-facing documentation (ARCHITECTURE.md, BRANDING.md, CHANGELOG.md, DEPLOYMENT.md, GETTING_STARTED.md, TESTING.md)
 - Any file not listed in the framework-owned category
 
 ### 5. Identify Stale Files
@@ -128,11 +122,10 @@ Scan for signs that the install is outdated. Flag any of the following:
 
 | Check | Issue | Severity |
 |-------|-------|----------|
-| `.documentation/SPECKIT_VERSION` absent | No version stamp | HIGH |
-| Agent command files reference old paths (`.documentation/`, root `memory/`, `scripts/`, `templates/`, or `specs/`) | Pre-migration paths | HIGH |
-| `.documentation/` directory exists | Pre-v1.0 structure | HIGH |
+| `.documentation/DEVSPARK_VERSION` absent | No version stamp | HIGH |
+| Agent command files reference old paths (pre-v1.0 structure) | Pre-migration paths | HIGH |
 | Root-level `memory/`, `scripts/`, `templates/`, or `specs/` directories exist | Pre-v1.0 structure | HIGH |
-| `SPECKIT_VERSION` present but older than `LATEST_VERSION` | Out of date | MEDIUM |
+| `DEVSPARK_VERSION` present but older than `LATEST_VERSION` | Out of date | MEDIUM |
 | Old `devspark.*-old.md` command files in agent folder | Leftover duplicates | LOW |
 
 Report findings before proceeding.
@@ -159,34 +152,49 @@ MISSING: .github/agents/devspark.specify.agent.md
 Check if `constitution.md` differs from a template default — if the user has made
 substantial edits, recommend backing up:
 
+**Windows:**
+```powershell
+Copy-Item .documentation\memory\constitution.md `
+  .documentation\memory\constitution.md.$(Get-Date -Format 'yyyyMMdd').bak
+```
+
+**Linux/Mac:**
 ```bash
 cp .documentation/memory/constitution.md \
-   .documentation/memory/constitution.md.YYYYMMDD.bak
+   .documentation/memory/constitution.md.$(date +%Y%m%d).bak
 ```
 
-Or instruct the user to run:
+#### 7b. Update Framework Files
+
+The upgrade is performed by updating framework files from the DevSpark repository.
+
+**Option 1: Manual File Updates** (Recommended for single-repo projects)
+
+1. Review the list of framework-owned files (Step 4)
+2. Update each file from the DevSpark source repository:
+   - `.github/agents/` - All `devspark.*.agent.md` files
+   - `.github/prompts/` - All `devspark.*.prompt.md` files
+   - `.documentation/scripts/` - All PowerShell and Bash scripts
+   - `.documentation/templates/` - All template files
+3. Update `.documentation/DEVSPARK_VERSION` with new version info:
+   ```
+   <LATEST_VERSION>
+   installed: <TODAY>
+   agent: <INSTALLED_AGENT>
+   ```
+4. Update `.documentation/Guide.md` footer with new version
+
+**Option 2: Git-Based Update** (For repos tracking DevSpark as upstream)
+
+If your repository has DevSpark configured as a git remote:
+
 ```bash
-specify upgrade --backup
-```
-
-#### 7b. Run the CLI upgrade
-
-Prefer `specify upgrade` (v1.1.0+). Fall back to `specify init --here --force --ai <INSTALLED_AGENT>` if needed.
-
-**Check for CLI availability:**
-```bash
-specify version
-```
-
-If available, run:
-```bash
-specify upgrade --ai <INSTALLED_AGENT>
-```
-
-If not installed, provide the install command:
-```bash
-uv tool install specify-cli --force \
-  --from git+https://github.com/MarkHazleton/spec-kit.git
+git fetch devspark-upstream
+git checkout main
+git merge devspark-upstream/main --no-commit
+# Review changes, resolve conflicts
+# Ensure user-owned files are not modified
+git commit -m "chore: upgrade DevSpark to vX.Y.Z"
 ```
 
 #### 7c. Handle old structure migration
@@ -207,7 +215,7 @@ Or ask the user to approve: "Migration detected. Run migration script now? [y/N]
 
 After the upgrade completes:
 
-1. **Read `.documentation/SPECKIT_VERSION` again** — confirm version changed to `LATEST_VERSION`
+1. **Read `.documentation/DEVSPARK_VERSION` again** — confirm version changed to `LATEST_VERSION`
 2. **Check agent command files** — confirm they no longer reference old paths
 3. **Confirm `.documentation/specs/` is untouched** — user data must be preserved
 4. **Confirm `constitution.md` is intact** (or restored from backup)
@@ -216,7 +224,7 @@ Report a post-upgrade summary:
 
 ```
 Post-Upgrade Verification
-  SPECKIT_VERSION : 1.2.4  (was 1.1.0)
+  DEVSPARK_VERSION : 1.3.0  (was 1.2.0)
   Agent commands  : updated
   .documentation/specs/ : unchanged
   constitution.md : preserved
@@ -226,7 +234,7 @@ Post-Upgrade Verification
 
 #### Upgrade performed:
 ```
-Spec Kit Spark Upgrade Summary
+DevSpark Upgrade Summary
   Previous Version : <INSTALLED_VERSION>
   New Version      : <LATEST_VERSION>
   Agent            : <INSTALLED_AGENT>
@@ -237,12 +245,12 @@ Framework files updated. User files preserved.
 Next steps:
   1. git diff — review changes
   2. Test /devspark.constitution in your AI assistant
-  3. git add -A && git commit -m "chore: upgrade spec-kit-spark to vX.Y.Z"
+  3. git add -A && git commit -m "chore: upgrade DevSpark to vX.Y.Z"
 ```
 
 #### Already up to date:
 ```
-Spec Kit Spark is up to date.
+DevSpark is up to date.
   Version : <INSTALLED_VERSION>
   Agent   : <INSTALLED_AGENT>
   Date    : <INSTALL_DATE>
@@ -256,8 +264,7 @@ Would upgrade: <INSTALLED_VERSION> -> <LATEST_VERSION>
 Framework files to update: <N>
 User files preserved: .documentation/specs/, constitution.md, session artifacts
 
-To apply:
-  specify upgrade --ai <INSTALLED_AGENT>
+To apply: Run /devspark.upgrade without --dry-run
 ```
 
 ---
@@ -270,9 +277,9 @@ Never modify or delete:
 - `.documentation/specs/` and all contents
 - `constitution.md`
 - `.documentation/copilot/`
-- `.documentation/decisions/`
-- `.documentation/releases/`
-- Any file the user created that is not a Spec Kit framework file
+- `.documentation/repo-story/`
+- `.documentation/guides/`
+- Any file the user created that is not a DevSpark framework file
 
 ### Non-Destructive by Default
 
@@ -281,10 +288,10 @@ produce only the plan — never modify files.
 
 ### Version Stamp is Authoritative
 
-`.documentation/SPECKIT_VERSION` is the single source of truth for the installed
-version in a consumer project. After any successful upgrade, verify the stamp was
-updated. If the stamp is absent after an upgrade, warn the user and suggest
-re-running `specify upgrade`.
+`.documentation/DEVSPARK_VERSION` is the single source of truth for the installed
+version in a consumer project. After any successful upgrade, verify the version file was
+updated. If the file is absent after an upgrade, warn the user and create it with the
+current version information.
 
 ### Constitution Backup Recommendation
 
