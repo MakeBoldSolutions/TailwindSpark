@@ -2,7 +2,20 @@
   "permissions": {
     "allow": [
       "Bash(git -C \"c:\\\\GitHub\\\\MarkHazleton\\\\TailwindSpark\" status)",
-      "Bash(git -C \"c:\\\\GitHub\\\\MarkHazleton\\\\TailwindSpark\" diff --stat)"
+      "Bash(git -C \"c:\\\\GitHub\\\\MarkHazleton\\\\TailwindSpark\" diff --stat)",
+      "Bash([ -f .devspark/scripts/bash/site-audit.sh ])",
+      "Bash(bash .devspark/scripts/bash/site-audit.sh --json)",
+      "Bash(ls .claude/commands/devspark.*-old.md)",
+      "Bash(grep -E \"^export\\\\s+\\(const|function|interface|type\\)\" /Users/markhazleton/GitHub/MarkHazleton/TailwindSpark/packages/ui-components/src/components/*.tsx)",
+      "Bash(find /Users/markhazleton/GitHub/MarkHazleton/TailwindSpark/packages/ui-components/src -type f \\\\\\( -name \"*.tsx\" -o -name \"*.ts\" \\\\\\) ! -name \"*.test.*\" -exec grep -l \"^export\" {} \\\\;)",
+      "Bash(grep -r \"^/\\\\*\\\\*\" /Users/markhazleton/GitHub/MarkHazleton/TailwindSpark/packages/ui-components/src/components/*.tsx)",
+      "Bash(grep \"^--$\")",
+      "Bash(npm audit:*)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({'vulnerabilities': d.get\\('metadata',{}\\).get\\('vulnerabilities',{}\\), 'total': d.get\\('metadata',{}\\).get\\('dependencies',{}\\)}, indent=2\\)\\)\")",
+      "Bash(npm outdated:*)",
+      "Bash(python3 -c \" import json, sys d = json.load\\(sys.stdin\\) outdated = [] for pkg, info in d.items\\(\\): if info.get\\('current'\\) != info.get\\('latest'\\): outdated.append\\({'package': pkg, 'current': info.get\\('current','?'\\), 'wanted': info.get\\('wanted','?'\\), 'latest': info.get\\('latest','?'\\)}\\) print\\(json.dumps\\(outdated[:15], indent=2\\)\\) print\\(f'Total outdated: {len\\(outdated\\)}'\\) \")",
+      "Bash(npx turbo:*)",
+      "Bash(git commit -m ':*)"
     ]
   }
 }
