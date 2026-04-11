@@ -1,3 +1,6 @@
+/**
+ * Customer testimonials for marketing demonstration.
+ */
 export const testimonials = [
   {
     name: 'Sarah Johnson',
@@ -28,6 +31,9 @@ export const testimonials = [
   },
 ];
 
+/**
+ * Service offerings for marketing showcase.
+ */
 export const services = [
   {
     icon: '🎨',
@@ -57,6 +63,9 @@ export const services = [
   },
 ];
 
+/**
+ * Portfolio items showcasing various projects.
+ */
 export const portfolioItems = [
   {
     id: 1,

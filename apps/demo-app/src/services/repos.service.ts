@@ -34,7 +34,7 @@ async function fetchReposFromUrl(url: string): Promise<ReposData> {
  * returns empty repositories array with default profile values to prevent UI crashes.
  *
  * @returns {Promise<ReposData>} Promise resolving to normalized repositories and profile data.
- *   Returns empty arrays with default profile (username: '', zeros for all counters) if fetch fails.
+ * Returns empty arrays with default profile (username: '', zeros for all counters) if fetch fails.
  * @throws Never throws - all errors are caught and return empty data to maintain UI stability
  */
 export async function getRepositories(): Promise<ReposData> {

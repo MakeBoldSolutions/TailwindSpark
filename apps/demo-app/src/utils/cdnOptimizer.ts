@@ -374,9 +374,10 @@ class CDNOptimizer {
 
   /**
    * Get critical styles URL
+   * 
    * @returns URL for critical CSS file
    */
-  /** private */ getCriticalStylesUrl(): string {
+  private getCriticalStylesUrl(): string {
     // In production, this would be the actual CSS file with hash
     return `${this.config.assetUrl}styles/index-[hash].css`;
   }

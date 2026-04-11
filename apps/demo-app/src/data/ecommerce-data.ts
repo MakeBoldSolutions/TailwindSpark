@@ -1,5 +1,8 @@
 import type { Product } from '../types/ecommerce';
 
+/**
+ * Mock product data for e-commerce demonstrations.
+ */
 export const MOCK_PRODUCTS: Product[] = [
   {
     id: 1,
