@@ -1,30 +1,20 @@
 ---
-description: Convert existing tasks into actionable, dependency-ordered GitHub issues for the feature based on available design artifacts.
-tools: ['github/github-mcp-server/issue_write']
+name: "devspark.taskstoissues"
+description: "Convert existing tasks into actionable GitHub issues for the feature based on design artifacts."
 ---
+
+## Prompt Resolution
+
+Determine the current git user by running `git config user.name`.
+Normalize to a folder-safe slug: lowercase, replace spaces with hyphens, strip non-alphanumeric/hyphen chars.
+
+Read and execute the instructions from the **first file that exists**:
+1. `.documentation/{git-user}/commands/devspark.taskstoissues.md` (personalized override)
+2. `.documentation/commands/devspark.taskstoissues.md` (team customization)
+3. `.devspark/defaults/commands/devspark.taskstoissues.md` (stock default)
 
 ## User Input
 
-```text
-$ARGUMENTS
-```
+{{input}}
 
-You **MUST** consider the user input before proceeding (if not empty).
-
-## Outline
-
-1. Run `.documentation/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list. All paths must be absolute. For single quotes in args like "I'm Groot", use escape syntax: e.g 'I'\''m Groot' (or double-quote if possible: "I'm Groot").
-1. From the executed script, extract the path to **tasks**.
-1. Get the Git remote by running:
-
-```bash
-git config --get remote.origin.url
-```
-
-> [!CAUTION]
-> ONLY PROCEED TO NEXT STEPS IF THE REMOTE IS A GITHUB URL
-
-1. For each task in the list, use the GitHub MCP server to create a new issue in the repository that is representative of the Git remote.
-
-> [!CAUTION]
-> UNDER NO CIRCUMSTANCES EVER CREATE ISSUES IN REPOSITORIES THAT DO NOT MATCH THE REMOTE URL
+Pass the user input above to the resolved prompt.

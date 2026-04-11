@@ -1,4 +1,4 @@
-version: 1.4.0
-installed: 2026-04-10
-method: copilot-upgrade
-migrated-from: speckit-1.4.3
+version: 1.5.0
+installed: 2026-04-11
+method: copilot-quickstart
+migrated-from: documentation-defaults
