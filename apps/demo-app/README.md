@@ -41,6 +41,8 @@ npm run dev
 ```bash
 npm run dev          # Start development server
 npm run build        # Build for production
+npm run sync:data    # Refresh tracked fallback data snapshots
+npm run build:analyze # Build with explicit bundle analysis output
 npm run preview      # Preview production build
 npm run test         # Run tests
 npm run test:ui      # Run tests with UI
@@ -62,7 +64,7 @@ apps/demo-app/
 │   ├── services/       # Fetch, caching, and SignalR service layer
 │   ├── types/          # TypeScript definitions and API contracts
 │   └── assets/         # Static assets
-├── public/             # Static files and service worker
+├── public/             # Source-controlled static assets and fallback snapshots
 └── dist/               # Build output
 ```
 
@@ -206,7 +208,9 @@ npm run build
 # Output in ../../dist/ for GitHub Pages deployment
 ```
 
-The production build uses the GitHub Pages base path `/TailwindSpark/` and generates bundle analysis output in `reports/bundle-analysis.html`.
+The production build uses the GitHub Pages base path `/TailwindSpark/` and writes generated deployment metadata such as `robots.txt` and `sitemap.xml` into `dist/` during the post-build step.
+
+Bundle analysis is opt-in via `npm run build:analyze` so standard builds remain repeatable and git-clean.
 
 ### Preview Build
 

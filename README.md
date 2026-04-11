@@ -77,6 +77,8 @@ TailwindSpark/
 ```bash
 npm run dev          # Development server with HMR
 npm run build        # Production build (all packages)
+npm run sync:data    # Explicitly refresh tracked content snapshots
+npm run version:bump # Explicit release version update
 npm run test         # Vitest with coverage reporting
 npm run lint         # ESLint + custom rules
 ```

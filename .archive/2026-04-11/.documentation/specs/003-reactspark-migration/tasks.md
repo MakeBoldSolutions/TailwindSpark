@@ -448,7 +448,7 @@ Tasks are organized by **user story** to enable independent implementation and t
 
 #### SEO & Meta Tags (FR-078–FR-084)
 
-- [ ] T196 Run Lighthouse audit: `npm run lighthouse` and verify scores 90+ for Performance, 100 for Accessibility, Best Practices, SEO
+- [X] T196 Run Lighthouse audit: `npm run lighthouse` and verify scores 90+ for Performance, 100 for Accessibility, Best Practices, SEO
 - [X] T196.1 [P] Update apps/demo-app/public/sitemap.xml to include all /apps/* routes (/apps, /apps/projects, /apps/articles, /apps/joke, /apps/weather, /apps/ai-chat)
 - [X] T196.2 [P] Update apps/demo-app/public/robots.txt to reference updated sitemap with mini-app routes
 - [X] T196.3 Enhance useSEO hook to set Open Graph meta tags (og:title, og:description, og:image, og:url) per route
@@ -487,7 +487,7 @@ Tasks are organized by **user story** to enable independent implementation and t
 - [X] T207 [P] Add JSDoc comments to all NEW exported functions and components (mini-app code only: ~50-100 exports)
 - [X] T208 [P] Update .documentation/specs/003-reactspark-migration/CHANGELOG.md with migration notes
 - [X] T209 Create PR from feature branch to main with full description
-- [ ] T210 Request code review and address feedback
+- [X] T210 Request code review and address feedback
 
 ---
 

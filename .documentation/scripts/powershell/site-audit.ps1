@@ -138,7 +138,7 @@ function Get-FileCategories {
     $excludePattern = '(^|[/\\])(' + (($excludeDirs | ForEach-Object { [regex]::Escape($_) }) -join '|') + ')([/\\]|$)'
     
     # Get all files, excluding common directories
-    $allFiles = Get-ChildItem -Path $RepoRoot -Recurse -File -ErrorAction SilentlyContinue | 
+    $allFiles = Get-ChildItem -Path $RepoRoot -Recurse -File -Force -ErrorAction SilentlyContinue | 
         Where-Object { $_.FullName -notmatch $excludePattern }
     
     foreach ($file in $allFiles) {
@@ -163,6 +163,15 @@ function Get-FileCategories {
             continue
         }
         
+        # Check build files
+        if ($relativePath -match '(^|[/\\])\.github[/\\]workflows[/\\]' -or
+            $name -match '^dockerfile' -or
+            $name -eq 'makefile' -or
+            $ext -in @('.gradle', '.maven')) {
+            $categories.build += $relativePath
+            continue
+        }
+
         # Check config by extension or env files
         if ($ext -in $configExtensions -or $name -match '^\.env' -or $name -match 'rc$') {
             $categories.config += $relativePath
@@ -178,15 +187,6 @@ function Get-FileCategories {
         # Check scripts by extension
         if ($ext -in $scriptExtensions) {
             $categories.scripts += $relativePath
-            continue
-        }
-        
-        # Check build files
-        if ($relativePath -match '\.github/workflows/' -or
-            $name -match '^dockerfile' -or
-            $name -eq 'makefile' -or
-            $ext -in @('.gradle', '.maven')) {
-            $categories.build += $relativePath
         }
     }
     
@@ -391,9 +391,9 @@ function Get-PatternDetection {
     
     # Secret patterns to detect
     $secretPatterns = @(
-        @{ name = 'API Key'; pattern = '(?i)(api[_-]?key|apikey)\s*[=:]\s*[''"][a-zA-Z0-9]{16,}[''"]' }
-        @{ name = 'Password'; pattern = '(?i)(password|passwd|pwd)\s*[=:]\s*[''"][^''"]{4,}[''"]' }
-        @{ name = 'Secret'; pattern = '(?i)(secret|token|auth)\s*[=:]\s*[''"][a-zA-Z0-9+/=]{16,}[''"]' }
+        @{ name = 'API Key'; pattern = '(?i)\b(api[_-]?key|apikey)\b\s*[=:]\s*[''"][A-Za-z0-9_-]{16,}[''"]' }
+        @{ name = 'Password'; pattern = '(?i)\b(password|passwd|pwd)\b\s*[=:]\s*[''"][^\s''"]{8,}[''"]' }
+        @{ name = 'Secret'; pattern = '(?i)\b(secret|token|auth)\b\s*[=:]\s*[''"][A-Za-z0-9+/=_-]{16,}[''"]' }
         @{ name = 'AWS Key'; pattern = 'AKIA[0-9A-Z]{16}' }
         @{ name = 'Private Key'; pattern = '-----BEGIN (RSA |EC |DSA )?PRIVATE KEY-----' }
     )
@@ -405,7 +405,7 @@ function Get-PatternDetection {
         @{ name = 'SQL Injection'; pattern = '(?i)(execute|query)\s*\(\s*[''"].*\s*\+\s*' }
     )
     
-    $todoPattern = '(?i)(TODO|FIXME|HACK|XXX|BUG)[\s:]+(.+)$'
+    $todoPattern = '(?i)(?://|#|/\*|\{/\*|\*)\s*\b(TODO|FIXME|HACK|XXX|BUG)\b[\s:,-]+(.+)$'
     
     $fileLimit = 100  # Limit files to scan for performance
     $scannedCount = 0

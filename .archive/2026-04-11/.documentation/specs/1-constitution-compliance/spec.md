@@ -2,7 +2,7 @@
 
 **Feature Branch**: `1-constitution-compliance`  
 **Created**: 2026-03-01  
-**Status**: Draft  
+**Status**: Complete  
 **Input**: User description: "create a spec to address findings from site audit"
 
 ## User Scenarios & Testing *(mandatory)*

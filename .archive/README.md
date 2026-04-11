@@ -36,13 +36,18 @@ Archived during routine documentation maintenance:
 Archived during knowledge harvest:
 
 - `.documentation/specs/001-github-repos-explorer/` - Completed GitHub Repositories Explorer spec set after changelog capture
+- `.documentation/specs/003-reactspark-migration/` - Completed ReactSpark migration spec set after closure-task reconciliation and changelog harvest
+- `.documentation/specs/1-constitution-compliance/` - Completed constitution-remediation spec artifact removed from the active spec surface after harvest confirmed its durable outcomes were already preserved
 - `.documentation/specs/pr-review/pr-122.md` - Completed PR review for the repositories explorer work
 - `.documentation/copilot/audit/2026-04-09_results.md` - Completed audit output superseded by harvested living docs
+- `.documentation/copilot/audit/2026-04-11_results.md` - Pre-closeout audit snapshot retained for traceability after the completed specs were reconciled and archived
 - `.documentation/memory/constitution.md.20260410.bak` - Superseded constitution backup retained only for traceability
 
 Knowledge extracted and preserved in:
 
 - `.documentation/guides/CHANGELOG.md` - Added the GitHub Repositories Explorer delivery entry
+- `.documentation/guides/CHANGELOG.md` - Added the ReactSpark migration delivery entry and recorded closure of the completed spec artifacts
+- `.documentation/Guide.md` - Clarified that active specs are in-flight only and completed specs move to `.archive/`
 - `.documentation/copilot/harvest-2026-04-11.md` - Recorded harvested artifacts, intentional keeps, and follow-up notes
 
 ## 2026-04-08 Archive Run

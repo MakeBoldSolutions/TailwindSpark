@@ -13,11 +13,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `.documentation/copilot/harvest-2026-04-08.md` - Superseded harvest report whose durable knowledge is already reflected in the living changelog and guide.
 - `.documentation/copilot/session=2026-03-07/` - Older copilot session artifacts no longer needed in the active documentation surface.
 - `.documentation/copilot/preharvest-doc-audit-2026-03-26.json` - Historical preharvest scan output no longer needed alongside current operational docs.
+- `.documentation/specs/003-reactspark-migration/` - Completed ReactSpark migration spec set after reconciliation of the remaining closure tasks.
+- `.documentation/specs/1-constitution-compliance/` - Completed constitution-remediation spec artifact removed from the active spec surface after harvest confirmed its durable outcomes were already preserved.
 
 ### Key decisions preserved
 
 - The active documentation surface remains rooted in `.documentation/`, with the canonical changelog in `.documentation/guides/CHANGELOG.md` and the living orientation document in `.documentation/Guide.md`.
 - Historical copilot process reports are traceability artifacts and belong in `.archive/`, not alongside current operational docs.
+- The ReactSpark migration work is preserved as delivered application behavior and a harvested changelog entry rather than an active planning artifact.
+- The constitution-remediation work remains represented by the 2026-03-01 changelog entry and the live constitution, so the stray active spec copy was archived.
 
 ## [Unreleased] - 2026-04-11
 
@@ -95,6 +99,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Test Configuration**: Updated vitest.config.ts with v8 coverage provider and lcov reporter
 - **npm Scripts**: Added `lint:colors` script for dedicated color violation checking
 - **Package Scripts**: Maintained workspace-scoped linting across monorepo
+
+## [2026-03-07]
+
+### Added
+
+- **ReactSpark Portfolio Migration**: Completed migration of the ReactSpark portfolio experience into the TailwindSpark demo app under the `/apps` route family
+- **Mini-App Suite**: Added Projects, Articles, Joke, Weather, and AI Chat mini-app pages with shared navigation, app discovery, and route-aware SEO metadata
+- **Service and Validation Layer**: Added typed service modules, Zod-backed validation, cache invalidation, sanitization utilities, and SignalR chat integration for the migrated app surfaces
+
+### Changed
+
+- **Navigation and Discovery**: Added the Apps hub, keyboard-accessible dropdown navigation, sticky header behavior, and active-state routing across the migrated experience
+- **Quality Gates**: Completed accessibility, CSP, caching, and responsive hardening for the mini-app suite while retaining the temporary 40% migration-spec coverage baseline
+- **Performance Delivery**: Split large dependencies into dedicated chunks and verified service worker support for the `/apps/*` routes
 
 ## [1.2.0] - 2025-09-07
 

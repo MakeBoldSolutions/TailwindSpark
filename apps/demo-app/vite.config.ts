@@ -4,7 +4,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 
 // https://vite.dev/config/
-export default defineConfig(({ command }) => {
+export default defineConfig(({ command, mode }) => {
   // Use explicit base URL for GitHub Pages deployment
   // Falls back to VITE_BASE_URL env var, then defaults to '/' for local dev
   const basePath = 
@@ -15,8 +15,8 @@ export default defineConfig(({ command }) => {
   return {
   plugins: [
     react(),
-    // Bundle analyzer (only in build mode)
-    command === 'build' &&
+    // Bundle analyzer is opt-in so standard builds stay git-clean.
+    command === 'build' && mode === 'analyze' &&
       visualizer({
         filename: '../../reports/bundle-analysis.html',
         open: false, // Don't auto-open in browser

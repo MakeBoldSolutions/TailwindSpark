@@ -16,7 +16,10 @@ function Get-RepoRoot {
 }
 
 function Get-CurrentBranch {
-    # First check if SPECIFY_FEATURE environment variable is set
+    # First check environment variables if explicitly set
+    if ($env:DEVSPARK_FEATURE) {
+        return $env:DEVSPARK_FEATURE
+    }
     if ($env:SPECIFY_FEATURE) {
         return $env:SPECIFY_FEATURE
     }
@@ -92,11 +95,43 @@ function Get-FeatureDir {
     Join-Path $RepoRoot ".documentation/specs/$Branch"
 }
 
+function Find-FeatureDirByPrefix {
+    param(
+        [string]$RepoRoot,
+        [string]$BranchName
+    )
+
+    $specsDir = Join-Path $RepoRoot '.documentation/specs'
+    if ($BranchName -notmatch '^(\d{3})-') {
+        return (Join-Path $specsDir $BranchName)
+    }
+
+    $prefixMatch = [regex]::Match($BranchName, '^(\d{3})-')
+    if (-not $prefixMatch.Success) {
+        return (Join-Path $specsDir $BranchName)
+    }
+
+    $prefix = $prefixMatch.Groups[1].Value
+    if (-not (Test-Path $specsDir)) {
+        return (Join-Path $specsDir $BranchName)
+    }
+
+    $matchesFound = @(Get-ChildItem -Path $specsDir -Directory -ErrorAction SilentlyContinue |
+        Where-Object { $_.Name -like "$prefix-*" } |
+        Select-Object -ExpandProperty Name)
+
+    if ($matchesFound.Count -eq 1) {
+        return (Join-Path $specsDir $matchesFound[0])
+    }
+
+    return (Join-Path $specsDir $BranchName)
+}
+
 function Get-FeaturePathsEnv {
     $repoRoot = Get-RepoRoot
     $currentBranch = Get-CurrentBranch
     $hasGit = Test-HasGit
-    $featureDir = Get-FeatureDir -RepoRoot $repoRoot -Branch $currentBranch
+    $featureDir = Find-FeatureDirByPrefix -RepoRoot $repoRoot -BranchName $currentBranch
     
     [PSCustomObject]@{
         REPO_ROOT     = $repoRoot

@@ -57,7 +57,7 @@ Recent artifacts from AI agent workflows. Older completed reports and session di
 
 ### specs/
 
-Active feature specifications following the DevSpark framework. Each feature has its own directory with spec.md, plan.md, and tasks.md.
+Active feature specifications following the DevSpark framework. Completed or superseded feature specs are harvested and moved to `.archive/`, so this directory may temporarily contain only in-flight work and review artifacts.
 
 ### templates/
 

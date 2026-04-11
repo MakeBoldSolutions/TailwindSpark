@@ -12,9 +12,10 @@
   "homepage": "https://markhazleton.github.io/TailwindSpark/",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node ../../scripts/sync-projects-data.mjs && node ../../scripts/sync-repos-data.mjs && node ../../scripts/sync-articles-data.mjs",
+    "sync:data": "node ../../scripts/sync-projects-data.mjs && node ../../scripts/sync-repos-data.mjs && node ../../scripts/sync-articles-data.mjs",
     "build": "tsc -b && vite build",
-    "build:analyze": "npm run build && npm run analyze:open",
+    "postbuild": "tsx ../../scripts/generate-meta.ts ../../dist",
+    "build:analyze": "tsc -b && vite build --mode analyze && npm run analyze:open",
     "analyze": "npx vite-bundle-analyzer ../../dist --mode gzip",
     "analyze:open": "start ../../reports/bundle-analysis.html",
     "lint": "eslint .",
