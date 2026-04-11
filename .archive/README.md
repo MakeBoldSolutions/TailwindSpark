@@ -19,9 +19,31 @@ Move outdated or completed material here when it is useful for traceability but 
 
 | Folder | Date | Description |
 |--------|------|-------------|
+| 2026-04-11/ | 2026-04-11 | Harvested completed feature artifacts and archived superseded copilot reports to keep the active documentation surface current |
 | 2026-04-08/ | 2026-04-08 | Completed session documents: documentation reorganization report and historical harvest report from March |
 | 2026-03-26/ | 2026-03-26 | Session artifacts from March 7, 2026 and harvest scan results |
 | 2026-03-07/ | 2026-03-07 | Legacy session history, completed specs, and superseded audit artifacts |
+
+Archived during routine documentation maintenance:
+
+- `.documentation/copilot/archive-2026-04-08.md` - Superseded archive report retained only for historical traceability
+- `.documentation/copilot/harvest-2026-04-08.md` - Superseded harvest report whose durable knowledge already lives in active docs
+- `.documentation/copilot/preharvest-doc-audit-2026-03-26.json` - Historical preharvest scan output no longer needed in the active documentation surface
+- `.documentation/copilot/session=2026-03-07/` - Old copilot session workspace no longer needed in the active documentation surface
+
+## 2026-04-11 Harvest Run
+
+Archived during knowledge harvest:
+
+- `.documentation/specs/001-github-repos-explorer/` - Completed GitHub Repositories Explorer spec set after changelog capture
+- `.documentation/specs/pr-review/pr-122.md` - Completed PR review for the repositories explorer work
+- `.documentation/copilot/audit/2026-04-09_results.md` - Completed audit output superseded by harvested living docs
+- `.documentation/memory/constitution.md.20260410.bak` - Superseded constitution backup retained only for traceability
+
+Knowledge extracted and preserved in:
+
+- `.documentation/guides/CHANGELOG.md` - Added the GitHub Repositories Explorer delivery entry
+- `.documentation/copilot/harvest-2026-04-11.md` - Recorded harvested artifacts, intentional keeps, and follow-up notes
 
 ## 2026-04-08 Archive Run
 

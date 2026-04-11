@@ -8,7 +8,7 @@
 
 A comprehensive Tailwind CSS showcase and learning resource built as a production-ready React TypeScript monorepo. Demonstrates modern web development patterns, design systems, and component architecture.
 
-**[Live Demo](https://markhazleton.github.io/TailwindSpark/)** • **[Full Documentation](./.documentation/guides/)** • **[Repository Story](./.documentation/repo-story/repo-story-2026-04-08.md)**
+**[Live Demo](https://markhazleton.github.io/TailwindSpark/)** • **[Full Documentation](./.documentation/guides/)** • **[Repository Story](./.documentation/repo-story/repo-story-2026-04-11.md)**
 
 ![TailwindSpark Demo](https://raw.githubusercontent.com/markhazleton/TailwindSpark/main/apps/demo-app/public/TailwindSpark.png)
 
@@ -22,7 +22,7 @@ A comprehensive Tailwind CSS showcase and learning resource built as a productio
 
 **Active Maintenance**: Automated dependency updates via Dependabot, security scanning, performance monitoring, and regular constitutional compliance audits.
 
-📊 **[Read the full development history and metrics analysis](./.documentation/repo-story/repo-story-2026-04-08.md)**
+📊 **[Read the full development history and metrics analysis](./.documentation/repo-story/repo-story-2026-04-11.md)**
 
 ## 🚀 Quick Start
 
@@ -65,7 +65,7 @@ TailwindSpark/
 
 **Project Governance**
 - [Constitution](./.documentation/memory/constitution.md) - Formal coding standards and principles
-- [Repository Story](./.documentation/repo-story/repo-story-2026-04-08.md) - Development history and metrics
+- [Repository Story](./.documentation/repo-story/repo-story-2026-04-11.md) - Development history and metrics
 
 **Resources**
 - [Deployment Guide](./.documentation/guides/DEPLOYMENT.md)
@@ -81,7 +81,7 @@ npm run test         # Vitest with coverage reporting
 npm run lint         # ESLint + custom rules
 ```
 
-For detailed technical specifications, architecture decisions, and development quality metrics, see the [Repository Story](./.documentation/repo-story/repo-story-2026-04-08.md).or details.
+For detailed technical specifications, architecture decisions, and development quality metrics, see the [Repository Story](./.documentation/repo-story/repo-story-2026-04-11.md) for details.
 
 ## 👨‍💻 Author
 

@@ -10,6 +10,7 @@ This directory contains all project documentation, development artifacts, and kn
 
 ```
 .documentation/
+├── DEVSPARK_VERSION      # Installed DevSpark version stamp
 ├── guides/              # User-facing documentation
 │   ├── ARCHITECTURE.md  # Monorepo architecture reference
 │   ├── BRANDING.md      # Brand guidelines and visual identity
@@ -20,10 +21,13 @@ This directory contains all project documentation, development artifacts, and kn
 ├── memory/              # Constitutional knowledge and governance
 │   └── constitution.md  # Project constitution and development principles
 ├── copilot/             # AI agent session artifacts
-│   ├── harvest-YYYY-MM-DD.md        # Harvest workflow reports
-│   └── [other session docs]         # Temporary working documents
+│   ├── harvest-YYYY-MM-DD.md        # Current harvest workflow reports
+│   └── [recent working artifacts]   # Temporary working documents not yet archived
+├── repo-story/          # Repository history narratives and generated metrics
+├── scripts/             # Team-level PowerShell helper overrides for DevSpark workflows
 ├── specs/               # Feature specifications and planning
 │   └── [feature-name]/  # Feature-specific directories
+├── templates/           # Team templates used by DevSpark workflows
 └── Guide.md            # This file - orientation and navigation
 ```
 
@@ -42,13 +46,26 @@ This directory contains all project documentation, development artifacts, and kn
 
 - **constitution.md** - Project constitution defining development principles, code standards, and architectural decisions
 
+### repo-story/
+
+- **history.json** - Generated repository-history metrics used by the repo-story workflow
+- **repo-story-YYYY-MM-DD.md** - Evidence-based repository narrative snapshots
+
 ### copilot/
 
-Session artifacts from AI agent workflows. These are temporary working documents that may be archived periodically.
+Recent artifacts from AI agent workflows. Older completed reports and session directories are archived to keep this directory focused on current work.
 
 ### specs/
 
 Active feature specifications following the DevSpark framework. Each feature has its own directory with spec.md, plan.md, and tasks.md.
+
+### templates/
+
+Team-level workflow templates used by DevSpark planning and implementation commands.
+
+### DEVSPARK_VERSION
+
+Version stamp for the currently installed DevSpark framework in this repository.
 
 ## Constitution Location
 
@@ -62,14 +79,7 @@ This is the **governing authority** for all development decisions, code patterns
 
 ## Archive Directory
 
-Completed and historical documentation is preserved in `.archive/` (outside this directory):
-
-```
-.archive/
-├── 2026-03-07/         # Historical artifacts from March 7
-├── 2026-03-26/         # Historical artifacts from March 26
-└── 2026-04-09/         # Historical artifacts from April 9
-```
+Completed and historical documentation is preserved in `.archive/` (outside this directory).
 
 **Important**: `.archive/` is write-only from an operational perspective. Do not read from archive during normal development operations. Past decisions are preserved for audit and traceability only.
 
@@ -116,7 +126,11 @@ This directory is kept current through:
 - **Archive workflow** - Moves outdated content to `.archive/` with date stamps
 - **Constitution evolution** - Updates governing principles based on learnings
 
+## Archive Summary
+
+`.archive/` contains completed and historical docs that are preserved for traceability but are not part of the active `.documentation/` surface.
+
 ---
 
-**Last Updated**: 2026-04-08  
-**DevSpark Version**: 1.3.0
+**Last Updated**: 2026-04-11  
+**DevSpark Version**: 1.5.0

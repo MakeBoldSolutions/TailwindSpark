@@ -5,6 +5,36 @@ All notable changes to TailwindSpark will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2026-04-11] Archive run
+
+### Archived
+
+- `.documentation/copilot/archive-2026-04-08.md` - Prior archive report retained only for historical traceability after newer archive and harvest runs.
+- `.documentation/copilot/harvest-2026-04-08.md` - Superseded harvest report whose durable knowledge is already reflected in the living changelog and guide.
+- `.documentation/copilot/session=2026-03-07/` - Older copilot session artifacts no longer needed in the active documentation surface.
+- `.documentation/copilot/preharvest-doc-audit-2026-03-26.json` - Historical preharvest scan output no longer needed alongside current operational docs.
+
+### Key decisions preserved
+
+- The active documentation surface remains rooted in `.documentation/`, with the canonical changelog in `.documentation/guides/CHANGELOG.md` and the living orientation document in `.documentation/Guide.md`.
+- Historical copilot process reports are traceability artifacts and belong in `.archive/`, not alongside current operational docs.
+
+## [Unreleased] - 2026-04-11
+
+### Added
+
+- **GitHub Repositories Explorer**: Added a new repositories mini-app that browses Mark Hazleton's public repositories with portfolio analytics
+  - Registered a new demo app route for repository exploration inside the demo application
+  - Added search, language filtering, status filtering, and multiple sort modes for repository discovery
+  - Added accordion-style repository detail panels with AI summary, commit activity, language breakdown, attention metrics, contributor stats, and external links
+  - Added aggregate portfolio summary metrics for repositories, commits, stars, forks, and language distribution
+
+### Technical
+
+- **Repository Data Sync Pipeline**: Added a prebuild repository sync flow that fetches and sanitizes repositories.json into the demo app public data bundle
+- **Repository Analytics Types and Service**: Added schema validation, typed mapping, caching, and service-layer access for repository portfolio data
+- **Accessibility and Responsive Behavior**: Completed keyboard-accessible expansion behavior and responsive layout support for the repositories experience
+
 ## [Unreleased] - 2026-04-08
 
 ### Changed

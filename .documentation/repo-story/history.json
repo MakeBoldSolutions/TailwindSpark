@@ -1,189 +1,386 @@
 {
-  "generated_at": "2026-04-09T04:42:02.386422+00:00",
+  "generated_at": "2026-04-11T16:44:23.6379214+00:00",
   "audit_parameters": {
     "months": 12,
     "scope": "full",
     "compare_baseline": "2025-04",
+    "since_date": "2025-04-11",
     "start_month": "2025-04",
     "end_month": "2026-04"
   },
   "repo": {
     "name": "TailwindSpark",
-    "root": "/Users/markhazleton/GitHub/MarkHazleton/TailwindSpark",
-    "remote_origin": "https://github.com/markhazleton/TailwindSpark.git",
+    "root": "C:/GitHub/MarkHazleton/TailwindSpark",
+    "remote_origin": "https://github.com/markhazleton/TailwindSpark",
     "default_branch": "main"
   },
   "summary": {
-    "total_commits": 151,
-    "total_contributors": 2,
+    "total_commits": 170,
+    "total_commits_in_window": 170,
+    "total_contributors": 4,
     "total_tags": 0,
-    "history_span_days": 253
+    "history_span_days": 256
   },
   "timeline": {
     "first_commit": {
       "sha": "cad1159b290f7b11a897843de085d2007622a507",
       "date": "2025-07-29T11:30:33-05:00",
-      "author": "Mark Hazleton",
+      "role": "Lead Architect",
       "subject": "Initial commit"
     },
     "latest_commit": {
-      "sha": "d3e48285fb9bfdb413a408c695c307c4d3f17aa7",
-      "date": "2026-04-08T23:34:56-05:00",
-      "author": "Mark Hazleton",
-      "subject": "docs: reorganize documentation and archive completed session artifacts"
+      "sha": "5de015612c10548a6529446575036df140c06ee3",
+      "date": "2026-04-11T11:38:11-05:00",
+      "role": "Lead Architect",
+      "subject": "chore: upgrade DevSpark to v1.5.0"
     },
     "commits_by_year": {
-      "2025": 90,
-      "2026": 61
+      "2026": 80,
+      "2025": 90
     },
     "commits_by_month": {
-      "2025-07": 26,
-      "2025-08": 15,
       "2025-09": 25,
-      "2025-10": 13,
+      "2025-08": 15,
+      "2025-07": 26,
+      "2026-02": 4,
       "2025-11": 11,
       "2026-01": 1,
-      "2026-02": 4,
+      "2025-10": 13,
       "2026-03": 42,
-      "2026-04": 14
+      "2026-04": 33
     }
   },
   "contributors": {
     "top": [
       {
-        "commits": 107,
-        "name": "Mark Hazleton"
+        "role": "Lead Architect",
+        "commits": 117
       },
       {
-        "commits": 44,
-        "name": "dependabot[bot]"
+        "role": "Developer A",
+        "commits": 45
+      },
+      {
+        "role": "Developer B",
+        "commits": 7
+      },
+      {
+        "role": "Developer C",
+        "commits": 1
       }
     ],
-    "all_count": 2
+    "all_count": 4,
+    "monthly_by_role": {
+      "2025-09": {
+        "Developer A": 5,
+        "Lead Architect": 20
+      },
+      "2025-08": {
+        "Lead Architect": 15
+      },
+      "2025-07": {
+        "Lead Architect": 26
+      },
+      "2026-02": {
+        "Lead Architect": 4
+      },
+      "2025-11": {
+        "Developer A": 6,
+        "Lead Architect": 5
+      },
+      "2026-01": {
+        "Lead Architect": 1
+      },
+      "2025-10": {
+        "Developer A": 7,
+        "Lead Architect": 6
+      },
+      "2026-03": {
+        "Developer C": 1,
+        "Developer A": 15,
+        "Lead Architect": 26
+      },
+      "2026-04": {
+        "Developer B": 7,
+        "Developer A": 12,
+        "Lead Architect": 14
+      }
+    }
+  },
+  "contributor_census": {
+    "role_assignments": [
+      {
+        "role": "Lead Architect",
+        "commits": 117
+      },
+      {
+        "role": "Developer A",
+        "commits": 45
+      },
+      {
+        "role": "Developer B",
+        "commits": 7
+      },
+      {
+        "role": "Developer C",
+        "commits": 1
+      }
+    ]
+  },
+  "volume_metrics": {
+    "total_commits": 170,
+    "monthly_commit_distribution": {
+      "2025-09": 25,
+      "2025-08": 15,
+      "2025-07": 26,
+      "2026-02": 4,
+      "2025-11": 11,
+      "2026-01": 1,
+      "2025-10": 13,
+      "2026-03": 42,
+      "2026-04": 33
+    },
+    "merged_pr_count": 1,
+    "file_types_top": [
+      {
+        "extension": "md",
+        "touched_files": 577
+      },
+      {
+        "extension": "tsx",
+        "touched_files": 389
+      },
+      {
+        "extension": "json",
+        "touched_files": 229
+      },
+      {
+        "extension": "ts",
+        "touched_files": 145
+      },
+      {
+        "extension": "cookie",
+        "touched_files": 68
+      },
+      {
+        "extension": "yml",
+        "touched_files": 51
+      },
+      {
+        "extension": "html",
+        "touched_files": 47
+      },
+      {
+        "extension": "ps1",
+        "touched_files": 40
+      },
+      {
+        "extension": "js",
+        "touched_files": 39
+      },
+      {
+        "extension": "sh",
+        "touched_files": 16
+      },
+      {
+        "extension": "css",
+        "touched_files": 16
+      },
+      {
+        "extension": "txt",
+        "touched_files": 15
+      },
+      {
+        "extension": "(no-ext)",
+        "touched_files": 10
+      },
+      {
+        "extension": "mjs",
+        "touched_files": 7
+      },
+      {
+        "extension": "2025-07-29",
+        "touched_files": 7
+      },
+      {
+        "extension": "gitignore",
+        "touched_files": 7
+      },
+      {
+        "extension": "xml",
+        "touched_files": 6
+      },
+      {
+        "extension": "png",
+        "touched_files": 6
+      },
+      {
+        "extension": "svg",
+        "touched_files": 4
+      },
+      {
+        "extension": "prettierignore",
+        "touched_files": 2
+      }
+    ],
+    "largest_merges": [
+      {
+        "sha": "c39dedb0a9ad50b00a0641d4300642b7daf55078",
+        "subject": "Merge pull request #93 from markhazleton/002-audit-criticals",
+        "files_changed": 45,
+        "additions": 3960,
+        "deletions": 262,
+        "total_lines": 4222
+      }
+    ]
+  },
+  "commit_message_metrics": {
+    "conventional_commit_count": 103,
+    "informal_commit_count": 0,
+    "spec_reference_commit_count": 0
+  },
+  "test_metrics": {
+    "test_file_count": 1013,
+    "test_related_commit_count": 12
+  },
+  "governance_maturity": {
+    "constitution_path": "C:\\GitHub\\MarkHazleton\\TailwindSpark\\.documentation\\memory\\constitution.md",
+    "constitution_exists": true,
+    "constitution_version": "",
+    "constitution_amendment_count": 0,
+    "active_spec_count": 3,
+    "archived_spec_directory_count": 5,
+    "governance_artifact_count": 4
   },
   "milestones": {
     "tags": [],
     "readme_evolution": {
-      "total_readme_commits": 20,
+      "total_readme_commits": 21,
       "commits": [
+        {
+          "sha": "703d46d0bc3781ec2d309542ca684b254a776503",
+          "date": "2026-04-08T23:55:46-05:00",
+          "role": "Developer B",
+          "subject": "feat: complete DevSpark agent shims and add comprehensive repository story"
+        },
         {
           "sha": "d3e48285fb9bfdb413a408c695c307c4d3f17aa7",
           "date": "2026-04-08T23:34:56-05:00",
-          "author": "Mark Hazleton",
+          "role": "Developer B",
           "subject": "docs: reorganize documentation and archive completed session artifacts"
         },
         {
           "sha": "43c063cb0da0bbe3aa0788b199b6dac083d5121d",
           "date": "2026-02-09T22:39:59-06:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "fix: update BASE_URL in generate-meta.ts to reflect new project name"
         },
         {
           "sha": "bf4f774e7bb19975b8a9eed262c18b5239b8cb37",
           "date": "2026-01-04T21:30:17-06:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "Refactor code structure for improved readability and maintainability"
         },
         {
           "sha": "43ace29c9b0ef46cf3271ef17e570efc193c4f80",
           "date": "2025-09-07T10:17:59-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "docs: Update all documentation for Tailwind CSS v4 migration"
         },
         {
           "sha": "7c8ddcb8470f24fb28977b2f2607ca8fec32c8f9",
           "date": "2025-09-07T06:07:09-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "chore: Refactor console.log to console.warn for improved logging consistency and update documentation formatting"
         },
         {
           "sha": "cb5960148aae0c885190edfb4bcc513816114c80",
           "date": "2025-09-07T05:50:58-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "feat: Add comprehensive session summaries for TailwindSpark repository reviews"
         },
         {
           "sha": "2826fccee0f08bc6f73d25f4899ddff436898577",
           "date": "2025-09-07T05:09:53-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "chore: update dependencies and improve code formatting"
         },
         {
           "sha": "f5a7a520ba457de6d8d2e28dfdd8010cc2da7528",
           "date": "2025-08-01T16:23:56-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "fix: Update Logo component to use imported image for Vite compatibility"
         },
         {
           "sha": "8df8b5e8c37e96ffb0dd404bf7befa579d62a476",
           "date": "2025-08-01T15:44:06-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "docs: Add build versioning to advanced features list"
         },
         {
           "sha": "b1cfb8be031a63c8e35e174ebfe11d9e3dea495b",
           "date": "2025-08-01T11:15:33-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "docs: Document GitHub Pages deployment challenges and solutions for TailwindSpark"
         },
         {
           "sha": "7d08e88e4b68bdeb9d7f2bea98fa85c4f823c1b2",
           "date": "2025-07-31T14:12:22-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "Update README.md"
         },
         {
           "sha": "33faa6b87d13b95009c6a863b22ee23d04c38a42",
           "date": "2025-07-29T18:18:28-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "docs: Enhance README with WebSpark portfolio links and improve HTML meta tags"
         },
         {
           "sha": "8e28dfac57d582a033ef130439297d2a0f037336",
           "date": "2025-07-29T18:17:53-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "feat: Update component imports to use TailwindSpark namespace"
         },
         {
           "sha": "95062b2c63d0a05afa2860c0c4eaaa8de4a1eaa4",
           "date": "2025-07-29T18:02:08-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "feat: Rebrand as TailwindSpark and integrate with WebSpark portfolio"
         },
         {
           "sha": "613871bba4fdf44cd301cb320d93d49c6d06f0b5",
           "date": "2025-07-29T17:51:18-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "docs: Add comprehensive GitHub Pages deployment guide"
         },
         {
           "sha": "a6d71a73ccbb58e9ed3f089edb88e5401f7e6b05",
           "date": "2025-07-29T15:39:45-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "feat: Add Settings and Users pages with comprehensive configuration options"
         },
         {
           "sha": "dfdbf9baf0b56d34b951dc83352586ebb4837ea4",
           "date": "2025-07-29T14:29:52-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "feat: Add Animation Showcase page and integrate animations into the demo app"
         },
         {
           "sha": "f460b525a4ab996ca0292d4d5524d611d2e6dffd",
           "date": "2025-07-29T14:14:52-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "feat: Refactor demo app to use React Router for navigation and add new pages"
         },
         {
           "sha": "1e9a00561b0e364f47875faec7728e907eb77811",
           "date": "2025-07-29T13:47:20-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "initial development"
         },
         {
           "sha": "cad1159b290f7b11a897843de085d2007622a507",
           "date": "2025-07-29T11:30:33-05:00",
-          "author": "Mark Hazleton",
+          "role": "Lead Architect",
           "subject": "Initial commit"
         }
       ]
@@ -191,67 +388,71 @@
   },
   "change_patterns": {
     "subject_type_estimates": {
-      "features": 51,
-      "fixes": 24,
-      "docs": 6,
-      "refactor": 9,
+      "fixes": 34,
+      "docs": 9,
+      "chore": 27,
+      "ci_build": 32,
       "tests": 3,
-      "ci_build": 31,
-      "chore": 20,
-      "other": 7
+      "other": 7,
+      "refactor": 12,
+      "features": 46
     },
     "hotspots": [
       {
         "path": "package-lock.json",
-        "changes": 61
-      },
-      {
-        "path": "apps/demo-app/package.json",
-        "changes": 38
+        "changes": 64
       },
       {
         "path": "package.json",
-        "changes": 36
+        "changes": 41
+      },
+      {
+        "path": "apps/demo-app/package.json",
+        "changes": 40
       },
       {
         "path": "packages/ui-components/package.json",
         "changes": 30
       },
       {
+        "path": "apps/demo-app/src/App.tsx",
+        "changes": 22
+      },
+      {
+        "path": "reports/bundle-analysis.html",
+        "changes": 22
+      },
+      {
         "path": "README.md",
-        "changes": 20
+        "changes": 21
       },
       {
         "path": ".github/workflows/deploy.yml",
         "changes": 20
       },
       {
-        "path": "apps/demo-app/src/App.tsx",
-        "changes": 19
-      },
-      {
         "path": "apps/demo-app/src/components/Layout.tsx",
         "changes": 18
       },
       {
-        "path": "reports/bundle-analysis.html",
-        "changes": 15
-      },
-      {
         "path": "apps/demo-app/index.html",
-        "changes": 15
+        "changes": 16
       },
       {
-        "path": "apps/demo-app/src/pages/HomePage.tsx",
-        "changes": 11
+        "path": "apps/demo-app/vite.config.ts",
+        "changes": 12
+      },
+      {
+        "path": "apps/demo-app/src/components/ErrorBoundary.tsx",
+        "changes": 12
       },
       {
         "path": "apps/demo-app/src/pages/DashboardPage.tsx",
         "changes": 11
       },
       {
-        "path": "apps/demo-app/vite.config.ts",
-        "changes": 10
+        "path": "apps/demo-app/src/pages/HomePage.tsx",
+        "changes": 11
       },
       {
         "path": ".github/workflows/security.yml",
@@ -262,23 +463,19 @@
         "changes": 10
       },
       {
+        "path": "apps/demo-app/src/App-clean.tsx",
+        "changes": 9
+      },
+      {
         "path": "packages/design-tokens/package.json",
         "changes": 9
       },
       {
-        "path": "apps/demo-app/src/components/ErrorBoundary.tsx",
+        "path": "apps/demo-app/src/pages/SettingsPage_new.tsx",
         "changes": 9
       },
       {
-        "path": "apps/demo-app/src/pages/SettingsPage_new.tsx",
-        "changes": 8
-      },
-      {
-        "path": "apps/demo-app/src/pages/SettingsPage.tsx",
-        "changes": 8
-      },
-      {
-        "path": "apps/demo-app/src/components/EcommerceLayout.tsx",
+        "path": ".github/workflows/deploy-optimized.yml",
         "changes": 8
       },
       {
@@ -286,11 +483,19 @@
         "changes": 8
       },
       {
-        "path": "apps/demo-app/src/App-clean.tsx",
+        "path": "apps/demo-app/src/components/EcommerceLayout.tsx",
         "changes": 8
       },
       {
-        "path": ".github/workflows/deploy-optimized.yml",
+        "path": "apps/demo-app/src/utils/cdnOptimizer.ts",
+        "changes": 8
+      },
+      {
+        "path": "apps/demo-app/src/pages/EcommercePage.tsx",
+        "changes": 8
+      },
+      {
+        "path": "apps/demo-app/src/pages/SettingsPage.tsx",
         "changes": 8
       },
       {
@@ -298,15 +503,15 @@
         "changes": 7
       },
       {
-        "path": "apps/demo-app/src/pages/UsersPage.tsx",
+        "path": "apps/demo-app/src/components/LoadingSpinner.tsx",
         "changes": 7
       },
       {
-        "path": "apps/demo-app/src/pages/EcommercePage.tsx",
+        "path": "apps/demo-app/src/main.tsx",
         "changes": 7
       },
       {
-        "path": "apps/demo-app/src/index.css",
+        "path": "packages/ui-components/src/components/Form.tsx",
         "changes": 7
       },
       {
@@ -314,7 +519,7 @@
         "changes": 7
       },
       {
-        "path": "apps/demo-app/src/components/LoadingSpinner.tsx",
+        "path": "apps/demo-app/src/pages/UsersPage.tsx",
         "changes": 7
       },
       {
@@ -322,23 +527,43 @@
         "changes": 7
       },
       {
-        "path": "packages/ui-components/src/components/Modal.tsx",
-        "changes": 6
-      },
-      {
-        "path": "packages/ui-components/src/components/Form.tsx",
-        "changes": 6
+        "path": "apps/demo-app/src/index.css",
+        "changes": 7
       },
       {
         "path": "packages/ui-components/src/components/Button.tsx",
         "changes": 6
       },
       {
-        "path": "packages/design-tokens/theme.css",
+        "path": "apps/demo-app/src/sections/CardShowcase.tsx",
         "changes": 6
       },
       {
-        "path": "docs/ARCHITECTURE.md",
+        "path": "apps/demo-app/src/components/QuickViewModal.tsx",
+        "changes": 6
+      },
+      {
+        "path": "packages/ui-components/src/components/Modal.tsx",
+        "changes": 6
+      },
+      {
+        "path": "apps/demo-app/src/sections/AnimationShowcase.tsx",
+        "changes": 6
+      },
+      {
+        "path": "apps/demo-app/src/pages/AnalyticsPage.tsx",
+        "changes": 6
+      },
+      {
+        "path": ".documentation/specs/002-audit-criticals/tasks.md",
+        "changes": 6
+      },
+      {
+        "path": "apps/demo-app/public/sitemap.xml",
+        "changes": 6
+      },
+      {
+        "path": "apps/demo-app/src/pages/MarketingPage.tsx",
         "changes": 6
       },
       {
@@ -350,43 +575,7 @@
         "changes": 6
       },
       {
-        "path": "apps/demo-app/src/sections/FormShowcase.tsx",
-        "changes": 6
-      },
-      {
-        "path": "apps/demo-app/src/sections/CardShowcase.tsx",
-        "changes": 6
-      },
-      {
-        "path": "apps/demo-app/src/sections/AnimationShowcase.tsx",
-        "changes": 6
-      },
-      {
-        "path": "apps/demo-app/src/pages/DesignSystemPage.tsx",
-        "changes": 6
-      },
-      {
         "path": "apps/demo-app/src/pages/AnimationPage.tsx",
-        "changes": 6
-      },
-      {
-        "path": "apps/demo-app/src/pages/AnalyticsPage.tsx",
-        "changes": 6
-      },
-      {
-        "path": "apps/demo-app/src/main.tsx",
-        "changes": 6
-      },
-      {
-        "path": "apps/demo-app/src/components/SearchComponent.tsx",
-        "changes": 6
-      },
-      {
-        "path": "apps/demo-app/src/components/QuickViewModal.tsx",
-        "changes": 6
-      },
-      {
-        "path": "apps/demo-app/src/components/MarketingLayout.tsx",
         "changes": 6
       },
       {
@@ -394,12 +583,20 @@
         "changes": 6
       },
       {
-        "path": ".documentation/specs/002-audit-criticals/tasks.md",
+        "path": "apps/demo-app/public/sw.js",
         "changes": 6
       },
       {
-        "path": "turbo.json",
-        "changes": 5
+        "path": "apps/demo-app/src/components/MarketingLayout.tsx",
+        "changes": 6
+      },
+      {
+        "path": "apps/demo-app/src/sections/FormShowcase.tsx",
+        "changes": 6
+      },
+      {
+        "path": "apps/demo-app/src/pages/DesignSystemPage.tsx",
+        "changes": 6
       }
     ]
   },
@@ -420,244 +617,244 @@
   "recent": {
     "commits": [
       {
+        "sha": "5de015612c10548a6529446575036df140c06ee3",
+        "date": "2026-04-11T11:38:11-05:00",
+        "role": "Lead Architect",
+        "subject": "chore: upgrade DevSpark to v1.5.0"
+      },
+      {
+        "sha": "b0777f759db69d3a7b5ded6aa414637ea4662f9f",
+        "date": "2026-04-11T11:23:14-05:00",
+        "role": "Lead Architect",
+        "subject": "chore: remove dead code and formalize deletion policy in constitution"
+      },
+      {
+        "sha": "3b921b13dad42887963ceb2f78432f29244f552e",
+        "date": "2026-04-11T10:34:12-05:00",
+        "role": "Lead Architect",
+        "subject": "fix: enhance URL redirection logic and improve status message display"
+      },
+      {
+        "sha": "46a562e97caf556f1ca660280dda6fc42e6ecee2",
+        "date": "2026-04-11T10:13:29-05:00",
+        "role": "Developer A",
+        "subject": "deps-dev(deps-dev): bump basic-ftp from 5.2.1 to 5.2.2 (#123)"
+      },
+      {
+        "sha": "710b237faf96516f287a0d401f408d3077cb560a",
+        "date": "2026-04-11T10:12:39-05:00",
+        "role": "Lead Architect",
+        "subject": "Refactor code structure for improved readability and maintainability"
+      },
+      {
+        "sha": "7b3eb8aa1227acb75c6676f1a8f54c58d073df85",
+        "date": "2026-04-11T10:05:03-05:00",
+        "role": "Lead Architect",
+        "subject": "fix: resolve test failures and lint errors"
+      },
+      {
+        "sha": "9a1ab46b3f923f0b64f1115946e24548eb8120ef",
+        "date": "2026-04-11T09:43:36-05:00",
+        "role": "Lead Architect",
+        "subject": "fix: resolve articles page loading and console errors"
+      },
+      {
+        "sha": "c8a78f462382ff0a28fd03c73c335fc69c3665d2",
+        "date": "2026-04-10T17:27:59-05:00",
+        "role": "Lead Architect",
+        "subject": "Refactor code structure for improved readability and maintainability"
+      },
+      {
+        "sha": "552fc06b8fb82884fc0c66fb522dbbf7a717e5b8",
+        "date": "2026-04-10T15:48:35-05:00",
+        "role": "Lead Architect",
+        "subject": "Add build logs for version 1.0.79 and 1.0.80 with detailed output"
+      },
+      {
+        "sha": "5f5b56597b5bb8b7df6c863af9d5f97ebb7d1db3",
+        "date": "2026-04-10T10:27:40-05:00",
+        "role": "Lead Architect",
+        "subject": "fix(utils): disable CDN optimizer resource preloading to eliminate 404 errors"
+      },
+      {
+        "sha": "8fe660bd44c88d82443a675a78f0ce9986fbf2b9",
+        "date": "2026-04-10T10:17:10-05:00",
+        "role": "Lead Architect",
+        "subject": "fix(sw): exclude JokeAPI from service worker caching"
+      },
+      {
+        "sha": "9c2705149e83a97bbff05d8f4ae3766520febdb3",
+        "date": "2026-04-10T10:15:18-05:00",
+        "role": "Lead Architect",
+        "subject": "fix(data): use Vite BASE_URL for projects and articles data paths"
+      },
+      {
+        "sha": "1653582113e89636c991bc25e857aff93935fe23",
+        "date": "2026-04-10T10:09:18-05:00",
+        "role": "Lead Architect",
+        "subject": "Refactor code structure for improved readability and maintainability"
+      },
+      {
+        "sha": "23b275aec2d3a470d0af06388f7637340134f2e8",
+        "date": "2026-04-10T09:35:26-05:00",
+        "role": "Lead Architect",
+        "subject": "fix(repos): use Vite BASE_URL for repositories.json path"
+      },
+      {
+        "sha": "943807f883905cf1ba402651e6a8ce8461c661bf",
+        "date": "2026-04-10T09:28:54-05:00",
+        "role": "Lead Architect",
+        "subject": "feat: GitHub Repositories Explorer - Browse and analyze Mark Hazleton's public repositories (#122)"
+      },
+      {
+        "sha": "ad19056d8f5839d7cb79d1543ed4670f2f109954",
+        "date": "2026-04-09T09:21:01-05:00",
+        "role": "Developer B",
+        "subject": "fix: add missing output.globals for jsx-runtime externals in vite config"
+      },
+      {
+        "sha": "c0666b681a1f42566c4b2dfcc9e7faf3244b1bc1",
+        "date": "2026-04-09T09:09:01-05:00",
+        "role": "Developer B",
+        "subject": "fix: resolve site audit findings - accessibility and code quality"
+      },
+      {
+        "sha": "3a6dba64c408909b6bb61d60ef1cfb99c6df82a1",
+        "date": "2026-04-08T23:56:51-05:00",
+        "role": "Developer B",
+        "subject": "chore: update version to 1.0.60 and improve TypeScript configuration"
+      },
+      {
+        "sha": "703d46d0bc3781ec2d309542ca684b254a776503",
+        "date": "2026-04-08T23:55:46-05:00",
+        "role": "Developer B",
+        "subject": "feat: complete DevSpark agent shims and add comprehensive repository story"
+      },
+      {
         "sha": "d3e48285fb9bfdb413a408c695c307c4d3f17aa7",
         "date": "2026-04-08T23:34:56-05:00",
-        "author": "Mark Hazleton",
+        "role": "Developer B",
         "subject": "docs: reorganize documentation and archive completed session artifacts"
       },
       {
         "sha": "a0580eeda458f8a8e9c90cf5bd7cad22aee51845",
         "date": "2026-04-08T23:16:59-05:00",
-        "author": "Mark Hazleton",
+        "role": "Developer B",
         "subject": "chore: migrate from SpecKit 1.4.3 to DevSpark 1.3.0"
       },
       {
         "sha": "d9b007fa889b3f10df0d658d6fd16ce91c857759",
         "date": "2026-04-08T22:58:41-05:00",
-        "author": "Mark Hazleton",
+        "role": "Developer B",
         "subject": "chore: update npm packages and fix security vulnerabilities"
       },
       {
         "sha": "69dcbfe6862d9cc94159014c343d4397c6279fae",
         "date": "2026-04-08T22:49:46-05:00",
-        "author": "dependabot[bot]",
+        "role": "Developer A",
         "subject": "deps-dev(deps-dev): bump the dev-dependencies group across 1 directory with 12 updates (#121)"
       },
       {
         "sha": "71c65e95f42b2e770c763bd75cbb05d6b0ac216e",
         "date": "2026-04-08T21:43:28-05:00",
-        "author": "dependabot[bot]",
+        "role": "Developer A",
         "subject": "deps-dev(deps-dev): bump picomatch from 2.3.1 to 2.3.2 (#105)"
       },
       {
         "sha": "e93ddc540bf24d7943b212036ebcfcbf04168ddb",
         "date": "2026-04-08T21:43:22-05:00",
-        "author": "dependabot[bot]",
+        "role": "Developer A",
         "subject": "deps-dev(deps-dev): bump happy-dom from 20.8.4 to 20.8.9 (#108)"
       },
       {
         "sha": "a5704d83a6aff6d6f1cfbe5c42cca3c9e5ede15b",
         "date": "2026-04-08T21:43:19-05:00",
-        "author": "dependabot[bot]",
+        "role": "Developer A",
         "subject": "deps(deps): bump lucide-react from 0.577.0 to 1.7.0 (#109)"
       },
       {
         "sha": "09ae8e3b5c10acee0db53affc936969d7fd80a37",
         "date": "2026-04-08T21:43:15-05:00",
-        "author": "dependabot[bot]",
+        "role": "Developer A",
         "subject": "chore(deps): bump actions/deploy-pages from 4 to 5 in /.github/workflows (#112)"
       },
       {
         "sha": "8ab434a274d67b754d2ce40f472353cb02df140d",
         "date": "2026-04-08T21:43:11-05:00",
-        "author": "dependabot[bot]",
+        "role": "Developer A",
         "subject": "chore(deps): bump actions/configure-pages in /.github/workflows (#113)"
       },
       {
         "sha": "eed307343a5ace18056dbbe57918cfbfbb7ee080",
         "date": "2026-04-08T21:43:07-05:00",
-        "author": "dependabot[bot]",
+        "role": "Developer A",
         "subject": "chore(deps): bump actions/upload-artifact in /.github/workflows (#114)"
       },
       {
         "sha": "11f92da422973d3cccb26a6ddf09f7cfabe3ba72",
         "date": "2026-04-08T21:43:03-05:00",
-        "author": "dependabot[bot]",
+        "role": "Developer A",
         "subject": "deps-dev(deps-dev): bump lodash-es from 4.17.23 to 4.18.1 (#115)"
       },
       {
         "sha": "68338bcaed3ea36037cd5f869205d331de57bbab",
         "date": "2026-04-08T21:42:59-05:00",
-        "author": "dependabot[bot]",
+        "role": "Developer A",
         "subject": "deps(deps): bump react-router-dom from 7.13.1 to 7.14.0 (#116)"
       },
       {
         "sha": "2039eadb571f5e2c2b875ab5873561b3839c3fb6",
         "date": "2026-04-08T21:42:53-05:00",
-        "author": "dependabot[bot]",
+        "role": "Developer A",
         "subject": "deps-dev(deps-dev): bump basic-ftp from 5.2.0 to 5.2.1 (#119)"
       },
       {
         "sha": "4c8ae5417fa95dc1224d6fe826644bd361ba8651",
         "date": "2026-04-08T21:42:33-05:00",
-        "author": "dependabot[bot]",
+        "role": "Developer A",
         "subject": "deps-dev(deps-dev): bump vite from 8.0.0 to 8.0.7 (#120)"
       },
       {
         "sha": "adb2c93ac64a9c0b2acdd15288752af4a191db17",
         "date": "2026-03-26T09:36:02-05:00",
-        "author": "Mark Hazleton",
+        "role": "Lead Architect",
         "subject": "Refactor code structure for improved readability and maintainability"
       },
       {
         "sha": "335c330f84a0134ee5858133695e319015267d86",
         "date": "2026-03-26T09:30:43-05:00",
-        "author": "Mark Hazleton",
+        "role": "Lead Architect",
         "subject": "feat: Document migration of ReactSparkPortfolio into demo app"
       },
       {
         "sha": "d5011ad9a51007d3924cba28c355eef40d5cb4b5",
         "date": "2026-03-26T09:10:36-05:00",
-        "author": "Mark Hazleton",
+        "role": "Lead Architect",
         "subject": "Refactor code structure for improved readability and maintainability"
       },
       {
         "sha": "aac440d6ba9598a8c1e440a85b08804e54c8302a",
         "date": "2026-03-26T09:08:35-05:00",
-        "author": "Mark Hazleton",
+        "role": "Lead Architect",
         "subject": "Fix ui-components React runtime resolution in Vite"
       },
       {
         "sha": "275b751b9a1121e8ff03f1d7c4fc3a97598a3a38",
         "date": "2026-03-26T08:46:40-05:00",
-        "author": "Mark Hazleton",
+        "role": "Lead Architect",
         "subject": "feat: Add new agents for archiving, harvesting, and upgrading documentation"
       },
       {
         "sha": "4374ea5c0b6ca25ad6f783ddceae20f993abbf10",
         "date": "2026-03-15T08:04:09-05:00",
-        "author": "Mark Hazleton",
+        "role": "Lead Architect",
         "subject": "feat(sync-projects): add validation and sanitization for project data"
       },
       {
         "sha": "53a75806c20e69373e1cdad8b6275d948f0fd7c9",
         "date": "2026-03-15T07:35:32-05:00",
-        "author": "Mark Hazleton",
+        "role": "Lead Architect",
         "subject": "Refactor code structure for improved readability and maintainability"
-      },
-      {
-        "sha": "5d56d814f2734849729d00cc0b926a3102e8094c",
-        "date": "2026-03-15T07:34:26-05:00",
-        "author": "dependabot[bot]",
-        "subject": "deps(deps): bump @microsoft/signalr from 8.0.17 to 10.0.0 (#96)"
-      },
-      {
-        "sha": "0f597594406c6741f8401c39bc11935af7cb052f",
-        "date": "2026-03-15T07:34:16-05:00",
-        "author": "dependabot[bot]",
-        "subject": "deps(deps): bump react-markdown from 9.1.0 to 10.1.0 (#97)"
-      },
-      {
-        "sha": "146a4d6dfcb3ce628e5142793ec727fae9dfc9bf",
-        "date": "2026-03-15T07:33:52-05:00",
-        "author": "dependabot[bot]",
-        "subject": "deps(deps): bump lightningcss from 1.31.1 to 1.32.0 (#99)"
-      },
-      {
-        "sha": "dfa3c8db4e0bc139fb53da106e6ad97695216ea2",
-        "date": "2026-03-15T07:33:39-05:00",
-        "author": "dependabot[bot]",
-        "subject": "deps(deps): bump zod from 3.25.76 to 4.3.6 (#98)"
-      },
-      {
-        "sha": "3f69843b8bd83c0cacdf013acf61ea4118754b63",
-        "date": "2026-03-15T07:32:47-05:00",
-        "author": "dependabot[bot]",
-        "subject": "deps-dev(deps-dev): bump undici from 7.22.0 to 7.24.3 (#101)"
-      },
-      {
-        "sha": "46cb1b7945641dd9c1634f9cd24a28686578c9a9",
-        "date": "2026-03-15T07:32:36-05:00",
-        "author": "dependabot[bot]",
-        "subject": "deps-dev(deps-dev): bump the dev-dependencies group across 1 directory with 6 updates (#102)"
-      },
-      {
-        "sha": "e8bfac7ca2f33d15e290d2668f1fa3d1a88dcad1",
-        "date": "2026-03-15T06:09:46-05:00",
-        "author": "Mark Hazleton",
-        "subject": "Refactor code structure for improved readability and maintainability"
-      },
-      {
-        "sha": "387f090779c01669a1b3510c5a2ada9a38f20e26",
-        "date": "2026-03-14T21:53:15-05:00",
-        "author": "Mark Hazleton",
-        "subject": "feat: add build configuration for design tokens and implement tests for RSS API article mapping"
-      },
-      {
-        "sha": "51028e604aba4380c996a9b0662e4db51f971058",
-        "date": "2026-03-08T11:05:49-05:00",
-        "author": "Mark Hazleton",
-        "subject": "Add script to sync projects data from external source"
-      },
-      {
-        "sha": "a5a6a9fbb35027fff1d5ba79f21bde79bac99b26",
-        "date": "2026-03-08T10:58:16-05:00",
-        "author": "Mark Hazleton",
-        "subject": "Refactor code structure for improved readability and maintainability"
-      },
-      {
-        "sha": "53bc50584605af16145345aac50a51b1671663ea",
-        "date": "2026-03-08T08:41:12-05:00",
-        "author": "Mark Hazleton",
-        "subject": "Resolve dependabot and security backlog"
-      },
-      {
-        "sha": "586570ad70ed891dc2778e40ddfd2d5f071f1d35",
-        "date": "2026-03-08T08:30:33-05:00",
-        "author": "Mark Hazleton",
-        "subject": "feat: migrate ReactSpark portfolio into demo-app mini-app suite (#94)"
-      },
-      {
-        "sha": "8cfc715921b3d1c3ccb81d8b8cf5d0b08b0eedee",
-        "date": "2026-03-02T20:43:00-06:00",
-        "author": "Mark Hazleton",
-        "subject": "chore: add .npmrc configuration for legacy peer dependencies and audit level"
-      },
-      {
-        "sha": "c39dedb0a9ad50b00a0641d4300642b7daf55078",
-        "date": "2026-03-02T20:28:58-06:00",
-        "author": "Mark Hazleton",
-        "subject": "Merge pull request #93 from markhazleton/002-audit-criticals"
-      },
-      {
-        "sha": "ebbadef2464a11edad9adf1494d94ff8d62900e3",
-        "date": "2026-03-02T20:27:54-06:00",
-        "author": "Mark Hazleton",
-        "subject": "docs: Add validation documentation and finalize PR description"
-      },
-      {
-        "sha": "3f739ed672ef8ff2dc09f374db886181cebc59f6",
-        "date": "2026-03-02T20:10:23-06:00",
-        "author": "Mark Hazleton",
-        "subject": "Add JSDoc comments to TypeScript interfaces and utility functions"
-      },
-      {
-        "sha": "4ce71f803f4a36d932fee07469bd5fcb6bae0129",
-        "date": "2026-03-02T16:30:07-06:00",
-        "author": "Mark Hazleton",
-        "subject": "fix: Replace 250+ raw color violations with semantic design tokens"
-      },
-      {
-        "sha": "4a072920ce6480b7d3fecd4c99463eb197cea399",
-        "date": "2026-03-02T16:07:30-06:00",
-        "author": "Mark Hazleton",
-        "subject": "fix: Address 47 critical constitutional violations"
-      },
-      {
-        "sha": "79ca307e4684ee192800ef3b84863db835b0b6ab",
-        "date": "2026-03-02T15:38:40-06:00",
-        "author": "Mark Hazleton",
-        "subject": "feat(audit): Update documentation for critical audit compliance fixes and clarify test coverage details"
       }
     ]
   }

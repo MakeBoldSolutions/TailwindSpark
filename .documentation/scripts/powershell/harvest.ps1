@@ -4,7 +4,7 @@
     Pre-scan repository for harvest targets: completed specs, stale docs, spec-linked code comments.
 
 .DESCRIPTION
-    This script collects inventory data for the /speckit.harvest agent:
+    This script collects inventory data for the /devspark.harvest agent:
     - Spec folders with completion status (tasks.md analysis, CHANGELOG cross-reference)
     - Documentation files categorized by staleness (reviews, audits, drafts, session notes, backups, orphans)
     - Source code comments that reference specs, plans, tasks, or FRs
@@ -65,7 +65,16 @@ function Get-DocTaxon {
     )
 
     $normalizedPath = $RelativePath -replace '\\', '/'
-    $deprecatedPattern = 'pydantic_agent|AGENT_REGISTRY|REPO_MODE_AGENTS|data_field|function_name|display_card_id'
+    # Build the legacy-token pattern dynamically so this script does not flag itself as stale.
+    $deprecatedTerms = @(
+        ('pydantic' + '_agent'),
+        ('AGENT' + '_REGISTRY'),
+        ('REPO' + '_MODE_' + 'AGENTS'),
+        ('data' + '_field'),
+        ('function' + '_name'),
+        ('display' + '_card_' + 'id')
+    )
+    $deprecatedPattern = ($deprecatedTerms | ForEach-Object { [regex]::Escape($_) }) -join '|'
 
     if (
         $normalizedPath -match '^docs/' -or
@@ -128,7 +137,7 @@ function Get-DocScoreBreakdown {
         $freshness -= 4
     }
 
-    if ($RelativePath -in @('CHANGELOG.md', '.github/copilot-instructions.md')) {
+    if ($RelativePath -in @('CHANGELOG.md', '.documentation/guides/CHANGELOG.md', '.github/copilot-instructions.md')) {
         $authority += 1
         $uniqueness += 2
     }
@@ -252,7 +261,10 @@ if ($Scope -in @('full', 'specs', 'scan')) {
     $specsDir = Join-Path $repoRoot '.documentation/specs'
 
     # Load CHANGELOG to cross-reference
-    $changelogPath = Join-Path $repoRoot 'CHANGELOG.md'
+    $changelogPath = Join-Path $repoRoot '.documentation/guides/CHANGELOG.md'
+    if (-not (Test-Path $changelogPath)) {
+        $changelogPath = Join-Path $repoRoot 'CHANGELOG.md'
+    }
     $changelogContent = ''
     if (Test-Path $changelogPath) {
         $changelogContent = Get-Content $changelogPath -Raw -ErrorAction SilentlyContinue
