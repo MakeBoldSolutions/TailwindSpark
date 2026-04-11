@@ -3,8 +3,6 @@
  * Provides memory leak detection and monitoring for development environment
  */
 
-import React from 'react';
-
 // Extend Performance interface to include memory
 interface PerformanceWithMemory extends Performance {
   memory?: {
@@ -53,7 +51,7 @@ class MemoryMonitor {
   private memoryHistory: MemoryInfo[] = [];
   private maxHistorySize = 100;
   private peakMemory: MemoryInfo = { usedJSHeapSize: 0, totalJSHeapSize: 0, jsHeapSizeLimit: 0 };
-  private monitoringInterval: NodeJS.Timeout | null = null;
+  private monitoringInterval: ReturnType<typeof setInterval> | null = null;
   private isMonitoring = false;
 
   constructor() {
@@ -299,44 +297,6 @@ class MemoryMonitor {
  * Global memory monitor instance
  */
 export const memoryMonitor = new MemoryMonitor();
-
-/**
- * React hook for component memory tracking
- * @param componentName - Name of the component to track
- */
-export function useMemoryTracking(componentName: string) {
-  React.useEffect(() => {
-    if (process.env.NODE_ENV === 'development') {
-      memoryMonitor.trackComponentMount(componentName);
-
-      return () => {
-        memoryMonitor.trackComponentUnmount(componentName);
-      };
-    }
-  }, [componentName]);
-}
-
-/**
- * Higher-order component for automatic memory tracking
- * @param WrappedComponent - Component to wrap with memory tracking
- * @param displayName - Optional display name for the wrapped component
- * @returns Wrapped component with memory tracking
- */
-export function withMemoryTracking<P extends object>(
-  WrappedComponent: React.ComponentType<P>,
-  displayName?: string
-) {
-  const componentName =
-    displayName || WrappedComponent.displayName || WrappedComponent.name || 'Unknown';
-
-  const MemoryTrackedComponent = (props: P) => {
-    useMemoryTracking(componentName);
-    return React.createElement(WrappedComponent, props);
-  };
-
-  MemoryTrackedComponent.displayName = `withMemoryTracking(${componentName})`;
-  return MemoryTrackedComponent;
-}
 
 // Auto-start monitoring in development
 if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {

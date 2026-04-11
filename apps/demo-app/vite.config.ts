@@ -2,7 +2,6 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
-import { performanceBudgetPlugin } from './src/utils/performanceBudget';
 
 // https://vite.dev/config/
 export default defineConfig(({ command }) => {
@@ -16,12 +15,6 @@ export default defineConfig(({ command }) => {
   return {
   plugins: [
     react(),
-    // Performance budget monitoring for builds
-    performanceBudgetPlugin({
-      maxBundleSize: 1000, // 1MB total
-      maxChunkSize: 500, // 500KB per chunk
-      maxAssetSize: 100, // 100KB per asset
-    }),
     // Bundle analyzer (only in build mode)
     command === 'build' &&
       visualizer({

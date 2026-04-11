@@ -97,25 +97,6 @@ export const AIVariantSchema = z.object({
 export const AIVariantsResponseSchema = z.array(AIVariantSchema);
 
 /**
- * Type inference from Zod schema
- */
-export type AIVariantSchemaType = z.infer<typeof AIVariantSchema>;
-
-/**
- * Type inference for the AI variants response schema.
- */
-export type AIVariantsResponseType = z.infer<typeof AIVariantsResponseSchema>;
-
-/**
- * API Response Wrapper
- */
-export interface AIVariantsAPIResponse {
-  success: boolean;
-  data?: AIVariant[];
-  error?: string;
-}
-
-/**
  * AI Variants API Configuration
  */
 export const AI_VARIANTS_API_CONFIG = {
@@ -163,24 +144,6 @@ export interface ChatMessage {
   /** Error message if message failed to send/receive */
   error?: string;
 }
-
-/**
- * Zod Schema for Chat Message
- */
-export const ChatMessageSchema = z.object({
-  id: z.string().uuid(),
-  variant_id: z.string().uuid(),
-  role: z.enum(['user', 'assistant', 'system']),
-  content: z.string().min(1),
-  timestamp: z.number().int().positive(),
-  streaming: z.boolean().optional(),
-  error: z.string().optional(),
-});
-
-/**
- * Type inference from Zod schema
- */
-export type ChatMessageSchemaType = z.infer<typeof ChatMessageSchema>;
 
 /**
  * SignalR Hub Connection Status
@@ -231,110 +194,6 @@ export const SIGNALR_CONFIG = {
 } as const;
 
 /**
- * SignalR Hub Message (Client → Server)
- */
-export interface SignalRSendMessage {
-  /** User's display name */
-  userName: string;
-  
-  /** AI variant ID to chat with */
-  variantId: string;
-  
-  /** Message content */
-  message: string;
-}
-
-/**
- * SignalR Hub Message (Server → Client)
- */
-export interface SignalRReceiveMessage {
-  /** Message ID */
-  id: string;
-  
-  /** AI variant ID */
-  variantId: string;
-  
-  /** Message role */
-  role: ChatMessageRole;
-  
-  /** Message content */
-  content: string;
-  
-  /** Timestamp */
-  timestamp: number;
-}
-
-/**
- * SignalR Streaming Chunk (Server → Client)
- */
-export interface SignalRStreamChunk {
-  /** Message ID being streamed */
-  messageId: string;
-  
-  /** Content chunk */
-  chunk: string;
-  
-  /** Is this the final chunk? */
-  isFinal: boolean;
-}
-
-/**
- * SignalR Error Message (Server → Client)
- */
-export interface SignalRError {
-  /** Error code */
-  code: string;
-  
-  /** Error message */
-  message: string;
-  
-  /** Additional error details */
-  details?: string;
-}
-
-/**
- * Chat Session State
- */
-export interface ChatSessionState {
-  /** Selected AI variant */
-  variant: AIVariant | null;
-  
-  /** Connection status */
-  connectionStatus: SignalRConnectionStatus;
-  
-  /** Chat messages */
-  messages: ChatMessage[];
-  
-  /** Current input text */
-  inputText: string;
-  
-  /** Is assistant currently typing/streaming? */
-  isAssistantTyping: boolean;
-  
-  /** Connection error message */
-  connectionError?: string;
-}
-
-/**
- * AI Variant Filters
- */
-export interface AIVariantFilters {
-  searchTerm?: string;
-  definitionType?: string;
-}
-
-/**
- * Featured Variants Configuration
- */
-export const FEATURED_VARIANTS_CONFIG = {
-  /** Maximum number of featured variants to display */
-  MAX_FEATURED: 3,
-  
-  /** Display featured section */
-  SHOW_FEATURED_SECTION: true,
-} as const;
-
-/**
  * Chat Message Helpers
  */
 
@@ -355,27 +214,6 @@ export function createUserMessage(
     role: 'user',
     content,
     timestamp: Date.now(),
-  };
-}
-
-/**
- * Creates an empty assistant message before streamed content arrives.
- *
- * @param variantId - Variant identifier associated with the response
- * @param messageId - Optional existing message identifier
- * @returns Assistant chat message payload
- */
-export function createAssistantMessage(
-  variantId: number | string,
-  messageId?: string
-): ChatMessage {
-  return {
-    id: messageId || crypto.randomUUID(),
-    variant_id: String(variantId),
-    role: 'assistant',
-    content: '',
-    timestamp: Date.now(),
-    streaming: true,
   };
 }
 
@@ -430,42 +268,3 @@ export function formatMessageTime(timestamp: number): string {
     hour12: true,
   });
 }
-
-/**
- * SignalR transport type flags.
- */
-export const SignalRTransportType = {
-  WebSockets: 1,
-  ServerSentEvents: 2,
-  LongPolling: 4,
-} as const;
-
-/**
- * SignalR Connection Options
- */
-export interface SignalRConnectionOptions {
-  /** Transport types to use (fallback order) */
-  transport?: number;
-  
-  /** Logging level */
-  logLevel?: 'trace' | 'debug' | 'information' | 'warning' | 'error' | 'none';
-  
-  /** Automatic reconnection */
-  withAutomaticReconnect?: boolean | number[];
-  
-  /** Skip negotiation (WebSocket only) */
-  skipNegotiation?: boolean;
-}
-
-/**
- * Default SignalR Connection Options
- */
-export const DEFAULT_SIGNALR_OPTIONS: SignalRConnectionOptions = {
-  transport:
-    SignalRTransportType.WebSockets |
-    SignalRTransportType.ServerSentEvents |
-    SignalRTransportType.LongPolling,
-  logLevel: 'information',
-  withAutomaticReconnect: SIGNALR_CONFIG.RETRY_DELAYS,
-  skipNegotiation: false,
-};

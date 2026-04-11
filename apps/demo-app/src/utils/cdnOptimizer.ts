@@ -117,31 +117,8 @@ class CDNOptimizer {
    * Attempting to preload non-existent resources generates 404 errors.
    */
   private preloadCriticalResources(): void {
-    // Disabled - see method documentation
-    return;
-    
-    /* Disabled implementation:
-    const criticalFonts = [
-      { href: '/assets/fonts/inter.woff2', type: 'font/woff2' },
-      { href: '/assets/fonts/inter-bold.woff2', type: 'font/woff2' },
-    ];
-
-    criticalFonts.forEach(font => {
-      this.addResourceHint({
-        href: this.config.baseUrl + font.href.slice(1),
-        rel: 'preload',
-        as: 'font',
-        type: font.type,
-        crossorigin: 'anonymous',
-      });
-    });
-
-    this.addResourceHint({
-      href: this.getCriticalStylesUrl(),
-      rel: 'preload',
-      as: 'style',
-    });
-    */
+    // No-op: fonts are loaded from Google Fonts or embedded in CSS by Vite,
+    // and CSS files have unpredictable hash-based names that can't be hardcoded.
   }
 
   /**
@@ -152,7 +129,7 @@ class CDNOptimizer {
     const navLinks = document.querySelectorAll('a[href^="/"]');
 
     navLinks.forEach(link => {
-      let prefetchTimer: NodeJS.Timeout;
+      let prefetchTimer: ReturnType<typeof setTimeout>;
 
       link.addEventListener('mouseenter', () => {
         prefetchTimer = setTimeout(() => {
@@ -373,16 +350,6 @@ class CDNOptimizer {
   }
 
   /**
-   * Get critical styles URL
-   * 
-   * @returns URL for critical CSS file
-   */
-  private getCriticalStylesUrl(): string {
-    // In production, this would be the actual CSS file with hash
-    return `${this.config.assetUrl}styles/index-[hash].css`;
-  }
-
-  /**
    * Extract page name from URL
    * @param url - URL to extract page name from
    * @returns Extracted page name or null if not extractable
@@ -444,5 +411,3 @@ if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
     cdnOptimizer.init();
   }
 }
-
-export default CDNOptimizer;

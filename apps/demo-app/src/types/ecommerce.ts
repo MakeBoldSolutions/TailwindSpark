@@ -44,13 +44,3 @@ export interface CartItem {
   selectedSize: string;
   quantity: number;
 }
-
-/**
- * User account information.
- */
-export interface User {
-  id: number;
-  name: string;
-  email: string;
-  avatar?: string;
-}

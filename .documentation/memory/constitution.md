@@ -2,9 +2,9 @@
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │ CONSTITUTION SYNC IMPACT REPORT                                             │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│ Version Change: 1.0.0 → 2.0.0 (Testing threshold amendment)                │
+│ Version Change: 2.0.0 → 2.1.0 (Dead code removal policy)                   │
 │ Ratified: 2026-03-01                                                        │
-│ Last Amended: 2026-03-07                                                    │
+│ Last Amended: 2026-04-11                                                    │
 │                                                                             │
 │ PRINCIPLES FORMALIZED:                                                      │
 │   ✓ I. Type Safety (MANDATORY)                                             │
@@ -132,10 +132,15 @@ All code must pass ESLint and Prettier checks with zero errors.
 - Prettier configuration **MUST NOT** be overridden per-file (HIGH)
 - Pre-commit hooks **SHOULD** run linting and formatting (RECOMMENDED)
 - Code **MUST** use `console.warn` or `console.error`; `console.log` is discouraged (MEDIUM)
+- Dead code **MUST** be deleted, never commented out (CRITICAL)
+- Commented-out code blocks **MUST NOT** be committed to the repository (CRITICAL)
+- Unused exports, functions, types, interfaces, and constants **MUST** be removed promptly (HIGH)
+- Entire files with no active imports **MUST** be deleted (HIGH)
+- Version control (git) serves as the archive for removed code — do not preserve dead code "for reference" (HIGH)
 
 **Evidence**: `.prettierrc` defines single quotes, 100 char width, Tailwind plugin; `eslint.config.js` has comprehensive rules including TypeScript, accessibility, and custom `no-raw-primary-class` rule
 
-**Rationale**: Consistent formatting and linting reduces cognitive load, eliminates style debates, and ensures code quality across contributors.
+**Rationale**: Consistent formatting and linting reduces cognitive load, eliminates style debates, and ensures code quality across contributors. Commented-out code creates confusion about intent, inflates bundle analysis, and degrades readability. Git history preserves all prior implementations — the codebase itself must reflect only what is actively used.
 
 ### VII. Monorepo Architecture (MANDATORY)
 
@@ -275,4 +280,4 @@ Minor clarifications may be made by project maintainers; major principle changes
 - Violations discovered in audits **MUST** be tracked as technical debt
 - All pull requests **MUST** verify compliance with constitution principles
 
-**Version**: 2.0.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-03-07
+**Version**: 2.1.0 | **Ratified**: 2026-03-01 | **Last Amended**: 2026-04-11
