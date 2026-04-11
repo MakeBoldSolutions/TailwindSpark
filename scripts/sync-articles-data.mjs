@@ -16,26 +16,17 @@ function assertValidArticle(article, index) {
     throw new Error(`Article at index ${index} must be an object`);
   }
 
-  if (typeof article.title !== 'string' || article.title.trim().length === 0) {
-    throw new Error(`Article at index ${index} has an invalid title`);
+  // Check for the actual API format (id, name, slug, etc.)
+  if (typeof article.id !== 'number' && typeof article.id !== 'string') {
+    throw new Error(`Article at index ${index} has an invalid id`);
   }
 
-  if (typeof article.url !== 'string') {
-    throw new Error(`Article at index ${index} has an invalid URL`);
+  if (typeof article.name !== 'string' || article.name.trim().length === 0) {
+    throw new Error(`Article at index ${index} has an invalid name`);
   }
 
-  try {
-    new URL(article.url);
-  } catch {
-    throw new Error(`Article at index ${index} has a malformed URL`);
-  }
-
-  if (article.date !== undefined && typeof article.date !== 'string') {
-    throw new Error(`Article at index ${index} has an invalid date`);
-  }
-
-  if (article.description !== undefined && typeof article.description !== 'string') {
-    throw new Error(`Article at index ${index} has an invalid description`);
+  if (typeof article.slug !== 'string' || article.slug.trim().length === 0) {
+    throw new Error(`Article at index ${index} has an invalid slug`);
   }
 }
 
@@ -53,32 +44,9 @@ function sanitizeArticlesSnapshot(jsonText) {
   const sanitized = parsed.map((article, index) => {
     assertValidArticle(article, index);
 
-    const normalizedArticle = {
-      title: article.title.trim(),
-      url: article.url,
-    };
-
-    if (article.date !== undefined) {
-      normalizedArticle.date = article.date;
-    }
-
-    if (article.description !== undefined) {
-      normalizedArticle.description = article.description.trim();
-    }
-
-    if (article.author !== undefined) {
-      normalizedArticle.author = article.author;
-    }
-
-    if (article.tags !== undefined && Array.isArray(article.tags)) {
-      normalizedArticle.tags = article.tags;
-    }
-
-    if (article.category !== undefined) {
-      normalizedArticle.category = article.category;
-    }
-
-    return normalizedArticle;
+    // Keep the article in its original API format
+    // The app's rss.service will map it to the UI format
+    return article;
   });
 
   return `${JSON.stringify(sanitized, null, 2)}\n`;

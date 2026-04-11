@@ -1,0 +1,73 @@
+
+> tailwindspark-monorepo@1.0.82 prebuild:deploy
+> tsx scripts/generate-meta.ts
+
+Generated sitemap.xml & updated robots.txt
+
+> tailwindspark-monorepo@1.0.82 build:deploy
+> npm run prebuild:deploy && turbo run build --filter=@tailwindspark/demo-app
+
+
+> tailwindspark-monorepo@1.0.82 prebuild:deploy
+> tsx scripts/generate-meta.ts
+
+Generated sitemap.xml & updated robots.txt
+ΓÇó turbo 2.9.6
+
+   ΓÇó Packages in scope: @tailwindspark/demo-app
+   ΓÇó Running build in 1 packages
+   ΓÇó Remote caching disabled
+
+@tailwindspark/design-tokens:build: cache hit, replaying logs c6bac6d787f3d728
+@tailwindspark/design-tokens:build: 
+@tailwindspark/design-tokens:build: > @tailwindspark/design-tokens@1.0.0 build
+@tailwindspark/design-tokens:build: > echo 'Design tokens built'
+@tailwindspark/design-tokens:build: 
+@tailwindspark/design-tokens:build: 'Design tokens built'
+@tailwindspark/ui-components:build: cache hit, replaying logs 5b45d7f7f4ef5139
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: > @tailwindspark/ui-components@1.0.0 build
+@tailwindspark/ui-components:build: > tsc -p tsconfig.build.json && vite build
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: [36mvite v8.0.7 [32mbuilding client environment for production...[36m[39m
+@tailwindspark/ui-components:build: [2K
+@tailwindspark/ui-components:build: transforming...Γ£ô 7 modules transformed.
+@tailwindspark/ui-components:build: rendering chunks...
+@tailwindspark/ui-components:build: computing gzip size...
+@tailwindspark/ui-components:build: dist/index.es.js  13.44 kB Γöé gzip: 3.60 kB
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: [2K
+@tailwindspark/ui-components:build: transforming...Γ£ô 7 modules transformed.
+@tailwindspark/ui-components:build: rendering chunks...
+@tailwindspark/ui-components:build: computing gzip size...
+@tailwindspark/ui-components:build: dist/index.umd.js  11.30 kB Γöé gzip: 3.48 kB
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: [32mΓ£ô built in 40ms[39m
+@tailwindspark/demo-app:build: cache miss, executing 75d2d805633a04e8
+@tailwindspark/demo-app:build: 
+@tailwindspark/demo-app:build: > @tailwindspark/demo-app@1.0.0 prebuild
+@tailwindspark/demo-app:build: > node ../../scripts/sync-projects-data.mjs && node ../../scripts/sync-repos-data.mjs && node ../../scripts/sync-articles-data.mjs
+@tailwindspark/demo-app:build: 
+@tailwindspark/demo-app:build: [sync-projects-data] Snapshot already current: C:\GitHub\MarkHazleton\tailwind-demo\apps\demo-app\public\data\projects.json
+@tailwindspark/demo-app:build: [sync-repos-data] Snapshot already current: C:\GitHub\MarkHazleton\tailwind-demo\apps\demo-app\public\data\repositories.json
+@tailwindspark/demo-app:build: [sync-articles-data] Snapshot already current: C:\GitHub\MarkHazleton\tailwind-demo\apps\demo-app\public\data\articles.json
+@tailwindspark/demo-app:build: 
+@tailwindspark/demo-app:build: > @tailwindspark/demo-app@1.0.0 build
+@tailwindspark/demo-app:build: > tsc -b && vite build
+@tailwindspark/demo-app:build: 
+@tailwindspark/demo-app:build: src/App.tsx(12,10): error TS6133: 'ResourcePriorityManager' is declared but its value is never read.
+@tailwindspark/demo-app:build: npm error Lifecycle script `build` failed with error:
+@tailwindspark/demo-app:build: npm error code 2
+@tailwindspark/demo-app:build: npm error path C:\GitHub\MarkHazleton\tailwind-demo\apps\demo-app
+@tailwindspark/demo-app:build: npm error workspace @tailwindspark/demo-app@1.0.0
+@tailwindspark/demo-app:build: npm error location C:\GitHub\MarkHazleton\tailwind-demo\apps\demo-app
+@tailwindspark/demo-app:build: npm error command failed
+@tailwindspark/demo-app:build: npm error command C:\WINDOWS\system32\cmd.exe /d /s /c tsc -b && vite build
+ ERROR  @tailwindspark/demo-app#build: command (C:\GitHub\MarkHazleton\tailwind-demo\apps\demo-app) C:\Program Files\nodejs\npm.cmd run build exited (2)
+
+ Tasks:    2 successful, 3 total
+Cached:    2 cached, 3 total
+  Time:    3.56s 
+Failed:    @tailwindspark/demo-app#build
+
+ ERROR  run failed: command  exited (2)

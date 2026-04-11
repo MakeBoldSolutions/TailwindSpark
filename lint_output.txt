@@ -1,0 +1,75 @@
+
+> tailwindspark-monorepo@1.0.82 lint
+> turbo run lint --continue
+
+
+   ΓÇó Packages in scope: @tailwindspark/demo-app, @tailwindspark/design-tokens, @tailwindspark/ui-components
+   ΓÇó Running lint in 3 packages
+   ΓÇó Remote caching disabled
+
+@tailwindspark/design-tokens:build: cache hit, replaying logs c6bac6d787f3d728
+@tailwindspark/design-tokens:build: 
+@tailwindspark/design-tokens:build: > @tailwindspark/design-tokens@1.0.0 build
+@tailwindspark/design-tokens:build: > echo 'Design tokens built'
+@tailwindspark/design-tokens:build: 
+@tailwindspark/design-tokens:build: 'Design tokens built'
+@tailwindspark/ui-components:lint: cache hit, replaying logs 3f66149c7821e648
+@tailwindspark/ui-components:lint: 
+@tailwindspark/ui-components:lint: > @tailwindspark/ui-components@1.0.0 lint
+@tailwindspark/ui-components:lint: > eslint src --max-warnings 0
+@tailwindspark/ui-components:lint: 
+@tailwindspark/ui-components:build: cache hit, replaying logs 5b45d7f7f4ef5139
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: > @tailwindspark/ui-components@1.0.0 build
+@tailwindspark/ui-components:build: > tsc -p tsconfig.build.json && vite build
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: [36mvite v8.0.7 [32mbuilding client environment for production...[36m[39m
+@tailwindspark/ui-components:build: [2K
+@tailwindspark/ui-components:build: transforming...Γ£ô 7 modules transformed.
+@tailwindspark/ui-components:build: rendering chunks...
+@tailwindspark/ui-components:build: computing gzip size...
+@tailwindspark/ui-components:build: dist/index.es.js  13.44 kB Γöé gzip: 3.60 kB
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: [2K
+@tailwindspark/ui-components:build: transforming...Γ£ô 7 modules transformed.
+@tailwindspark/ui-components:build: rendering chunks...
+@tailwindspark/ui-components:build: computing gzip size...
+@tailwindspark/ui-components:build: dist/index.umd.js  11.30 kB Γöé gzip: 3.48 kB
+@tailwindspark/ui-components:build: 
+@tailwindspark/ui-components:build: [32mΓ£ô built in 40ms[39m
+@tailwindspark/demo-app:lint: cache miss, executing 9534ce60d96551b6
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: > @tailwindspark/demo-app@1.0.0 lint
+@tailwindspark/demo-app:lint: > eslint .
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\tailwind-demo\apps\demo-app\src\data\ecommerce-data.ts
+@tailwindspark/demo-app:lint:   3:8  error  Missing JSDoc comment  jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\tailwind-demo\apps\demo-app\src\data\marketing-data.ts
+@tailwindspark/demo-app:lint:    1:8  error  Missing JSDoc comment  jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint:   31:8  error  Missing JSDoc comment  jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint:   60:8  error  Missing JSDoc comment  jsdoc/require-jsdoc
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\tailwind-demo\apps\demo-app\src\services\repos.service.ts
+@tailwindspark/demo-app:lint:   37:1  error  There must be no indentation  jsdoc/check-indentation
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: C:\GitHub\MarkHazleton\tailwind-demo\apps\demo-app\src\utils\cdnOptimizer.ts
+@tailwindspark/demo-app:lint:   379:3  error  Missing JSDoc @returns declaration  jsdoc/require-returns
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: Γ£û 6 problems (6 errors, 0 warnings)
+@tailwindspark/demo-app:lint:   4 errors and 0 warnings potentially fixable with the `--fix` option.
+@tailwindspark/demo-app:lint: 
+@tailwindspark/demo-app:lint: npm error Lifecycle script `lint` failed with error:
+@tailwindspark/demo-app:lint: npm error code 1
+@tailwindspark/demo-app:lint: npm error path C:\GitHub\MarkHazleton\tailwind-demo\apps\demo-app
+@tailwindspark/demo-app:lint: npm error workspace @tailwindspark/demo-app@1.0.0
+@tailwindspark/demo-app:lint: npm error location C:\GitHub\MarkHazleton\tailwind-demo\apps\demo-app
+@tailwindspark/demo-app:lint: npm error command failed
+@tailwindspark/demo-app:lint: npm error command C:\WINDOWS\system32\cmd.exe /d /s /c eslint .
+
+ Tasks:    3 successful, 4 total
+Cached:    3 cached, 4 total
+  Time:    5.361s 
+Failed:    @tailwindspark/demo-app#lint
+
