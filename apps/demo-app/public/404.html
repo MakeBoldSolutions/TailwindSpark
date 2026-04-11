@@ -7,6 +7,7 @@
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
       // https://github.com/rafgraph/spa-github-pages
+      // Security: This script only redirects within the same origin
       var pathSegmentsToKeep = 1;
 
       var l = window.location;
@@ -24,7 +25,16 @@
         (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash;
 
-      window.location.replace(newUrl);
+      // Validate that the redirect stays within the same origin before redirecting
+      try {
+        var targetUrl = new URL(newUrl);
+        if (targetUrl.origin === window.location.origin) {
+          window.location.replace(newUrl);
+        }
+      } catch (e) {
+        // If URL parsing fails, redirect to root as fallback
+        window.location.replace('/');
+      }
     </script>
   </head>
   <body></body>

@@ -58,7 +58,11 @@
       const status = document.getElementById('status');
 
       function showStatus(message, isError = false) {
-        status.innerHTML = `<div class="${isError ? 'error' : 'success'}">${message}</div>`;
+        const div = document.createElement('div');
+        div.className = isError ? 'error' : 'success';
+        div.textContent = message;
+        status.innerHTML = '';
+        status.appendChild(div);
       }
 
       async function clearCaches() {
@@ -92,7 +96,7 @@
       function reloadPage() {
         showStatus('Redirecting to main site...');
         setTimeout(() => {
-          window.location.href = './';
+          window.location.assign('/');
         }, 1000);
       }
     </script>

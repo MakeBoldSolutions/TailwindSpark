@@ -116,13 +116,13 @@ export class ErrorBoundary extends Component<Props, State> {
                   Refresh Page
                 </button>
                 <button
-                  onClick={() => (window.location.href = '/')}
+                  onClick={() => window.location.assign('/')}
                   className="w-full rounded-lg bg-surface-hover px-4 py-2 text-text transition-colors hover:bg-surface-active"
                 >
                   Go to Homepage
                 </button>
                 <button
-                  onClick={() => (window.location.href = '/apps')}
+                  onClick={() => window.location.assign('/apps')}
                   className="w-full rounded-lg border border-border bg-surface px-4 py-2 text-text transition-colors hover:bg-surface-alt"
                 >
                   Go to Apps
