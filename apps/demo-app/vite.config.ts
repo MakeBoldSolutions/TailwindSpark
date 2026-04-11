@@ -6,7 +6,12 @@ import { performanceBudgetPlugin } from './src/utils/performanceBudget';
 
 // https://vite.dev/config/
 export default defineConfig(({ command }) => {
-  const basePath = process.env.VITE_BASE_URL ?? '/';
+  // Use explicit base URL for GitHub Pages deployment
+  // Falls back to VITE_BASE_URL env var, then defaults to '/' for local dev
+  const basePath = 
+    command === 'build' 
+      ? (process.env.VITE_BASE_URL ?? '/TailwindSpark/')
+      : '/';
 
   return {
   plugins: [

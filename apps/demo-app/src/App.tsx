@@ -9,7 +9,7 @@ import { PerformanceMonitor } from './components/PerformanceMonitor';
 import { SEOProvider } from './contexts/SEOContext';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import { cdnOptimizer } from './utils/cdnOptimizer';
-import { ResourcePriorityManager, setupCdnPreconnections } from './utils/resourceHints';
+import { setupCdnPreconnections } from './utils/resourceHints';
 
 // Lazy load page components for better performance
 const AnalyticsPage = lazy(() => import('./pages/AnalyticsPage').then(m => ({ default: m.AnalyticsPage })));
@@ -47,14 +47,8 @@ function AppContent() {
       cdnOptimizer.init();
     }
 
-    const resourceManager = ResourcePriorityManager.getInstance();
-    // Prefetch likely future pages (with BASE_URL for GitHub Pages compatibility)
-    const baseUrl = import.meta.env.BASE_URL;
-    resourceManager.prefetchFuture([
-      `${baseUrl}demos`,
-      `${baseUrl}design-system`,
-      `${baseUrl}animations`,
-    ]);
+    // Note: Route prefetching is disabled for SPAs since routes are handled by React Router
+    // and the lazy-loaded chunks are already optimized with code splitting
   }, []);
 
   const basename = import.meta.env.BASE_URL === '/'

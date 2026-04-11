@@ -65,7 +65,10 @@ export class ErrorBoundary extends Component<Props, State> {
    * @param errorInfo - Additional error information
    */
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Uncaught error:', error, errorInfo);
+    // Only log to console in development mode
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Uncaught error:', error, errorInfo);
+    }
 
     // Log to analytics if available (simple implementation without type checking)
     try {
