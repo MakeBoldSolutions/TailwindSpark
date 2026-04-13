@@ -1,20 +1,16 @@
 ---
-name: "devspark.harvest"
-description: "Harvest knowledge from completed specs and stale docs into living documentation, rewrite stale spec-linked comments, then archive obsolete artifacts"
+name: devspark.harvest
+description: Harvest knowledge from completed specs and stale docs into living documentation, rewrite stale spec-linked comments, then archive obsolete artifacts
 ---
 
-## Prompt Resolution
+# DevSpark Harvest Agent
 
-Determine the current git user by running `git config user.name`.
-Normalize to a folder-safe slug: lowercase, replace spaces with hyphens, strip non-alphanumeric/hyphen chars.
+This is a GitHub Copilot agent shim that delegates to the DevSpark 3-tier command override system.
 
-Read and execute the instructions from the **first file that exists**:
-1. `.documentation/{git-user}/commands/devspark.harvest.md` (personalized override)
-2. `.documentation/commands/devspark.harvest.md` (team customization)
-3. `.devspark/defaults/commands/devspark.harvest.md` (stock default)
+## Resolution Order
 
-## User Input
+1. `.documentation/{user}/commands/devspark.harvest.md` (personal override)
+2. `.documentation/commands/devspark.harvest.md` (team override)
+3. `.devspark/defaults/commands/devspark.harvest.md` (stock command)
 
-{{input}}
-
-Pass the user input above to the resolved prompt.
+Use whichever version of the harvest command is found first in the resolution order above. Follow its instructions exactly.
