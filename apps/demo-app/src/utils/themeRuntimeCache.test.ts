@@ -3,7 +3,7 @@ import {
     getTailwindSparkCacheNames,
     getThemeRuntimeCachePrefixes,
     getThemeRuntimeNamespace,
-  isTailwindSparkCacheName,
+    isTailwindSparkCacheName,
 } from './themeRuntimeCache';
 
 describe('getThemeRuntimeNamespace', () => {
