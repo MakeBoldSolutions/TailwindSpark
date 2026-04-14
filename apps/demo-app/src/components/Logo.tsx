@@ -69,7 +69,11 @@ export const Logo: React.FC<LogoProps> = ({
   if (textOnly) {
     return (
       <span
-        className={`from-primary-600 to-accent-700 bg-gradient-to-r bg-clip-text font-bold text-transparent ${textSizes[size]} ${className}`}
+        className={`bg-gradient-to-r bg-clip-text font-bold text-transparent ${textSizes[size]} ${className}`}
+        style={{
+          fontFamily: 'var(--font-display)',
+          backgroundImage: 'linear-gradient(135deg, var(--theme-gradient-from), var(--theme-gradient-to))',
+        }}
       >
         TailwindSpark
       </span>
@@ -89,7 +93,11 @@ export const Logo: React.FC<LogoProps> = ({
       {/* Logo Text */}
       {showText && (
         <span
-          className={`from-primary-600 to-accent-700 bg-gradient-to-r bg-clip-text font-bold text-transparent ${textSizes[size]}`}
+          className={`bg-gradient-to-r bg-clip-text font-bold text-transparent ${textSizes[size]}`}
+          style={{
+            fontFamily: 'var(--font-display)',
+            backgroundImage: 'linear-gradient(135deg, var(--theme-gradient-from), var(--theme-gradient-to))',
+          }}
         >
           TailwindSpark
         </span>
