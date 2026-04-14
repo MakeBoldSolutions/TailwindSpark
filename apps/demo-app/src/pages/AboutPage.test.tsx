@@ -4,6 +4,12 @@ import { describe, expect, it, vi } from 'vitest';
 import { SEOProvider } from '../contexts/SEOContext';
 import { AboutPage } from './AboutPage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 vi.mock('../hooks/useArticles', () => ({
   useArticles: () => ({
     articles: [
@@ -70,5 +76,17 @@ describe('AboutPage', () => {
     expect(screen.getByText('WebSpark Ecosystem')).toBeInTheDocument();
     const link = screen.getByRole('link', { name: /Visit WebSpark Portfolio/i });
     expect(link).toHaveAttribute('href', 'https://webspark.markhazleton.com');
+  });
+
+  it.each(themeMatrix)('keeps about route content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    renderPage();
+
+    expect(screen.getByRole('heading', { level: 1, name: /About TailwindSpark/i })).toBeInTheDocument();
+    expect(screen.getByText(/Technology Stack/i)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Explore Apps/i })).toBeInTheDocument();
   });
 });

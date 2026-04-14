@@ -76,6 +76,32 @@ const shadows = {
   none: '0 0 #0000',
 };
 
+const semanticColors = {
+  brand: {
+    DEFAULT: 'var(--color-brand)',
+    hover: 'var(--color-brand-hover)',
+    fg: 'var(--color-brand-fg)',
+  },
+  muted: 'var(--color-text-muted)',
+  destructive: 'var(--color-error-600)',
+  surface: {
+    DEFAULT: 'var(--color-surface)',
+    alt: 'var(--color-surface-alt)',
+    hover: 'var(--color-surface-hover)',
+    inverse: 'var(--color-surface-inverse)',
+  },
+  text: {
+    DEFAULT: 'var(--color-text)',
+    inverse: 'var(--color-text-inverse)',
+    muted: 'var(--color-text-muted)',
+  },
+  border: {
+    DEFAULT: 'var(--color-border)',
+    strong: 'var(--color-border-strong)',
+  },
+  'focus-ring': 'var(--color-focus-ring)',
+};
+
 /** @type {import('tailwindcss').Config} */
 const config = {
   content: [
@@ -88,57 +114,36 @@ const config = {
     extend: {
       colors: {
         ...colors,
-        // Semantic color aliases (map to CSS variables defined in theme.css)
-        brand: {
-          DEFAULT: 'var(--color-brand)',
-          hover: 'var(--color-brand-hover)',
-          fg: 'var(--color-brand-fg)',
-        },
+        ...semanticColors,
         'brand-hover': 'var(--color-brand-hover)',
-        surface: {
-          DEFAULT: 'var(--color-surface)',
-          alt: 'var(--color-surface-alt)',
-          inverse: 'var(--color-surface-inverse)',
-        },
         'surface-alt': 'var(--color-surface-alt)',
-        text: {
-          DEFAULT: 'var(--color-text)',
-          inverse: 'var(--color-text-inverse)',
-          muted: 'var(--color-text-muted)',
-        },
+        'surface-hover': 'var(--color-surface-hover)',
         'text-muted': 'var(--color-text-muted)',
-        border: {
-          DEFAULT: 'var(--color-border)',
-          strong: 'var(--color-border-strong)',
-        },
         'border-strong': 'var(--color-border-strong)',
-        'focus-ring': 'var(--color-focus-ring)',
       },
       spacing,
       borderRadius,
       boxShadow: shadows,
       fontFamily: {
-        sans: [
-          'Inter',
-          '-apple-system',
-          'BlinkMacSystemFont',
-          'Segoe UI',
-          'Roboto',
-          'Oxygen',
-          'Ubuntu',
-          'Cantarell',
-          'Fira Sans',
-          'Droid Sans',
-          'Helvetica Neue',
-          'sans-serif',
-        ],
+        sans: ['var(--font-body)', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'Inter', 'system-ui', 'sans-serif'],
         mono: ['SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'monospace'],
       },
+      borderRadius: {
+        control: 'var(--theme-radius-control)',
+        panel: 'var(--theme-radius-panel)',
+      },
+      boxShadow: {
+        ...shadows,
+        card: 'var(--theme-shadow-card)',
+        modal: 'var(--theme-shadow-modal)',
+        button: 'var(--theme-shadow-button)',
+      },
       animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'slide-up': 'slideUp 0.3s ease-out',
-        'slide-down': 'slideDown 0.3s ease-out',
-        'scale-in': 'scaleIn 0.2s ease-out',
+        'fade-in': 'fadeIn var(--theme-motion-duration) var(--theme-ease)',
+        'slide-up': 'slideUp var(--theme-motion-duration) var(--theme-ease)',
+        'slide-down': 'slideDown var(--theme-motion-duration) var(--theme-ease)',
+        'scale-in': 'scaleIn var(--theme-motion-duration-fast) var(--theme-ease)',
       },
       keyframes: {
         fadeIn: {

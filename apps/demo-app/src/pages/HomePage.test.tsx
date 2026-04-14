@@ -4,6 +4,12 @@ import { describe, expect, it } from 'vitest';
 import { SEOProvider } from '../contexts/SEOContext';
 import { HomePage } from './HomePage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const renderWithRouter = (component: React.ReactElement) => {
   return render(<BrowserRouter><SEOProvider>{component}</SEOProvider></BrowserRouter>);
 };
@@ -61,5 +67,17 @@ describe('HomePage', () => {
     renderWithRouter(<HomePage />);
     const componentLibraryDescription = screen.getByText(/Production-ready UI components built with Tailwind CSS/i);
     expect(componentLibraryDescription).toBeInTheDocument();
+  });
+
+  it.each(themeMatrix)('renders home route content under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    const { container } = renderWithRouter(<HomePage />);
+
+    expect(container.querySelector('.bg-surface.py-16')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Explore Components/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Explore Apps/i })).toBeInTheDocument();
   });
 });

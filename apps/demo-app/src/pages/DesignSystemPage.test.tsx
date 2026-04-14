@@ -3,6 +3,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import { DesignSystemShowcase } from './DesignSystemPage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const renderWithRouter = (component: React.ReactElement) => {
   return render(<BrowserRouter>{component}</BrowserRouter>);
 };
@@ -95,5 +101,17 @@ describe('DesignSystemPage', () => {
     // Showcases should display component variants
     const buttons = screen.getAllByRole('button');
     expect(buttons.length).toBeGreaterThan(0);
+  });
+
+  it.each(themeMatrix)('keeps design system route content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    renderWithRouter(<DesignSystemShowcase />);
+
+    expect(screen.getByRole('heading', { level: 1, name: /TailwindSpark Component Library/i })).toBeInTheDocument();
+    expect(screen.getAllByRole('button').length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Button/i).length).toBeGreaterThan(0);
   });
 });

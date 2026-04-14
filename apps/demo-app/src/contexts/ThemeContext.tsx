@@ -1,21 +1,42 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import type { ThemeId, ThemeMode, ThemePreference, ThemeProfile } from '../types/theme';
+import { applyThemeToDocument, readThemeFromDocument } from '../utils/themeBoot';
+import { getThemeProfile, getThemeProfiles } from '../utils/themeRegistry';
+import {
+    createThemePreference,
+    resolveInitialThemePreference,
+    writeThemePreference,
+} from '../utils/themeStorage';
 
 /**
  * Theme context type definition.
  */
 interface ThemeContextType {
-  /**
-   * Current theme state (true for dark, false for light).
-   */
+  /** Current named theme identifier. */
+  themeId: ThemeId;
+  /** Current light or dark mode. */
+  mode: ThemeMode;
+  /** Current theme state (true for dark, false for light). */
   isDark: boolean;
-  /**
-   * Function to toggle between light and dark themes.
-   */
+  /** Current persisted theme preference object. */
+  preference: ThemePreference;
+  /** Active theme profile metadata. */
+  theme: ThemeProfile;
+  /** Available shipped theme profiles. */
+  availableThemes: readonly ThemeProfile[];
+  /** Function to toggle between light and dark themes. */
   toggleTheme: () => void;
+  /** Function to switch the named theme while preserving mode where possible. */
+  setTheme: (themeId: ThemeId) => void;
+  /** Function to set the current theme mode explicitly. */
+  setMode: (mode: ThemeMode) => void;
 }
 
 /**
  * Theme context for managing application-wide theme state.
+ *
+ * Exposes the active named theme, the current light or dark mode, and the runtime
+ * mutation helpers used by the app shell and route surfaces.
  */
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
@@ -25,12 +46,12 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
  * Provides access to current theme state and toggle function.
  * Must be used within a ThemeProvider.
  * 
- * @returns Theme context with isDark state and toggleTheme function
+ * @returns Theme context with named theme state and runtime helpers
  * @throws Error if used outside ThemeProvider
  * 
  * @example
  * ```tsx
- * const { isDark, toggleTheme } = useTheme();
+ * const { themeId, mode, setTheme, toggleTheme } = useTheme();
  * ```
  */
 // eslint-disable-next-line react-refresh/only-export-components
@@ -55,8 +76,8 @@ interface ThemeProviderProps {
 /**
  * Theme provider component.
  * 
- * Provides theme context to child components with persistence via localStorage
- * and automatic system preference detection.
+ * Provides theme context to child components with named theme persistence,
+ * legacy preference migration, and DOM synchronization through the theme boot utilities.
  * 
  * @param root0 - Component props
  * @param root0.children - Child components to wrap
@@ -70,39 +91,77 @@ interface ThemeProviderProps {
  * ```
  */
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [isDark, setIsDark] = useState(() => {
+  const availableThemes = getThemeProfiles();
+  const [preference, setPreference] = useState<ThemePreference>(() => {
     if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      
-      // If user has explicitly set a theme, use that
-      if (savedTheme === 'dark') return true;
-      if (savedTheme === 'light') return false;
-      
-      // Only use system preference if no explicit choice was made
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      return prefersDark;
+      return resolveInitialThemePreference();
     }
-    return false;
+
+    if (typeof document !== 'undefined' && document.documentElement.dataset.theme) {
+      return readThemeFromDocument(document);
+    }
+
+    return createThemePreference();
   });
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    
-    if (isDark) {
-      root.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      root.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDark]);
+    const appliedPreference = applyThemeToDocument(preference);
+    writeThemePreference(appliedPreference);
+  }, [preference]);
 
   const toggleTheme = () => {
-    setIsDark(prev => !prev);
+    setPreference(currentPreference =>
+      createThemePreference({
+        ...currentPreference,
+        mode: currentPreference.mode === 'dark' ? 'light' : 'dark',
+        source: 'stored',
+      })
+    );
   };
 
+  const setTheme = (themeId: ThemeId) => {
+    setPreference(currentPreference => {
+      const themeProfile = getThemeProfile(themeId);
+      const nextMode = themeProfile.supportedModes.includes(currentPreference.mode)
+        ? currentPreference.mode
+        : themeProfile.defaultMode;
+
+      return createThemePreference({
+        ...currentPreference,
+        themeId,
+        mode: nextMode,
+        source: 'stored',
+      });
+    });
+  };
+
+  const setMode = (mode: ThemeMode) => {
+    setPreference(currentPreference =>
+      createThemePreference({
+        ...currentPreference,
+        mode,
+        source: 'stored',
+      })
+    );
+  };
+
+  const isDark = preference.mode === 'dark';
+  const theme = getThemeProfile(preference.themeId);
+
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{
+        themeId: preference.themeId,
+        mode: preference.mode,
+        isDark,
+        preference,
+        theme,
+        availableThemes,
+        toggleTheme,
+        setTheme,
+        setMode,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

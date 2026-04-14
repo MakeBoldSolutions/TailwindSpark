@@ -88,7 +88,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
           />
           <button
             type="submit"
-            className="rounded-lg bg-brand px-5 py-2 text-sm font-medium text-white transition hover:bg-brand/90"
+            className="rounded-control bg-[var(--button-primary-bg)] px-5 py-2 text-sm font-medium text-[var(--button-primary-fg)] shadow-button transition hover:bg-[var(--button-primary-bg-hover)]"
           >
             Continue
           </button>
@@ -147,7 +147,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
             <div
               className={`max-w-[80%] rounded-lg px-4 py-2.5 ${
                 msg.role === 'user'
-                  ? 'bg-brand text-white'
+                  ? 'rounded-control bg-[var(--button-primary-bg)] text-[var(--button-primary-fg)] shadow-button'
                   : 'bg-surface-alt text-text'
               }`}
             >
@@ -195,7 +195,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
         <button
           type="submit"
           disabled={connectionStatus !== 'connected' || !input.trim()}
-          className="rounded-lg bg-brand px-5 py-2 text-sm font-medium text-white transition hover:bg-brand/90 disabled:opacity-50"
+          className="rounded-control bg-[var(--button-primary-bg)] px-5 py-2 text-sm font-medium text-[var(--button-primary-fg)] shadow-button transition hover:bg-[var(--button-primary-bg-hover)] disabled:opacity-50"
         >
           Send
         </button>

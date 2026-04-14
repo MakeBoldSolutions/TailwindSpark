@@ -113,10 +113,10 @@ export const MarketingPage: React.FC = () => {
           </div>
 
           <div className="flex translate-y-10 animate-[fadeInUp_1s_ease-out_0.6s_both] flex-col justify-center gap-4 opacity-0 sm:flex-row">
-            <button className="transform rounded-full bg-white px-8 py-4 font-semibold text-brand shadow-lg transition-all duration-300 hover:scale-105 hover:bg-surface-alt hover:shadow-xl">
+            <button className="transform rounded-full border border-border bg-surface px-8 py-4 font-semibold text-text shadow-card transition-all duration-300 hover:scale-105 hover:bg-surface-alt hover:shadow-lg">
               Start Your Project
             </button>
-            <button className="rounded-full border-2 border-white px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-white hover:text-brand">
+            <button className="rounded-full border border-white/40 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-white/10">
               View Our Work
             </button>
           </div>
@@ -198,9 +198,9 @@ export const MarketingPage: React.FC = () => {
                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-75">
+                <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/75">
                   <div className="translate-y-4 transform p-6 text-center text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                    <span className="mb-2 inline-block rounded-full bg-brand px-3 py-1 text-sm font-medium">
+                    <span className="mb-2 inline-block rounded-full bg-brand px-3 py-1 text-sm font-medium text-[var(--button-primary-fg)]">
                       {item.category}
                     </span>
                     <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
@@ -425,7 +425,7 @@ export const MarketingPage: React.FC = () => {
 
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="mr-4 rounded-lg bg-white bg-opacity-20 p-3">
+                  <div className="mr-4 rounded-lg bg-white/20 p-3">
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
                       <path
                         fillRule="evenodd"
@@ -445,7 +445,7 @@ export const MarketingPage: React.FC = () => {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="mr-4 rounded-lg bg-white bg-opacity-20 p-3">
+                  <div className="mr-4 rounded-lg bg-white/20 p-3">
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                       <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
@@ -464,7 +464,7 @@ export const MarketingPage: React.FC = () => {
                 </div>
 
                 <div className="flex items-start">
-                  <div className="mr-4 rounded-lg bg-white bg-opacity-20 p-3">
+                  <div className="mr-4 rounded-lg bg-white/20 p-3">
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                     </svg>
@@ -488,7 +488,7 @@ export const MarketingPage: React.FC = () => {
                     <a
                       key={social}
                       href="#"
-                      className="transform rounded-lg bg-white bg-opacity-20 p-3 transition-all duration-300 hover:scale-110 hover:bg-opacity-30"
+                      className="transform rounded-lg bg-white/20 p-3 transition-all duration-300 hover:scale-110 hover:bg-white/30"
                     >
                       <span className="sr-only">{social}</span>
                       <div className="h-6 w-6 rounded bg-white"></div>

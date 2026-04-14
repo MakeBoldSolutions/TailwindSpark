@@ -3,6 +3,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import { AnalyticsPage } from './AnalyticsPage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const renderWithRouter = (component: React.ReactElement) => {
   return render(<BrowserRouter>{component}</BrowserRouter>);
 };
@@ -80,5 +86,17 @@ describe('AnalyticsPage', () => {
     // Analytics typically includes data tables
     const mainContent = document.querySelector('main');
     expect(mainContent).toBeInTheDocument();
+  });
+
+  it.each(themeMatrix)('keeps analytics route content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    renderWithRouter(<AnalyticsPage />);
+
+    expect(screen.getByRole('link', { name: /Analytics/i })).toBeInTheDocument();
+    expect(screen.getAllByText(/Analytics/i).length).toBeGreaterThan(0);
+    expect(document.querySelector('main')).toBeInTheDocument();
   });
 });

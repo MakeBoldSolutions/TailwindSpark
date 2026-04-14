@@ -35,7 +35,7 @@ const ReposPage = lazy(() => import('./pages/apps/ReposPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function AppContent() {
-  const { isDark, toggleTheme } = useTheme();
+  const { themeId, mode, availableThemes, setTheme, toggleTheme } = useTheme();
 
   // Setup resource optimization
   useEffect(() => {
@@ -110,7 +110,13 @@ function AppContent() {
           <Route
             path="*"
             element={
-              <Layout isDark={isDark} toggleTheme={toggleTheme}>
+              <Layout
+                themeId={themeId}
+                mode={mode}
+                availableThemes={availableThemes}
+                onThemeChange={setTheme}
+                onModeToggle={toggleTheme}
+              >
                 <Routes>
                   <Route 
                     path="/" 

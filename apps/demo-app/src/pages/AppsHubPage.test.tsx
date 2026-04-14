@@ -4,6 +4,12 @@ import { describe, expect, it } from 'vitest';
 import { SEOProvider } from '../contexts/SEOContext';
 import AppsHubPage from './AppsHubPage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const renderPage = () =>
   render(
     <BrowserRouter>
@@ -48,5 +54,17 @@ describe('AppsHubPage', () => {
     expect(routes).toContain('/apps/joke');
     expect(routes).toContain('/apps/weather');
     expect(routes).toContain('/apps/ai-chat');
+  });
+
+  it.each(themeMatrix)('renders apps hub content under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    renderPage();
+
+    expect(screen.getByRole('heading', { level: 1, name: /Apps/i })).toBeInTheDocument();
+    expect(screen.getByText(/Explore interactive mini-applications/i)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Projects/i })).toBeInTheDocument();
   });
 });

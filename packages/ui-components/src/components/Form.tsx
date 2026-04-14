@@ -7,20 +7,24 @@ import * as React from 'react';
  * Extends standard HTML input attributes with label, error handling, and icon support.
  */
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  /** Visible label for the input. */
   label?: string;
+  /** Error message displayed below the input. */
   error?: string;
+  /** Supporting helper text shown when no error is present. */
   helperText?: string;
+  /** Optional icon rendered inside the left side of the input. */
   leftIcon?: React.ReactNode;
+  /** Optional icon rendered inside the right side of the input. */
   rightIcon?: React.ReactNode;
+  /** Visual validation variant. */
   variant?: 'default' | 'error' | 'success';
 }
 
 const inputVariants = {
-  default:
-    'border-border dark:border-border-strong focus:border-brand focus:ring-brand',
-  error: 'border-error-300 dark:border-error-600 focus:border-error-500 focus:ring-error-500',
-  success:
-    'border-success-300 dark:border-success-600 focus:border-success-500 focus:ring-success-500',
+  default: 'border-[color:var(--field-border)] focus:border-focus-ring focus:ring-focus-ring',
+  error: 'border-error-300 focus:border-error-500 focus:ring-error-500',
+  success: 'border-success-300 focus:border-success-500 focus:ring-success-500',
 };
 
 /**
@@ -72,7 +76,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             aria-invalid={!!error}
             aria-describedby={hasDescription ? descriptionId : undefined}
             className={clsx(
-              'text-text bg-surface placeholder-text-muted block w-full rounded-lg border px-3 py-2',
+              'text-text block w-full rounded-control border bg-[var(--field-bg)] px-3 py-2 placeholder-text-muted',
               'transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0',
               'disabled:bg-surface-alt disabled:text-text-muted disabled:cursor-not-allowed',
               inputVariants[actualVariant],
@@ -115,9 +119,13 @@ Input.displayName = 'Input';
  * Extends standard HTML textarea attributes with label and error handling.
  */
 export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  /** Visible label for the textarea. */
   label?: string;
+  /** Error message displayed below the textarea. */
   error?: string;
+  /** Supporting helper text shown when no error is present. */
   helperText?: string;
+  /** Visual validation variant. */
   variant?: 'default' | 'error' | 'success';
 }
 
@@ -161,7 +169,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           aria-invalid={!!error}
           aria-describedby={hasDescription ? descriptionId : undefined}
           className={clsx(
-            'text-text bg-surface placeholder-text-muted block w-full rounded-lg border px-3 py-2',
+            'text-text block w-full rounded-control border bg-[var(--field-bg)] px-3 py-2 placeholder-text-muted',
             'resize-vertical transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0',
             'disabled:bg-surface-alt disabled:text-text-muted disabled:cursor-not-allowed',
             inputVariants[actualVariant],
@@ -196,10 +204,15 @@ Textarea.displayName = 'Textarea';
  * Extends standard HTML select attributes with label, error handling, and options.
  */
 export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  /** Visible label for the select control. */
   label?: string;
+  /** Error message displayed below the select. */
   error?: string;
+  /** Supporting helper text shown when no error is present. */
   helperText?: string;
+  /** Visual validation variant. */
   variant?: 'default' | 'error' | 'success';
+  /** Option list rendered by the native select element. */
   options: { value: string; label: string }[];
 }
 
@@ -245,7 +258,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           aria-invalid={!!error}
           aria-describedby={hasDescription ? descriptionId : undefined}
           className={clsx(
-            'text-text bg-surface block w-full rounded-lg border px-3 py-2',
+            'text-text block w-full rounded-control border bg-[var(--field-bg)] px-3 py-2',
             'transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0',
             'disabled:bg-surface-alt disabled:text-text-muted disabled:cursor-not-allowed',
             inputVariants[actualVariant],
@@ -286,8 +299,11 @@ Select.displayName = 'Select';
  * Extends standard HTML input attributes (excludes type) with label and error handling.
  */
 export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+  /** Visible checkbox label. */
   label?: string;
+  /** Error message displayed below the checkbox. */
   error?: string;
+  /** Supporting helper text shown when no error is present. */
   helperText?: string;
 }
 
@@ -324,7 +340,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             aria-invalid={!!error}
             aria-describedby={hasDescription ? descriptionId : undefined}
             className={clsx(
-              'border-border dark:border-border-strong text-brand focus:ring-brand h-4 w-4 rounded focus:ring-offset-0',
+              'h-4 w-4 rounded border-[color:var(--field-border-strong)] text-brand focus:ring-brand focus:ring-offset-0',
               'disabled:cursor-not-allowed disabled:opacity-50',
               className
             )}
@@ -366,6 +382,7 @@ Checkbox.displayName = 'Checkbox';
  * Extends standard HTML input attributes (excludes type) with label support.
  */
 export interface RadioProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+  /** Visible radio label. */
   label?: string;
 }
 
@@ -395,7 +412,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
           id={radioId}
           type="radio"
           className={clsx(
-            'border-border dark:border-border-strong text-brand focus:ring-brand h-4 w-4 focus:ring-offset-0',
+            'h-4 w-4 border-[color:var(--field-border-strong)] text-brand focus:ring-brand focus:ring-offset-0',
             'disabled:cursor-not-allowed disabled:opacity-50',
             className
           )}

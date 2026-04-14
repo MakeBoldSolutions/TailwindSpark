@@ -91,8 +91,8 @@ export const ModalShowcase: React.FC = () => {
       >
         <ModalContent>
           <div className="mb-4 flex items-center gap-3">
-            <div className="bg-warning-100 dark:bg-warning-900 flex h-10 w-10 items-center justify-center rounded-full">
-              <AlertCircle className="text-warning-600 dark:text-warning-400 h-5 w-5" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-warning/30 bg-warning/10">
+              <AlertCircle className="text-warning h-5 w-5" />
             </div>
             <div>
               <h3 className="text-text font-semibold">
@@ -121,8 +121,8 @@ export const ModalShowcase: React.FC = () => {
       <Modal isOpen={alertModal} onClose={() => setAlertModal(false)} size="md">
         <ModalContent>
           <div className="text-center">
-            <div className="bg-success-100 dark:bg-success-900 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
-              <CheckCircle className="text-success-600 dark:text-success-400 h-8 w-8" />
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-success/30 bg-success/10">
+              <CheckCircle className="text-success h-8 w-8" />
             </div>
             <h3 className="text-text mb-2 text-lg font-semibold">
               Success!
@@ -155,7 +155,7 @@ export const ModalShowcase: React.FC = () => {
               </label>
               <input
                 type="text"
-                className="border-secondary-300 dark:border-secondary-600 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 focus:ring-brand w-full rounded-lg border bg-white px-3 py-2 focus:border-transparent focus:ring-2"
+                className="w-full rounded-control border border-border bg-surface px-3 py-2 text-text focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
                 placeholder="Enter project name"
               />
             </div>
@@ -166,7 +166,7 @@ export const ModalShowcase: React.FC = () => {
               </label>
               <textarea
                 rows={3}
-                className="border-secondary-300 dark:border-secondary-600 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 focus:ring-brand w-full rounded-lg border bg-white px-3 py-2 focus:border-transparent focus:ring-2"
+                className="w-full rounded-control border border-border bg-surface px-3 py-2 text-text focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
                 placeholder="Describe your project"
               />
             </div>
@@ -175,7 +175,7 @@ export const ModalShowcase: React.FC = () => {
               <label className="text-text mb-2 block text-sm font-medium">
                 Category
               </label>
-              <select className="border-secondary-300 dark:border-secondary-600 dark:bg-secondary-800 text-secondary-900 dark:text-secondary-100 focus:ring-brand w-full rounded-lg border bg-white px-3 py-2 focus:border-transparent focus:ring-2">
+              <select className="w-full rounded-control border border-border bg-surface px-3 py-2 text-text focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30">
                 <option value="">Select a category</option>
                 <option value="web">Web Development</option>
                 <option value="mobile">Mobile App</option>
@@ -216,19 +216,19 @@ export const ModalShowcase: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div className="bg-brand/10 dark:bg-brand/20 rounded-lg p-4">
-                <h5 className="text-brand dark:text-brand mb-2 font-semibold">
+              <div className="rounded-panel border border-border bg-surface-alt p-4">
+                <h5 className="mb-2 font-semibold text-text">
                   Responsive Design
                 </h5>
-                <p className="text-brand/80 dark:text-brand/70 text-sm">
+                <p className="text-sm text-text-muted">
                   Modals adapt to different screen sizes while maintaining usability.
                 </p>
               </div>
-              <div className="bg-success-50 dark:bg-success-900/20 rounded-lg p-4">
-                <h5 className="text-success-900 dark:text-success-100 mb-2 font-semibold">
+              <div className="rounded-panel border border-success/30 bg-success/10 p-4">
+                <h5 className="mb-2 font-semibold text-success">
                   Accessibility
                 </h5>
-                <p className="text-success-700 dark:text-success-300 text-sm">
+                <p className="text-sm text-success">
                   Built with keyboard navigation and screen reader support.
                 </p>
               </div>

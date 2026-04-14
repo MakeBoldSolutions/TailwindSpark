@@ -134,3 +134,6 @@ export const shadows = {
   inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
   none: '0 0 #0000',
 } as const;
+
+export * from './theme-contract';
+

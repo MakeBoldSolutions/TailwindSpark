@@ -6,28 +6,19 @@
 
 @layer base {
   html {
-    font-family:
-      'Inter',
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      'Roboto',
-      'Oxygen',
-      'Ubuntu',
-      'Cantarell',
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
-      sans-serif;
+    font-family: var(--font-body);
   }
 
-  /* Clean body styling - using CSS custom properties for better dark mode support */
   body {
     background-color: var(--color-surface);
     color: var(--color-text);
     transition:
-      color 0.3s ease,
-      background-color 0.3s ease;
+      color var(--theme-motion-duration-fast) var(--theme-ease),
+      background-color var(--theme-motion-duration) var(--theme-ease);
+  }
+
+  #root {
+    min-height: 100vh;
   }
 }
 @layer components {
@@ -37,11 +28,7 @@
     line-height: var(--tw-leading, var(--text-base--line-height));
     --tw-leading: calc(var(--spacing) * 7);
     line-height: calc(var(--spacing) * 7);
-    color: var(--color-secondary-900);
-  }
-
-  .dark .prose-custom {
-    color: var(--color-secondary-100);
+    color: var(--color-text);
   }
 
   .section-padding {

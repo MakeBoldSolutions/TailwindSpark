@@ -1,4 +1,4 @@
-import { GitFork, Star, Eye } from 'lucide-react';
+import { Eye, GitFork, Star } from 'lucide-react';
 import type { Repository } from '../types/repos-api';
 import { RepoDetail } from './RepoDetail';
 
@@ -33,7 +33,7 @@ export const RepoCard: React.FC<RepoCardProps> = ({ repository, isExpanded, onTo
 
   return (
     <div
-      className={`rounded-lg border border-border bg-surface shadow-sm transition-shadow hover:shadow-md ${repository.isArchived ? 'opacity-70' : ''}`}
+      className={`rounded-panel border border-border bg-[var(--card-bg)] shadow-card transition-shadow hover:shadow-lg ${repository.isArchived ? 'opacity-70' : ''}`}
     >
       <div
         role="button"
@@ -51,7 +51,9 @@ export const RepoCard: React.FC<RepoCardProps> = ({ repository, isExpanded, onTo
       >
         {/* Header row */}
         <div className="mb-2 flex items-start justify-between gap-2">
-          <h2 className="text-lg font-semibold text-text">{repository.name}</h2>
+          <h2 className="text-lg font-semibold text-text" style={{ fontFamily: 'var(--font-display)' }}>
+            {repository.name}
+          </h2>
           <div className="flex shrink-0 items-center gap-2">
             {repository.isArchived && (
               <span className="rounded-full bg-secondary-200 px-2 py-0.5 text-xs font-medium text-secondary-700">

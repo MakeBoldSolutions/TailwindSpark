@@ -31,7 +31,56 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 
-    <!-- Theme will be handled entirely by React - no early script needed -->
+    <script>
+      (function () {
+        var storageKey = 'tailwindspark:theme-preference';
+        var legacyKey = 'theme';
+        var themes = ['material', 'minimal', 'brutalist'];
+        var modes = ['light', 'dark'];
+        var root = document.documentElement;
+        var preference = {
+          themeId: 'material',
+          mode:
+            window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light',
+        };
+
+        function isValidTheme(value) {
+          return themes.indexOf(value) !== -1;
+        }
+
+        function isValidMode(value) {
+          return modes.indexOf(value) !== -1;
+        }
+
+        try {
+          var rawPreference = localStorage.getItem(storageKey);
+          if (rawPreference) {
+            var parsedPreference = JSON.parse(rawPreference);
+            if (parsedPreference && isValidTheme(parsedPreference.themeId) && isValidMode(parsedPreference.mode)) {
+              preference = {
+                themeId: parsedPreference.themeId,
+                mode: parsedPreference.mode,
+              };
+            }
+          } else {
+            var legacyMode = localStorage.getItem(legacyKey);
+            if (isValidMode(legacyMode)) {
+              preference.mode = legacyMode;
+            }
+          }
+        } catch {
+          // Ignore malformed stored preferences and fall back to defaults.
+        }
+
+        root.dataset.theme = preference.themeId;
+        root.dataset.themeMode = preference.mode;
+        root.classList.toggle('dark', preference.mode === 'dark');
+        root.style.colorScheme = preference.mode;
+        window.__TAILWINDSPARK_THEME__ = preference;
+      })();
+    </script>
 
     <!-- Primary Meta Tags -->
     <title>TailwindSpark - Interactive Tailwind CSS Showcase | WebSpark Portfolio</title>

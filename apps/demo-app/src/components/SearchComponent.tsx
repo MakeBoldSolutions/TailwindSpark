@@ -191,10 +191,10 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center bg-black bg-opacity-50 pt-20">
-      <div className="mx-4 w-full max-w-2xl rounded-lg bg-surface shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-start justify-center bg-[color:var(--modal-overlay)] pt-20 backdrop-blur-sm">
+      <div className="mx-4 w-full max-w-2xl rounded-panel border border-border bg-[var(--card-bg)] shadow-modal">
         {/* Search Header */}
-        <div className="flex items-center gap-3 border-b border p-4">
+        <div className="flex items-center gap-3 border-b border-border p-4">
           <Search className="h-5 w-5 text-muted" />
           <input
             type="text"
@@ -211,7 +211,7 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
           />
           <button
             onClick={onClose}
-            className="rounded p-1 hover:bg-surface-alt"
+            className="rounded-control p-1 transition-colors hover:bg-surface-hover"
             aria-label="Close search"
           >
             <X className="h-5 w-5 text-muted" />
@@ -230,8 +230,8 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
             <button
               key={`${result.url}-${index}`}
               onClick={() => handleResultClick(result)}
-              className={`w-full p-4 text-left transition-colors hover:bg-surface-alt ${
-                index === selectedIndex ? 'bg-surface-alt' : ''
+              className={`w-full p-4 text-left transition-colors hover:bg-surface-hover ${
+                index === selectedIndex ? 'bg-surface-hover' : ''
               }`}
             >
               <div className="flex items-start gap-3">
@@ -247,7 +247,9 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
                   }`}
                 />
                 <div className="flex-1">
-                  <div className="font-medium text-text">{result.title}</div>
+                  <div className="font-medium text-text" style={{ fontFamily: 'var(--font-display)' }}>
+                    {result.title}
+                  </div>
                   <div className="mt-1 text-sm text-muted">
                     {result.description}
                   </div>

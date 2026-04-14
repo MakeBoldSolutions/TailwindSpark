@@ -1,7 +1,10 @@
-const CACHE_NAME = 'tailwindspark-v1.3.1';
-const STATIC_CACHE = 'static-v1.3.1';
-const RUNTIME_CACHE = 'runtime-v1.3.1';
-const IMAGES_CACHE = 'images-v1.3.1';
+// Bump this version when theme runtime assets or boot behavior change so clients
+// can recover coherently from stale caches without a manual cache clear.
+const THEME_RUNTIME_VERSION = 'theme-platform-v1';
+const CACHE_NAME = `tailwindspark-${THEME_RUNTIME_VERSION}`;
+const STATIC_CACHE = `static-${THEME_RUNTIME_VERSION}`;
+const RUNTIME_CACHE = `runtime-${THEME_RUNTIME_VERSION}`;
+const IMAGES_CACHE = `images-${THEME_RUNTIME_VERSION}`;
 
 // Cache duration in milliseconds
 const CACHE_DURATION = {
@@ -22,18 +25,33 @@ const coreFiles = [
 
 // Application routes that should be available from the cache for SPA navigation
 const appRoutes = [
-  '/about',
-  '/apps',
-  '/apps/projects',
-  '/apps/articles',
-  '/apps/joke',
-  '/apps/weather',
-  '/apps/ai-chat',
+  'about',
+  'apps',
+  'apps/projects',
+  'apps/articles',
+  'apps/joke',
+  'apps/weather',
+  'apps/ai-chat',
+  'apps/repos',
 ];
 
 const buildPrecacheUrls = () => {
   const scope = self.registration?.scope || self.location.origin + '/';
   return [...coreFiles, ...appRoutes].map(path => new URL(path, scope).toString());
+};
+
+const getThemeRuntimeNamespace = runtimeVersion => runtimeVersion.replace(/-v[^-]+$/, '');
+
+const isTailwindSparkCacheName = cacheName => {
+  const namespace = getThemeRuntimeNamespace(THEME_RUNTIME_VERSION);
+  const ownedPrefixes = [
+    `tailwindspark-${namespace}-`,
+    `static-${namespace}-`,
+    `runtime-${namespace}-`,
+    `images-${namespace}-`,
+  ];
+
+  return ownedPrefixes.some(prefix => cacheName.startsWith(prefix));
 };
 
 // Runtime caching patterns
@@ -99,23 +117,44 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches
       .keys()
-      .then(cacheNames => {
-        return Promise.all(
-          cacheNames.map(cacheName => {
-            // Delete old caches
-            if (
+      .then(cacheNames => Promise.all(
+        cacheNames
+          .filter(isTailwindSparkCacheName)
+          .filter(
+            cacheName =>
               cacheName !== CACHE_NAME &&
               cacheName !== STATIC_CACHE &&
               cacheName !== RUNTIME_CACHE &&
               cacheName !== IMAGES_CACHE
-            ) {
-              return caches.delete(cacheName);
-            }
-          })
-        );
-      })
+          )
+          .map(cacheName => caches.delete(cacheName))
+      ))
       .then(() => self.clients.claim())
+      .then(() => self.clients.matchAll({ includeUncontrolled: true }))
+      .then(clients => {
+        clients.forEach(client => {
+          client.postMessage({
+            type: 'TAILWINDSPARK_SW_VERSION',
+            version: THEME_RUNTIME_VERSION,
+          });
+        });
+      })
   );
+});
+
+self.addEventListener('message', event => {
+  // Supports both immediate activation and runtime version checks during rollout verification.
+  if (event.data?.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+    return;
+  }
+
+  if (event.data?.type === 'GET_THEME_RUNTIME_VERSION' && event.source) {
+    event.source.postMessage({
+      type: 'TAILWINDSPARK_SW_VERSION',
+      version: THEME_RUNTIME_VERSION,
+    });
+  }
 });
 
 // Fetch event - intelligent caching strategies
@@ -131,6 +170,23 @@ self.addEventListener('fetch', event => {
 
   // Get cache strategy for this URL
   const strategy = getCacheStrategy(url);
+
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
+        .then(networkResponse => {
+          const responseToCache = networkResponse.clone();
+          caches.open(RUNTIME_CACHE).then(cache => cache.put(request, responseToCache));
+          return networkResponse;
+        })
+        .catch(async () => {
+          const cache = await caches.open(RUNTIME_CACHE);
+          const cachedResponse = await cache.match(request);
+          return cachedResponse || caches.match(new URL('./index.html', self.registration.scope).toString());
+        })
+    );
+    return;
+  }
 
   if (!strategy) {
     // Don't cache (e.g., analytics)

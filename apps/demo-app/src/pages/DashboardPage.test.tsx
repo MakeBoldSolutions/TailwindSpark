@@ -3,6 +3,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { DashboardPage } from './DashboardPage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const renderWithRouter = (component: React.ReactElement) => {
   return render(<BrowserRouter>{component}</BrowserRouter>);
 };
@@ -80,5 +86,17 @@ describe('DashboardPage', () => {
     // Check for avatar elements (first letter of customer name)
     const customerInitials = document.querySelectorAll('[class*="rounded-full"]');
     expect(customerInitials.length).toBeGreaterThan(0);
+  });
+
+  it.each(themeMatrix)('keeps dashboard route content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    renderWithRouter(<DashboardPage />);
+
+    expect(screen.getByRole('button', { name: /Refresh Data/i })).toBeInTheDocument();
+    expect(screen.getByText(/Revenue Trend/i)).toBeInTheDocument();
+    expect(screen.getByText(/Recent Transactions/i)).toBeInTheDocument();
   });
 });

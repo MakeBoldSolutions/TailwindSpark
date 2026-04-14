@@ -3,6 +3,15 @@ import { vi } from 'vitest';
 import { renderWithA11yTest, testA11y, testAriaAttributes, testKeyboardNavigation } from '../test/a11y-utils';
 import { Button } from './Button';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['material', 'dark'],
+  ['minimal', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+  ['brutalist', 'dark'],
+] as const;
+
 describe('Button', () => {
   it('renders with correct text', () => {
     render(<Button>Click me</Button>);
@@ -58,6 +67,26 @@ describe('Button', () => {
     fireEvent.click(screen.getByRole('button'));
     expect(handleClick).not.toHaveBeenCalled();
   });
+
+  it.each(themeMatrix)(
+    'uses semantic theme token classes for %s %s mode',
+    (themeId, mode) => {
+      document.documentElement.dataset.theme = themeId;
+      document.documentElement.dataset.themeMode = mode;
+      document.documentElement.classList.toggle('dark', mode === 'dark');
+
+      render(<Button variant="primary">Themed Button</Button>);
+      const button = screen.getByRole('button', { name: 'Themed Button' });
+
+      expect(button).toHaveClass(
+        'rounded-control',
+        'bg-[var(--button-primary-bg)]',
+        'text-[var(--button-primary-fg)]',
+        'hover:bg-[var(--button-primary-bg-hover)]',
+        'shadow-button'
+      );
+    }
+  );
 
   // Accessibility Tests
   describe('Accessibility', () => {

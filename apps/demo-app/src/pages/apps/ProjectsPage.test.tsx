@@ -6,6 +6,12 @@ import { describe, expect, it, vi } from 'vitest';
 import { SEOProvider } from '../../contexts/SEOContext';
 import ProjectsPage from './ProjectsPage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const mockProjects = [
   { id: 1, name: 'Alpha Project', description: 'First project', image_url: '', project_url: 'https://example.com/1', status: 'Active' as const, technologies: ['React'] },
   { id: 2, name: 'Beta Project', description: 'Second project', image_url: '', project_url: 'https://example.com/2', status: 'Completed' as const, technologies: ['TypeScript'] },
@@ -78,5 +84,17 @@ describe('ProjectsPage', () => {
     const { container } = renderPage();
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+  });
+
+  it.each(themeMatrix)('keeps projects route content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    renderPage();
+
+    expect(screen.getByRole('heading', { level: 1, name: /Projects/i })).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/Search projects/i)).toBeInTheDocument();
+    expect(screen.getByText(/Showing \d+ of \d+ project/i)).toBeInTheDocument();
   });
 });

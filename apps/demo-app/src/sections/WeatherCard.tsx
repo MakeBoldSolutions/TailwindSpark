@@ -19,10 +19,10 @@ const WeatherCard: React.FC<WeatherCardProps> = (props): React.JSX.Element => {
   const emoji = iconInfo?.emoji ?? '🌡️';
 
   return (
-    <div className="rounded-lg border border-border bg-surface p-6 shadow-sm transition hover:shadow-md">
+    <div className="rounded-panel border border-border bg-[var(--card-bg)] p-6 shadow-card transition hover:shadow-lg">
       <div className="mb-4 flex items-start justify-between">
         <div>
-          <h2 className="text-xl font-bold text-text">
+          <h2 className="text-xl font-bold text-text" style={{ fontFamily: 'var(--font-display)' }}>
             {data.city_name}{data.country_code ? `, ${data.country_code}` : ''}
           </h2>
           <p className="text-sm capitalize text-text-muted">

@@ -3,6 +3,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import { UsersPage } from './UsersPage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const renderWithRouter = (component: React.ReactElement) => {
   return render(<BrowserRouter>{component}</BrowserRouter>);
 };
@@ -82,5 +88,17 @@ describe('UsersPage', () => {
     const structuredContent = document.querySelector('table') ||
                              document.querySelector('[class*="grid"]');
     expect(structuredContent).toBeInTheDocument();
+  });
+
+  it.each(themeMatrix)('keeps users route content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    renderWithRouter(<UsersPage />);
+
+    expect(screen.getAllByRole('heading', { level: 1 }).length).toBeGreaterThan(0);
+    expect(document.querySelector('table')).toBeInTheDocument();
+    expect(screen.getAllByRole('button').length).toBeGreaterThan(0);
   });
 });

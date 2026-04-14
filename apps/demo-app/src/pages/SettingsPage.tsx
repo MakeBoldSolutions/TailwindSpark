@@ -37,11 +37,10 @@ const SettingsSection: React.FC<SettingsSectionProps> = ({
   icon,
   children,
 }) => (
-  <div className="overflow-hidden rounded-xl border border-secondary-200 bg-white shadow-sm dark:border-secondary-700 dark:bg-secondary-800">
-    <div className="border-b border-secondary-200 px-6 py-4 dark:border-secondary-700">
+  <div className="overflow-hidden rounded-panel border border-border bg-[var(--card-bg)] shadow-card">
+    <div className="border-b border-border px-6 py-4">
       <div className="flex items-center gap-3">
-        {/* eslint-disable-next-line no-raw-primary-class/no-raw-primary-class */}
-        <div className="bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 flex h-8 w-8 items-center justify-center rounded-lg">
+        <div className="flex h-8 w-8 items-center justify-center rounded-control border border-border bg-surface-alt text-brand">
           {icon}
         </div>
         <div>
@@ -64,7 +63,7 @@ const FormField: React.FC<{
   required?: boolean;
 }> = ({ label, type = 'text', value, onChange, placeholder, description, required }) => (
   <div className="space-y-2">
-    <label className="block text-sm font-medium text-secondary-700 dark:text-secondary-300">
+    <label className="block text-sm font-medium text-text">
       {label} {required && <span className="text-error">*</span>}
     </label>
     <input
@@ -73,7 +72,7 @@ const FormField: React.FC<{
       onChange={e => onChange(e.target.value)}
       placeholder={placeholder}
       required={required}
-      className="w-full rounded-lg border border-secondary-300 bg-white px-3 py-2 text-secondary-900 focus:border-transparent focus:ring-2 focus:ring-brand dark:border-secondary-600 dark:bg-secondary-700 dark:text-secondary-100"
+      className="w-full rounded-control border border-border bg-surface px-3 py-2 text-text focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
     />
     {description && <p className="text-xs text-text-muted">{description}</p>}
   </div>
@@ -92,8 +91,8 @@ const ToggleField: React.FC<{
     </div>
     <button
       type="button"
-      className={`focus:ring-brand relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-        enabled ? 'bg-brand' : 'bg-secondary-200 dark:bg-secondary-700'
+      className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-brand/30 focus:ring-offset-2 ${
+        enabled ? 'bg-brand' : 'bg-surface-hover'
       }`}
       role="switch"
       aria-checked={enabled ? 'true' : 'false'}
@@ -103,7 +102,7 @@ const ToggleField: React.FC<{
     >
       <span
         aria-hidden="true"
-        className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
+        className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-surface shadow ring-0 transition duration-200 ease-in-out ${
           enabled ? 'translate-x-5' : 'translate-x-0'
         }`}
       />
@@ -172,7 +171,7 @@ export const SettingsPage: React.FC = () => {
         hasUnsavedChanges && (
           <button
             onClick={handleSaveSettings}
-            className="bg-brand hover:bg-brand/90 flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors"
+            className="flex items-center gap-2 rounded-control bg-[var(--button-primary-bg)] px-4 py-2 text-sm font-medium text-[var(--button-primary-fg)] shadow-button transition-colors hover:bg-[var(--button-primary-bg-hover)]"
           >
             <IconSave />
             Save Changes
@@ -219,7 +218,7 @@ export const SettingsPage: React.FC = () => {
             />
             <div>
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-              <label className="mb-2 block text-sm font-medium text-secondary-700 dark:text-secondary-300">
+              <label className="mb-2 block text-sm font-medium text-text">
                 Timezone
               </label>
               <select
@@ -229,7 +228,7 @@ export const SettingsPage: React.FC = () => {
                   setHasUnsavedChanges(true);
                 }}
                 title="Select timezone"
-                className="w-full rounded-lg border border-secondary-300 bg-white px-3 py-2 text-secondary-900 focus:border-transparent focus:ring-2 focus:ring-brand dark:border-secondary-600 dark:bg-secondary-700 dark:text-secondary-100"
+                className="w-full rounded-control border border-border bg-surface px-3 py-2 text-text focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
               >
                 <option value="UTC-12">UTC-12 (Baker Island)</option>
                 <option value="UTC-8">UTC-8 (Pacific)</option>
@@ -270,7 +269,7 @@ export const SettingsPage: React.FC = () => {
             />
             <div>
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-              <label className="mb-2 block text-sm font-medium text-secondary-700 dark:text-secondary-300">
+              <label className="mb-2 block text-sm font-medium text-text">
                 Session Timeout (minutes)
               </label>
               <input
@@ -284,7 +283,7 @@ export const SettingsPage: React.FC = () => {
                 }}
                 title="Session timeout in minutes"
                 placeholder="Enter timeout in minutes"
-                className="w-full rounded-lg border border-secondary-300 bg-white px-3 py-2 text-secondary-900 focus:border-transparent focus:ring-2 focus:ring-brand dark:border-secondary-600 dark:bg-secondary-700 dark:text-secondary-100"
+                className="w-full rounded-control border border-border bg-surface px-3 py-2 text-text focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
               />
             </div>
           </div>
@@ -345,7 +344,7 @@ export const SettingsPage: React.FC = () => {
           <div className="space-y-6">
             <div>
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-              <label className="mb-2 block text-sm font-medium text-secondary-700 dark:text-secondary-300">
+              <label className="mb-2 block text-sm font-medium text-text">
                 API Key
               </label>
               <div className="flex gap-2">
@@ -355,11 +354,11 @@ export const SettingsPage: React.FC = () => {
                   readOnly
                   title="API Key (read-only)"
                   placeholder="API Key"
-                  className="flex-1 cursor-not-allowed rounded-lg border border-secondary-300 bg-secondary-50 px-3 py-2 text-secondary-900 dark:border-secondary-600 dark:bg-secondary-700 dark:text-secondary-100"
+                  className="flex-1 cursor-not-allowed rounded-control border border-border bg-surface-alt px-3 py-2 text-text"
                 />
                 <button
                   onClick={handleGenerateApiKey}
-                  className="rounded-lg bg-secondary-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-secondary-700"
+                  className="rounded-control border border-border bg-surface-alt px-4 py-2 text-sm font-medium text-text transition-colors hover:bg-surface-hover"
                 >
                   Regenerate
                 </button>
@@ -394,7 +393,7 @@ export const SettingsPage: React.FC = () => {
           icon={<IconCreditCard />}
         >
           <div className="space-y-4">
-            <div className="rounded-lg bg-secondary-50 p-4 dark:bg-secondary-700">
+            <div className="rounded-panel border border-border bg-surface-alt p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <h4 className="font-medium text-text">Pro Plan</h4>
@@ -402,17 +401,17 @@ export const SettingsPage: React.FC = () => {
                     $29/month • Next billing: Jan 15, 2024
                   </p>
                 </div>
-                <button className="rounded-lg bg-brand px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand/90">
+                <button className="rounded-control bg-[var(--button-primary-bg)] px-4 py-2 text-sm font-medium text-[var(--button-primary-fg)] shadow-button transition-colors hover:bg-[var(--button-primary-bg-hover)]">
                   Manage Subscription
                 </button>
               </div>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div className="rounded-lg border border-secondary-200 p-4 text-center dark:border-secondary-600">
+              <div className="rounded-panel border border-border p-4 text-center">
                 <div className="text-2xl font-bold text-text">1,234</div>
                 <div className="text-sm text-text-muted">API Calls This Month</div>
               </div>
-              <div className="rounded-lg border border-secondary-200 p-4 text-center dark:border-secondary-600">
+              <div className="rounded-panel border border-border p-4 text-center">
                 <div className="text-2xl font-bold text-text">89%</div>
                 <div className="text-sm text-text-muted">Storage Used</div>
               </div>

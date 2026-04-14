@@ -2,6 +2,12 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { ButtonShowcase } from './ButtonShowcase';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 describe('ButtonShowcase', () => {
   it('renders without crashing', () => {
     render(<ButtonShowcase />);
@@ -93,5 +99,17 @@ describe('ButtonShowcase', () => {
     // Icons should be present
     const icons = document.querySelectorAll('svg');
     expect(icons.length).toBeGreaterThan(0);
+  });
+
+  it.each(themeMatrix)('keeps button showcase content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    render(<ButtonShowcase />);
+
+    expect(screen.getByRole('heading', { level: 2, name: /Button Components/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Primary/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 3, name: /Variants/i })).toBeInTheDocument();
   });
 });

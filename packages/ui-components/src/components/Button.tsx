@@ -7,23 +7,30 @@ import * as React from 'react';
  * Extends standard HTML button attributes with additional styling and loading state options.
  */
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Visual recipe variant resolved through semantic component tokens. */
   variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'ghost';
+  /** Predefined control size. */
   size?: 'sm' | 'md' | 'lg' | 'xl';
+  /** Replaces content with a loading spinner and disables interaction. */
   loading?: boolean;
+  /** Expands the control to the width of its container. */
   fullWidth?: boolean;
+  /** Optional icon rendered before the button label. */
   leftIcon?: React.ReactNode;
+  /** Optional icon rendered after the button label. */
   rightIcon?: React.ReactNode;
 }
 
 const buttonVariants = {
-  primary: 'bg-brand hover:bg-brand-hover focus:ring-brand text-white shadow-sm',
+  primary:
+    'bg-[var(--button-primary-bg)] text-[var(--button-primary-fg)] hover:bg-[var(--button-primary-bg-hover)] focus:ring-focus-ring shadow-button',
   secondary:
-    'bg-secondary-600 hover:bg-secondary-700 focus:ring-secondary-500 text-white shadow-sm',
+    'bg-[var(--button-secondary-bg)] text-[var(--button-secondary-fg)] hover:bg-[var(--button-secondary-bg-hover)] focus:ring-focus-ring shadow-sm',
   success: 'bg-success-600 hover:bg-success-700 focus:ring-success-500 text-white shadow-sm',
   warning: 'bg-warning-600 hover:bg-warning-700 focus:ring-warning-500 text-white shadow-sm',
   error: 'bg-error-600 hover:bg-error-700 focus:ring-error-500 text-white shadow-sm',
   ghost:
-    'bg-transparent hover:bg-surface-alt focus:ring-brand text-text',
+    'bg-[var(--button-ghost-bg)] text-[var(--button-ghost-fg)] hover:bg-[var(--button-ghost-bg-hover)] focus:ring-focus-ring',
 };
 
 const buttonSizes = {
@@ -82,9 +89,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={clsx(
-          'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200',
+          'inline-flex items-center justify-center gap-2 rounded-control font-medium transition-all duration-200',
           'focus:outline-none focus:ring-2 focus:ring-offset-2',
           'disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none',
+          'active:translate-y-px',
           buttonVariants[variant],
           buttonSizes[size],
           fullWidth && 'w-full',

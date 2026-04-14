@@ -11,11 +11,12 @@ export default {
     './src/**/*.{js,ts,jsx,tsx}',
     '../../packages/ui-components/src/**/*.{js,ts,jsx,tsx}',
   ],
+  safelist: ['rounded-control', 'rounded-panel', 'shadow-card', 'shadow-modal', 'shadow-button'],
   theme: {
     ...baseConfig.theme,
     extend: {
       ...(baseConfig.theme?.extend || {}),
-      // Add app-only extensions below if needed
+      // App-only theme extensions belong here if a route needs additional semantic utilities.
     },
   },
 };

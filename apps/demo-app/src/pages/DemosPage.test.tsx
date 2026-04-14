@@ -3,6 +3,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import { DemosPage } from './DemosPage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const renderWithRouter = (component: React.ReactElement) => {
   return render(<BrowserRouter>{component}</BrowserRouter>);
 };
@@ -76,5 +82,16 @@ describe('DemosPage', () => {
     // Responsive classes present
     const responsiveElements = document.querySelectorAll('[class*="md:"], [class*="lg:"]');
     expect(responsiveElements.length).toBeGreaterThan(0);
+  });
+
+  it.each(themeMatrix)('keeps demos route content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    renderWithRouter(<DemosPage />);
+
+    expect(screen.getAllByRole('heading', { level: 1 }).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole('link').length).toBeGreaterThan(0);
   });
 });
