@@ -14,12 +14,12 @@ description: "Task list for implementing the multi-theme design system platform"
 
 ## Current Status
 
-- **Lifecycle**: Implementation is active and the spec remains `In Progress`.
-- **Completed tasks**: 34 of 35.
-- **Remaining tasks**: 1 of 35.
-- **Validated so far**: Focused demo-app theme tests including invalid preference fallback coverage, app-shell route smoke coverage, broader route and mini-app parity coverage, focused ui-components primitive tests including theme-matrix coverage, focused route parity tests for analytics, demos, ecommerce, marketing, settings, and users, package-level lint/type-check for changed workspaces, focused showcase/chat parity tests, root monorepo `lint`, `type-check`, and `test`, and repeated passing production builds.
-- **Open task IDs**: T035.
-- **Primary remaining themes of work**: post-deploy cache verification.
+- **Lifecycle**: Implementation is complete and the spec is ready for PR creation.
+- **Completed tasks**: 35 of 35.
+- **Remaining tasks**: 0 of 35.
+- **Validated so far**: Focused demo-app theme tests including invalid preference fallback coverage, app-shell route smoke coverage, broader route and mini-app parity coverage, focused ui-components primitive tests including theme-matrix coverage, focused route parity tests for analytics, demos, ecommerce, marketing, settings, and users, package-level lint/type-check for changed workspaces, focused showcase/chat parity tests, repeated passing production builds, and post-deploy cache/version verification with stale-asset recovery validation against a service-worker-controlled `/TailwindSpark/` dist session.
+- **Open task IDs**: None.
+- **Primary remaining themes of work**: None.
 
 ## Format: `[ID] [P?] [Story] Description`
 
@@ -131,7 +131,7 @@ description: "Task list for implementing the multi-theme design system platform"
 - [X] T032 [P] Add add-theme guidance plus required light/dark variant and rollout recovery notes in `packages/design-tokens/theme.css`, `apps/demo-app/public/sw.js`, and `.documentation/specs/001-multi-theme-platform/quickstart.md`
 - [X] T033 Add required JSDoc for modified shared component exports in `packages/ui-components/src/components/Button.tsx`, `packages/ui-components/src/components/Card.tsx`, `packages/ui-components/src/components/Form.tsx`, and `packages/ui-components/src/components/Modal.tsx`
 - [X] T034 Run repository validation commands referenced by `package.json`, `apps/demo-app/package.json`, and `packages/ui-components/package.json`
-- [ ] T035 Perform post-deploy cache/version and stale-asset recovery verification using `apps/demo-app/public/sw.js` and `.documentation/specs/001-multi-theme-platform/quickstart.md`
+- [X] T035 Perform post-deploy cache/version and stale-asset recovery verification using `apps/demo-app/public/sw.js` and `.documentation/specs/001-multi-theme-platform/quickstart.md`
 
 ---
 

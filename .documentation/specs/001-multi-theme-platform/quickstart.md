@@ -92,6 +92,7 @@ npm run test --workspace=@tailwindspark/demo-app
 - The service worker uses `THEME_RUNTIME_VERSION` in `apps/demo-app/public/sw.js` to coordinate cache invalidation for theme runtime changes.
 - After changing theme boot or token behavior, verify that a refreshed client receives the current service-worker version and recovers without a manual cache clear.
 - Use the existing focused workspace checks first, then perform a browser reload test against a service-worker-controlled session.
+- Verified locally on 2026-04-14 against a production-style `/TailwindSpark/` dist server: the active service worker reported `theme-platform-v1`, a simulated stale-version message cleared existing caches automatically, and a reload restored a healthy `runtime-theme-platform-v1` / `static-theme-platform-v1` / `images-theme-platform-v1` cache set without manual cache clearing.
 
 ## Exit Criteria
 
