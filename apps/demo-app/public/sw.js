@@ -25,14 +25,14 @@ const coreFiles = [
 
 // Application routes that should be available from the cache for SPA navigation
 const appRoutes = [
-  '/about',
-  '/apps',
-  '/apps/projects',
-  '/apps/articles',
-  '/apps/joke',
-  '/apps/weather',
-  '/apps/ai-chat',
-  '/apps/repos',
+  'about',
+  'apps',
+  'apps/projects',
+  'apps/articles',
+  'apps/joke',
+  'apps/weather',
+  'apps/ai-chat',
+  'apps/repos',
 ];
 
 const buildPrecacheUrls = () => {

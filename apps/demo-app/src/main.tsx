@@ -4,6 +4,7 @@ import App from './App.tsx';
 import './index.css';
 import { clearAllCaches } from './services/cache.service';
 import { initializeThemeBoot } from './utils/themeBoot';
+import { getTailwindSparkCacheNames } from './utils/themeRuntimeCache';
 
 const FORCE_CACHE_CLEAR_KEY = 'tailwindspark:force-cache-clear';
 const THEME_RUNTIME_VERSION = 'theme-platform-v1';
@@ -13,14 +14,14 @@ async function clearBrowserCaches(): Promise<void> {
 
   try {
     sessionStorage.removeItem(FORCE_CACHE_CLEAR_KEY);
-    sessionStorage.clear();
   } catch {
     // ignore session storage failures
   }
 
   if ('caches' in window) {
     const cacheNames = await caches.keys();
-    await Promise.all(cacheNames.map(cacheName => caches.delete(cacheName)));
+    const ownedCacheNames = getTailwindSparkCacheNames(cacheNames, THEME_RUNTIME_VERSION);
+    await Promise.all(ownedCacheNames.map(cacheName => caches.delete(cacheName)));
   }
 }
 
