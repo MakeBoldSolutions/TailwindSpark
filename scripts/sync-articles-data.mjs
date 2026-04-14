@@ -6,9 +6,49 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const outputPath = path.resolve(__dirname, '../apps/demo-app/public/data/articles.json');
 const sourceUrl = 'https://markhazleton.com/articles.json';
 const maxSnapshotBytes = 2 * 1024 * 1024; // 2MB limit
+const allowedRemoteProtocols = new Set(['http:', 'https:']);
 
 function isRecord(value) {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function normalizeRequiredString(value, fieldName, index) {
+  if (typeof value !== 'string') {
+    throw new Error(`Article at index ${index} has an invalid ${fieldName}`);
+  }
+
+  const normalized = value.trim();
+  if (normalized.length === 0) {
+    throw new Error(`Article at index ${index} has an invalid ${fieldName}`);
+  }
+
+  return normalized;
+}
+
+function normalizeOptionalString(value, fieldName, index) {
+  if (value === undefined) {
+    return undefined;
+  }
+
+  if (typeof value !== 'string') {
+    throw new Error(`Article at index ${index} has an invalid ${fieldName}`);
+  }
+
+  return value.trim();
+}
+
+function normalizeOptionalUrl(value, fieldName, index) {
+  if (value === undefined || value === null) {
+    return value ?? undefined;
+  }
+
+  const normalized = normalizeRequiredString(value, fieldName, index);
+  const url = new URL(normalized, 'https://markhazleton.com');
+  if (!allowedRemoteProtocols.has(url.protocol)) {
+    throw new Error(`Article at index ${index} has an unsupported ${fieldName} protocol`);
+  }
+
+  return normalized;
 }
 
 function assertValidArticle(article, index) {
@@ -21,13 +61,60 @@ function assertValidArticle(article, index) {
     throw new Error(`Article at index ${index} has an invalid id`);
   }
 
-  if (typeof article.name !== 'string' || article.name.trim().length === 0) {
-    throw new Error(`Article at index ${index} has an invalid name`);
+  normalizeRequiredString(article.name, 'name', index);
+  normalizeRequiredString(article.slug, 'slug', index);
+
+  if (typeof article.description !== 'string') {
+    throw new Error(`Article at index ${index} has an invalid description`);
   }
 
-  if (typeof article.slug !== 'string' || article.slug.trim().length === 0) {
-    throw new Error(`Article at index ${index} has an invalid slug`);
+  if (article.seo !== undefined && article.seo !== null && !isRecord(article.seo)) {
+    throw new Error(`Article at index ${index} has an invalid seo object`);
   }
+}
+
+function normalizeArticle(article, index) {
+  assertValidArticle(article, index);
+
+  const normalizedArticle = {
+    id: typeof article.id === 'number' ? article.id : normalizeRequiredString(article.id, 'id', index),
+    name: normalizeRequiredString(article.name, 'name', index),
+    description: article.description,
+    slug: normalizeRequiredString(article.slug, 'slug', index),
+  };
+
+  const section = normalizeOptionalString(article.Section, 'Section', index);
+  if (section !== undefined) {
+    normalizedArticle.Section = section;
+  }
+
+  const publishedDate = normalizeOptionalString(article.publishedDate, 'publishedDate', index);
+  if (publishedDate !== undefined) {
+    normalizedArticle.publishedDate = publishedDate;
+  }
+
+  const author = normalizeOptionalString(article.author, 'author', index);
+  if (author !== undefined) {
+    normalizedArticle.author = author;
+  }
+
+  const imageSource = normalizeOptionalUrl(article.img_src, 'img_src', index);
+  if (imageSource !== undefined) {
+    normalizedArticle.img_src = imageSource;
+  }
+
+  const keywords = normalizeOptionalString(article.keywords, 'keywords', index);
+  if (keywords !== undefined) {
+    normalizedArticle.keywords = keywords;
+  }
+
+  if (article.seo?.canonical !== undefined && article.seo?.canonical !== null) {
+    normalizedArticle.seo = {
+      canonical: normalizeOptionalUrl(article.seo.canonical, 'seo.canonical', index),
+    };
+  }
+
+  return normalizedArticle;
 }
 
 function sanitizeArticlesSnapshot(jsonText) {
@@ -41,13 +128,7 @@ function sanitizeArticlesSnapshot(jsonText) {
     throw new Error('Articles snapshot must be an array');
   }
 
-  const sanitized = parsed.map((article, index) => {
-    assertValidArticle(article, index);
-
-    // Keep the article in its original API format
-    // The app's rss.service will map it to the UI format
-    return article;
-  });
+  const sanitized = parsed.map((article, index) => normalizeArticle(article, index));
 
   return `${JSON.stringify(sanitized, null, 2)}\n`;
 }
