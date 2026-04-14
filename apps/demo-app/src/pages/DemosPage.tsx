@@ -188,7 +188,7 @@ export const DemosPage: React.FC = () => {
                   <div className="absolute inset-0 z-20 flex items-center justify-center rounded-2xl bg-black/0 transition-all duration-300 group-hover:bg-black/20">
                     <Link
                       to={demo.path}
-                      className="translate-y-4 transform rounded-full bg-white px-6 py-3 font-semibold text-text opacity-0 shadow-lg transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+                      className="translate-y-4 transform rounded-full border border-border bg-surface px-6 py-3 font-semibold text-text opacity-0 shadow-card transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
                     >
                       View {demo.title} →
                     </Link>
@@ -244,7 +244,7 @@ export const DemosPage: React.FC = () => {
                       {demo.techHighlights.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="rounded-full bg-brand/10 px-3 py-1 text-sm font-medium text-brand"
+                          className="rounded-full border border-border bg-surface-alt px-3 py-1 text-sm font-medium text-text"
                         >
                           {tech}
                         </span>
@@ -264,7 +264,7 @@ export const DemosPage: React.FC = () => {
                   <div className="flex gap-4">
                     <Link
                       to={demo.path}
-                      className="transform rounded-lg bg-gradient-to-r from-brand to-brand-hover px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                      className="transform rounded-control bg-[var(--button-primary-bg)] px-6 py-3 font-semibold text-[var(--button-primary-fg)] shadow-button transition-all duration-300 hover:scale-105 hover:bg-[var(--button-primary-bg-hover)]"
                     >
                       Explore {demo.title}
                     </Link>
@@ -289,13 +289,13 @@ export const DemosPage: React.FC = () => {
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Link
                 to="/dashboard"
-                className="transform rounded-full bg-white px-8 py-4 font-semibold text-brand transition-all duration-300 hover:scale-105 hover:bg-surface-alt"
+                className="transform rounded-full border border-border bg-surface px-8 py-4 font-semibold text-text transition-all duration-300 hover:scale-105 hover:bg-surface-alt"
               >
                 Start with SaaS Dashboard
               </Link>
               <Link
                 to="/design-system"
-                className="rounded-full border-2 border-white px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-white hover:text-brand"
+                className="rounded-full border border-white/40 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-white/10"
               >
                 View Components Library
               </Link>

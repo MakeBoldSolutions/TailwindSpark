@@ -23,18 +23,18 @@ interface StatCardProps {
 const StatCard: React.FC<StatCardProps> = ({ title, value, change, trend, isLoading = false }) => {
   if (isLoading) {
     return (
-      <div className="rounded-xl border border-secondary-200 bg-white p-6 shadow-sm dark:border-secondary-700 dark:bg-secondary-800">
+      <div className="rounded-panel border border-border bg-[var(--card-bg)] p-6 shadow-card">
         <div className="animate-pulse">
-          <div className="mb-4 h-4 w-1/2 rounded bg-secondary-300 dark:bg-secondary-600"></div>
-          <div className="mb-2 h-8 w-3/4 rounded bg-secondary-300 dark:bg-secondary-600"></div>
-          <div className="h-3 w-1/3 rounded bg-secondary-300 dark:bg-secondary-600"></div>
+          <div className="mb-4 h-4 w-1/2 rounded bg-surface-alt"></div>
+          <div className="mb-2 h-8 w-3/4 rounded bg-surface-alt"></div>
+          <div className="h-3 w-1/3 rounded bg-surface-alt"></div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="rounded-xl border border-secondary-200 bg-white p-6 shadow-sm transition-all duration-200 hover:shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+    <div className="rounded-panel border border-border bg-[var(--card-bg)] p-6 shadow-card transition-all duration-200 hover:shadow-lg">
       <h3 className="mb-2 text-sm font-medium text-text-muted">{title}</h3>
       <div className="flex items-end justify-between">
         <p className="text-3xl font-bold text-text">{value}</p>
@@ -71,11 +71,10 @@ const TransactionRow: React.FC<{ transaction: Transaction }> = ({ transaction })
   };
 
   return (
-    <tr className="transition-colors hover:bg-secondary-50 dark:hover:bg-secondary-700">
+    <tr className="transition-colors hover:bg-surface-alt">
       <td className="whitespace-nowrap px-6 py-4">
         <div className="flex items-center">
-          {/* eslint-disable-next-line no-raw-primary-class/no-raw-primary-class */}
-          <div className="from-primary-500 to-accent-700 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-sm font-medium text-white">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-surface-alt text-sm font-medium text-text">
             {transaction.customer.charAt(0).toUpperCase()}
           </div>
           <div className="ml-3">
@@ -106,8 +105,8 @@ const TransactionRow: React.FC<{ transaction: Transaction }> = ({ transaction })
 const ActivityItem: React.FC<{ activity: { user: string; action: string; time: string } }> = ({
   activity,
 }) => (
-  <div className="flex items-start gap-3 rounded-lg p-3 transition-colors hover:bg-secondary-50 dark:hover:bg-secondary-700">
-    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-data-viz-2 to-brand text-sm font-medium text-white">
+  <div className="flex items-start gap-3 rounded-panel p-3 transition-colors hover:bg-surface-alt">
+    <div className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-surface-alt text-sm font-medium text-brand">
       {activity.user.charAt(0).toUpperCase()}
     </div>
     <div className="min-w-0 flex-1">
@@ -385,10 +384,10 @@ export const DashboardPage: React.FC = () => {
               {users.map((user, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between rounded-lg p-3 transition-colors hover:bg-surface-alt"
+                    className="flex items-center justify-between rounded-panel p-3 transition-colors hover:bg-surface-alt"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="from-brand to-accent-700 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-sm font-medium text-white">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-surface-alt text-sm font-medium text-brand">
                       {user.name
                         .split(' ')
                         .map(n => n.charAt(0))

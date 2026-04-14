@@ -67,11 +67,11 @@ export const CardShowcase: React.FC = () => {
             <CardContent>
               <div className="space-y-2 text-sm">
                 <div className="flex items-center gap-2">
-                  <MapPin size={16} className="text-secondary-500" />
+                  <MapPin size={16} className="text-text-muted" />
                   <span>San Francisco, CA</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Calendar size={16} className="text-secondary-500" />
+                  <Calendar size={16} className="text-text-muted" />
                   <span>Joined March 2022</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -90,7 +90,7 @@ export const CardShowcase: React.FC = () => {
           <Card variant="bordered">
             <div className="p-6">
               <div className="mb-4 flex items-center gap-4">
-                <div className="bg-brand/10 dark:bg-brand/20 flex h-12 w-12 items-center justify-center rounded-full">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-surface-alt">
                   <User className="text-brand h-6 w-6" />
                 </div>
                 <div>
@@ -120,8 +120,8 @@ export const CardShowcase: React.FC = () => {
           <Card variant="default">
             <CardContent>
               <div className="text-center">
-                <div className="bg-success-100 dark:bg-success-900 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
-                  <User className="text-success-600 dark:text-success-400 h-8 w-8" />
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-success/30 bg-success/10">
+                  <User className="text-success h-8 w-8" />
                 </div>
                 <h4 className="text-text mb-2 font-semibold">
                   Emma Wilson
@@ -150,7 +150,7 @@ export const CardShowcase: React.FC = () => {
           <Card variant="elevated" padding="lg">
             <CardHeader>
               <div className="flex items-center gap-3">
-                <div className="bg-brand/10 dark:bg-brand/20 flex h-10 w-10 items-center justify-center rounded-lg">
+                <div className="flex h-10 w-10 items-center justify-center rounded-panel border border-border bg-surface-alt">
                   <Star className="text-brand h-5 w-5" />
                 </div>
                 <div>

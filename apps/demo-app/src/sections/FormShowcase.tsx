@@ -126,7 +126,7 @@ export const FormShowcase: React.FC = () => {
 
       {/* Textarea */}
       <div className="space-y-4">
-        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">
+        <h3 className="text-text text-lg font-semibold">
           Textarea
         </h3>
 
@@ -153,7 +153,7 @@ export const FormShowcase: React.FC = () => {
 
       {/* Select */}
       <div className="space-y-4">
-        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">
+        <h3 className="text-text text-lg font-semibold">
           Select Dropdown
         </h3>
 
@@ -174,7 +174,7 @@ export const FormShowcase: React.FC = () => {
 
       {/* Checkboxes */}
       <div className="space-y-4">
-        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">
+        <h3 className="text-text text-lg font-semibold">
           Checkboxes
         </h3>
 
@@ -196,12 +196,12 @@ export const FormShowcase: React.FC = () => {
 
       {/* Radio Buttons */}
       <div className="space-y-4">
-        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">
+        <h3 className="text-text text-lg font-semibold">
           Radio Buttons
         </h3>
 
         <div className="space-y-3">
-          <div className="text-secondary-900 dark:text-secondary-100 mb-2 text-sm font-medium">
+          <div className="mb-2 text-sm font-medium text-text">
             Choose a plan:
           </div>
           <Radio
@@ -236,13 +236,13 @@ export const FormShowcase: React.FC = () => {
 
       {/* Form Example */}
       <div className="space-y-4">
-        <h3 className="text-secondary-800 dark:text-secondary-200 text-lg font-semibold">
+        <h3 className="text-text text-lg font-semibold">
           Complete Form Example
         </h3>
 
         <form
           onSubmit={handleSubmit}
-          className="dark:bg-secondary-800 border-secondary-200 dark:border-secondary-700 space-y-6 rounded-xl border bg-white p-6"
+          className="space-y-6 rounded-panel border border-border bg-[var(--card-bg)] p-6 shadow-card"
         >
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <Input

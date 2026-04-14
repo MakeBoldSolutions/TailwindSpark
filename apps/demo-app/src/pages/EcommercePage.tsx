@@ -178,7 +178,7 @@ const EcommercePage: React.FC = () => {
     >
       <div className="min-h-screen bg-surface-alt">
         {/* Breadcrumbs */}
-        <div className="bg-white shadow-sm">
+        <div className="border-b border-border bg-surface shadow-sm">
           <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
             <nav className="flex" aria-label="Breadcrumb">
               <ol className="flex items-center space-x-2">
@@ -339,7 +339,7 @@ const EcommercePage: React.FC = () => {
                             onClick={() => setCurrentPage(page)}
                             className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
                               page === currentPage
-                                ? 'z-10 bg-brand text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand'
+                                ? 'z-10 bg-[var(--button-primary-bg)] text-[var(--button-primary-fg)] focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand'
                                 : 'text-text ring-1 ring-inset ring-border hover:bg-surface-alt focus:z-20 focus:outline-offset-0'
                             }`}
                           >

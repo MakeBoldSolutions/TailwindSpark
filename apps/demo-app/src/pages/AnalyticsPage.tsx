@@ -32,7 +32,7 @@ interface MetricCardProps {
 }
 
 const MetricCard: React.FC<MetricCardProps> = ({ title, value, change, trend, icon, color }) => (
-  <div className="rounded-xl border border-secondary-200 bg-white p-6 shadow-sm transition-all duration-200 hover:shadow-md dark:border-secondary-700 dark:bg-secondary-800">
+  <div className="rounded-panel border border-border bg-[var(--card-bg)] p-6 shadow-card transition-all duration-200 hover:shadow-lg">
     <div className="mb-4 flex items-center justify-between">
       <div
         className={`h-12 w-12 ${color} flex items-center justify-center rounded-lg text-xl text-white`}
@@ -58,7 +58,7 @@ const TrafficSourceItem: React.FC<{
   percentage: number;
   color: string;
 }> = ({ source, visitors, percentage, color }) => (
-  <div className="flex items-center justify-between rounded-lg p-4 transition-colors hover:bg-secondary-50 dark:hover:bg-secondary-700">
+  <div className="flex items-center justify-between rounded-panel p-4 transition-colors hover:bg-surface-alt">
     <div className="flex items-center gap-3">
       <div className={`h-3 w-3 rounded-full ${color}`}></div>
       <div>
@@ -68,7 +68,7 @@ const TrafficSourceItem: React.FC<{
     </div>
     <div className="text-right">
       <p className="text-sm font-medium text-text">{percentage}%</p>
-      <div className="relative mt-1 h-2 w-16 rounded-full bg-secondary-200 dark:bg-secondary-600">
+      <div className="relative mt-1 h-2 w-16 rounded-full bg-surface-alt">
         <div
           className={`h-full ${color} absolute left-0 top-0 rounded-full`}
           data-width={`${percentage}%`}
@@ -153,7 +153,7 @@ export const AnalyticsPage: React.FC = () => {
         <select
           value={timeRange}
           onChange={e => setTimeRange(e.target.value)}
-          className="focus:ring-brand rounded-lg border border-secondary-300 bg-white px-3 py-2 text-sm text-secondary-900 focus:border-transparent focus:ring-2 dark:border-secondary-600 dark:bg-secondary-700 dark:text-secondary-100"
+          className="rounded-control border border-border bg-surface px-3 py-2 text-sm text-text focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
           aria-label="Select time range"
           title="Select time range"
         >
@@ -182,7 +182,7 @@ export const AnalyticsPage: React.FC = () => {
       {/* Charts and Data */}
       <div className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Traffic Trend Chart */}
-        <div className="rounded-xl border bg-surface p-6 shadow-sm lg:col-span-2">
+        <div className="rounded-panel border border-border bg-[var(--card-bg)] p-6 shadow-card lg:col-span-2">
           <div className="mb-6 flex items-center justify-between">
             <h3 className="text-lg font-semibold text-text">
               Traffic Trend
@@ -236,14 +236,14 @@ export const AnalyticsPage: React.FC = () => {
         </div>
 
         {/* Real-time Stats */}
-        <div className="rounded-xl border bg-surface p-6 shadow-sm">
+        <div className="rounded-panel border border-border bg-[var(--card-bg)] p-6 shadow-card">
           <h3 className="mb-4 text-lg font-semibold text-text">Real-time</h3>
           <div className="space-y-4">
             <div className="text-center">
               <div className="mb-1 text-3xl font-bold text-success">847</div>
               <div className="text-sm text-muted">Active Users</div>
             </div>
-            <div className="border-t pt-4">
+            <div className="border-t border-border pt-4">
               <div className="space-y-3">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted">Top Active Page</span>
@@ -266,7 +266,7 @@ export const AnalyticsPage: React.FC = () => {
       {/* Traffic Sources and Top Pages */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Traffic Sources */}
-        <div className="rounded-xl border bg-surface p-6 shadow-sm">
+        <div className="rounded-panel border border-border bg-[var(--card-bg)] p-6 shadow-card">
           <h3 className="mb-4 text-lg font-semibold text-text">
             Traffic Sources
           </h3>
@@ -284,8 +284,8 @@ export const AnalyticsPage: React.FC = () => {
         </div>
 
         {/* Top Pages */}
-        <div className="overflow-hidden rounded-xl border bg-surface shadow-sm">
-          <div className="border-b px-6 py-4">
+        <div className="overflow-hidden rounded-panel border border-border bg-[var(--card-bg)] shadow-card">
+          <div className="border-b border-border px-6 py-4">
             <h3 className="text-lg font-semibold text-text">Top Pages</h3>
           </div>
           <div className="overflow-x-auto">
@@ -303,7 +303,7 @@ export const AnalyticsPage: React.FC = () => {
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y bg-surface">
+              <tbody className="divide-y divide-border bg-surface">
                 {topPages.map((page, index) => (
                   <tr
                     key={index}

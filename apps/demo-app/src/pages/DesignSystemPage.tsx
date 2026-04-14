@@ -31,14 +31,14 @@ export const DesignSystemShowcase: React.FC = () => {
             modals with all variants and interactive states.
           </p>
           <div className="flex justify-center gap-3 text-sm">
-            <span className="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 font-medium text-brand">
+            <span className="inline-flex items-center rounded-control border border-border bg-surface-alt px-3 py-1 font-medium text-text">
               ✨ TailwindSpark
             </span>
             <a
               href="https://webspark.markhazleton.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-full bg-surface-alt px-3 py-1 font-medium text-text transition-colors hover:bg-border"
+              className="inline-flex items-center rounded-control border border-border bg-surface-alt px-3 py-1 font-medium text-text transition-colors hover:bg-surface-hover"
             >
               🌐 WebSpark Portfolio
             </a>
