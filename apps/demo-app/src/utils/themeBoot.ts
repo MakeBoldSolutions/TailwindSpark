@@ -1,4 +1,5 @@
 import type { ThemePreference } from '../types/theme';
+import { resolveThemeId } from './themeRegistry';
 import { createThemePreference, resolveInitialThemePreference } from './themeStorage';
 
 /**
@@ -33,7 +34,7 @@ export const readThemeFromDocument = (documentRef: Document = document): ThemePr
   const rootElement = documentRef.documentElement;
 
   return createThemePreference({
-    themeId: rootElement.dataset.theme,
+    themeId: resolveThemeId(rootElement.dataset.theme),
     mode: rootElement.dataset.themeMode as ThemePreference['mode'] | undefined,
     source: 'stored',
   });
