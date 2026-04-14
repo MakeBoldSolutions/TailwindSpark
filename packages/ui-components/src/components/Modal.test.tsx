@@ -267,9 +267,9 @@ describe('Modal Component', () => {
       </Modal>
     );
     
-    const backdrop = document.querySelector('.bg-surface-inverse');
+    const backdrop = document.querySelector('[class*="bg-[color:var(--modal-overlay)]"]');
     expect(backdrop).toBeInTheDocument();
-    expect(backdrop).toHaveClass('fixed', 'inset-0', 'bg-opacity-75');
+    expect(backdrop).toHaveClass('fixed', 'inset-0');
   });
 });
 

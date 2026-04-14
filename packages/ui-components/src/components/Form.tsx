@@ -16,11 +16,9 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 }
 
 const inputVariants = {
-  default:
-    'border-border dark:border-border-strong focus:border-brand focus:ring-brand',
-  error: 'border-error-300 dark:border-error-600 focus:border-error-500 focus:ring-error-500',
-  success:
-    'border-success-300 dark:border-success-600 focus:border-success-500 focus:ring-success-500',
+  default: 'border-[color:var(--field-border)] focus:border-focus-ring focus:ring-focus-ring',
+  error: 'border-error-300 focus:border-error-500 focus:ring-error-500',
+  success: 'border-success-300 focus:border-success-500 focus:ring-success-500',
 };
 
 /**
@@ -72,7 +70,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             aria-invalid={!!error}
             aria-describedby={hasDescription ? descriptionId : undefined}
             className={clsx(
-              'text-text bg-surface placeholder-text-muted block w-full rounded-lg border px-3 py-2',
+              'text-text block w-full rounded-control border bg-[var(--field-bg)] px-3 py-2 placeholder-text-muted',
               'transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0',
               'disabled:bg-surface-alt disabled:text-text-muted disabled:cursor-not-allowed',
               inputVariants[actualVariant],
@@ -161,7 +159,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           aria-invalid={!!error}
           aria-describedby={hasDescription ? descriptionId : undefined}
           className={clsx(
-            'text-text bg-surface placeholder-text-muted block w-full rounded-lg border px-3 py-2',
+            'text-text block w-full rounded-control border bg-[var(--field-bg)] px-3 py-2 placeholder-text-muted',
             'resize-vertical transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0',
             'disabled:bg-surface-alt disabled:text-text-muted disabled:cursor-not-allowed',
             inputVariants[actualVariant],
@@ -245,7 +243,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           aria-invalid={!!error}
           aria-describedby={hasDescription ? descriptionId : undefined}
           className={clsx(
-            'text-text bg-surface block w-full rounded-lg border px-3 py-2',
+            'text-text block w-full rounded-control border bg-[var(--field-bg)] px-3 py-2',
             'transition-colors focus:outline-none focus:ring-2 focus:ring-offset-0',
             'disabled:bg-surface-alt disabled:text-text-muted disabled:cursor-not-allowed',
             inputVariants[actualVariant],
@@ -324,7 +322,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             aria-invalid={!!error}
             aria-describedby={hasDescription ? descriptionId : undefined}
             className={clsx(
-              'border-border dark:border-border-strong text-brand focus:ring-brand h-4 w-4 rounded focus:ring-offset-0',
+              'h-4 w-4 rounded border-[color:var(--field-border-strong)] text-brand focus:ring-brand focus:ring-offset-0',
               'disabled:cursor-not-allowed disabled:opacity-50',
               className
             )}
@@ -395,7 +393,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
           id={radioId}
           type="radio"
           className={clsx(
-            'border-border dark:border-border-strong text-brand focus:ring-brand h-4 w-4 focus:ring-offset-0',
+            'h-4 w-4 border-[color:var(--field-border-strong)] text-brand focus:ring-brand focus:ring-offset-0',
             'disabled:cursor-not-allowed disabled:opacity-50',
             className
           )}

@@ -14,9 +14,9 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const cardVariants = {
-  default: 'bg-surface',
-  bordered: 'bg-surface border border-border',
-  elevated: 'bg-surface shadow-lg',
+  default: 'bg-[var(--card-bg)] border border-[color:var(--card-border)]',
+  bordered: 'bg-[var(--card-bg)] border border-[color:var(--card-border)] shadow-none',
+  elevated: 'bg-[var(--card-bg)] border border-[color:var(--card-border)] shadow-card',
 };
 
 const cardPadding = {
@@ -46,7 +46,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={clsx(
-          'rounded-xl transition-all duration-200',
+          'rounded-panel transition-all duration-200',
           cardVariants[variant],
           padding !== 'none' && cardPadding[padding],
           className

@@ -11,18 +11,24 @@ describe('Card', () => {
   it('applies default variant and padding classes', () => {
     render(<Card data-testid="card">Content</Card>);
     const card = screen.getByTestId('card');
-    expect(card).toHaveClass('rounded-xl', 'transition-all', 'duration-200', 'bg-surface', 'p-6');
+    expect(card).toHaveClass(
+      'rounded-panel',
+      'transition-all',
+      'duration-200',
+      'bg-[var(--card-bg)]',
+      'p-6'
+    );
   });
 
   it('applies variant classes correctly', () => {
     const { rerender } = render(<Card variant="bordered" data-testid="card">Content</Card>);
-    expect(screen.getByTestId('card')).toHaveClass('border', 'border-border');
+    expect(screen.getByTestId('card')).toHaveClass('border', 'border-[color:var(--card-border)]');
 
     rerender(<Card variant="elevated" data-testid="card">Content</Card>);
-    expect(screen.getByTestId('card')).toHaveClass('shadow-lg');
+    expect(screen.getByTestId('card')).toHaveClass('shadow-card');
 
     rerender(<Card variant="default" data-testid="card">Content</Card>);
-    expect(screen.getByTestId('card')).toHaveClass('bg-surface');
+    expect(screen.getByTestId('card')).toHaveClass('bg-[var(--card-bg)]');
   });
 
   it('applies padding classes correctly', () => {
@@ -72,7 +78,7 @@ describe('Card', () => {
   it('applies custom className alongside default classes', () => {
     render(<Card className="custom-class" data-testid="card">Content</Card>);
     const card = screen.getByTestId('card');
-    expect(card).toHaveClass('custom-class', 'rounded-xl', 'bg-surface');
+    expect(card).toHaveClass('custom-class', 'rounded-panel', 'bg-[var(--card-bg)]');
   });
 });
 

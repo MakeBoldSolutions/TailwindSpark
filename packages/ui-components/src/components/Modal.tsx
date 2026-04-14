@@ -132,12 +132,12 @@ export const Modal: React.FC<ModalProps> = ({
         className="flex min-h-full items-center justify-center p-4 text-center sm:p-0"
         onClick={handleOverlayClick}
       >
-        <div className="bg-surface-inverse fixed inset-0 bg-opacity-75 transition-opacity" />
+        <div className="fixed inset-0 bg-[color:var(--modal-overlay)] transition-opacity" />
 
         <div
           ref={modalRef}
           className={clsx(
-            'bg-surface relative transform overflow-hidden rounded-xl px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:p-6',
+            'relative transform overflow-hidden rounded-panel border border-[color:var(--card-border)] bg-[var(--card-bg)] px-4 pb-4 pt-5 text-left shadow-modal transition-all sm:my-8 sm:w-full sm:p-6',
             modalSizes[size],
             'animate-scale-in',
             className
@@ -153,7 +153,7 @@ export const Modal: React.FC<ModalProps> = ({
               {showCloseButton && (
                 <button
                   onClick={onClose}
-                  className="text-text-muted hover:text-text hover:bg-surface-alt rounded-lg p-1 transition-colors"
+                  className="text-text-muted hover:text-text hover:bg-surface-hover rounded-control p-1 transition-colors"
                   aria-label="Close modal"
                 >
                   <X size={20} />
