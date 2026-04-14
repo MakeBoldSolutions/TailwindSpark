@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
+import type { ThemeId, ThemeMode, ThemeProfile } from '../types/theme';
 import { miniAppsData } from '../types/miniapp';
 import { BuildInfo } from './BuildInfo';
 import { Logo } from './Logo';
 import { SearchComponent } from './SearchComponent';
+import { ThemeToggle } from './ThemeToggle';
 
 /**
  * Main application layout properties.
@@ -14,14 +16,16 @@ interface LayoutProps {
    * Child elements to render within the layout.
    */
   children: React.ReactNode;
-  /**
-   * Current theme state (true for dark mode, false for light mode).
-   */
-  isDark: boolean;
-  /**
-   * Function to toggle between light and dark themes.
-   */
-  toggleTheme: () => void;
+  /** Current named theme identifier. */
+  themeId: ThemeId;
+  /** Current light or dark mode. */
+  mode: ThemeMode;
+  /** Available shipped theme profiles. */
+  availableThemes: readonly ThemeProfile[];
+  /** Function to change the named theme. */
+  onThemeChange: (themeId: ThemeId) => void;
+  /** Function to toggle between light and dark modes. */
+  onModeToggle: () => void;
 }
 
 /**
@@ -32,18 +36,34 @@ interface LayoutProps {
  * 
  * @param root0 - Component props
  * @param root0.children - Child elements to render within the layout
- * @param root0.isDark - Current theme state (true for dark mode, false for light mode)
- * @param root0.toggleTheme - Function to toggle between light and dark themes
+ * @param root0.themeId - Current named theme identifier
+ * @param root0.mode - Current light or dark mode
+ * @param root0.availableThemes - Available shipped theme profiles
+ * @param root0.onThemeChange - Function to change the named theme
+ * @param root0.onModeToggle - Function to toggle between light and dark modes
  * @returns Layout component with navigation and content
  * 
  * @example
  * ```tsx
- * <Layout isDark={isDark} toggleTheme={toggleTheme}>
+ * <Layout
+ *   themeId={themeId}
+ *   mode={mode}
+ *   availableThemes={availableThemes}
+ *   onThemeChange={setTheme}
+ *   onModeToggle={toggleTheme}
+ * >
  *   <YourPageContent />
  * </Layout>
  * ```
  */
-export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme }) => {
+export const Layout: React.FC<LayoutProps> = ({
+  children,
+  themeId,
+  mode,
+  availableThemes,
+  onThemeChange,
+  onModeToggle,
+}) => {
   const location = useLocation();
   const [isDemosOpen, setIsDemosOpen] = useState(false);
   const [isAppsOpen, setIsAppsOpen] = useState(false);
@@ -55,7 +75,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
   // Keyboard shortcuts
   useKeyboardShortcuts({
     onSearch: () => setIsSearchOpen(true),
-    onThemeToggle: toggleTheme,
+    onThemeToggle: onModeToggle,
     onEscape: () => {
       setIsSearchOpen(false);
       setIsDemosOpen(false);
@@ -298,13 +318,13 @@ export const Layout: React.FC<LayoutProps> = ({ children, isDark, toggleTheme })
               >
                 🔍
               </button>
-              <button
-                onClick={toggleTheme}
-                className="rounded-lg bg-surface-alt p-2 transition-colors hover:bg-border"
-                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-              >
-                {isDark ? '☀️' : '🌙'}
-              </button>
+              <ThemeToggle
+                themeId={themeId}
+                mode={mode}
+                themes={availableThemes}
+                onThemeChange={onThemeChange}
+                onModeToggle={onModeToggle}
+              />
             </div>
           </div>
         </div>

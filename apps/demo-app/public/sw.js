@@ -1,7 +1,8 @@
-const CACHE_NAME = 'tailwindspark-v1.3.1';
-const STATIC_CACHE = 'static-v1.3.1';
-const RUNTIME_CACHE = 'runtime-v1.3.1';
-const IMAGES_CACHE = 'images-v1.3.1';
+const THEME_RUNTIME_VERSION = 'theme-platform-v1';
+const CACHE_NAME = `tailwindspark-${THEME_RUNTIME_VERSION}`;
+const STATIC_CACHE = `static-${THEME_RUNTIME_VERSION}`;
+const RUNTIME_CACHE = `runtime-${THEME_RUNTIME_VERSION}`;
+const IMAGES_CACHE = `images-${THEME_RUNTIME_VERSION}`;
 
 // Cache duration in milliseconds
 const CACHE_DURATION = {
@@ -29,6 +30,7 @@ const appRoutes = [
   '/apps/joke',
   '/apps/weather',
   '/apps/ai-chat',
+  '/apps/repos',
 ];
 
 const buildPrecacheUrls = () => {
@@ -115,7 +117,30 @@ self.addEventListener('activate', event => {
         );
       })
       .then(() => self.clients.claim())
+      .then(() => self.clients.matchAll({ includeUncontrolled: true }))
+      .then(clients => {
+        clients.forEach(client => {
+          client.postMessage({
+            type: 'TAILWINDSPARK_SW_VERSION',
+            version: THEME_RUNTIME_VERSION,
+          });
+        });
+      })
   );
+});
+
+self.addEventListener('message', event => {
+  if (event.data?.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+    return;
+  }
+
+  if (event.data?.type === 'GET_THEME_RUNTIME_VERSION' && event.source) {
+    event.source.postMessage({
+      type: 'TAILWINDSPARK_SW_VERSION',
+      version: THEME_RUNTIME_VERSION,
+    });
+  }
 });
 
 // Fetch event - intelligent caching strategies
@@ -131,6 +156,23 @@ self.addEventListener('fetch', event => {
 
   // Get cache strategy for this URL
   const strategy = getCacheStrategy(url);
+
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
+        .then(networkResponse => {
+          const responseToCache = networkResponse.clone();
+          caches.open(RUNTIME_CACHE).then(cache => cache.put(request, responseToCache));
+          return networkResponse;
+        })
+        .catch(async () => {
+          const cache = await caches.open(RUNTIME_CACHE);
+          const cachedResponse = await cache.match(request);
+          return cachedResponse || caches.match(new URL('./index.html', self.registration.scope).toString());
+        })
+    );
+    return;
+  }
 
   if (!strategy) {
     // Don't cache (e.g., analytics)

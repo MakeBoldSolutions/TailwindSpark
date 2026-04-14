@@ -6,12 +6,15 @@ import { Layout } from './Layout';
 
 const renderLayout = ({
   route = '/',
-  isDark = false,
+  themeId = 'material',
+  mode = 'light',
 }: {
   route?: string;
-  isDark?: boolean;
+  themeId?: 'material' | 'minimal' | 'brutalist';
+  mode?: 'light' | 'dark';
 } = {}) => {
-  const toggleTheme = vi.fn();
+  const onModeToggle = vi.fn();
+  const onThemeChange = vi.fn();
 
   vi.mocked(useLocation).mockReturnValue({
     pathname: route,
@@ -22,14 +25,61 @@ const renderLayout = ({
   });
 
   const result = render(
-    <Layout isDark={isDark} toggleTheme={toggleTheme}>
+    <Layout
+      themeId={themeId}
+      mode={mode}
+      availableThemes={[
+        {
+          id: 'material',
+          label: 'Material',
+          description: 'Material theme',
+          defaultMode: 'light',
+          supportedModes: ['light', 'dark'],
+          metadata: {
+            density: 'comfortable',
+            typography: 'system',
+            motion: 'smooth',
+            shape: 'rounded',
+          },
+        },
+        {
+          id: 'minimal',
+          label: 'Minimal',
+          description: 'Minimal theme',
+          defaultMode: 'light',
+          supportedModes: ['light', 'dark'],
+          metadata: {
+            density: 'compact',
+            typography: 'editorial',
+            motion: 'minimal',
+            shape: 'soft',
+          },
+        },
+        {
+          id: 'brutalist',
+          label: 'Brutalist',
+          description: 'Brutalist theme',
+          defaultMode: 'dark',
+          supportedModes: ['light', 'dark'],
+          metadata: {
+            density: 'roomy',
+            typography: 'display',
+            motion: 'snappy',
+            shape: 'sharp',
+          },
+        },
+      ]}
+      onThemeChange={onThemeChange}
+      onModeToggle={onModeToggle}
+    >
       <div>Test Content</div>
     </Layout>
   );
 
   return {
     ...result,
-    toggleTheme,
+    onModeToggle,
+    onThemeChange,
   };
 };
 
@@ -49,18 +99,60 @@ describe('Layout', () => {
   });
 
   it('renders navigation links and theme-specific toggle labels', () => {
-    const toggleTheme = vi.fn();
+    const onModeToggle = vi.fn();
+    const onThemeChange = vi.fn();
     const { rerender } = render(
-      <Layout isDark={false} toggleTheme={toggleTheme}>
+      <Layout
+        themeId="material"
+        mode="light"
+        availableThemes={[
+          {
+            id: 'material',
+            label: 'Material',
+            description: 'Material theme',
+            defaultMode: 'light',
+            supportedModes: ['light', 'dark'],
+            metadata: {
+              density: 'comfortable',
+              typography: 'system',
+              motion: 'smooth',
+              shape: 'rounded',
+            },
+          },
+        ]}
+        onThemeChange={onThemeChange}
+        onModeToggle={onModeToggle}
+      >
         <div>Content</div>
       </Layout>
     );
 
     expect(screen.getByRole('link', { name: /Home/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Switch to dark mode/i })).toBeInTheDocument();
+    expect(screen.getByRole('combobox', { name: /Select theme/i })).toBeInTheDocument();
 
     rerender(
-      <Layout isDark={true} toggleTheme={toggleTheme}>
+      <Layout
+        themeId="material"
+        mode="dark"
+        availableThemes={[
+          {
+            id: 'material',
+            label: 'Material',
+            description: 'Material theme',
+            defaultMode: 'light',
+            supportedModes: ['light', 'dark'],
+            metadata: {
+              density: 'comfortable',
+              typography: 'system',
+              motion: 'smooth',
+              shape: 'rounded',
+            },
+          },
+        ]}
+        onThemeChange={onThemeChange}
+        onModeToggle={onModeToggle}
+      >
         <div>Content</div>
       </Layout>
     );
