@@ -2,6 +2,15 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader } from './Card';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['material', 'dark'],
+  ['minimal', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+  ['brutalist', 'dark'],
+] as const;
+
 describe('Card', () => {
   it('renders basic card with children', () => {
     render(<Card>Test content</Card>);
@@ -79,6 +88,21 @@ describe('Card', () => {
     render(<Card className="custom-class" data-testid="card">Content</Card>);
     const card = screen.getByTestId('card');
     expect(card).toHaveClass('custom-class', 'rounded-panel', 'bg-[var(--card-bg)]');
+  });
+
+  it.each(themeMatrix)('renders semantic card recipe classes for %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    render(<Card variant="elevated" data-testid="card">Theme Card</Card>);
+
+    expect(screen.getByTestId('card')).toHaveClass(
+      'rounded-panel',
+      'bg-[var(--card-bg)]',
+      'border-[color:var(--card-border)]',
+      'shadow-card'
+    );
   });
 });
 

@@ -2,6 +2,15 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { Checkbox, Input, Radio, Select, Textarea } from './Form';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['material', 'dark'],
+  ['minimal', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+  ['brutalist', 'dark'],
+] as const;
+
 describe('Input Component', () => {
   it('renders basic input', () => {
     render(<Input placeholder="Enter text" />);
@@ -390,5 +399,27 @@ describe('Radio Component', () => {
     fireEvent.click(radio2);
     expect(radio1.checked).toBe(false);
     expect(radio2.checked).toBe(true);
+  });
+
+  it.each(themeMatrix)('keeps semantic field classes across %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    render(
+      <div>
+        <Input label="Theme Input" />
+        <Select label="Theme Select" options={[{ value: 'one', label: 'One' }]} />
+        <Textarea label="Theme Textarea" />
+        <Checkbox label="Theme Checkbox" />
+        <Radio label="Theme Radio" name="theme" value="one" />
+      </div>
+    );
+
+    expect(screen.getByLabelText('Theme Input')).toHaveClass('rounded-control', 'bg-[var(--field-bg)]');
+    expect(screen.getByLabelText('Theme Select')).toHaveClass('rounded-control', 'bg-[var(--field-bg)]');
+    expect(screen.getByLabelText('Theme Textarea')).toHaveClass('rounded-control', 'bg-[var(--field-bg)]');
+    expect(screen.getByLabelText('Theme Checkbox')).toHaveClass('border-[color:var(--field-border-strong)]');
+    expect(screen.getByLabelText('Theme Radio')).toHaveClass('border-[color:var(--field-border-strong)]');
   });
 });

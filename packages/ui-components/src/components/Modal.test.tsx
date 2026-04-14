@@ -2,6 +2,15 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { Modal, ModalContent, ModalFooter, ModalHeader } from './Modal';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['material', 'dark'],
+  ['minimal', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+  ['brutalist', 'dark'],
+] as const;
+
 // Mock the animate-scale-in class for testing
 beforeEach(() => {
   document.body.style.overflow = '';
@@ -270,6 +279,26 @@ describe('Modal Component', () => {
     const backdrop = document.querySelector('[class*="bg-[color:var(--modal-overlay)]"]');
     expect(backdrop).toBeInTheDocument();
     expect(backdrop).toHaveClass('fixed', 'inset-0');
+  });
+
+  it.each(themeMatrix)('keeps semantic modal recipe classes across %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    render(
+      <Modal isOpen={true} onClose={mockOnClose} title="Themed Modal">
+        <div>Modal content</div>
+      </Modal>
+    );
+
+    const dialog = screen.getByText('Modal content').closest('.relative');
+    expect(dialog).toHaveClass(
+      'rounded-panel',
+      'bg-[var(--card-bg)]',
+      'border-[color:var(--card-border)]',
+      'shadow-modal'
+    );
   });
 });
 
