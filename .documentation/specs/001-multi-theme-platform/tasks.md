@@ -15,11 +15,11 @@ description: "Task list for implementing the multi-theme design system platform"
 ## Current Status
 
 - **Lifecycle**: Implementation is active and the spec remains `In Progress`.
-- **Completed tasks**: 28 of 35.
-- **Remaining tasks**: 7 of 35.
-- **Validated so far**: Focused demo-app theme tests including invalid preference fallback coverage and app-shell route smoke coverage, focused ui-components primitive tests including theme-matrix coverage, package-level lint/type-check for changed workspaces, and root monorepo `lint`, `type-check`, and `test` validation.
-- **Open task IDs**: T017, T018, T026, T027, T030, T031, T035.
-- **Primary remaining themes of work**: broader route parity coverage, showcase/chat parity, and post-deploy cache verification.
+- **Completed tasks**: 34 of 35.
+- **Remaining tasks**: 1 of 35.
+- **Validated so far**: Focused demo-app theme tests including invalid preference fallback coverage, app-shell route smoke coverage, broader route and mini-app parity coverage, focused ui-components primitive tests including theme-matrix coverage, focused route parity tests for analytics, demos, ecommerce, marketing, settings, and users, package-level lint/type-check for changed workspaces, focused showcase/chat parity tests, root monorepo `lint`, `type-check`, and `test`, and repeated passing production builds.
+- **Open task IDs**: T035.
+- **Primary remaining themes of work**: post-deploy cache verification.
 
 ## Format: `[ID] [P?] [Story] Description`
 
@@ -72,8 +72,8 @@ description: "Task list for implementing the multi-theme design system platform"
 - [X] T014 [US1] Replace boolean dark-mode state with named theme-and-mode state in `apps/demo-app/src/contexts/ThemeContext.tsx` and `apps/demo-app/src/App.tsx`
 - [X] T015 [US1] Update theme selector UI and keyboard toggle integration for theme and mode changes in `apps/demo-app/src/components/ThemeToggle.tsx` and `apps/demo-app/src/components/Layout.tsx`
 - [X] T016 [P] [US1] Apply theme-aware root styles and transition tokens in `apps/demo-app/src/index.css` and `apps/demo-app/src/components/Layout.tsx`
-- [ ] T017 [US1] Verify theme propagation across API-backed and content-driven routes in `apps/demo-app/src/pages/apps/ProjectsPage.tsx`, `apps/demo-app/src/pages/apps/ArticlesPage.tsx`, `apps/demo-app/src/pages/apps/AIChatPage.tsx`, `apps/demo-app/src/pages/apps/WeatherPage.tsx`, `apps/demo-app/src/pages/apps/JokePage.tsx`, and `apps/demo-app/src/pages/apps/ReposPage.tsx`
-- [ ] T018 [US1] Verify route-level page theme propagation across `apps/demo-app/src/pages/AboutPage.tsx`, `apps/demo-app/src/pages/AnalyticsPage.tsx`, `apps/demo-app/src/pages/AppsHubPage.tsx`, `apps/demo-app/src/pages/DashboardPage.tsx`, `apps/demo-app/src/pages/DemosPage.tsx`, `apps/demo-app/src/pages/DesignSystemPage.tsx`, `apps/demo-app/src/pages/EcommercePage.tsx`, `apps/demo-app/src/pages/HomePage.tsx`, `apps/demo-app/src/pages/MarketingPage.tsx`, `apps/demo-app/src/pages/SettingsPage.tsx`, and `apps/demo-app/src/pages/UsersPage.tsx`
+- [X] T017 [US1] Verify theme propagation across API-backed and content-driven routes in `apps/demo-app/src/pages/apps/ProjectsPage.tsx`, `apps/demo-app/src/pages/apps/ArticlesPage.tsx`, `apps/demo-app/src/pages/apps/AIChatPage.tsx`, `apps/demo-app/src/pages/apps/WeatherPage.tsx`, `apps/demo-app/src/pages/apps/JokePage.tsx`, and `apps/demo-app/src/pages/apps/ReposPage.tsx`
+- [X] T018 [US1] Verify route-level page theme propagation across `apps/demo-app/src/pages/AboutPage.tsx`, `apps/demo-app/src/pages/AnalyticsPage.tsx`, `apps/demo-app/src/pages/AppsHubPage.tsx`, `apps/demo-app/src/pages/DashboardPage.tsx`, `apps/demo-app/src/pages/DemosPage.tsx`, `apps/demo-app/src/pages/DesignSystemPage.tsx`, `apps/demo-app/src/pages/EcommercePage.tsx`, `apps/demo-app/src/pages/HomePage.tsx`, `apps/demo-app/src/pages/MarketingPage.tsx`, `apps/demo-app/src/pages/SettingsPage.tsx`, and `apps/demo-app/src/pages/UsersPage.tsx`
 
 **Checkpoint**: User Story 1 should be fully functional and independently testable with persisted theme switching across core app flows.
 
@@ -110,15 +110,15 @@ description: "Task list for implementing the multi-theme design system platform"
 ### Tests for User Story 3
 
 - [X] T025 [P] [US3] Add theme-and-mode matrix coverage for shared primitives in `packages/ui-components/src/components/Button.test.tsx`, `packages/ui-components/src/components/Card.test.tsx`, `packages/ui-components/src/components/Form.test.tsx`, and `packages/ui-components/src/components/Modal.test.tsx`
-- [ ] T026 [P] [US3] Add surface parity and route-level smoke coverage in `apps/demo-app/src/sections/ButtonShowcase.test.tsx`, `apps/demo-app/src/sections/CardShowcase.test.tsx`, `apps/demo-app/src/sections/ChatInterface.test.tsx`, `apps/demo-app/src/pages/AboutPage.test.tsx`, `apps/demo-app/src/pages/AnalyticsPage.test.tsx`, `apps/demo-app/src/pages/AppsHubPage.test.tsx`, `apps/demo-app/src/pages/DashboardPage.test.tsx`, `apps/demo-app/src/pages/DemosPage.test.tsx`, `apps/demo-app/src/pages/DesignSystemPage.test.tsx`, `apps/demo-app/src/pages/EcommercePage.test.tsx`, `apps/demo-app/src/pages/HomePage.test.tsx`, `apps/demo-app/src/pages/MarketingPage.test.tsx`, `apps/demo-app/src/pages/SettingsPage.test.tsx`, and `apps/demo-app/src/pages/UsersPage.test.tsx`
+- [X] T026 [P] [US3] Add surface parity and route-level smoke coverage in `apps/demo-app/src/sections/ButtonShowcase.test.tsx`, `apps/demo-app/src/sections/CardShowcase.test.tsx`, `apps/demo-app/src/sections/ChatInterface.test.tsx`, `apps/demo-app/src/pages/AboutPage.test.tsx`, `apps/demo-app/src/pages/AnalyticsPage.test.tsx`, `apps/demo-app/src/pages/AppsHubPage.test.tsx`, `apps/demo-app/src/pages/DashboardPage.test.tsx`, `apps/demo-app/src/pages/DemosPage.test.tsx`, `apps/demo-app/src/pages/DesignSystemPage.test.tsx`, `apps/demo-app/src/pages/EcommercePage.test.tsx`, `apps/demo-app/src/pages/HomePage.test.tsx`, `apps/demo-app/src/pages/MarketingPage.test.tsx`, `apps/demo-app/src/pages/SettingsPage.test.tsx`, and `apps/demo-app/src/pages/UsersPage.test.tsx`
 
 ### Implementation for User Story 3
 
-- [ ] T027 [US3] Apply typography, spacing, radius, elevation, and motion tokens across showcase surfaces in `apps/demo-app/src/sections/ButtonShowcase.tsx`, `apps/demo-app/src/sections/CardShowcase.tsx`, `apps/demo-app/src/sections/FormShowcase.tsx`, and `apps/demo-app/src/sections/ModalShowcase.tsx`
+- [X] T027 [US3] Apply typography, spacing, radius, elevation, and motion tokens across showcase surfaces in `apps/demo-app/src/sections/ButtonShowcase.tsx`, `apps/demo-app/src/sections/CardShowcase.tsx`, `apps/demo-app/src/sections/FormShowcase.tsx`, and `apps/demo-app/src/sections/ModalShowcase.tsx`
 - [X] T028 [US3] Update navigation and branded layout surfaces to consume semantic surface recipes in `apps/demo-app/src/components/Layout.tsx`, `apps/demo-app/src/components/Logo.tsx`, and `apps/demo-app/src/components/SearchComponent.tsx`
 - [X] T029 [US3] Align content-driven mini-app cards with theme-specific typography and density tokens in `apps/demo-app/src/sections/ArticleCard.tsx`, `apps/demo-app/src/sections/ProjectCard.tsx`, `apps/demo-app/src/sections/RepoCard.tsx`, and `apps/demo-app/src/sections/WeatherCard.tsx`
-- [ ] T030 [US3] Tune theme-aware motion, contrast, and light/dark parity for prompt/chat and design-system surfaces in `apps/demo-app/src/sections/ChatInterface.tsx`, `apps/demo-app/src/pages/DashboardPage.tsx`, and `apps/demo-app/src/pages/DesignSystemPage.tsx`
-- [ ] T031 [US3] Sweep remaining route-level pages for semantic surface parity in `apps/demo-app/src/pages/AboutPage.tsx`, `apps/demo-app/src/pages/AnalyticsPage.tsx`, `apps/demo-app/src/pages/AppsHubPage.tsx`, `apps/demo-app/src/pages/DemosPage.tsx`, `apps/demo-app/src/pages/EcommercePage.tsx`, `apps/demo-app/src/pages/HomePage.tsx`, `apps/demo-app/src/pages/MarketingPage.tsx`, `apps/demo-app/src/pages/SettingsPage.tsx`, and `apps/demo-app/src/pages/UsersPage.tsx`
+- [X] T030 [US3] Tune theme-aware motion, contrast, and light/dark parity for prompt/chat and design-system surfaces in `apps/demo-app/src/sections/ChatInterface.tsx`, `apps/demo-app/src/pages/DashboardPage.tsx`, and `apps/demo-app/src/pages/DesignSystemPage.tsx`
+- [X] T031 [US3] Sweep remaining route-level pages for semantic surface parity in `apps/demo-app/src/pages/AboutPage.tsx`, `apps/demo-app/src/pages/AnalyticsPage.tsx`, `apps/demo-app/src/pages/AppsHubPage.tsx`, `apps/demo-app/src/pages/DemosPage.tsx`, `apps/demo-app/src/pages/EcommercePage.tsx`, `apps/demo-app/src/pages/HomePage.tsx`, `apps/demo-app/src/pages/MarketingPage.tsx`, `apps/demo-app/src/pages/SettingsPage.tsx`, and `apps/demo-app/src/pages/UsersPage.tsx`
 
 **Checkpoint**: All shipped themes should now be visually distinct, accessible, and consistent across shared primitives and application surfaces.
 
