@@ -160,6 +160,23 @@ describe('Layout', () => {
     expect(screen.getByRole('button', { name: /Switch to light mode/i })).toBeInTheDocument();
   });
 
+  it.each([
+    ['/', 'material', 'light'],
+    ['/about', 'minimal', 'dark'],
+    ['/apps/projects', 'brutalist', 'light'],
+  ] as const)('keeps the shell interactive for %s with %s %s', (route, themeId, mode) => {
+    renderLayout({ route, themeId, mode });
+
+    expect(screen.getByRole('combobox', { name: /Select theme/i })).toHaveValue(themeId);
+    expect(
+      screen.getByRole('button', {
+        name: mode === 'light' ? /Switch to dark mode/i : /Switch to light mode/i,
+      })
+    ).toBeInTheDocument();
+    expect(screen.getByRole('main')).toHaveAttribute('id', 'main-content');
+    expect(screen.getByText(/Test Content/i)).toBeInTheDocument();
+  });
+
   it('opens the Apps menu with keyboard input and exposes ARIA attributes', async () => {
     const user = userEvent.setup();
     renderLayout();

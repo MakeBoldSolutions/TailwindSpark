@@ -142,6 +142,52 @@ describe('ThemeProvider', () => {
       });
     });
   });
+
+  it('falls back to the default theme when stored theme id is invalid', async () => {
+    localStorage.setItem(
+      THEME_STORAGE_KEY,
+      JSON.stringify({
+        themeId: 'unknown-theme',
+        mode: 'dark',
+        source: 'stored',
+        version: 2,
+      })
+    );
+
+    render(
+      <ThemeProvider>
+        <TestComponent />
+      </ThemeProvider>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId('theme-id')).toHaveTextContent('material');
+      expect(screen.getByTestId('theme-mode')).toHaveTextContent('dark');
+    });
+  });
+
+  it('falls back to a safe default mode when stored mode is invalid', async () => {
+    localStorage.setItem(
+      THEME_STORAGE_KEY,
+      JSON.stringify({
+        themeId: 'minimal',
+        mode: 'sepia',
+        source: 'stored',
+        version: 2,
+      })
+    );
+
+    render(
+      <ThemeProvider>
+        <TestComponent />
+      </ThemeProvider>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId('theme-id')).toHaveTextContent('material');
+      expect(screen.getByTestId('theme-mode')).toHaveTextContent('light');
+    });
+  });
 });
 
 describe('useTheme', () => {

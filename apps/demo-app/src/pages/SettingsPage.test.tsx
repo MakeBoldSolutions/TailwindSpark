@@ -4,6 +4,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import { SettingsPage } from './SettingsPage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const renderWithRouter = (component: React.ReactElement) => {
   return render(<BrowserRouter>{component}</BrowserRouter>);
 };
@@ -110,5 +116,18 @@ describe('SettingsPage', () => {
     // Check for any div elements which indicate layout structure
     const layoutElements = document.querySelectorAll('div');
     expect(layoutElements.length).toBeGreaterThan(0);
+  });
+
+  it.each(themeMatrix)('keeps settings sections available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    renderWithRouter(<SettingsPage />);
+
+    expect(screen.getByRole('heading', { level: 3, name: /General/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 3, name: /Security/i })).toBeInTheDocument();
+    expect(screen.getByDisplayValue('PromptSpark')).toBeInTheDocument();
+    expect(screen.getByRole('switch', { name: /Toggle Two-Factor Authentication/i })).toBeInTheDocument();
   });
 });
