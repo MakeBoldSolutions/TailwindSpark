@@ -14,6 +14,15 @@ required_gates: checklist, analyze, critic
 **Status**: In Progress  
 **Input**: User description: "Refactor the Tailwind CSS web application to support multiple interchangeable design systems while keeping structure and logic unchanged."
 
+## Implementation Status
+
+- Foundational theme platform work is implemented: named theme runtime, legacy preference migration, first-paint bootstrapping, service-worker version signaling, CSS-variable theme layers, and shared component token recipes are in place.
+- High-visibility application surfaces are migrated: layout, theme selector, branding, search, and content-driven cards now consume the semantic theme contract.
+- Focused validation has been completed for the affected workspaces: demo-app theme runtime tests now include invalid-preference fallback coverage and app-shell route smoke coverage, ui-components shared primitive tests now include cross-theme matrix coverage, workspace lint/type-check succeeded for the changed packages, and root monorepo lint, type-check, and test validation passed.
+- Registry, theme export, and shared primitive JSDoc plus add-theme rollout guidance are now in place alongside the runtime and token foundations.
+- Remaining work is concentrated in broader route-smoke coverage, showcase/chat surface parity, and post-deploy verification.
+- The feature remains `In Progress` because tasks T017, T018, T026, T027, T030, T031, and T035 are still open.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Switch visual systems without losing functionality (Priority: P1)

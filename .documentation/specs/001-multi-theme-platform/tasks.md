@@ -12,6 +12,15 @@ description: "Task list for implementing the multi-theme design system platform"
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
+## Current Status
+
+- **Lifecycle**: Implementation is active and the spec remains `In Progress`.
+- **Completed tasks**: 28 of 35.
+- **Remaining tasks**: 7 of 35.
+- **Validated so far**: Focused demo-app theme tests including invalid preference fallback coverage and app-shell route smoke coverage, focused ui-components primitive tests including theme-matrix coverage, package-level lint/type-check for changed workspaces, and root monorepo `lint`, `type-check`, and `test` validation.
+- **Open task IDs**: T017, T018, T026, T027, T030, T031, T035.
+- **Primary remaining themes of work**: broader route parity coverage, showcase/chat parity, and post-deploy cache verification.
+
 ## Format: `[ID] [P?] [Story] Description`
 
 - **[P]**: Can run in parallel (different files, no dependencies)
@@ -56,7 +65,7 @@ description: "Task list for implementing the multi-theme design system platform"
 ### Tests for User Story 1
 
 - [X] T012 [P] [US1] Update theme and mode persistence plus legacy preference migration coverage in `apps/demo-app/src/contexts/ThemeContext.test.tsx` and `apps/demo-app/src/components/ThemeToggle.test.tsx`
-- [ ] T013 [P] [US1] Add app-level theme-and-mode switching and route-matrix smoke coverage in `apps/demo-app/src/App.test.tsx`, `apps/demo-app/src/components/Layout.test.tsx`, `apps/demo-app/src/pages/HomePage.test.tsx`, `apps/demo-app/src/pages/DashboardPage.test.tsx`, and `apps/demo-app/src/pages/SettingsPage.test.tsx`
+- [X] T013 [P] [US1] Add app-level theme-and-mode switching and route-matrix smoke coverage in `apps/demo-app/src/App.test.tsx`, `apps/demo-app/src/components/Layout.test.tsx`, `apps/demo-app/src/pages/HomePage.test.tsx`, `apps/demo-app/src/pages/DashboardPage.test.tsx`, and `apps/demo-app/src/pages/SettingsPage.test.tsx`
 
 ### Implementation for User Story 1
 
@@ -78,7 +87,7 @@ description: "Task list for implementing the multi-theme design system platform"
 
 ### Tests for User Story 2
 
-- [ ] T019 [P] [US2] Add theme addition, mode fallback, invalid-theme, and migrated-preference coverage in `apps/demo-app/src/contexts/ThemeContext.test.tsx` and `packages/ui-components/src/components/Button.test.tsx`
+- [X] T019 [P] [US2] Add theme addition, mode fallback, invalid-theme, and migrated-preference coverage in `apps/demo-app/src/contexts/ThemeContext.test.tsx` and `packages/ui-components/src/components/Button.test.tsx`
 
 ### Implementation for User Story 2
 
@@ -86,7 +95,7 @@ description: "Task list for implementing the multi-theme design system platform"
 - [X] T021 [US2] Extend named theme blocks, light/dark variants, and baseline fallbacks in `packages/design-tokens/theme.css`
 - [X] T022 [US2] Refactor button and card recipes to consume component tokens in `packages/ui-components/src/components/Button.tsx` and `packages/ui-components/src/components/Card.tsx`
 - [X] T023 [P] [US2] Refactor form and modal recipes to consume component tokens in `packages/ui-components/src/components/Form.tsx` and `packages/ui-components/src/components/Modal.tsx`
-- [ ] T024 [US2] Add JSDoc for registry and shared theme export surfaces in `apps/demo-app/src/utils/themeRegistry.ts`, `apps/demo-app/src/contexts/ThemeContext.tsx`, `packages/ui-components/src/index.ts`, `packages/design-tokens/index.js`, and `packages/design-tokens/index.d.ts`
+- [X] T024 [US2] Add JSDoc for registry and shared theme export surfaces in `apps/demo-app/src/utils/themeRegistry.ts`, `apps/demo-app/src/contexts/ThemeContext.tsx`, `packages/ui-components/src/index.ts`, `packages/design-tokens/index.js`, and `packages/design-tokens/index.d.ts`
 
 **Checkpoint**: User Story 2 should allow new theme definition and activation without duplicated components or screen rewrites.
 
@@ -100,7 +109,7 @@ description: "Task list for implementing the multi-theme design system platform"
 
 ### Tests for User Story 3
 
-- [ ] T025 [P] [US3] Add theme-and-mode matrix coverage for shared primitives in `packages/ui-components/src/components/Button.test.tsx`, `packages/ui-components/src/components/Card.test.tsx`, `packages/ui-components/src/components/Form.test.tsx`, and `packages/ui-components/src/components/Modal.test.tsx`
+- [X] T025 [P] [US3] Add theme-and-mode matrix coverage for shared primitives in `packages/ui-components/src/components/Button.test.tsx`, `packages/ui-components/src/components/Card.test.tsx`, `packages/ui-components/src/components/Form.test.tsx`, and `packages/ui-components/src/components/Modal.test.tsx`
 - [ ] T026 [P] [US3] Add surface parity and route-level smoke coverage in `apps/demo-app/src/sections/ButtonShowcase.test.tsx`, `apps/demo-app/src/sections/CardShowcase.test.tsx`, `apps/demo-app/src/sections/ChatInterface.test.tsx`, `apps/demo-app/src/pages/AboutPage.test.tsx`, `apps/demo-app/src/pages/AnalyticsPage.test.tsx`, `apps/demo-app/src/pages/AppsHubPage.test.tsx`, `apps/demo-app/src/pages/DashboardPage.test.tsx`, `apps/demo-app/src/pages/DemosPage.test.tsx`, `apps/demo-app/src/pages/DesignSystemPage.test.tsx`, `apps/demo-app/src/pages/EcommercePage.test.tsx`, `apps/demo-app/src/pages/HomePage.test.tsx`, `apps/demo-app/src/pages/MarketingPage.test.tsx`, `apps/demo-app/src/pages/SettingsPage.test.tsx`, and `apps/demo-app/src/pages/UsersPage.test.tsx`
 
 ### Implementation for User Story 3
@@ -119,9 +128,9 @@ description: "Task list for implementing the multi-theme design system platform"
 
 **Purpose**: Finalize documentation, validation, and cleanup across all user stories.
 
-- [ ] T032 [P] Add add-theme guidance plus required light/dark variant and rollout recovery notes in `packages/design-tokens/theme.css`, `apps/demo-app/public/sw.js`, and `.documentation/specs/001-multi-theme-platform/quickstart.md`
-- [ ] T033 Add required JSDoc for modified shared component exports in `packages/ui-components/src/components/Button.tsx`, `packages/ui-components/src/components/Card.tsx`, `packages/ui-components/src/components/Form.tsx`, and `packages/ui-components/src/components/Modal.tsx`
-- [ ] T034 Run repository validation commands referenced by `package.json`, `apps/demo-app/package.json`, and `packages/ui-components/package.json`
+- [X] T032 [P] Add add-theme guidance plus required light/dark variant and rollout recovery notes in `packages/design-tokens/theme.css`, `apps/demo-app/public/sw.js`, and `.documentation/specs/001-multi-theme-platform/quickstart.md`
+- [X] T033 Add required JSDoc for modified shared component exports in `packages/ui-components/src/components/Button.tsx`, `packages/ui-components/src/components/Card.tsx`, `packages/ui-components/src/components/Form.tsx`, and `packages/ui-components/src/components/Modal.tsx`
+- [X] T034 Run repository validation commands referenced by `package.json`, `apps/demo-app/package.json`, and `packages/ui-components/package.json`
 - [ ] T035 Perform post-deploy cache/version and stale-asset recovery verification using `apps/demo-app/public/sw.js` and `.documentation/specs/001-multi-theme-platform/quickstart.md`
 
 ---

@@ -79,6 +79,20 @@ npm run test --workspace=@tailwindspark/demo-app
 7. Trigger a service-worker-managed reload after a theme asset change and confirm no manual cache clear is required.
 8. Add a temporary test theme definition and verify it can be activated without rewriting components.
 
+## Add-Theme Checklist
+
+1. Add a new `html[data-theme='<theme-id>'][data-theme-mode='light']` block in `packages/design-tokens/theme.css`.
+2. Add a matching dark-mode block for the same theme id.
+3. Define semantic colors, typography, shape, motion, and component recipe variables for both blocks.
+4. Register the new profile in `apps/demo-app/src/utils/themeRegistry.ts` with label, description, default mode, and metadata.
+5. Verify the theme selector, persistence, and a representative shared component still render correctly.
+
+## Rollout Recovery Notes
+
+- The service worker uses `THEME_RUNTIME_VERSION` in `apps/demo-app/public/sw.js` to coordinate cache invalidation for theme runtime changes.
+- After changing theme boot or token behavior, verify that a refreshed client receives the current service-worker version and recovers without a manual cache clear.
+- Use the existing focused workspace checks first, then perform a browser reload test against a service-worker-controlled session.
+
 ## Exit Criteria
 
 - Named themes are selectable and persistent.

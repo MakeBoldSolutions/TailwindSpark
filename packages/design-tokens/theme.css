@@ -124,7 +124,14 @@
   --duration-slow: 400ms;
 }
 
-/* Layered semantic, theme, and component tokens */
+/*
+ * Layered semantic, theme, and component tokens.
+ *
+ * Theme addition guide:
+ * 1. Add both light and dark blocks for the new theme id.
+ * 2. Provide semantic colors, typography, shape, motion, and component recipe variables.
+ * 3. Keep baseline fallbacks intact so incomplete experimental themes fail safely.
+ */
 :root,
 html[data-theme='material'][data-theme-mode='light'] {
   --font-body: var(--font-sans);

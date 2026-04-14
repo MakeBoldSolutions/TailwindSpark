@@ -1,3 +1,5 @@
+// Bump this version when theme runtime assets or boot behavior change so clients
+// can recover coherently from stale caches without a manual cache clear.
 const THEME_RUNTIME_VERSION = 'theme-platform-v1';
 const CACHE_NAME = `tailwindspark-${THEME_RUNTIME_VERSION}`;
 const STATIC_CACHE = `static-${THEME_RUNTIME_VERSION}`;
@@ -130,6 +132,7 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('message', event => {
+  // Supports both immediate activation and runtime version checks during rollout verification.
   if (event.data?.type === 'SKIP_WAITING') {
     self.skipWaiting();
     return;
