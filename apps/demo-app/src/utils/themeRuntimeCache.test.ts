@@ -3,6 +3,7 @@ import {
     getTailwindSparkCacheNames,
     getThemeRuntimeCachePrefixes,
     getThemeRuntimeNamespace,
+  isTailwindSparkCacheName,
 } from './themeRuntimeCache';
 
 describe('getThemeRuntimeNamespace', () => {
@@ -39,5 +40,15 @@ describe('getTailwindSparkCacheNames', () => {
       'images-theme-platform-v3',
       'tailwindspark-theme-platform-v1',
     ]);
+  });
+});
+
+describe('isTailwindSparkCacheName', () => {
+  it('returns true only for TailwindSpark-owned caches in the same runtime namespace', () => {
+    expect(isTailwindSparkCacheName('static-theme-platform-v1', 'theme-platform-v1')).toBe(true);
+    expect(isTailwindSparkCacheName('runtime-theme-platform-v7', 'theme-platform-v1')).toBe(true);
+    expect(isTailwindSparkCacheName('tailwindspark-theme-platform-v3', 'theme-platform-v1')).toBe(true);
+    expect(isTailwindSparkCacheName('shared-assets-v1', 'theme-platform-v1')).toBe(false);
+    expect(isTailwindSparkCacheName('other-app-runtime-v2', 'theme-platform-v1')).toBe(false);
   });
 });

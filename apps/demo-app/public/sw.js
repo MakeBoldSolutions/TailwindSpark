@@ -40,6 +40,20 @@ const buildPrecacheUrls = () => {
   return [...coreFiles, ...appRoutes].map(path => new URL(path, scope).toString());
 };
 
+const getThemeRuntimeNamespace = runtimeVersion => runtimeVersion.replace(/-v[^-]+$/, '');
+
+const isTailwindSparkCacheName = cacheName => {
+  const namespace = getThemeRuntimeNamespace(THEME_RUNTIME_VERSION);
+  const ownedPrefixes = [
+    `tailwindspark-${namespace}-`,
+    `static-${namespace}-`,
+    `runtime-${namespace}-`,
+    `images-${namespace}-`,
+  ];
+
+  return ownedPrefixes.some(prefix => cacheName.startsWith(prefix));
+};
+
 // Runtime caching patterns
 const cachePatterns = {
   // Static assets (CSS, JS, fonts)
@@ -103,21 +117,18 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches
       .keys()
-      .then(cacheNames => {
-        return Promise.all(
-          cacheNames.map(cacheName => {
-            // Delete old caches
-            if (
+      .then(cacheNames => Promise.all(
+        cacheNames
+          .filter(isTailwindSparkCacheName)
+          .filter(
+            cacheName =>
               cacheName !== CACHE_NAME &&
               cacheName !== STATIC_CACHE &&
               cacheName !== RUNTIME_CACHE &&
               cacheName !== IMAGES_CACHE
-            ) {
-              return caches.delete(cacheName);
-            }
-          })
-        );
-      })
+          )
+          .map(cacheName => caches.delete(cacheName))
+      ))
       .then(() => self.clients.claim())
       .then(() => self.clients.matchAll({ includeUncontrolled: true }))
       .then(clients => {

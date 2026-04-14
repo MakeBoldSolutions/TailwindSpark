@@ -42,3 +42,17 @@ export const getTailwindSparkCacheNames = (
 
   return cacheNames.filter(cacheName => prefixes.some(prefix => cacheName.startsWith(prefix)));
 };
+
+/**
+ * Determines whether a cache name belongs to TailwindSpark and is safe to delete.
+ *
+ * @param cacheName - Cache name to evaluate.
+ * @param runtimeVersion - Version string used by the theme runtime.
+ * @returns True when the cache is owned by TailwindSpark.
+ */
+export const isTailwindSparkCacheName = (
+  cacheName: string,
+  runtimeVersion: string
+): boolean => {
+  return getThemeRuntimeCachePrefixes(runtimeVersion).some(prefix => cacheName.startsWith(prefix));
+};

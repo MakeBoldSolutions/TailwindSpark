@@ -31,3 +31,10 @@ describe('service worker app route precache list', () => {
     expect(resolvedPaths.every(route => route.startsWith('/TailwindSpark/'))).toBe(true);
   });
 });
+
+describe('service worker cache cleanup policy', () => {
+  it('scopes activate cleanup to TailwindSpark-owned cache prefixes', () => {
+    expect(serviceWorkerSource).toContain('filter(isTailwindSparkCacheName)');
+    expect(serviceWorkerSource).toContain('.map(cacheName => caches.delete(cacheName))');
+  });
+});
