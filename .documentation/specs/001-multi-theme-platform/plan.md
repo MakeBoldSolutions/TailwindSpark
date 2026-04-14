@@ -9,7 +9,6 @@ Evolve TailwindSpark from a semantic light/dark design system into a multi-theme
 
 ## Current Execution Status
 
-- **Overall status**: In progress, with foundational platform work complete and the remaining work focused on coverage, documentation, and route-surface parity.
 - **Overall status**: In progress, with foundational platform work complete and the remaining work focused on route coverage, showcase parity, and final validation.
 - **Token Foundation**: Complete. Theme layers, semantic aliases, component tokens, and Tailwind mappings for the shipped themes are implemented.
 - **Theme Runtime**: Complete for the core runtime. Named theme selection, light/dark mode switching, persistence, legacy migration, and pre-React theme bootstrapping are implemented.
