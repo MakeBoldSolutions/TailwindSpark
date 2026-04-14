@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts';
-import type { ThemeId, ThemeMode, ThemeProfile } from '../types/theme';
 import { miniAppsData } from '../types/miniapp';
+import type { ThemeId, ThemeMode, ThemeProfile } from '../types/theme';
 import { BuildInfo } from './BuildInfo';
 import { Logo } from './Logo';
 import { SearchComponent } from './SearchComponent';

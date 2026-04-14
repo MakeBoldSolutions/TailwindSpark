@@ -7,9 +7,13 @@ import * as React from 'react';
  * Configures the visual appearance and content layout of the card container.
  */
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Surface presentation variant. */
   variant?: 'default' | 'bordered' | 'elevated';
+  /** Spacing scale applied to the card body. */
   padding?: 'none' | 'sm' | 'md' | 'lg';
+  /** Optional header content rendered above the card body. */
   header?: React.ReactNode;
+  /** Optional footer content rendered below the card body. */
   footer?: React.ReactNode;
 }
 
@@ -77,7 +81,9 @@ Card.displayName = 'Card';
  * Defines optional title, subtitle, and custom header content.
  */
 export interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Optional header title. */
   title?: string;
+  /** Optional supporting text below the title. */
   subtitle?: string;
 }
 

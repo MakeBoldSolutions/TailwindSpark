@@ -1,11 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import type { ThemeId, ThemeMode, ThemePreference, ThemeProfile } from '../types/theme';
-import { readThemeFromDocument, applyThemeToDocument } from '../utils/themeBoot';
+import { applyThemeToDocument, readThemeFromDocument } from '../utils/themeBoot';
 import { getThemeProfile, getThemeProfiles } from '../utils/themeRegistry';
 import {
-  createThemePreference,
-  resolveInitialThemePreference,
-  writeThemePreference,
+    createThemePreference,
+    resolveInitialThemePreference,
+    writeThemePreference,
 } from '../utils/themeStorage';
 
 /**
@@ -34,6 +34,9 @@ interface ThemeContextType {
 
 /**
  * Theme context for managing application-wide theme state.
+ *
+ * Exposes the active named theme, the current light or dark mode, and the runtime
+ * mutation helpers used by the app shell and route surfaces.
  */
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
@@ -73,8 +76,8 @@ interface ThemeProviderProps {
 /**
  * Theme provider component.
  * 
- * Provides theme context to child components with persistence via localStorage
- * and automatic system preference detection.
+ * Provides theme context to child components with named theme persistence,
+ * legacy preference migration, and DOM synchronization through the theme boot utilities.
  * 
  * @param root0 - Component props
  * @param root0.children - Child components to wrap

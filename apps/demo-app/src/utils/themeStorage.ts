@@ -1,11 +1,11 @@
 import {
-  DEFAULT_THEME_ID,
-  DEFAULT_THEME_MODE,
-  THEME_MODES,
-  THEME_STORAGE_VERSION,
-  type ThemeMode,
-  type ThemePreference,
-  type ThemePreferenceSource,
+    DEFAULT_THEME_ID,
+    DEFAULT_THEME_MODE,
+    THEME_MODES,
+    THEME_STORAGE_VERSION,
+    type ThemeMode,
+    type ThemePreference,
+    type ThemePreferenceSource,
 } from '../types/theme';
 import { getThemeProfile, resolveThemeId } from './themeRegistry';
 

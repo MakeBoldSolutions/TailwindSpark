@@ -1,4 +1,4 @@
-import { GitFork, Star, Eye } from 'lucide-react';
+import { Eye, GitFork, Star } from 'lucide-react';
 import type { Repository } from '../types/repos-api';
 import { RepoDetail } from './RepoDetail';
 

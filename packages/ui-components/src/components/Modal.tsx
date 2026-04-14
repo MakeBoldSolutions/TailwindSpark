@@ -30,14 +30,23 @@ const X: React.FC<LucideIconProps> = ({ size = 20, className = '' }) => (
  * Configures modal behavior, size, and accessibility features.
  */
 export interface ModalProps {
+  /** Controls modal visibility. */
   isOpen: boolean;
+  /** Callback invoked when the modal requests to close. */
   onClose: () => void;
+  /** Optional modal title rendered in the header. */
   title?: string;
+  /** Width preset for the modal dialog. */
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  /** Whether clicking the overlay closes the modal. */
   closeOnOverlayClick?: boolean;
+  /** Whether pressing Escape closes the modal. */
   closeOnEscape?: boolean;
+  /** Whether to show the close button in the header. */
   showCloseButton?: boolean;
+  /** Modal body content. */
   children: React.ReactNode;
+  /** Additional classes applied to the dialog container. */
   className?: string;
 }
 
@@ -175,7 +184,9 @@ export const Modal: React.FC<ModalProps> = ({
  * Defines optional title, subtitle, and custom header content.
  */
 export interface ModalHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Optional modal heading text. */
   title?: string;
+  /** Optional supporting subtitle text. */
   subtitle?: string;
 }
 

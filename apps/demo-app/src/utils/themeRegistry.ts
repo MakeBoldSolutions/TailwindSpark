@@ -1,12 +1,15 @@
 import {
-  DEFAULT_THEME_ID,
-  THEME_IDS,
-  type ThemeId,
-  type ThemeProfile,
+    DEFAULT_THEME_ID,
+    THEME_IDS,
+    type ThemeId,
+    type ThemeProfile,
 } from '../types/theme';
 
 /**
  * Shipped theme profiles available in the demo app.
+ *
+ * Each profile represents a complete named design language with metadata that can
+ * be used by selectors, previews, and future theme validation flows.
  */
 export const THEME_PROFILES: readonly ThemeProfile[] = [
   {
@@ -57,6 +60,8 @@ const themeProfileById = new Map<ThemeId, ThemeProfile>(
 /**
  * Returns all shipped theme profiles.
  *
+ * Consumers should treat the returned array as immutable application metadata.
+ *
  * @returns Available shipped theme profiles.
  */
 export const getThemeProfiles = (): readonly ThemeProfile[] => THEME_PROFILES;
@@ -81,6 +86,9 @@ export const resolveThemeId = (value?: string | null): ThemeId =>
 
 /**
  * Looks up a shipped theme profile.
+ *
+ * Falls back to the default shipped profile if a lookup somehow misses the registry,
+ * keeping the runtime safe during migrations and extension work.
  *
  * @param themeId - Theme identifier to resolve.
  * @returns The matching shipped theme profile.

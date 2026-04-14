@@ -7,11 +7,17 @@ import * as React from 'react';
  * Extends standard HTML button attributes with additional styling and loading state options.
  */
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Visual recipe variant resolved through semantic component tokens. */
   variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'ghost';
+  /** Predefined control size. */
   size?: 'sm' | 'md' | 'lg' | 'xl';
+  /** Replaces content with a loading spinner and disables interaction. */
   loading?: boolean;
+  /** Expands the control to the width of its container. */
   fullWidth?: boolean;
+  /** Optional icon rendered before the button label. */
   leftIcon?: React.ReactNode;
+  /** Optional icon rendered after the button label. */
   rightIcon?: React.ReactNode;
 }
 

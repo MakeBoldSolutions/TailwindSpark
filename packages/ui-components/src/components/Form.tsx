@@ -7,11 +7,17 @@ import * as React from 'react';
  * Extends standard HTML input attributes with label, error handling, and icon support.
  */
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  /** Visible label for the input. */
   label?: string;
+  /** Error message displayed below the input. */
   error?: string;
+  /** Supporting helper text shown when no error is present. */
   helperText?: string;
+  /** Optional icon rendered inside the left side of the input. */
   leftIcon?: React.ReactNode;
+  /** Optional icon rendered inside the right side of the input. */
   rightIcon?: React.ReactNode;
+  /** Visual validation variant. */
   variant?: 'default' | 'error' | 'success';
 }
 
@@ -113,9 +119,13 @@ Input.displayName = 'Input';
  * Extends standard HTML textarea attributes with label and error handling.
  */
 export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  /** Visible label for the textarea. */
   label?: string;
+  /** Error message displayed below the textarea. */
   error?: string;
+  /** Supporting helper text shown when no error is present. */
   helperText?: string;
+  /** Visual validation variant. */
   variant?: 'default' | 'error' | 'success';
 }
 
@@ -194,10 +204,15 @@ Textarea.displayName = 'Textarea';
  * Extends standard HTML select attributes with label, error handling, and options.
  */
 export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  /** Visible label for the select control. */
   label?: string;
+  /** Error message displayed below the select. */
   error?: string;
+  /** Supporting helper text shown when no error is present. */
   helperText?: string;
+  /** Visual validation variant. */
   variant?: 'default' | 'error' | 'success';
+  /** Option list rendered by the native select element. */
   options: { value: string; label: string }[];
 }
 
@@ -284,8 +299,11 @@ Select.displayName = 'Select';
  * Extends standard HTML input attributes (excludes type) with label and error handling.
  */
 export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+  /** Visible checkbox label. */
   label?: string;
+  /** Error message displayed below the checkbox. */
   error?: string;
+  /** Supporting helper text shown when no error is present. */
   helperText?: string;
 }
 
@@ -364,6 +382,7 @@ Checkbox.displayName = 'Checkbox';
  * Extends standard HTML input attributes (excludes type) with label support.
  */
 export interface RadioProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+  /** Visible radio label. */
   label?: string;
 }
 
