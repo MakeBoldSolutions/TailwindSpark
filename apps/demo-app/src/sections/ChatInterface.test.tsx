@@ -4,6 +4,12 @@ import { describe, expect, it, vi } from 'vitest';
 import type { AIVariant } from '../types/chat-api';
 import ChatInterface from './ChatInterface';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const mockSendMessage = vi.fn();
 const mockClearMessages = vi.fn();
 
@@ -110,5 +116,17 @@ describe('ChatInterface', () => {
     render(<ChatInterface variant={mockVariant} onBack={vi.fn()} />);
     expect(screen.getByText('Welcome to AI Chat')).toBeTruthy();
     expect(screen.getByLabelText('Your display name')).toBeTruthy();
+  });
+
+  it.each(themeMatrix)('keeps chat interface content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    render(<ChatInterface variant={mockVariant} onBack={vi.fn()} />);
+
+    expect(screen.getByText('Test Bot')).toBeTruthy();
+    expect(screen.getByLabelText('Chat message')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Send' })).toBeTruthy();
   });
 });

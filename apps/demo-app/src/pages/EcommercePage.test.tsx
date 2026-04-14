@@ -4,6 +4,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import EcommercePage from './EcommercePage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const renderWithRouter = (component: React.ReactElement) => {
   return render(<BrowserRouter>{component}</BrowserRouter>);
 };
@@ -112,5 +118,17 @@ describe('EcommercePage', () => {
     // Results count or product info
     const mainContent = document.querySelector('main');
     expect(mainContent).toBeInTheDocument();
+  });
+
+  it.each(themeMatrix)('keeps ecommerce route content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    renderWithRouter(<EcommercePage />);
+
+    expect(screen.getByPlaceholderText(/Search/i)).toBeInTheDocument();
+    expect(screen.getAllByRole('button').length).toBeGreaterThan(0);
+    expect(document.querySelector('main')).toBeInTheDocument();
   });
 });

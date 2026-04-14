@@ -6,6 +6,12 @@ import { describe, expect, it, vi } from 'vitest';
 import { SEOProvider } from '../../contexts/SEOContext';
 import JokePage from './JokePage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const mockJoke = {
   id: 42,
   category: 'Programming',
@@ -91,5 +97,17 @@ describe('JokePage', () => {
     const { container } = renderPage();
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+  });
+
+  it.each(themeMatrix)('keeps joke route content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    renderPage();
+
+    expect(screen.getByRole('heading', { level: 1, name: /Joke Generator/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Get New Joke/i })).toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: /Current Joke/i })).toBeInTheDocument();
   });
 });

@@ -6,6 +6,12 @@ import { describe, expect, it, vi } from 'vitest';
 import { SEOProvider } from '../../contexts/SEOContext';
 import WeatherPage from './WeatherPage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const mockWeatherData = [
   {
     city_name: 'Dallas',
@@ -91,5 +97,17 @@ describe('WeatherPage', () => {
     const { container } = renderPage();
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+  });
+
+  it.each(themeMatrix)('keeps weather route content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    renderPage();
+
+    expect(screen.getByRole('heading', { level: 1, name: /Weather Forecast/i })).toBeInTheDocument();
+    expect(screen.getByLabelText('City name')).toBeInTheDocument();
+    expect(screen.getByText('Dallas')).toBeInTheDocument();
   });
 });

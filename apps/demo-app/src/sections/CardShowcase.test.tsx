@@ -2,6 +2,12 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { CardShowcase } from './CardShowcase';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 describe('CardShowcase', () => {
   it('renders without crashing', () => {
     render(<CardShowcase />);
@@ -119,5 +125,17 @@ describe('CardShowcase', () => {
     // Cards should have gap/space classes
     const spacedElements = document.querySelectorAll('[class*="gap"]');
     expect(spacedElements.length).toBeGreaterThan(0);
+  });
+
+  it.each(themeMatrix)('keeps card showcase content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    render(<CardShowcase />);
+
+    expect(screen.getByRole('heading', { level: 2, name: /Card Components/i })).toBeInTheDocument();
+    expect(screen.getByText(/Default Card/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 3, name: /Profile Cards/i })).toBeInTheDocument();
   });
 });

@@ -4,6 +4,12 @@ import { describe, expect, it } from 'vitest';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import { MarketingPage } from './MarketingPage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const renderWithRouter = (component: React.ReactElement) => {
   return render(
     <ThemeProvider>
@@ -90,5 +96,17 @@ describe('MarketingPage', () => {
     // Marketing pages have multiple content sections
     const contentSections = document.querySelectorAll('section, div[class*="section"]');
     expect(contentSections.length).toBeGreaterThan(0);
+  });
+
+  it.each(themeMatrix)('keeps marketing route content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    renderWithRouter(<MarketingPage />);
+
+    expect(document.querySelector('main')).toBeInTheDocument();
+    expect(screen.getAllByRole('button').length).toBeGreaterThan(0);
+    expect(document.querySelectorAll('section').length).toBeGreaterThan(0);
   });
 });

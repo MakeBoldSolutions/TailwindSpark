@@ -6,6 +6,12 @@ import { describe, expect, it, vi } from 'vitest';
 import { SEOProvider } from '../../contexts/SEOContext';
 import ArticlesPage from './ArticlesPage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const mockArticles = [
   { id: '1', title: 'First Article', description: 'Desc', link: 'https://example.com/1', category: 'Tech', pub_date: '2025-01-15', author: 'Author' },
   { id: '2', title: 'Second Article', description: 'Desc 2', link: 'https://example.com/2', category: 'Science', pub_date: '2025-01-10', author: 'Author' },
@@ -72,5 +78,17 @@ describe('ArticlesPage', () => {
     const { container } = renderPage();
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+  });
+
+  it.each(themeMatrix)('keeps articles route content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    renderPage();
+
+    expect(screen.getByRole('heading', { level: 1, name: /Articles/i })).toBeInTheDocument();
+    expect(screen.getByDisplayValue('All')).toBeInTheDocument();
+    expect(screen.getByText(/Showing \d+ of \d+ article/i)).toBeInTheDocument();
   });
 });

@@ -6,6 +6,12 @@ import { describe, expect, it, vi } from 'vitest';
 import { SEOProvider } from '../../contexts/SEOContext';
 import AIChatPage from './AIChatPage';
 
+const themeMatrix = [
+  ['material', 'light'],
+  ['minimal', 'dark'],
+  ['brutalist', 'light'],
+] as const;
+
 const mockVariants = [
   {
     definitionId: '1',
@@ -112,5 +118,17 @@ describe('AIChatPage', () => {
     const { container } = renderPage();
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+  });
+
+  it.each(themeMatrix)('keeps ai chat route content available under %s %s mode', (themeId, mode) => {
+    document.documentElement.dataset.theme = themeId;
+    document.documentElement.dataset.themeMode = mode;
+    document.documentElement.classList.toggle('dark', mode === 'dark');
+
+    renderPage();
+
+    expect(screen.getByRole('heading', { level: 1, name: /AI Chat/i })).toBeInTheDocument();
+    expect(screen.getByLabelText('Search AI variants')).toBeInTheDocument();
+    expect(screen.getByText('Creative Writer')).toBeInTheDocument();
   });
 });
