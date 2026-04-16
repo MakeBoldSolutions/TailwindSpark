@@ -160,11 +160,30 @@ EOF
 check_file() { [[ -f "$1" ]] && echo "  ✓ $2" || echo "  ✗ $2"; }
 check_dir() { [[ -d "$1" && -n $(ls -A "$1" 2>/dev/null) ]] && echo "  ✓ $2" || echo "  ✗ $2"; }
 
+get_markdown_frontmatter() {
+    local file_path="$1"
+
+    [[ -f "$file_path" ]] || return 1
+
+    awk '
+        NR == 1 && $0 == "---" { in_block=1; next }
+        in_block && $0 == "---" { exit }
+        in_block { print }
+    ' "$file_path"
+}
+
+get_markdown_frontmatter_value() {
+    local file_path="$1"
+    local key="$2"
+
+    get_markdown_frontmatter "$file_path" | awk -F': ' -v wanted="$key" '$1 == wanted { print $2; exit }'
+}
+
 # ---------------------------------------------------------------------------
-# Multi-app support helpers (T009, T014, T022, T026-T030, T035)
+# Multi-app support helpers
 # ---------------------------------------------------------------------------
 
-# Detect multi-app or single-app mode (T014)
+# Detect whether the repository is operating in multi-app mode.
 detect_devspark_mode() {
     local repo_root
     repo_root=$(get_repo_root)
@@ -181,7 +200,7 @@ detect_devspark_mode() {
     echo "single-app"
 }
 
-# Validate registry basics using jq (T009)
+# Validate the registry structure with jq before deeper processing.
 validate_registry_json() {
     local registry_path="$1"
 
