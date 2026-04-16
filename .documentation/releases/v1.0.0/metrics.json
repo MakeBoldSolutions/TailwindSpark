@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "releaseDate": "2026-04-16",
+  "release": {
+    "from": "2025-07-29",
+    "to": "2026-04-16"
+  },
+  "previousVersion": null,
+  "features": {
+    "completed": 1,
+    "deferred": 0
+  },
+  "quickfixes": 0,
+  "pullRequests": {
+    "merged": 45,
+    "numbers": [25, 26, 27, 28, 36, 37, 38, 39, 40, 41, 47, 52, 80, 82, 84, 85, 86, 87, 89, 90, 94, 96, 97, 98, 99, 101, 102, 105, 108, 109, 112, 113, 114, 115, 116, 119, 120, 121, 122, 123, 126, 127, 128, 129, 130],
+    "filesChanged": null,
+    "testsAdded": null,
+    "breakingChanges": 0,
+    "resolvedHighFindings": null
+  },
+  "adrs": 3,
+  "commits": 182,
+  "contributors": 3,
+  "specs": [
+    "001-multi-theme-platform"
+  ],
+  "timestamp": "2026-04-16T00:00:00Z"
+}
