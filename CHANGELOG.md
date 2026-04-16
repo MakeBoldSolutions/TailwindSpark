@@ -2,6 +2,24 @@
 
 All notable changes to this project are documented in this file.
 
+## [v1.0.1] - 2026-04-16
+
+### Added
+
+- **Automated GitHub Release Workflow**: Added a dedicated GitHub Actions release workflow that publishes GitHub Releases from pushed `v*` tags or manual dispatch using the repository's generated release notes.
+
+### Changed
+
+- **Release Validation Path**: Established a patch-release validation path that packages the production site build and release metrics as GitHub Release assets.
+
+### Fixed
+
+- **Release Publishing Gap**: Closed the gap between local DevSpark release documentation and actual GitHub Releases by wiring the repository to publish release notes and artifacts through Actions.
+
+### Contributors
+
+- Mark Hazleton
+
 ## [v1.0.0] - 2026-04-16
 
 ### Added

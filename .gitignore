@@ -176,6 +176,10 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
+# Track versioned project release artifacts under documentation.
+!.documentation/releases/
+!.documentation/releases/**
+
 # Build results on 'Bin' directories
 **/[Bb]in/*
 # Uncomment if you have tasks that rely on *.refresh files to move binaries

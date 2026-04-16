@@ -1,0 +1,27 @@
+{
+  "version": "1.0.1",
+  "releaseDate": "2026-04-16",
+  "release": {
+    "from": "2026-04-16",
+    "to": "2026-04-16"
+  },
+  "previousVersion": "v1.0.0",
+  "features": {
+    "completed": 0,
+    "deferred": 0
+  },
+  "quickfixes": 0,
+  "pullRequests": {
+    "merged": 0,
+    "numbers": [],
+    "filesChanged": 0,
+    "testsAdded": 0,
+    "breakingChanges": 0,
+    "resolvedHighFindings": 0
+  },
+  "adrs": 0,
+  "commits": 2,
+  "contributors": 1,
+  "specs": [],
+  "timestamp": "2026-04-16T00:00:00Z"
+}
