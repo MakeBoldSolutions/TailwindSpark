@@ -1,0 +1,119 @@
+name: Create GitHub Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: 'Release version without the v prefix, for example 1.0.0'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-release-${{ github.ref_name || github.event.inputs.release_version }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Publish GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Resolve release metadata
+        id: meta
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
+            version="${{ github.event.inputs.release_version }}"
+            tag="v${version#v}"
+          else
+            tag="${GITHUB_REF_NAME}"
+            version="${tag#v}"
+          fi
+
+          notes_path=".documentation/releases/${tag}/release-notes.md"
+          metrics_path=".documentation/releases/${tag}/metrics.json"
+
+          if [[ ! -f "$notes_path" ]]; then
+            echo "Release notes not found at $notes_path" >&2
+            exit 1
+          fi
+
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "notes_path=$notes_path" >> "$GITHUB_OUTPUT"
+          echo "metrics_path=$metrics_path" >> "$GITHUB_OUTPUT"
+
+      - name: Ensure release tag exists
+        if: github.event_name == 'workflow_dispatch'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          tag="${{ steps.meta.outputs.tag }}"
+
+          if git rev-parse "$tag" >/dev/null 2>&1; then
+            echo "Tag $tag already exists."
+            exit 0
+          fi
+
+          git tag -a "$tag" -m "Release $tag"
+          git push origin "$tag"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build release artifact
+        run: npm run build:deploy
+        env:
+          NODE_ENV: production
+          VITE_BASE_URL: /TailwindSpark/
+
+      - name: Package site artifact
+        id: package
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          artifact_name="tailwindspark-site-${{ steps.meta.outputs.tag }}.zip"
+
+          if [[ ! -d dist ]]; then
+            echo "Build output directory dist was not created." >&2
+            exit 1
+          fi
+
+          cd dist
+          zip -r "../$artifact_name" .
+          cd ..
+
+          echo "artifact_name=$artifact_name" >> "$GITHUB_OUTPUT"
+
+      - name: Create or update GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          name: ${{ steps.meta.outputs.tag }}
+          body_path: ${{ steps.meta.outputs.notes_path }}
+          files: |
+            ${{ steps.package.outputs.artifact_name }}
+            ${{ steps.meta.outputs.metrics_path }}
+          fail_on_unmatched_files: false
+          generate_release_notes: false
