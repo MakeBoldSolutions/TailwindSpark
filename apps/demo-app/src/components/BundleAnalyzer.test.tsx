@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { BundleAnalyzer } from './BundleAnalyzer';
 
@@ -111,5 +112,19 @@ describe('BundleAnalyzer', () => {
     const visualization = document.querySelector('svg, canvas') ||
                          document.querySelector('[class*="treemap"], [class*="chart"]');
     expect(visualization || document.querySelector('div')).toBeTruthy();
+  });
+
+  it('opens the bundle report with noopener and noreferrer', async () => {
+    const user = userEvent.setup();
+    const reportWindow = { opener: {} } as Window;
+    const openSpy = vi.spyOn(window, 'open').mockReturnValue(reportWindow);
+
+    render(<BundleAnalyzer />);
+
+    await user.click(screen.getByRole('button', { name: /show bundle analyzer/i }));
+    await user.click(screen.getByRole('button', { name: 'View Report' }));
+
+    expect(openSpy).toHaveBeenCalledWith('/reports/bundle-analysis.html', '_blank', 'noopener,noreferrer');
+    expect(reportWindow.opener).toBeNull();
   });
 });

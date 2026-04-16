@@ -1,4 +1,14 @@
 const MULTIPLE_WHITESPACE_PATTERN = /\s+/g;
+const ALLOWED_URL_PROTOCOLS = new Set(['http:', 'https:', 'mailto:', 'tel:']);
+
+function isRelativeHref(value: string): boolean {
+  return (
+    value.startsWith('#') ||
+    value.startsWith('/') ||
+    value.startsWith('./') ||
+    value.startsWith('../')
+  ) && !value.startsWith('//');
+}
 
 function isControlCharacter(char: string): boolean {
   const codePoint = char.charCodeAt(0);
@@ -30,4 +40,32 @@ export function normalizeUserText(input: string): string {
  */
 export function sanitizeInput(input: string): string {
   return normalizeUserText(input);
+}
+
+/**
+ * Validates and normalizes link destinations before they are rendered.
+ *
+ * @param href - Candidate link destination
+ * @returns Safe href value or null when the destination should be blocked
+ */
+export function sanitizeLinkHref(href?: string): string | null {
+  const normalizedHref = normalizeUserText(href ?? '');
+  if (!normalizedHref) {
+    return null;
+  }
+
+  if (isRelativeHref(normalizedHref)) {
+    return normalizedHref;
+  }
+
+  try {
+    const parsedHref = new URL(normalizedHref);
+    if (ALLOWED_URL_PROTOCOLS.has(parsedHref.protocol)) {
+      return normalizedHref;
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
 }

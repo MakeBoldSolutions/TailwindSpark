@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { normalizeUserText, sanitizeInput } from './sanitize';
+import { normalizeUserText, sanitizeInput, sanitizeLinkHref } from './sanitize';
 
 describe('sanitizeInput', () => {
   it('returns normal text unchanged', () => {
@@ -38,5 +38,23 @@ describe('normalizeUserText', () => {
 
   it('collapses repeated whitespace', () => {
     expect(normalizeUserText('React\n\nTypeScript\tTailwind')).toBe('React TypeScript Tailwind');
+  });
+});
+
+describe('sanitizeLinkHref', () => {
+  it('allows https links', () => {
+    expect(sanitizeLinkHref('https://markhazleton.com')).toBe('https://markhazleton.com');
+  });
+
+  it('allows relative links', () => {
+    expect(sanitizeLinkHref('/apps/articles')).toBe('/apps/articles');
+  });
+
+  it('blocks javascript links', () => {
+    expect(sanitizeLinkHref('javascript:alert(1)')).toBeNull();
+  });
+
+  it('blocks protocol-relative links', () => {
+    expect(sanitizeLinkHref('//evil.example.com')).toBeNull();
   });
 });

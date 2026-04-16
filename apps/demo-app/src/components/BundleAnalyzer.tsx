@@ -45,6 +45,13 @@ export const BundleAnalyzer: React.FC = () => {
   const [bundleInfo, setBundleInfo] = useState<BundleInfo | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
+  const openBundleReport = (): void => {
+    const reportWindow = window.open('/reports/bundle-analysis.html', '_blank', 'noopener,noreferrer');
+    if (reportWindow) {
+      reportWindow.opener = null;
+    }
+  };
+
   useEffect(() => {
     // Only show in development
     if (process.env.NODE_ENV !== 'development') {
@@ -226,9 +233,7 @@ export const BundleAnalyzer: React.FC = () => {
           <div className="mt-3 border-t border-border pt-3">
             <div className="flex space-x-2 text-xs">
               <button
-                onClick={() => {
-                  window.open('/reports/bundle-analysis.html', '_blank');
-                }}
+                onClick={openBundleReport}
                 className="rounded bg-brand px-2 py-1 text-white hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-focus-ring"
               >
                 View Report

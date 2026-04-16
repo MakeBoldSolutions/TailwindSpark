@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, type FormEvent } from 'react';
-import Markdown from 'react-markdown';
+import { SafeMarkdown } from '../components/SafeMarkdown';
 import { useSignalR } from '../hooks/useSignalR';
 import type { AIVariant, SignalRConnectionStatus } from '../types/chat-api';
 import { formatMessageTime, SIGNALR_CONFIG } from '../types/chat-api';
@@ -153,7 +153,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
             >
               {msg.role === 'assistant' ? (
                 <div className="prose prose-sm dark:prose-invert max-w-none text-sm [&>p]:my-1 [&>ol]:my-1 [&>ul]:my-1">
-                  <Markdown>{msg.content || (msg.streaming ? '...' : '')}</Markdown>
+                  <SafeMarkdown>{msg.content || (msg.streaming ? '...' : '')}</SafeMarkdown>
                 </div>
               ) : (
                 <p className="whitespace-pre-wrap text-sm">

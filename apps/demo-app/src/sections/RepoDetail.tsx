@@ -1,6 +1,6 @@
 import { Activity, ExternalLink, GitCommit, Shield, Users } from 'lucide-react';
 import { useMemo } from 'react';
-import ReactMarkdown from 'react-markdown';
+import { SafeMarkdown } from '../components/SafeMarkdown';
 import type { Repository } from '../types/repos-api';
 
 interface RepoDetailProps {
@@ -30,7 +30,7 @@ export const RepoDetail: React.FC<RepoDetailProps> = ({ repository }) => {
       <div>
         <h3 className="mb-1 text-sm font-semibold text-text">Summary</h3>
         <div className="prose prose-sm text-text-muted prose-headings:text-text prose-a:text-brand prose-strong:text-text prose-code:text-text">
-          <ReactMarkdown>{repository.summaryText}</ReactMarkdown>
+          <SafeMarkdown>{repository.summaryText}</SafeMarkdown>
         </div>
       </div>
 
