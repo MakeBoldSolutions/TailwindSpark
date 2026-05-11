@@ -71,7 +71,7 @@ jobs:
         working-directory: apps/demo-app
         run: npm run build
         env:
-          VITE_BASE_URL: /TailwindSpark/
+          VITE_BASE_URL: /
 
       - name: Setup Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
