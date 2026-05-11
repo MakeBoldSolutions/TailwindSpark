@@ -130,7 +130,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
           </div>
           <div className="mt-2 border-t border pt-2">
             <a
-              href="https://webspark.markhazleton.com"
+              href="https://web.makeboldspark.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-brand hover:text-brand-hover text-xs"

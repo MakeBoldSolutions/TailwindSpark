@@ -13,7 +13,7 @@ import { normalizeUserText } from '../utils/sanitize';
 /**
  * AI Variant Entity
  * Represents an AI assistant variant/persona from the PromptSpark API
- * Source: https://webspark.markhazleton.com/api/PromptSpark/Variant
+ * Source: https://web.makeboldspark.com/api/PromptSpark/Variant
  */
 export interface AIVariant {
   /** Unique variant identifier */
@@ -101,7 +101,7 @@ export const AIVariantsResponseSchema = z.array(AIVariantSchema);
  */
 export const AI_VARIANTS_API_CONFIG = {
   /** PromptSpark variants endpoint */
-  VARIANTS_URL: 'https://webspark.markhazleton.com/api/PromptSpark/Variant',
+  VARIANTS_URL: 'https://web.makeboldspark.com/api/PromptSpark/Variant',
   
   /** Cache key for localStorage */
   CACHE_KEY: 'ai_variants_v1',
@@ -160,7 +160,7 @@ export type SignalRConnectionStatus =
  */
 export const SIGNALR_CONFIG = {
   /** Chat hub URL */
-  HUB_URL: 'https://webspark.markhazleton.com/chatHub',
+  HUB_URL: 'https://web.makeboldspark.com/chatHub',
   
   /** Connection retry delays (exponential backoff) */
   RETRY_DELAYS: [0, 2000, 10000, 30000] as number[], // 0s, 2s, 10s, 30s, then give up

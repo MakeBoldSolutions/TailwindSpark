@@ -40,7 +40,7 @@ describe('HomePage', () => {
     const portfolioLinks = screen.queryAllByRole('link', { name: /WebSpark Portfolio/i });
     expect(portfolioLinks.length).toBeGreaterThan(0);
     // Check attributes on first link
-    expect(portfolioLinks[0]).toHaveAttribute('href', 'https://webspark.markhazleton.com');
+    expect(portfolioLinks[0]).toHaveAttribute('href', 'https://web.makeboldspark.com');
     expect(portfolioLinks[0]).toHaveAttribute('target', '_blank');
     expect(portfolioLinks[0]).toHaveAttribute('rel', 'noopener noreferrer');
   });

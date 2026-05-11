@@ -8,9 +8,18 @@
 
 A comprehensive Tailwind CSS showcase and learning resource built as a production-ready React TypeScript monorepo. Demonstrates modern web development patterns, design systems, and component architecture.
 
-**[Live Demo](https://markhazleton.github.io/TailwindSpark/)** • **[Full Documentation](./.documentation/guides/)** • **[Repository Story](./.documentation/repo-story/repo-story-2026-04-11.md)**
+**Live Site**: [Tailwind.makeboldspark.com](https://Tailwind.makeboldspark.com) • **[Full Documentation](./.documentation/guides/)** • **[Repository Story](./.documentation/repo-story/repo-story-2026-04-11.md)**
 
 ![TailwindSpark Demo](https://raw.githubusercontent.com/markhazleton/TailwindSpark/main/apps/demo-app/public/TailwindSpark.png)
+
+## About
+
+TailwindSpark demonstrates modern React patterns with Tailwind CSS 4's `@theme` directive, semantic design tokens, and comprehensive component examples in a production-ready TypeScript monorepo.
+
+**Live Site**: [Tailwind.makeboldspark.com](https://Tailwind.makeboldspark.com)
+
+> Built by [Mark Hazleton](https://markhazleton.com) — Technical Solutions Architect
+> Part of the [MakeBoldSpark](https://makeboldspark.com) portfolio of technical demonstrations.
 
 ## Why TailwindSpark?
 
@@ -95,7 +104,7 @@ Mark Hazleton
 
 ---
 
-**[View Demo](https://markhazleton.github.io/TailwindSpark/)** • **[Documentation](./.documentation/guides/)** • **[Report Bug](https://github.com/markhazleton/TailwindSpark/issues)**
+**[View Live Site](https://Tailwind.makeboldspark.com)** • **[Documentation](./.documentation/guides/)** • **[Report Bug](https://github.com/markhazleton/TailwindSpark/issues)**
 
 Built with ❤️ using React, TypeScript, and Tailwind CSS
 Contributions welcome! Review the [Constitution](./.documentation/memory/constitution.md) for coding standards, then see [CONTRIBUTING.md](./CONTRIBUTING.md) for workflow details.
@@ -106,4 +115,4 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ---
 
-**Part of the WebSpark Portfolio** • Created by [Mark Hazleton](https://markhazleton.com) • Built with React 19, TypeScript 5, and Tailwind CSS 4
+**Part of the [MakeBoldSpark](https://makeboldspark.com) Portfolio** • Created by [Mark Hazleton](https://markhazleton.com) • Built with React 19, TypeScript 5, and Tailwind CSS 4

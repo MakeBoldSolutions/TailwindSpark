@@ -35,7 +35,7 @@ export const DesignSystemShowcase: React.FC = () => {
               ✨ TailwindSpark
             </span>
             <a
-              href="https://webspark.markhazleton.com"
+              href="https://web.makeboldspark.com"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center rounded-control border border-border bg-surface-alt px-3 py-1 font-medium text-text transition-colors hover:bg-surface-hover"

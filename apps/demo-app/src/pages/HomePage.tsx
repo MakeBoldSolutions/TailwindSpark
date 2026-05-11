@@ -78,7 +78,7 @@ export const HomePage: React.FC = () => {
           </p>
           <div className="flex flex-wrap gap-3">
             <a
-              href="https://webspark.markhazleton.com"
+              href="https://web.makeboldspark.com"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-sm font-medium text-brand transition-colors hover:bg-brand/20"
@@ -196,7 +196,7 @@ export const HomePage: React.FC = () => {
               </Button>
             </Link>
             <a
-              href="https://webspark.markhazleton.com"
+              href="https://web.makeboldspark.com"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -207,7 +207,7 @@ export const HomePage: React.FC = () => {
           </div>
           <div className="mt-6">
             <a
-              href="https://webspark.markhazleton.com"
+              href="https://web.makeboldspark.com"
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-brand hover:text-brand-hover"

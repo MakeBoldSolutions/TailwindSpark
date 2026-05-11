@@ -131,7 +131,7 @@ export const TailwindSparkBrand: React.FC<TailwindSparkBrandProps> = ({
               A comprehensive React TypeScript showcase of Tailwind CSS components, animations, and
               design systems. Part of the{' '}
               <a
-                href="https://webspark.markhazleton.com"
+                href="https://web.makeboldspark.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-brand hover:text-brand-hover font-semibold"

@@ -448,7 +448,7 @@ export const Layout: React.FC<LayoutProps> = ({
               GitHub
             </a>
             <a
-              href="https://webspark.markhazleton.com"
+              href="https://web.makeboldspark.com"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-brand dark:hover:text-brand text-sm text-muted transition-colors"
@@ -480,6 +480,28 @@ export const Layout: React.FC<LayoutProps> = ({
               React
             </a>
           </div>
+          <p className="mt-6 text-center text-sm text-muted">
+            <a
+              href="https://Tailwind.makeboldspark.com"
+              className="hover:text-brand transition-colors"
+            >
+              TailwindSpark
+            </a>{' '}
+            — built by{' '}
+            <a
+              href="https://markhazleton.com"
+              className="hover:text-brand transition-colors"
+            >
+              Mark Hazleton
+            </a>{' '}
+            ·{' '}
+            <a
+              href="https://markboldsolutions.com"
+              className="hover:text-brand transition-colors"
+            >
+              MakeBoldSolutions
+            </a>
+          </p>
         </div>
       </footer>
     </div>

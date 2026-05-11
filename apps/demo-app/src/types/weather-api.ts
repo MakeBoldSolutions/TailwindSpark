@@ -2,7 +2,7 @@
  * Weather API Contract
  * 
  * TypeScript types and Zod schemas for WebSpark Weather API
- * Source: webspark.markhazleton.com OpenWeatherApi endpoint
+ * Source: web.makeboldspark.com OpenWeatherApi endpoint
  */
 
 import { z } from 'zod';
@@ -113,7 +113,7 @@ export type WeatherDataSchemaType = z.infer<typeof WeatherDataSchema>;
 
 /**
  * WebSpark Weather API Raw Response
- * Structure returned by webspark.markhazleton.com OpenWeatherApi endpoint
+ * Structure returned by web.makeboldspark.com OpenWeatherApi endpoint
  */
 export interface WebSparkWeatherResponse {
   observationAge: string;
@@ -163,7 +163,7 @@ export interface WeatherAPIResponse {
  */
 export const WEATHER_API_CONFIG = {
   /** WebSpark Weather API base URL */
-  BASE_URL: 'https://webspark.markhazleton.com/api/AsyncSpark/OpenWeatherApi',
+  BASE_URL: 'https://web.makeboldspark.com/api/AsyncSpark/OpenWeatherApi',
   
   /** Current weather endpoint */
   CURRENT_ENDPOINT: '/weather',

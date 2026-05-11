@@ -125,7 +125,7 @@ export const AboutPage: FC = (): React.JSX.Element => {
             technologies.
           </p>
           <a
-            href="https://webspark.markhazleton.com"
+            href="https://web.makeboldspark.com"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-brand hover:text-brand-hover"

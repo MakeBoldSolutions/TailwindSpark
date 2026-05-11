@@ -75,7 +75,7 @@ describe('AboutPage', () => {
     renderPage();
     expect(screen.getByText('WebSpark Ecosystem')).toBeInTheDocument();
     const link = screen.getByRole('link', { name: /Visit WebSpark Portfolio/i });
-    expect(link).toHaveAttribute('href', 'https://webspark.markhazleton.com');
+    expect(link).toHaveAttribute('href', 'https://web.makeboldspark.com');
   });
 
   it.each(themeMatrix)('keeps about route content available under %s %s mode', (themeId, mode) => {
