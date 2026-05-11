@@ -107,7 +107,7 @@ Mark Hazleton
 **[View Live Site](https://Tailwind.makeboldspark.com)** • **[Documentation](./.documentation/guides/)** • **[Report Bug](https://github.com/markhazleton/TailwindSpark/issues)**
 
 Built with ❤️ using React, TypeScript, and Tailwind CSS
-Contributions welcome! Review the [Constitution](./.documentation/memory/constitution.md) for coding standards, then see [CONTRIBUTING.md](./CONTRIBUTING.md) for workflow details.
+Contributions welcome! Review the [Constitution](./.documentation/memory/constitution.md) for coding standards.
 
 ## 📄 License
 
