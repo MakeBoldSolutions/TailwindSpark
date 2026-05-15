@@ -50,7 +50,7 @@
     "happy-dom": "^20.9.0",
     "jsdom": "^29.0.2",
     "postcss": "^8.5.9",
-    "react": "^19.2.5",
+    "react": "^19.2.6",
     "react-dom": "^19.2.5",
     "tailwindcss": "^4.1.18",
     "typescript": "^6.0.2",
