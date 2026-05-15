@@ -58,7 +58,11 @@
           var rawPreference = localStorage.getItem(storageKey);
           if (rawPreference) {
             var parsedPreference = JSON.parse(rawPreference);
-            if (parsedPreference && isValidTheme(parsedPreference.themeId) && isValidMode(parsedPreference.mode)) {
+            if (
+              parsedPreference &&
+              isValidTheme(parsedPreference.themeId) &&
+              isValidMode(parsedPreference.mode)
+            ) {
               preference = {
                 themeId: parsedPreference.themeId,
                 mode: parsedPreference.mode,
@@ -138,22 +142,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RY77Z11S9E"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX', {
-        page_title: 'TailwindSpark - Interactive Tailwind CSS Showcase',
-        page_location: 'https://markhazleton.github.io/TailwindSpark/',
-        custom_map: {
-          custom_dimension_1: 'page_type',
-          custom_dimension_2: 'user_type',
-        },
-      });
+      gtag('config', 'G-RY77Z11S9E');
     </script>
 
     <!-- Structured Data -->

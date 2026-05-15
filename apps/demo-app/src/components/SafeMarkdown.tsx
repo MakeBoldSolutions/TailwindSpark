@@ -32,6 +32,7 @@ const MARKDOWN_ALLOWED_ELEMENTS = [
   'ul',
 ] as const;
 
+/** Custom component overrides for ReactMarkdown with link sanitization. */
 const markdownComponents: Components = {
   a: ({ href, children, ...props }) => {
     const safeHref = sanitizeLinkHref(href);
@@ -53,6 +54,12 @@ const markdownComponents: Components = {
   },
 };
 
+/**
+ * Renders sanitized Markdown content with restricted elements and safe links.
+ * @param root0 - Component props.
+ * @param root0.children - Markdown string to render.
+ * @returns The rendered Markdown JSX element.
+ */
 export const SafeMarkdown = ({ children }: SafeMarkdownProps): React.JSX.Element => {
   return (
     <ReactMarkdown
