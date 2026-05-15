@@ -19,9 +19,17 @@ export function useProjects(): UseProjectsReturn {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchData = useCallback(async () => {
+  useEffect(() => {
+    getProjects()
+      .then(data => setProjects(data))
+      .catch(err => setError(err instanceof Error ? err.message : 'Failed to load projects'))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const refreshCache = useCallback(async () => {
     setLoading(true);
     setError(null);
+    clearProjectsCache();
     try {
       const data = await getProjects();
       setProjects(data);
@@ -31,15 +39,6 @@ export function useProjects(): UseProjectsReturn {
       setLoading(false);
     }
   }, []);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  const refreshCache = useCallback(async () => {
-    clearProjectsCache();
-    await fetchData();
-  }, [fetchData]);
 
   return { projects, loading, error, refreshCache };
 }

@@ -121,7 +121,7 @@ export default defineConfig(({ command, mode }) => {
     chunkSizeWarningLimit: 400, // Stricter limit for CDN delivery
     // Production optimizations
     minify: 'esbuild',
-    target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari13.1'], // Modern browsers for smaller bundles
+    target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari15'], // Modern browsers for smaller bundles
     sourcemap: false, // No source maps in production for CDN efficiency
     // Asset optimization
     assetsInlineLimit: 8192, // Inline small assets (8KB) to reduce HTTP requests

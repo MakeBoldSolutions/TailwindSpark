@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import {
-    addToJokeHistory,
-    deleteSavedJoke,
-    getJokeHistory,
-    getLikedJokes,
-    getRandomJoke,
-    getSavedJokes,
-    saveJoke,
-    toggleLikeJoke,
+  addToJokeHistory,
+  deleteSavedJoke,
+  getJokeHistory,
+  getLikedJokes,
+  getRandomJoke,
+  getSavedJokes,
+  saveJoke,
+  toggleLikeJoke,
 } from '../services/joke.service';
 import type { Joke } from '../types/joke-api';
 
@@ -31,16 +31,21 @@ interface UseJokesReturn {
  */
 export function useJokes(): UseJokesReturn {
   const [currentJoke, setCurrentJoke] = useState<Joke | null>(null);
-  const [savedJokes, setSavedJokes] = useState<Joke[]>([]);
-  const [likedJokeIds, setLikedJokeIds] = useState<number[]>([]);
-  const [history, setHistory] = useState<Joke[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [savedJokes, setSavedJokes] = useState<Joke[]>(() => getSavedJokes());
+  const [likedJokeIds, setLikedJokeIds] = useState<number[]>(() => getLikedJokes());
+  const [history, setHistory] = useState<Joke[]>(() => getJokeHistory());
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    setSavedJokes(getSavedJokes());
-    setLikedJokeIds(getLikedJokes());
-    setHistory(getJokeHistory());
+    getRandomJoke()
+      .then(joke => {
+        setCurrentJoke(joke);
+        addToJokeHistory(joke);
+        setHistory(getJokeHistory());
+      })
+      .catch(() => setError('Failed to fetch a joke. Please try again.'))
+      .finally(() => setLoading(false));
   }, []);
 
   const fetchNewJoke = useCallback(async () => {
@@ -57,10 +62,6 @@ export function useJokes(): UseJokesReturn {
       setLoading(false);
     }
   }, []);
-
-  useEffect(() => {
-    fetchNewJoke();
-  }, [fetchNewJoke]);
 
   const handleSave = useCallback((joke: Joke) => {
     saveJoke(joke);

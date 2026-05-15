@@ -1,6 +1,12 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { clearReposCache, getRepositories } from '../services/repos.service';
-import type { RepoSortDirection, RepoSortField, RepoStatusFilter, ReposProfile, Repository } from '../types/repos-api';
+import type {
+  RepoSortDirection,
+  RepoSortField,
+  RepoStatusFilter,
+  ReposProfile,
+  Repository,
+} from '../types/repos-api';
 
 interface UseReposReturn {
   repositories: Repository[];
@@ -43,9 +49,20 @@ export function useRepos(): UseReposReturn {
   const [sortDirection, setSortDirection] = useState<RepoSortDirection>('desc');
   const [expandedRepo, setExpandedRepo] = useState<string | null>(null);
 
-  const fetchData = useCallback(async () => {
+  useEffect(() => {
+    getRepositories()
+      .then(data => {
+        setRepositories(data.repositories);
+        setProfile(data.profile);
+      })
+      .catch(err => setError(err instanceof Error ? err.message : 'Failed to load repositories'))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const refreshCache = useCallback(async () => {
     setLoading(true);
     setError(null);
+    clearReposCache();
     try {
       const data = await getRepositories();
       setRepositories(data.repositories);
@@ -56,15 +73,6 @@ export function useRepos(): UseReposReturn {
       setLoading(false);
     }
   }, []);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  const refreshCache = useCallback(async () => {
-    clearReposCache();
-    await fetchData();
-  }, [fetchData]);
 
   const availableLanguages = useMemo(() => {
     const langs = new Set<string>();
@@ -84,7 +92,7 @@ export function useRepos(): UseReposReturn {
         r =>
           r.name.toLowerCase().includes(term) ||
           (r.description?.toLowerCase().includes(term) ?? false) ||
-          r.summaryText.toLowerCase().includes(term),
+          r.summaryText.toLowerCase().includes(term)
       );
     }
 

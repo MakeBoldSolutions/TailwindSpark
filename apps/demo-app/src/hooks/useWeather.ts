@@ -18,19 +18,18 @@ interface UseWeatherReturn {
  */
 export function useWeather(): UseWeatherReturn {
   const [weatherResults, setWeatherResults] = useState<WeatherData[]>([]);
-  const [recentSearches, setRecentSearches] = useState<RecentSearch[]>([]);
+  const [recentSearches, setRecentSearches] = useState<RecentSearch[]>(() => getRecentSearches());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    setRecentSearches(getRecentSearches());
     // Load default cities
     WEATHER_API_CONFIG.DEFAULT_CITIES.forEach(city => {
       getWeatherByCity(city)
         .then(data =>
           setWeatherResults(prev =>
-            prev.some(w => w.city_name === data.city_name) ? prev : [...prev, data],
-          ),
+            prev.some(w => w.city_name === data.city_name) ? prev : [...prev, data]
+          )
         )
         .catch(() => {});
     });
