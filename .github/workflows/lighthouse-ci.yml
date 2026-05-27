@@ -58,14 +58,11 @@ jobs:
                   NODE_ENV: production
                   VITE_BASE_URL: /
 
-            - name: Install Lighthouse CI
-              run: npm install -g @lhci/cli@0.12.x
-
             - name: Run Lighthouse CI
               run: |
                   mkdir -p artifacts/lighthouse
-                  set -o pipefail
-                  lhci autorun 2>&1 | tee artifacts/lighthouse/lhci.log
+                  set +e
+                  npx lhci autorun 2>&1 | tee artifacts/lighthouse/lhci.log
                   status=${PIPESTATUS[0]}
                   if [ -d .lighthouseci ]; then
                     cp -R .lighthouseci/. artifacts/lighthouse/

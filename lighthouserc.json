@@ -52,7 +52,7 @@
         "cumulative-layout-shift": ["error", { "maxNumericValue": 0.1 }],
         "total-blocking-time": ["error", { "maxNumericValue": 300 }],
         "interactive": ["warn", { "maxNumericValue": 5000 }],
-        "uses-webp-images": "warn",
+        "modern-image-formats": "warn",
         "unused-css-rules": "warn",
         "efficient-animated-content": "warn",
         "legacy-javascript": "warn"
