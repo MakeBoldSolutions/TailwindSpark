@@ -142,21 +142,20 @@ async function hasExistingSnapshot(filePath) {
   }
 }
 
-async function writeSnapshot(jsonText) {
+async function writeSnapshot(sanitizedContent) {
   await mkdir(path.dirname(outputPath), { recursive: true });
-  const normalized = sanitizeArticlesSnapshot(jsonText);
   let current = '';
 
   if (await hasExistingSnapshot(outputPath)) {
     current = await readFile(outputPath, 'utf8');
   }
 
-  if (current === normalized) {
+  if (current === sanitizedContent) {
     console.log(`[sync-articles-data] Snapshot already current: ${outputPath}`);
     return;
   }
 
-  await writeFile(outputPath, normalized, 'utf8');
+  await writeFile(outputPath, sanitizedContent, 'utf8');
   console.log(`[sync-articles-data] Wrote snapshot: ${outputPath}`);
 }
 
@@ -191,7 +190,8 @@ async function main() {
     }
 
     const jsonText = await response.text();
-    await writeSnapshot(jsonText);
+    const sanitized = sanitizeArticlesSnapshot(jsonText);
+    await writeSnapshot(sanitized);
   } catch (error) {
     // If fetch fails (CORS, timeout, network error), create empty fallback instead of failing
     console.warn(`[sync-articles-data] Failed to fetch from ${sourceUrl}:`, error.message);

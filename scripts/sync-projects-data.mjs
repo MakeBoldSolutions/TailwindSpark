@@ -116,21 +116,20 @@ async function hasExistingSnapshot(filePath) {
   }
 }
 
-async function writeSnapshot(jsonText) {
+async function writeSnapshot(sanitizedContent) {
   await mkdir(path.dirname(outputPath), { recursive: true });
-  const normalized = sanitizeProjectsSnapshot(jsonText);
   let current = '';
 
   if (await hasExistingSnapshot(outputPath)) {
     current = await readFile(outputPath, 'utf8');
   }
 
-  if (current === normalized) {
+  if (current === sanitizedContent) {
     console.log(`[sync-projects-data] Snapshot already current: ${outputPath}`);
     return;
   }
 
-  await writeFile(outputPath, normalized, 'utf8');
+  await writeFile(outputPath, sanitizedContent, 'utf8');
   console.log(`[sync-projects-data] Wrote snapshot: ${outputPath}`);
 }
 
@@ -147,7 +146,8 @@ async function main() {
     }
 
     const jsonText = await response.text();
-    await writeSnapshot(jsonText);
+    const sanitized = sanitizeProjectsSnapshot(jsonText);
+    await writeSnapshot(sanitized);
   } catch (error) {
     if (await hasExistingSnapshot(outputPath)) {
       console.warn(`[sync-projects-data] Using existing snapshot after refresh failure: ${String(error)}`);

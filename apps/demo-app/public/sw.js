@@ -143,6 +143,11 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('message', event => {
+  // Reject messages from any origin other than the page this SW controls.
+  if (event.origin !== self.location.origin) {
+    return;
+  }
+
   // Supports both immediate activation and runtime version checks during rollout verification.
   if (event.data?.type === 'SKIP_WAITING') {
     self.skipWaiting();

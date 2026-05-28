@@ -122,14 +122,13 @@ const config = {
         'border-strong': 'var(--color-border-strong)',
       },
       spacing,
-      borderRadius,
-      boxShadow: shadows,
       fontFamily: {
         sans: ['var(--font-body)', 'Inter', 'system-ui', 'sans-serif'],
         display: ['var(--font-display)', 'Inter', 'system-ui', 'sans-serif'],
         mono: ['SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'monospace'],
       },
       borderRadius: {
+        ...borderRadius,
         control: 'var(--theme-radius-control)',
         panel: 'var(--theme-radius-panel)',
       },
