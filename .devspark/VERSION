@@ -1,4 +1,4 @@
-version: 2.0.0
-installed: 2026-04-16
-method: copilot-remote-upgrade
-migrated-from: documentation-defaults
+version: 2.6.0
+installed: 2026-06-21
+method: copilot-quickstart
+migrated-from: fresh

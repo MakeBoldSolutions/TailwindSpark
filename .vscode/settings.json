@@ -44,6 +44,8 @@
     },
     "chat.tools.terminal.autoApprove": {
         ".devspark/scripts/bash/": true,
-        ".devspark/scripts/powershell/": true
+        ".devspark/scripts/powershell/": true,
+        ".documentation/scripts/bash/": true,
+        ".documentation/scripts/powershell/": true
     }
 }
