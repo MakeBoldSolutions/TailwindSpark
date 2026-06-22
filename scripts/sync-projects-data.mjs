@@ -78,27 +78,27 @@ function sanitizeProjectsSnapshot(jsonText) {
     assertValidProject(project, index);
 
     const normalizedProject = {
-      id: project.id,
+      id: +project.id,
       p: project.p.trim(),
       d: project.d.trim(),
-      h: project.h,
-      image: project.image,
+      h: String(project.h),
+      image: String(project.image),
     };
 
     if (project.slug !== undefined) {
-      normalizedProject.slug = project.slug;
+      normalizedProject.slug = String(project.slug);
     }
 
     if (project.summary !== undefined) {
-      normalizedProject.summary = project.summary;
+      normalizedProject.summary = String(project.summary);
     }
 
     if (project.keywords !== undefined) {
-      normalizedProject.keywords = project.keywords;
+      normalizedProject.keywords = String(project.keywords);
     }
 
     if (project.promotion?.status !== undefined) {
-      normalizedProject.promotion = { status: project.promotion.status };
+      normalizedProject.promotion = { status: String(project.promotion.status) };
     }
 
     return normalizedProject;

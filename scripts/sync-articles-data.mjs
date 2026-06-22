@@ -79,7 +79,7 @@ function normalizeArticle(article, index) {
   const normalizedArticle = {
     id: typeof article.id === 'number' ? article.id : normalizeRequiredString(article.id, 'id', index),
     name: normalizeRequiredString(article.name, 'name', index),
-    description: article.description,
+    description: String(article.description),
     slug: normalizeRequiredString(article.slug, 'slug', index),
   };
 
