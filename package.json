@@ -45,12 +45,10 @@
     "test": "turbo run test",
     "test:ui": "turbo run test:ui",
     "test:coverage": "turbo run test:coverage",
-    "performance:test": "node scripts/performance-test.mjs",
-    "lighthouse:ci": "lhci autorun"
+    "performance:test": "node scripts/performance-test.mjs"
   },
   "devDependencies": {
     "@axe-core/react": "^4.11.3",
-    "@lhci/cli": "^0.15.1",
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/postcss": "^4.3.1",
     "@tailwindcss/typography": "^0.5.20",
@@ -65,7 +63,6 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "jest-axe": "^10.0.0",
     "jsdom": "^29.1.1",
-    "lighthouse": "^13.4.0",
     "prettier": "^3.8.4",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "rimraf": "^6.1.3",
