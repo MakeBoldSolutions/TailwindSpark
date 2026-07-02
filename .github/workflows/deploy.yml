@@ -46,7 +46,7 @@ jobs:
           path: |
             apps/demo-app/coverage/
             packages/ui-components/coverage/
-          retention-days: 30
+          retention-days: 1
 
       - name: Debug workspace info
         run: |
