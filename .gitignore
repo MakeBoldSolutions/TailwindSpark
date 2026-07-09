@@ -485,3 +485,5 @@ FakesAssemblies/
 
 # DevSpark — personal overrides (never commit)
 .documentation/*/commands/
+.bold-user/
+.bold/.backup/

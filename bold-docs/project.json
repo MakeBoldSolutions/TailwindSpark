@@ -1,0 +1,25 @@
+{
+  "$genome": { "domain": "software", "base": "0.1" },
+  "composition": {
+    "starter": null,
+    "stacks": ["node", "react"],
+    "flavors": ["tailwind"]
+  },
+  "core": {
+    "name": "tailwindspark-monorepo",
+    "description": "TailwindSpark - a comprehensive Tailwind CSS showcase monorepo with React and TypeScript. Part of the WebSpark portfolio.",
+    "repo_purpose": "educational showcase + production-ready template"
+  },
+  "layer": {
+    "node": { "package_manager": "npm", "test_framework": "vitest", "source": "discovered" },
+    "react": { "source": "discovered" }
+  },
+  "team": {
+    "monorepo_tool": "turborepo",
+    "workspaces": ["packages/*", "apps/*"]
+  },
+  "x": {
+    "migrated_from": "devspark@2.6.0",
+    "migration_date": "2026-07-09"
+  }
+}

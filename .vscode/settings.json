@@ -36,16 +36,14 @@
         "**/.turbo": true
     },
     "chat.promptFilesRecommendations": {
-        "devspark.constitution": true,
-        "devspark.specify": true,
-        "devspark.plan": true,
-        "devspark.tasks": true,
-        "devspark.implement": true
+        "bold-plan": true,
+        "bold-plan-init": true,
+        "bold-plan-tasks": true,
+        "bold-build": true,
+        "bold-ship": true
     },
     "chat.tools.terminal.autoApprove": {
-        ".devspark/scripts/bash/": true,
-        ".devspark/scripts/powershell/": true,
-        ".documentation/scripts/bash/": true,
-        ".documentation/scripts/powershell/": true
+        ".bold/scripts/bash/": true,
+        ".bold/scripts/powershell/": true
     }
 }
