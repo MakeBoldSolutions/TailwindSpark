@@ -3,11 +3,11 @@
 > **TL;DR for the Product Owner**
 > *What*: Bring every npm dependency across the monorepo (`packages/*`, `apps/*`) up to its latest safe version, keeping all backbone gates (typecheck, tests, lint, build) green.
 > *Why*: Requested to reduce drift and pick up upstream fixes/security patches before they accumulate.
-> *Status*: In Progress — T001–T010 done (all dependencies bumped, TypeScript 7 attempted and reverted per its ratified fallback, all gates green locally, CI workflow updated). T011–T012 (open the PR, confirm CI, document breaking changes) remain for `bold.ship`.
+> *Status*: Complete — all 12 tasks done, all 10 Acceptance Criteria met, PR #187 open with all CI checks passing.
 > *Decision needed*: None. TypeScript stays on 6.0.3 (7.0.2 blocked by `typescript-eslint`'s peer dependency, follow-up filed); `npm` packageManager 11→12 deferred; CI now also gates on lint + type-check + a blocking audit step (new, in scope).
 
 **Tier**: Feature
-**Status**: In Progress
+**Status**: Complete
 
 ## Intent
 
@@ -56,8 +56,8 @@ Current state, cross-checked two ways (captured 2026-07-09):
 - [x] `npm run lint` passes with zero errors across all workspaces (backbone principle 6). Clean on the final (6.0.3) dependency set.
 - [x] Type-check passes in strict mode with no new `any`/type-coverage regressions (backbone principle 1). Verified on both TypeScript 7.0.2 (isolated spike) and the final 6.0.3 (post-fallback) — clean on both.
 - [x] `.github/workflows/deploy.yml` runs `npm run lint` and `npm run type-check` as blocking steps, closing the gap where principles 1 and 6 were `enforced` in name but not CI-checked. The existing `npm audit --audit-level moderate` step also loses its `continue-on-error: true` (found during `bold.plan critic`/`analyze` — same gap, same principle 8 rationale), so it becomes a real CI gate too. Steps added; actual CI run confirmation is AC9/T011.
-- [ ] CI (GitHub Actions) passes on the PR before merge, now including the new lint/type-check steps (backbone principle 8).
-- [ ] Any breaking change surfaced by an upgrade (most notably TypeScript 7) is called out explicitly in the PR description, not silently absorbed.
+- [x] CI (GitHub Actions) passes on the PR before merge, now including the new lint/type-check steps (backbone principle 8). Confirmed on PR #187: Build and validate (includes lint + type-check), CodeQL, dependency-review, security-scan, GitGuardian all pass. `Deploy to GitHub Pages` correctly shows `skipping` — gated to `push`/`main`, not PR events.
+- [x] Any breaking change surfaced by an upgrade (most notably TypeScript 7) is called out explicitly in the PR description, not silently absorbed. PR #187's body includes a dedicated "Breaking Changes" section documenting the TypeScript 7 attempt-and-revert.
 
 ## Open Questions
 
@@ -89,7 +89,7 @@ None remaining — see Resolved below.
 - [x] T008 [P] Run `npm run lint` (all workspaces); fix any zero-error violations surfaced by the bumps, per backbone principle 6 (depends on T005) — resolves AC6. Clean on the final (6.0.3) set — the TS 7.0.2 attempt hard-failed here first (see T009 note), which is what triggered the fallback.
 - [x] T009 [P] Run `npm run type-check` (strict mode); fix any TypeScript 7 regressions, falling back to pinning `^6.0.x` in the T001–T004 files only if unfixable, per the ratified fallback (depends on T005) — resolves AC7. `tsc --noEmit` itself passed cleanly on 7.0.2, but `npm run lint` (T008) hard-failed: `typescript-eslint@8.63.0` declares `peerDependencies.typescript: '>=4.8.4 <6.1.0'`, no stable release supports TS 7. Fallback invoked per the ratified plan; clean on 6.0.3.
 - [x] T010 Add blocking `npm run lint` and `npm run type-check` steps to `.github/workflows/deploy.yml`, and remove `continue-on-error: true` from its existing `npm audit` step (depends on T008, T009 passing locally first) — resolves AC8. Done.
-- [ ] T011 Open the PR and confirm CI passes end to end, including the new lint/type-check steps (depends on T010) — resolves AC9
-- [ ] T012 Document any breaking changes surfaced (most likely from the TypeScript 7 bump) explicitly in the PR description (depends on T009) — resolves AC10
+- [x] T011 Open the PR and confirm CI passes end to end, including the new lint/type-check steps (depends on T010) — resolves AC9. PR #187 opened; all checks pass.
+- [x] T012 Document any breaking changes surfaced (most likely from the TypeScript 7 bump) explicitly in the PR description (depends on T009) — resolves AC10. Done in PR #187's body.
 
 **Excluded from this feature**: `npm` packageManager 11→12 — ratified defer, no task here; track as separate, coordinated work. **TypeScript 7.0.2** — attempted during T009, blocked by `typescript-eslint`'s peer dependency (`<6.1.0`), fallback invoked per the ratified plan; track re-attempt as separate follow-up once `typescript-eslint` ships stable TS 7 support.
