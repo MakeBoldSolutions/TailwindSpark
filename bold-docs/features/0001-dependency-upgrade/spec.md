@@ -3,11 +3,11 @@
 > **TL;DR for the Product Owner**
 > *What*: Bring every npm dependency across the monorepo (`packages/*`, `apps/*`) up to its latest safe version, keeping all backbone gates (typecheck, tests, lint, build) green.
 > *Why*: Requested to reduce drift and pick up upstream fixes/security patches before they accumulate.
-> *Status*: Clarified — no dependency changes made yet.
-> *Decision needed*: None. All open questions ratified: TypeScript 6→7 (adopt now), `npm` packageManager 11→12 (defer), and CI now also gates on lint + type-check (new, in scope).
+> *Status*: Built — all dependencies bumped, TypeScript 7 attempted and reverted per its ratified fallback, all gates green locally.
+> *Decision needed*: None. TypeScript stays on 6.0.3 (7.0.2 blocked by `typescript-eslint`'s peer dependency, follow-up filed); `npm` packageManager 11→12 deferred; CI now also gates on lint + type-check + a blocking audit step (new, in scope).
 
 **Tier**: Feature
-**Status**: Clarified
+**Status**: In Progress
 
 ## Intent
 
@@ -22,7 +22,7 @@ Current state, cross-checked two ways (captured 2026-07-09):
 
 | Package | Furthest-behind range seen | Latest | Bump |
 |---|---|---|---|
-| **typescript** | 6.0.2 (design-tokens, ui-components) | 7.0.2 | **major** |
+| **typescript** | 6.0.2 (design-tokens, ui-components) | 7.0.2 attempted, **reverted to 6.0.3** (see Resolved) | **major — fallback invoked** |
 | **npm** (`packageManager` pin, root `package.json`) | 11.17.0 | 12.0.0 | **major — deferred** |
 | eslint | 10.2.0 (ui-components, demo-app) | 10.6.0 | minor |
 | tailwindcss | 4.1.18 (ui-components) | 4.3.2 | minor |
@@ -48,14 +48,14 @@ Current state, cross-checked two ways (captured 2026-07-09):
 
 ## Acceptance Criteria
 
-- [ ] Every dependency listed above is bumped to `latest` in its workspace's `package.json`, except the `npm` packageManager pin which stays on the latest 11.x line per the ratified defer decision (see Resolved).
-- [ ] Workspace `package.json` ranges are reconciled — no workspace pins a floor older than root's for a shared dependency (closes the range-drift finding above).
-- [ ] `npm install` completes clean with no `npm audit` regressions (stays at 0 vulnerabilities or better, across the full tree not just prod).
-- [ ] `npm run build` succeeds at the repo root with no changes to tracked source (backbone principle 9).
-- [ ] `npm run test` (Vitest) passes across all workspaces with coverage at or above the existing baseline (backbone principle 2).
-- [ ] `npm run lint` passes with zero errors across all workspaces (backbone principle 6).
-- [ ] Type-check passes in strict mode with no new `any`/type-coverage regressions (backbone principle 1).
-- [ ] `.github/workflows/deploy.yml` runs `npm run lint` and `npm run type-check` as blocking steps, closing the gap where principles 1 and 6 were `enforced` in name but not CI-checked.
+- [x] Every dependency listed above is bumped to `latest` in its workspace's `package.json`, except the `npm` packageManager pin (stays on latest 11.x, ratified defer) and `typescript` (stays on latest 6.x / 6.0.3, fallback invoked — see Resolved).
+- [x] Workspace `package.json` ranges are reconciled — no workspace pins a floor older than root's for a shared dependency (closes the range-drift finding above). Verified via `npx npm-check-updates --workspaces --root`: only the deferred `npm` pin remains outstanding.
+- [x] `npm install` completes clean with no `npm audit` regressions (stays at 0 vulnerabilities or better, across the full tree not just prod). Confirmed: 0 vulnerabilities, full tree.
+- [x] `npm run build` succeeds at the repo root with no changes to tracked source (backbone principle 9). Confirmed clean, and idempotent on a second run.
+- [x] `npm run test` (Vitest) passes across all workspaces with coverage at or above the existing baseline (backbone principle 2). 757/757 tests pass; coverage 65.38%/56.36%/55.16%/67.84% (stmts/branch/funcs/lines), well above the 40% floor.
+- [x] `npm run lint` passes with zero errors across all workspaces (backbone principle 6). Clean on the final (6.0.3) dependency set.
+- [x] Type-check passes in strict mode with no new `any`/type-coverage regressions (backbone principle 1). Verified on both TypeScript 7.0.2 (isolated spike) and the final 6.0.3 (post-fallback) — clean on both.
+- [ ] `.github/workflows/deploy.yml` runs `npm run lint` and `npm run type-check` as blocking steps, closing the gap where principles 1 and 6 were `enforced` in name but not CI-checked. The existing `npm audit --audit-level moderate` step also loses its `continue-on-error: true` (found during `bold.plan critic`/`analyze` — same gap, same principle 8 rationale), so it becomes a real CI gate too.
 - [ ] CI (GitHub Actions) passes on the PR before merge, now including the new lint/type-check steps (backbone principle 8).
 - [ ] Any breaking change surfaced by an upgrade (most notably TypeScript 7) is called out explicitly in the PR description, not silently absorbed.
 
@@ -67,7 +67,7 @@ None remaining — see Resolved below.
 
 - **CI checks outside `build`/`test`/`lint`**: none installed. Checked `package.json` across root, `demo-app`, and `ui-components` for Playwright/Chromatic/Cypress/Storybook — no hits. `TESTING.md`'s "Next Steps" (Playwright, axe-core testing) are aspirational, not present in the dependency tree. The complete gate set is `build`, `test`, `test:coverage`, `lint`, `type-check` — all covered by this spec's Acceptance Criteria.
 
-- **TypeScript 6.x → 7.0.2 (major)**: **Ratified — adopt now**, in this same pass. If strict-mode compilation breaks in a way that isn't a quick fix, fall back to pinning `^6.0.x` and file a follow-up rather than blocking the whole upgrade.
+- **TypeScript 6.x → 7.0.2 (major)**: Ratified adopt-now, attempted, **fallback invoked during `bold.build`**. `tsc --noEmit` itself passed cleanly on 7.0.2 across all three real workspaces, but `npm run lint` hard-failed: `typescript-eslint@8.63.0`'s own `peerDependencies` caps at `typescript: '>=4.8.4 <6.1.0'` — TS 7 isn't supported by any stable `typescript-eslint` release, only unreleased `8.63.1-alpha.x` prereleases. Not a quick fix (waiting on upstream, not something to patch around), so triggered the spec's pre-ratified fallback: reverted to `typescript@6.0.3` (the latest stable release under `typescript-eslint`'s cap) across all four workspaces. Build, test, lint, and type-check all pass clean on the revert. **Follow-up filed**: re-attempt TypeScript 7 once `typescript-eslint` ships a compatible stable release — track separately, same pattern as the deferred `npm` packageManager bump.
 - **`npm` (packageManager pin) 11.17.0 → 12.0.0 (major)**: **Ratified — defer.** Keep `packageManager` pinned to the latest 11.x line in this pass; treat the 12.x adoption as separate, coordinated work.
 
 ## Affected Files
@@ -79,8 +79,17 @@ None remaining — see Resolved below.
 
 ## Tasks
 
-- [ ] T1: Bump minor/patch dependencies and reconcile workspace range drift; verify build/test/lint/type-check
-- [ ] T2: Bump TypeScript to 7.0.2 (ratified: adopt now); fix any resulting strict-mode breakage
-- [ ] T3: Add blocking `npm run lint` and `npm run type-check` steps to `.github/workflows/deploy.yml`
-- [ ] T4: Run full CI-equivalent gate locally, update `bold-docs/system/guides/CHANGELOG.md`
-- [ ] T5 (excluded from this feature): `npm` packageManager 11→12 — deferred, tracked separately
+- [x] T001 [P] Bump devDependencies to latest in `package.json` (root) — eslint, tailwindcss, typescript-eslint, prettier, tsx, eslint-plugin-jsdoc, @axe-core/react, vitest, @vitest/coverage-v8, @vitest/ui bumped to latest; typescript attempted at 7.0.2, fallback invoked, final at `^6.0.3`; `packageManager` left pinned to latest 11.x (ratified defer) — resolves AC1, AC10 (npm defer clause)
+- [x] T002 [P] Bump dependencies to latest in `packages/design-tokens/package.json` — tailwindcss bumped to latest; typescript same fallback as T001, final `^6.0.3` — resolves AC1
+- [x] T003 [P] Bump dependencies to latest in `packages/ui-components/package.json` — @vitejs/plugin-react, @vitest/ui, autoprefixer, eslint, jsdom, lucide-react, postcss, tailwindcss, typescript-eslint, vite, vitest bumped to latest; typescript same fallback, final `^6.0.3`; range floors now match or exceed root's — resolves AC1, AC2
+- [x] T004 [P] Bump dependencies to latest in `apps/demo-app/package.json` — @vitejs/plugin-react, autoprefixer, eslint, globals, lucide-react, postcss, react-router-dom, tailwindcss, typescript-eslint, vite bumped to latest; typescript same fallback, final `~6.0.3`; range floors now match or exceed root's — resolves AC1, AC2
+- [x] T005 Run `npm install` at repo root to regenerate `package-lock.json`; confirm a clean install with `npm audit` at 0 vulnerabilities or better (depends on T001–T004) — resolves AC3. Confirmed: 0 vulnerabilities.
+- [x] T006 Run `npm run build` at repo root; confirm zero diff to tracked source afterward, per backbone principle 9 (depends on T005) — resolves AC4. Confirmed, and idempotent on re-run.
+- [x] T007 [P] Run `npm run test` (Vitest, all workspaces); confirm coverage stays at or above the existing baseline, per backbone principle 2 (depends on T005) — resolves AC5. 757/757 tests pass.
+- [x] T008 [P] Run `npm run lint` (all workspaces); fix any zero-error violations surfaced by the bumps, per backbone principle 6 (depends on T005) — resolves AC6. Clean on the final (6.0.3) set — the TS 7.0.2 attempt hard-failed here first (see T009 note), which is what triggered the fallback.
+- [x] T009 [P] Run `npm run type-check` (strict mode); fix any TypeScript 7 regressions, falling back to pinning `^6.0.x` in the T001–T004 files only if unfixable, per the ratified fallback (depends on T005) — resolves AC7. `tsc --noEmit` itself passed cleanly on 7.0.2, but `npm run lint` (T008) hard-failed: `typescript-eslint@8.63.0` declares `peerDependencies.typescript: '>=4.8.4 <6.1.0'`, no stable release supports TS 7. Fallback invoked per the ratified plan; clean on 6.0.3.
+- [ ] T010 Add blocking `npm run lint` and `npm run type-check` steps to `.github/workflows/deploy.yml`, and remove `continue-on-error: true` from its existing `npm audit` step (depends on T008, T009 passing locally first) — resolves AC8
+- [ ] T011 Open the PR and confirm CI passes end to end, including the new lint/type-check steps (depends on T010) — resolves AC9
+- [ ] T012 Document any breaking changes surfaced (most likely from the TypeScript 7 bump) explicitly in the PR description (depends on T009) — resolves AC10
+
+**Excluded from this feature**: `npm` packageManager 11→12 — ratified defer, no task here; track as separate, coordinated work. **TypeScript 7.0.2** — attempted during T009, blocked by `typescript-eslint`'s peer dependency (`<6.1.0`), fallback invoked per the ratified plan; track re-attempt as separate follow-up once `typescript-eslint` ships stable TS 7 support.
