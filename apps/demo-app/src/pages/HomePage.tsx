@@ -6,12 +6,12 @@ import { useSEO } from '../contexts/SEOContext';
 
 /**
  * Home page component showcasing TailwindSpark features and navigation.
- * 
+ *
  * Displays project overview, feature highlights, demo links, and WebSpark ecosystem
  * integration. Serves as the main landing page for the application.
- * 
+ *
  * @returns Home page component
- * 
+ *
  * @example
  * ```tsx
  * <HomePage />
@@ -23,13 +23,14 @@ export const HomePage: React.FC = () => {
   useEffect(() => {
     setSEO({
       title: 'TailwindSpark - Modern React Components',
-      description: 'Interactive showcase of Tailwind CSS components, design system, and mini-apps built with React, TypeScript, and Vite.',
-      canonicalUrl: 'https://markhazleton.github.io/TailwindSpark/',
+      description:
+        'Interactive showcase of Tailwind CSS components, design system, and mini-apps built with React, TypeScript, and Vite.',
+      canonicalUrl: 'https://makeboldsolutions.github.io/TailwindSpark/',
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         name: 'TailwindSpark',
-        url: 'https://markhazleton.github.io/TailwindSpark/',
+        url: 'https://makeboldsolutions.github.io/TailwindSpark/',
         description: 'Modern React components with Tailwind CSS',
         author: { '@type': 'Person', name: 'Mark Hazleton' },
       },
@@ -42,7 +43,7 @@ export const HomePage: React.FC = () => {
         <div className="mb-12">
           <TailwindSparkBrand variant="hero" logoTitleTogether={true} />
           <div className="mt-8 text-center">
-            <p className="text-lg italic text-text-muted">
+            <p className="text-text-muted text-lg italic">
               "Making technology work for business - lifelong learner, not sidetracked by sizzle."
             </p>
           </div>
@@ -57,7 +58,7 @@ export const HomePage: React.FC = () => {
             ].map(({ name, icon }) => (
               <span
                 key={name}
-                className="inline-flex items-center gap-1.5 rounded-full bg-surface-alt px-3 py-1 text-sm font-medium text-text-muted"
+                className="bg-surface-alt text-text-muted inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-medium"
               >
                 <span aria-hidden="true">{icon}</span>
                 {name}
@@ -67,11 +68,11 @@ export const HomePage: React.FC = () => {
         </div>
 
         {/* WebSpark Portfolio Integration */}
-        <div className="mb-12 rounded-lg border border-border bg-surface-alt p-6">
-          <h3 className="mb-3 text-lg font-semibold text-text">
+        <div className="border-border bg-surface-alt mb-12 rounded-lg border p-6">
+          <h3 className="text-text mb-3 text-lg font-semibold">
             🌐 Part of the WebSpark Ecosystem
           </h3>
-          <p className="mb-4 text-text-muted">
+          <p className="text-text-muted mb-4">
             TailwindSpark demonstrates practical application of modern web technologies as part of
             the WebSpark suite, showcasing real-world implementations rather than theoretical
             concepts. Explore other WebSpark applications:
@@ -81,102 +82,81 @@ export const HomePage: React.FC = () => {
               href="https://web.makeboldspark.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-sm font-medium text-brand transition-colors hover:bg-brand/20"
+              className="bg-brand/10 text-brand hover:bg-brand/20 inline-flex items-center rounded-full px-3 py-1 text-sm font-medium transition-colors"
             >
               🌟 WebSpark Portfolio
             </a>
-            <span className="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-sm font-medium text-brand">
+            <span className="bg-brand/10 text-brand inline-flex items-center rounded-full px-3 py-1 text-sm font-medium">
               🤖 PromptSpark - AI Prompts
             </span>
-            <span className="inline-flex items-center rounded-full bg-success/10 px-3 py-1 text-sm font-medium text-success">
+            <span className="bg-success/10 text-success inline-flex items-center rounded-full px-3 py-1 text-sm font-medium">
               🍳 RecipeSpark - Recipe Management
             </span>
-            <span className="inline-flex items-center rounded-full bg-warning/10 px-3 py-1 text-sm font-medium text-warning">
+            <span className="bg-warning/10 text-warning inline-flex items-center rounded-full px-3 py-1 text-sm font-medium">
               🧠 TriviaSpark - Interactive Quizzes
             </span>
           </div>
         </div>
 
         <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
-            <h3 className="mb-2 text-lg font-semibold text-text">
-              Component Library
-            </h3>
+          <div className="border-border bg-surface rounded-lg border p-6 shadow-md">
+            <h3 className="text-text mb-2 text-lg font-semibold">Component Library</h3>
             <p className="text-text-muted">
               Production-ready UI components built with Tailwind CSS, TypeScript, and accessibility
               best practices.
             </p>
           </div>
 
-          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
-            <h3 className="mb-2 text-lg font-semibold text-text">
-              Dark Mode & Accessibility
-            </h3>
+          <div className="border-border bg-surface rounded-lg border p-6 shadow-md">
+            <h3 className="text-text mb-2 text-lg font-semibold">Dark Mode & Accessibility</h3>
             <p className="text-text-muted">
               WCAG compliant components with automatic dark mode support and system preference
               detection.
             </p>
           </div>
 
-          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
-            <h3 className="mb-2 text-lg font-semibold text-text">
-              TailwindSpark Dashboard
-            </h3>
-            <p className="mb-3 text-text-muted">
+          <div className="border-border bg-surface rounded-lg border p-6 shadow-md">
+            <h3 className="text-text mb-2 text-lg font-semibold">TailwindSpark Dashboard</h3>
+            <p className="text-text-muted mb-3">
               Full-featured SaaS dashboard showcasing modern UI patterns with responsive design and
               interactive analytics.
             </p>
-            <Link
-              to="/dashboard"
-              className="text-sm font-medium text-brand hover:text-brand-hover"
-            >
+            <Link to="/dashboard" className="text-brand hover:text-brand-hover text-sm font-medium">
               View Dashboard →
             </Link>
           </div>
 
-          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
-            <h3 className="mb-2 text-lg font-semibold text-text">
-              E-commerce Store
-            </h3>
-            <p className="mb-3 text-text-muted">
+          <div className="border-border bg-surface rounded-lg border p-6 shadow-md">
+            <h3 className="text-text mb-2 text-lg font-semibold">E-commerce Store</h3>
+            <p className="text-text-muted mb-3">
               Modern online store with product grids, filtering, shopping cart, and responsive
               checkout flow.
             </p>
-            <Link
-              to="/ecommerce"
-              className="text-sm font-medium text-brand hover:text-brand-hover"
-            >
+            <Link to="/ecommerce" className="text-brand hover:text-brand-hover text-sm font-medium">
               View Store →
             </Link>
           </div>
 
-          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
-            <h3 className="mb-2 text-lg font-semibold text-text">
-              Marketing Landing Page
-            </h3>
-            <p className="mb-3 text-text-muted">
+          <div className="border-border bg-surface rounded-lg border p-6 shadow-md">
+            <h3 className="text-text mb-2 text-lg font-semibold">Marketing Landing Page</h3>
+            <p className="text-text-muted mb-3">
               Agency-style landing page with hero sections, testimonials, portfolio gallery, and
               contact forms.
             </p>
-            <Link
-              to="/marketing"
-              className="text-sm font-medium text-brand hover:text-brand-hover"
-            >
+            <Link to="/marketing" className="text-brand hover:text-brand-hover text-sm font-medium">
               View Landing Page →
             </Link>
           </div>
 
-          <div className="rounded-lg border border-border bg-surface p-6 shadow-md">
-            <h3 className="mb-2 text-lg font-semibold text-text">
-              Animation Showcase
-            </h3>
-            <p className="mb-3 text-text-muted">
+          <div className="border-border bg-surface rounded-lg border p-6 shadow-md">
+            <h3 className="text-text mb-2 text-lg font-semibold">Animation Showcase</h3>
+            <p className="text-text-muted mb-3">
               Interactive animations, transitions, and micro-interactions demonstrating Tailwind's
               animation utilities.
             </p>
             <Link
               to="/animations"
-              className="text-sm font-medium text-brand hover:text-brand-hover"
+              className="text-brand hover:text-brand-hover text-sm font-medium"
             >
               View Animations →
             </Link>
@@ -195,11 +175,7 @@ export const HomePage: React.FC = () => {
                 Explore Apps
               </Button>
             </Link>
-            <a
-              href="https://web.makeboldspark.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://web.makeboldspark.com" target="_blank" rel="noopener noreferrer">
               <Button variant="ghost" size="lg">
                 WebSpark Portfolio ↗
               </Button>
@@ -210,7 +186,7 @@ export const HomePage: React.FC = () => {
               href="https://web.makeboldspark.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-brand hover:text-brand-hover"
+              className="text-brand hover:text-brand-hover font-medium"
             >
               Visit WebSpark Portfolio →
             </a>
@@ -220,9 +196,7 @@ export const HomePage: React.FC = () => {
         {/* Features Section */}
         <div className="mt-20">
           <div className="mb-12 text-center">
-            <h3 className="mb-4 text-2xl font-bold text-text">
-              TailwindSpark Features
-            </h3>
+            <h3 className="text-text mb-4 text-2xl font-bold">TailwindSpark Features</h3>
             <p className="text-text-muted">
               Professional-grade components and patterns for modern web applications
             </p>
@@ -231,14 +205,12 @@ export const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand">
+                <div className="bg-brand flex h-8 w-8 items-center justify-center rounded-lg">
                   <span className="font-semibold text-white">🎨</span>
                 </div>
               </div>
               <div>
-                <h4 className="mb-2 text-lg font-semibold text-text">
-                  Professional Design System
-                </h4>
+                <h4 className="text-text mb-2 text-lg font-semibold">Professional Design System</h4>
                 <p className="text-text-muted">
                   Production-ready component library with buttons, forms, cards, modals, and
                   animations. All components include TypeScript definitions and accessibility
@@ -249,14 +221,12 @@ export const HomePage: React.FC = () => {
 
             <div className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-success">
+                <div className="bg-success flex h-8 w-8 items-center justify-center rounded-lg">
                   <span className="font-semibold text-white">⚡</span>
                 </div>
               </div>
               <div>
-                <h4 className="mb-2 text-lg font-semibold text-text">
-                  Performance & Modern Stack
-                </h4>
+                <h4 className="text-text mb-2 text-lg font-semibold">Performance & Modern Stack</h4>
                 <p className="text-text-muted">
                   Built with React 19, TypeScript 5.3, Tailwind CSS 4.1, and Vite 7 for optimal
                   performance. Monorepo architecture with Turborepo for efficient builds.
@@ -271,9 +241,7 @@ export const HomePage: React.FC = () => {
                 </div>
               </div>
               <div>
-                <h4 className="mb-2 text-lg font-semibold text-text">
-                  Dark Mode Support
-                </h4>
+                <h4 className="text-text mb-2 text-lg font-semibold">Dark Mode Support</h4>
                 <p className="text-text-muted">
                   Seamless dark mode with system preference detection and manual toggle. All
                   components adapt automatically.
@@ -283,14 +251,12 @@ export const HomePage: React.FC = () => {
 
             <div className="flex gap-4">
               <div className="flex-shrink-0">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-warning">
+                <div className="bg-warning flex h-8 w-8 items-center justify-center rounded-lg">
                   <span className="font-semibold text-white">📦</span>
                 </div>
               </div>
               <div>
-                <h4 className="mb-2 text-lg font-semibold text-text">
-                  Monorepo Architecture
-                </h4>
+                <h4 className="text-text mb-2 text-lg font-semibold">Monorepo Architecture</h4>
                 <p className="text-text-muted">
                   Organized with Turborepo for efficient development. Shared design tokens and UI
                   components across projects.

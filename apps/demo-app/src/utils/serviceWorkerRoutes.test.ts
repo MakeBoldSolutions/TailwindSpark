@@ -23,7 +23,7 @@ describe('service worker app route precache list', () => {
   });
 
   it('resolves all app routes under the TailwindSpark deployment scope', () => {
-    const scope = 'https://markhazleton.github.io/TailwindSpark/';
+    const scope = 'https://makeboldsolutions.github.io/TailwindSpark/';
     const appRoutes = readAppRoutes();
 
     const resolvedPaths = appRoutes.map(route => new URL(route, scope).pathname);

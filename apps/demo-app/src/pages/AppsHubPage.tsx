@@ -16,13 +16,14 @@ const AppsHubPage: FC = (): React.JSX.Element => {
       title: 'Apps - TailwindSpark',
       description: 'Discover mini-applications built with React and Tailwind CSS.',
       ogTitle: 'TailwindSpark Apps Hub',
-      ogDescription: 'Explore interactive mini-apps: Projects, Articles, Jokes, Weather, and AI Chat.',
-      canonicalUrl: 'https://markhazleton.github.io/TailwindSpark/apps',
+      ogDescription:
+        'Explore interactive mini-apps: Projects, Articles, Jokes, Weather, and AI Chat.',
+      canonicalUrl: 'https://makeboldsolutions.github.io/TailwindSpark/apps',
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
         name: 'TailwindSpark Apps',
-        url: 'https://markhazleton.github.io/TailwindSpark/apps',
+        url: 'https://makeboldsolutions.github.io/TailwindSpark/apps',
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Web',
       },
@@ -32,8 +33,8 @@ const AppsHubPage: FC = (): React.JSX.Element => {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
       <div className="mb-10 text-center">
-        <h1 className="mb-3 text-4xl font-bold text-text">Apps</h1>
-        <p className="text-lg text-text-muted">
+        <h1 className="text-text mb-3 text-4xl font-bold">Apps</h1>
+        <p className="text-text-muted text-lg">
           Explore interactive mini-applications built with React &amp; Tailwind CSS
         </p>
       </div>

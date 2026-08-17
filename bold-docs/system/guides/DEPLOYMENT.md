@@ -9,7 +9,7 @@ This project is configured for automatic deployment to GitHub Pages when changes
 1. GitHub Actions workflow builds the project
 2. Static files are generated in the `dist` folder
 3. Files are deployed to GitHub Pages
-4. Site becomes available at: `https://markhazleton.github.io/TailwindSpark/`
+4. Site becomes available at: `https://makeboldsolutions.github.io/TailwindSpark/`
 
 ## Manual Deployment
 
@@ -39,7 +39,7 @@ npm run build
 If you map a custom domain:
 
 1. Add a `CNAME` file under `apps/demo-app/public/` with your domain (e.g. `example.com`).
-2. Enable the custom domain in the repo Settings → Pages and add DNS `CNAME` pointing to `markhazleton.github.io`.
+2. Enable the custom domain in the repo Settings → Pages and add DNS `CNAME` pointing to `makeboldsolutions.github.io`.
 3. Commit & deploy; GitHub Pages will place the `CNAME` into the published root.
 
 ### Asset Paths Verification
@@ -79,8 +79,8 @@ If you later migrate from HashRouter to BrowserRouter you can keep the same `bas
 
 ## URLs After Deployment
 
-- **Live Site**: <https://markhazleton.github.io/TailwindSpark/>
-- **Home Page**: <https://markhazleton.github.io/TailwindSpark/#/>
-- **Design System**: <https://markhazleton.github.io/TailwindSpark/#/design-system>
-- **Animations**: <https://markhazleton.github.io/TailwindSpark/#/animations>
-- **Dashboard**: <https://markhazleton.github.io/TailwindSpark/#/dashboard>
+- **Live Site**: <https://makeboldsolutions.github.io/TailwindSpark/>
+- **Home Page**: <https://makeboldsolutions.github.io/TailwindSpark/#/>
+- **Design System**: <https://makeboldsolutions.github.io/TailwindSpark/#/design-system>
+- **Animations**: <https://makeboldsolutions.github.io/TailwindSpark/#/animations>
+- **Dashboard**: <https://makeboldsolutions.github.io/TailwindSpark/#/dashboard>

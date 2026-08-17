@@ -408,7 +408,7 @@ Ignored nodes: comments, script, style
           >
             <a
               class="text-brand hover:text-brand-hover text-xs"
-              href="https://webspark.markhazleton.com"
+              href="https://web.makeboldspark.com"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -523,7 +523,7 @@ Ignored nodes: comments, script, style
                  
                 <a
                   class="text-brand hover:text-brand-hover font-semibold"
-                  href="https://webspark.markhazleton.com"
+                  href="https://web.makeboldspark.com"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
@@ -572,7 +572,7 @@ Ignored nodes: comments, script, style
           >
             <a
               class="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-sm font-medium text-brand transition-colors hover:bg-brand/20"
-              href="https://webspark.markhazleton.com"
+              href="https://web.makeboldspark.com"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -654,7 +654,7 @@ Here are the matching elements:
 Ignored nodes: comments, script, style
 <a
   class="text-brand hover:text-brand-hover font-semibold"
-  href="https://webspark.markhazleton.com"
+  href="https://web.makeboldspark.com"
   rel="noopener noreferrer"
   target="_blank"
 >
@@ -664,7 +664,7 @@ Ignored nodes: comments, script, style
 Ignored nodes: comments, script, style
 <a
   class="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-sm font-medium text-brand transition-colors hover:bg-brand/20"
-  href="https://webspark.markhazleton.com"
+  href="https://web.makeboldspark.com"
   rel="noopener noreferrer"
   target="_blank"
 >
@@ -674,7 +674,7 @@ Ignored nodes: comments, script, style
 Ignored nodes: comments, script, style
 <a
   class="font-medium text-brand hover:text-brand-hover"
-  href="https://webspark.markhazleton.com"
+  href="https://web.makeboldspark.com"
   rel="noopener noreferrer"
   target="_blank"
 >
@@ -729,7 +729,7 @@ Ignored nodes: comments, script, style
                  
                 <a
                   class="text-brand hover:text-brand-hover font-semibold"
-                  href="https://webspark.markhazleton.com"
+                  href="https://web.makeboldspark.com"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
@@ -778,7 +778,7 @@ Ignored nodes: comments, script, style
           >
             <a
               class="inline-flex items-center rounded-full bg-brand/10 px-3 py-1 text-sm font-medium text-brand transition-colors hover:bg-brand/20"
-              href="https://webspark.markhazleton.com"
+              href="https://web.makeboldspark.com"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -1031,7 +1031,7 @@ Ignored nodes: comments, script, style
           >
             <a
               class="text-brand hover:text-brand-hover text-xs"
-              href="https://webspark.markhazleton.com"
+              href="https://web.makeboldspark.com"
               rel="noopener noreferrer"
               target="_blank"
             >

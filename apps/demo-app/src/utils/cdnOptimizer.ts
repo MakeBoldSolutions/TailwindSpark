@@ -33,8 +33,8 @@ class CDNOptimizer {
    */
   constructor(config: Partial<CDNConfig> = {}) {
     this.config = {
-      baseUrl: 'https://markhazleton.github.io/TailwindSpark/',
-      assetUrl: 'https://markhazleton.github.io/TailwindSpark/assets/',
+      baseUrl: 'https://makeboldsolutions.github.io/TailwindSpark/',
+      assetUrl: 'https://makeboldsolutions.github.io/TailwindSpark/assets/',
       enablePreconnect: true,
       enablePrefetch: true,
       cacheStrategy: 'balanced',
@@ -109,11 +109,11 @@ class CDNOptimizer {
 
   /**
    * Preload critical resources for faster page load
-   * 
+   *
    * NOTE: Disabled because the referenced resources don't exist in the build output:
    * - Fonts are loaded from Google Fonts or embedded in CSS by Vite
    * - CSS files have unpredictable hash-based names that can't be hardcoded
-   * 
+   *
    * Attempting to preload non-existent resources generates 404 errors.
    */
   private preloadCriticalResources(): void {
@@ -251,14 +251,14 @@ class CDNOptimizer {
 
   /**
    * Warm cache with critical resources
-   * 
+   *
    * NOTE: Disabled because Vite generates unpredictable hash-based filenames.
    * Attempting to fetch '[hash]' placeholders generates 404 errors in console.
    */
   private warmCache(): void {
     // Early return - cache warming disabled
     return;
-    
+
     /* Disabled implementation:
     const criticalResources = [
       '/assets/js/react-vendor-[hash].js',
