@@ -11,7 +11,7 @@ interface ArticleCardProps {
  * @param props.article - Article metadata to display
  * @returns Article card element
  */
-export const ArticleCard: React.FC<ArticleCardProps> = (props) => {
+export const ArticleCard: React.FC<ArticleCardProps> = props => {
   const { article } = props;
   const formattedDate = new Date(article.pub_date).toLocaleDateString('en-US', {
     year: 'numeric',
@@ -20,28 +20,39 @@ export const ArticleCard: React.FC<ArticleCardProps> = (props) => {
   });
 
   return (
-    <div className="flex flex-col rounded-panel border border-border bg-[var(--card-bg)] p-5 shadow-card transition-shadow hover:shadow-lg">
-      <div className="mb-3 flex items-center gap-2">
-        <span className="rounded-full bg-brand/10 px-2.5 py-0.5 text-xs font-medium text-brand">
-          {article.category}
-        </span>
-        <span className="text-xs text-text-muted">{formattedDate}</span>
-      </div>
-      <h2 className="mb-2 text-lg font-semibold text-text" style={{ fontFamily: 'var(--font-display)' }}>
-        {article.title}
-      </h2>
-      <p className="mb-4 flex-1 text-sm text-text-muted line-clamp-3">{article.description}</p>
-      {article.author && (
-        <p className="mb-3 text-xs text-text-muted">By {article.author}</p>
+    <div className="rounded-panel border-border shadow-card flex flex-col overflow-hidden border bg-[var(--card-bg)] transition-shadow hover:shadow-lg">
+      {article.image_url && (
+        <img
+          src={article.image_url}
+          alt={article.title}
+          className="h-44 w-full object-cover"
+          loading="lazy"
+        />
       )}
-      <a
-        href={article.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center text-sm font-medium text-brand transition-colors hover:text-brand-hover"
-      >
-        Read article →
-      </a>
+      <div className="flex flex-1 flex-col p-5">
+        <div className="mb-3 flex items-center gap-2">
+          <span className="bg-brand/10 text-brand rounded-full px-2.5 py-0.5 text-xs font-medium">
+            {article.category}
+          </span>
+          <span className="text-text-muted text-xs">{formattedDate}</span>
+        </div>
+        <h2
+          className="text-text mb-2 text-lg font-semibold"
+          style={{ fontFamily: 'var(--font-display)' }}
+        >
+          {article.title}
+        </h2>
+        <p className="text-text-muted mb-4 line-clamp-3 flex-1 text-sm">{article.description}</p>
+        {article.author && <p className="text-text-muted mb-3 text-xs">By {article.author}</p>}
+        <a
+          href={article.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-brand hover:text-brand-hover inline-flex items-center text-sm font-medium transition-colors"
+        >
+          Read article →
+        </a>
+      </div>
     </div>
   );
 };

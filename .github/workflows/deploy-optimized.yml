@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages with CDN Optimization
 on:
   push:
     branches: [main]
+  schedule:
+    # Refresh public data snapshots hourly so article/project/repo listings stay current.
+    - cron: '47 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -36,6 +39,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Sync public data snapshots
+        run: npm run sync:data
 
       - name: Build application with CDN optimization
         run: npm run build:deploy

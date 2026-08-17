@@ -1,290 +1,649 @@
 [
   {
-    "id": 1,
-    "p": "Frogsfolly.com Main",
-    "d": "Frogsfolly.com is the original website I created in 1999 when learning web technologies.",
-    "h": "https://frogsfolly.com",
-    "image": "/img/frogsfolly.png",
-    "slug": "frogsfolly",
-    "summary": "Web Project Mechanics is a comprehensive content management system (CMS) built on ASP.Net, designed for managing multiple websites efficiently using a single MS-Access database. Developed over 20 years, it offers caching for enhanced performance and operates without external dependencies.",
-    "keywords": "ASP.Net, CMS, Web Application, Visual Basic .NET, Multi-site Management, MS-Access",
-    "promotion": {
-      "status": "Active"
-    }
-  },
-  {
-    "id": 2,
-    "p": "Travel Frogsfolly",
-    "d": "A website with places we have traveld with a few pictures and descriptions of the highlights. The site is built with  Web Project Mechanics CMS",
-    "h": "https://travel.frogsfolly.com",
-    "image": "/img/travelfrogsfolly.png",
-    "slug": "travel-frogsfolly",
-    "summary": "A website with places we have traveld with a few pictures and descriptions of the highlights. The site is built with Web Project Mechanics CMS",
-    "keywords": "Travel Frogsfolly, Mark Hazleton, Web Project, Portfolio"
-  },
-  {
-    "id": 3,
-    "p": "JM Shaw Minerals",
-    "d": "A website for a collector of fine gemstones.  Uses Web Project Mechanics CMS and some custom code for tracking each item in the collection.",
-    "h": "https://jmshawminerals.com",
-    "image": "/img/jmshawminerals.jpg",
-    "slug": "jm-shaw-minerals",
-    "summary": "A website for a collector of fine gemstones. Uses Web Project Mechanics CMS and some custom code for tracking each item in the collection.",
-    "keywords": "JM Shaw Minerals, Mark Hazleton, Web Project, Portfolio"
-  },
-  {
-    "id": 4,
-    "p": "Control Origins: Innovative Tech Solutions",
-    "d": "Control Origins empowers organizations with cutting-edge technology solutions to drive value creation and achieve business goals. Our expertise helps streamline operations and align with regulatory requirements.",
-    "h": "https://controlorigins.com",
-    "image": "/img/controlorigins.jpg",
-    "slug": "control-origins",
-    "summary": "Control Origins offers innovative technology solutions to enhance organizational efficiency and compliance, leveraging industry expertise and best practices.",
-    "keywords": "Innovative Technology Solutions, Business Efficiency, Regulatory Compliance, Digital Transformation, Industry Expertise",
-    "promotion": {
-      "status": "In Progress"
-    }
-  },
-  {
-    "id": 5,
-    "p": "Project Mechanics",
-    "d": "A resource sharing insights and strategies on effective project management and IT service delivery.",
-    "h": "https://markhazleton.com/projectmechanics/",
-    "image": "/img/pmcontrolorigins.png",
-    "slug": "project-mechanics",
-    "summary": "A resource sharing insights and strategies on effective project management and IT service delivery.",
-    "keywords": "Project Mechanics, Mark Hazleton, Web Project, Portfolio"
-  },
-  {
-    "id": 6,
-    "p": "Data Analytics Web Project Manager",
-    "d": "DAWPM transforms CSV data into interactive visualizations, pivot tables, and detailed analytics. Built with ASP.NET WebForms 4.8 (VB.NET), featuring a modern Webpack build system, Bootstrap 5.3, DataTables 2.3, D3.js/C3.js charting, and PivotTable.js with drag-and-drop analysis.",
-    "h": "https://dataanalysisdemo.makeboldspark.com",
-    "image": "/img/dataanalysiscontrolorigins.png",
-    "slug": "data-analysis-demo",
-    "summary": "DAWPM is a modern web application that leverages ASP.NET WebForms and Bootstrap to provide advanced data processing capabilities, including dynamic charting and pivot analysis, transforming CSV data into actionable insights.",
-    "keywords": "Data Analytics, CSV Processing, ASP.NET WebForms, Bootstrap, Interactive Visualizations, Pivot Tables",
-    "promotion": {
-      "status": "Active"
-    }
-  },
-  {
-    "id": 7,
-    "p": "UISampleSpark: Seven UI Paradigms, One Backend",
-    "d": "UISampleSpark compares multiple frontend approaches — MVC, Razor Pages, jQuery AJAX, React, Vue, htmx, Blazor, and SPA — all running against the same .NET 10 REST API. Originally a simple MVC CRUD demo, it has evolved into a living reference for modern UI architecture decisions with Docker containerization and Bootswatch theming.",
-    "h": "https://samplecrud.makeboldspark.com/",
-    "image": "/img/placeholder.svg",
-    "slug": "net-9-sample-mvc-crud",
-    "summary": "A side-by-side comparison of multiple frontend paradigms — from server-rendered MVC to client-side React and Vue — all sharing the same .NET 10 backend API, with Docker containerization and Bootswatch theme switching.",
-    "keywords": "UISampleSpark, .NET 10, ASP.NET Core, React, Vue, htmx, Blazor, Razor Pages, MVC, Frontend Comparison, REST API, Docker",
-    "promotion": {
-      "status": "In Progress"
-    }
-  },
-  {
-    "id": 8,
-    "p": "AsyncDemo: .NET 10 Async Programming Patterns",
-    "d": "AsyncDemo teaches critical async/await patterns in C# through focused, real-world examples built on .NET 10. Covers deadlock avoidance with ConfigureAwait, cancellation tokens end-to-end, Task.WhenAll concurrency, Polly retry/circuit breaker resilience, SemaphoreSlim throttling, and the decorator pattern for cross-cutting concerns. Features interactive Scalar API documentation and OpenWeatherMap integration.",
-    "h": "https://asyncdemo.azurewebsites.net/",
-    "image": "/img/asyncwebsamplecontrolorigins.png",
-    "slug": "net-9-async-demo",
-    "summary": "Learn async/await patterns in .NET 10 through real-world examples: deadlock avoidance, cancellation tokens, Task.WhenAll concurrency, Polly resilience, semaphore throttling, and decorator patterns. Interactive Scalar API docs with OpenWeatherMap integration.",
-    "keywords": "C#, .NET 10, Async, Await, Polly, Scalar, Cancellation Tokens, Resilience, Decorator Pattern, SemaphoreSlim"
-  },
-  {
-    "id": 9,
-    "p": "Mechanics of Motherhood: Recipe Management Platform",
-    "d": "Mechanics of Motherhood is a modern recipe management platform for busy working mothers. Built with React 19, TypeScript, Vite, Tailwind CSS, and Shadcn/ui, it offers 108+ curated recipes with smart search/filtering, PWA offline support, and data from the live RecipeSpark API.",
-    "h": "https://mechanicsofmotherhood.com/",
-    "image": "/img/mechanicsofmotherhood.png",
-    "slug": "mechanics-of-motherhood",
-    "summary": "A recipe management platform for working mothers with 108+ recipes, built with React 19, Tailwind CSS, and Shadcn/ui. Features PWA offline support, live API integration with RecipeSpark, and smart categorization across 14 categories.",
-    "keywords": "recipe management, React 19, TypeScript, Tailwind CSS, Shadcn/ui, Vite, PWA, TanStack Query, cooking",
-    "promotion": {
-      "status": "Active"
-    }
-  },
-  {
     "id": 10,
-    "p": "PromptSpark",
-    "d": "PromptSpark.Chat is a real-time, workflow-driven chat application built with ASP.NET Core, SignalR, and Adaptive Cards. Users interact with branching multi-step workflows through conversational UI, with optional AI-driven responses via IChatCompletionService.",
-    "h": "https://web.makeboldspark.com/promptspark",
-    "image": "/img/promptspark.png",
-    "slug": "promptspark",
-    "summary": "A real-time workflow-driven chat application using SignalR and Adaptive Cards. Users progress through branching JSON-defined workflows with interactive UI, with optional AI integration for handling questions outside the workflow.",
-    "keywords": "PromptSpark, SignalR, Adaptive Cards, ASP.NET Core, Workflow, Real-time Chat, AI",
+    "p": "DevSpark",
+    "d": "Flagship specification-driven development initiative that helps transform requirements into specifications, plans, tasks, and implementation context.",
+    "h": "https://dev.makeboldspark.com",
+    "image": "",
+    "slug": "dev",
     "promotion": {
-      "status": "Active"
-    }
-  },
-  {
-    "id": 11,
-    "p": "ReactSpark",
-    "d": "A production-ready developer portfolio built with React 19.1, TypeScript 5.9, and Vite 7.0. Features SignalR real-time chat with AI personalities, live weather widget with Leaflet maps, RSS feed integration, dark/light theming, admin panel, and dual deployment to Azure Static Web Apps and GitHub Pages.",
-    "h": "https://reactspark.makeboldspark.com",
-    "image": "/img/reactspark.png",
-    "slug": "reactspark",
-    "summary": "Enterprise-grade developer portfolio with React 19.1, TypeScript, and Vite 7.0. Includes real-time SignalR chat, weather widget, RSS integration, admin panel, and dual cloud deployment to Azure Static Web Apps and GitHub Pages.",
-    "keywords": "ReactSpark, React 19, TypeScript, Vite, SignalR, Azure Static Web Apps, Bootstrap 5, Portfolio",
-    "promotion": {
-      "status": "Active"
-    }
-  },
-  {
-    "id": 12,
-    "p": "PrismSpark: Advanced C#/.NET Syntax Highlighting Library",
-    "d": "PrismSpark is a high-performance .NET 10 library that ports PrismJS for server-side syntax highlighting. Features a plugin system (line numbers, copy-to-clipboard, toolbar), hook-based event system, theme engine with CSS generation, and ASP.NET Core MVC integration supporting 20+ languages.",
-    "h": "https://prismspark.makeboldspark.com",
-    "image": "/img/MarkHazleton-PrismSpark-Home.png",
-    "slug": "webspark-prismspark",
-    "summary": "High-performance .NET 10 server-side syntax highlighting library with plugin system, hook-based extensibility, theme engine, and ASP.NET Core MVC integration.",
-    "keywords": "C#, .NET 10, PrismJS, syntax highlighting, plugin system, theming, ASP.NET Core, NuGet",
-    "promotion": {
-      "status": "In Progress"
-    }
-  },
-  {
-    "id": 13,
-    "p": "WebSpark.ArtSpark",
-    "d": "WebSpark.ArtSpark is a .NET 10 solution providing a complete client library for all 33 Art Institute of Chicago API endpoints plus an AI chat system with four personas (Artwork, Artist, Curator, Historian) powered by Semantic Kernel and GPT-4o Vision. Includes demo web app, console app, and user collections via ASP.NET Core Identity.",
-    "h": "https://artspark.makeboldspark.com",
-    "image": "/img/MarkHazleton-ArtSpark-ChatWithArtCurator.png",
-    "slug": "webspark-artspark",
-    "summary": "A .NET 10 solution with complete Art Institute of Chicago API coverage (33 endpoints), four AI chat personas powered by Semantic Kernel and GPT-4o Vision, user collections, and 26+ Bootswatch themes.",
-    "keywords": "WebSpark.ArtSpark, .NET 10, Art Institute of Chicago, Semantic Kernel, GPT-4o, AI Chat, OpenAI Vision",
-    "promotion": {
-      "status": "Monitoring"
-    }
-  },
-  {
-    "id": 14,
-    "p": "Bootstrap 5 + Express.js Web Development Starter Kit",
-    "d": "JsBootSpark is a production-ready full-stack starter kit built with Express.js 5.x, Bootstrap 5.3, EJS, and SASS. Features a JSON-based CMS, static site generation (100+ pages), PWA support, Helmet.js security, Docker containerization, and comprehensive CI/CD via GitHub Actions.",
-    "h": "https://markhazleton.github.io/js-dev-env/",
-    "image": "/img/MarkHazleton-js-dev-env-Home.png",
-    "slug": "js-dev-env",
-    "summary": "Production-ready full-stack starter kit with Express.js 5.x, Bootstrap 5.3, JSON CMS, static site generation, PWA support, Docker, and Helmet.js security.",
-    "keywords": "JavaScript, Bootstrap 5, Express.js, EJS, SASS, PWA, Docker, CMS, Static Site Generation, Starter Kit",
-    "promotion": {
-      "status": "Active"
-    }
-  },
-  {
-    "id": 15,
-    "p": "TailwindSpark: Tailwind CSS React Showcase",
-    "d": "TailwindSpark is a React 19.1 TypeScript monorepo showcasing Tailwind CSS v4 with the new @theme directive and design tokens. Built with Vite 7.1, Turborepo 2.7, and Vitest 4.0, it features showcase pages for dashboards, e-commerce, marketing, and analytics with WCAG 2.1 AA compliance.",
-    "h": "https://Tailwind.makeboldspark.com",
-    "image": "/img/MarkHazleton-TailwindSpark-Home.png",
-    "slug": "tailwind-spark",
-    "summary": "React 19.1 TypeScript monorepo showcasing Tailwind CSS v4 design tokens, Turborepo 2.7, Vite 7.1, and WCAG 2.1 AA accessibility with showcase pages for dashboards, e-commerce, and analytics.",
-    "keywords": "Tailwind CSS v4, React 19, TypeScript, Turborepo, Vite, monorepo, design tokens, WCAG, CI/CD",
-    "promotion": {
-      "status": "Active"
-    }
-  },
-  {
-    "id": 16,
-    "p": "Git Spark: Advanced Git Repository Analytics Tool",
-    "d": "Git Spark is an npm CLI tool and Node.js library that analyzes Git repository commit history to provide insights into contributor activity, code changes, and development patterns. Generates interactive HTML reports with charts, plus JSON, CSV, and Markdown exports.",
-    "h": "https://markhazleton.github.io/git-spark/",
-    "image": "/img/git-spark-npm-package.png",
-    "slug": "git-spark",
-    "summary": "npm CLI tool and Node.js library for Git repository analytics. Generates interactive HTML dashboards, contributor statistics, and file analysis with multi-format export (HTML, JSON, CSV, Markdown).",
-    "keywords": "Git analytics, npm package, CLI tool, Node.js, interactive reports, contributor statistics",
-    "promotion": {
-      "status": "Active"
-    }
-  },
-  {
-    "id": 17,
-    "p": "WebSpark Bootswatch Theme Integration Library",
-    "d": "WebSpark.Bootswatch is a .NET Razor Class Library (NuGet package) enabling seamless Bootswatch theme integration into ASP.NET Core applications. Version 2.0+ targets .NET 10 exclusively, featuring dynamic theme switching, light/dark mode with auto-detection, tag helper support, and high-performance StyleCache caching.",
-    "h": "https://bootswatch.makeboldspark.com/",
-    "image": "/img/MarkHazleton-WebSpark-Bootswatch.png",
-    "slug": "websparkbootswatch",
-    "summary": "Razor Class Library NuGet package for Bootswatch theme integration in ASP.NET Core. Version 2.0+ targets .NET 10 exclusively with dynamic theme switching, light/dark auto-detection, and tag helper support.",
-    "keywords": "NuGet Package, Bootswatch, .NET 10, ASP.NET Core, Bootstrap 5, theming, Razor Class Library",
-    "promotion": {
-      "status": "Active"
-    }
-  },
-  {
-    "id": 18,
-    "p": "TeachSpark: AI-Driven Educational Platform",
-    "d": "TeachSpark is an LLM-powered educational platform built with .NET 10 MVC and a Webpack 5 frontend build system. It provides adaptive learning with personalized content delivery, interactive curriculum with real-time feedback, progress analytics, and comprehensive code quality tooling (ESLint, Prettier, Husky).",
-    "h": "https://teachspark.makeboldspark.com",
-    "image": "/img/MarkHazleton-TeachSpark-Home.png",
-    "slug": "teachspark",
-    "summary": "LLM-powered educational platform built with .NET 10 MVC and Webpack 5, offering adaptive content delivery, interactive curriculum, progress analytics, and modern code quality tooling.",
-    "keywords": "AI-powered education, personalized learning, LLM, .NET 10, Webpack 5, Bootstrap 5, adaptive learning",
-    "promotion": {
-      "status": "Active"
-    }
-  },
-  {
-    "id": 19,
-    "p": "WebSpark.HttpClientUtility",
-    "d": "WebSpark.HttpClientUtility is a drop-in HttpClient wrapper for .NET 8-10+ with Polly resilience (retries, circuit breakers), response caching, correlation IDs, and OpenTelemetry tracing — configured in one AddHttpClientUtility() call. Includes a separate Crawler package for web scraping. 237+ unit tests across 3 frameworks.",
-    "h": "https://www.nuget.org/packages/WebSpark.HttpClientUtility",
-    "image": "/img/repositories/screenshots/webspark.httpclientutility.png",
-    "slug": "webspark-httpclientutility",
-    "summary": "Drop-in HttpClient wrapper for .NET 8-10+ with Polly resilience, response caching, OpenTelemetry tracing, and a separate Crawler package. One-line setup replaces 50+ lines of boilerplate.",
-    "keywords": "NuGet Package, .NET, HTTP Client, Polly, OpenTelemetry, Resilience, Caching, Web Crawler",
-    "promotion": {
-      "status": "Active"
-    }
+      "status": "Flagship Initiative"
+    },
+    "icon": "🛠️",
+    "summary": "From Requirements to Working Software",
+    "deliveryPattern": "Requirements -> Specifications -> Plans -> Tasks -> Implementation",
+    "categoryId": "flagship-initiatives",
+    "category": "Flagship Initiatives",
+    "categoryDescription": "Primary Make Bold Spark initiatives that define the platform vision and most directly express the ecosystem message.",
+    "categorySortOrder": 10,
+    "initiativeType": "flagship-initiative",
+    "hostType": "github",
+    "hostTag": "GitHub Pages",
+    "keywords": "specification-driven development, workflow guidance, agent-ready context, implementation planning",
+    "technologies": [
+      "specification-driven development",
+      "workflow guidance",
+      "agent-ready context",
+      "implementation planning"
+    ],
+    "relatedInitiatives": ["apitest", "git-spark", "simpleblog"],
+    "featured": true
   },
   {
     "id": 20,
-    "p": "MuseumSpark: AI-Powered Museum Trip Planner",
-    "d": "MuseumSpark transforms the Walker Art Center Reciprocal Program membership list (1,269 museums) into an intelligent travel planning resource. Features priority scoring by artistic strength, smart city-tier clustering, visit duration estimates, and a multi-phase data enrichment pipeline using Wikidata, Wikipedia, and museum websites.",
-    "h": "https://markhazleton.github.io/MuseumSpark/",
-    "image": "/img/repositories/screenshots/museumspark.png",
-    "slug": "museumspark",
-    "summary": "Strategic travel planner for art lovers, built on the Walker Art Center Reciprocal Program list of 1,269 museums. Features priority scoring, city-tier classification, and a multi-phase data enrichment pipeline using Wikidata and Wikipedia.",
-    "keywords": "Museum Planning, Walker Art Center, Data Enrichment, Wikidata, Art Travel, Trip Planning, Priority Scoring"
-  },
-  {
-    "id": 22,
-    "p": "TriviaSpark: Multiplayer Trivia Game",
-    "d": "TriviaSpark is a multiplayer trivia game developed as an experiment in ChatGPT-assisted development. Built with .NET, it leverages a public Trivia API for question data with features including user registration, leaderboards, and customizable UI for web and mobile.",
-    "h": "https://web.makeboldspark.com/triviaspark",
-    "image": "/img/MarkHazleton-ChatGPT-TriviaSparkHome.png",
-    "slug": "trivia-spark",
-    "summary": "A multiplayer trivia game developed as a ChatGPT-assisted development experiment. Features public Trivia API integration, user registration, leaderboards, and customizable UI for web and mobile.",
-    "keywords": "Trivia Game, .NET, C#, Multiplayer, ChatGPT, Trivia API, Web Application, Game Development"
-  },
-  {
-    "id": 23,
-    "p": "PHPDocSpark: PHP Documentation Platform",
-    "d": "PHPDocSpark is an open-source PHP 8.2+ documentation and data exploration platform with a Vite 7.1 asset pipeline. Features include Markdown documentation viewer with full-text search, CSV data analysis, SQLite CRUD operations, GitHub API integration, Chart.js visualizations, and Azure Pipelines deployment.",
-    "h": "https://phpdocspark.azurewebsites.net",
-    "image": "/img/placeholder.svg",
-    "slug": "phpdocspark",
-    "summary": "PHP 8.2+ documentation and data exploration platform with Vite 7.1 build pipeline, Markdown viewer with full-text search, CSV analysis, SQLite CRUD, GitHub integration, and Azure deployment.",
-    "keywords": "PHP 8.2, Vite, Bootstrap 5, SQLite, Documentation, Data Analysis, Chart.js, Azure Pipelines"
-  },
-  {
-    "id": 24,
-    "p": "DevSpark: Constitutional AI Governance Framework",
-    "d": "DevSpark is a standalone AI-assisted development framework that extends Specification-Driven Development with constitution-based PR reviews, codebase-wide compliance auditing, adversarial risk analysis, brownfield constitution discovery, and adaptive lifecycle management. DevSpark makes project constitutions valuable throughout the entire development lifecycle — from greenfield planning through continuous constitutional governance.",
-    "h": "https://github.com/markhazleton/devspark",
-    "image": "/img/devspark-analysis.jpg",
-    "slug": "devspark",
-    "summary": "A standalone AI-assisted development framework that extends Specification-Driven Development (SDD) beyond greenfield planning into continuous constitutional governance. Adds PR reviews, site auditing, risk analysis, brownfield discovery, quickfix workflows, release management, and automated upstream synchronization — making project constitutions enforce standards at every stage of the development lifecycle.",
-    "keywords": "DevSpark, Specification-Driven Development, AI governance, project constitution, PR review, site audit, brownfield development, code compliance, risk analysis, AI-assisted development"
-  },
-  {
-    "id": 25,
-    "p": "SupportSpark: Compassionate Support Network Platform",
-    "d": "SupportSpark is a privacy-focused web application designed to help individuals maintain supportive networks during challenging life moments. Built with React 19, Express 5, and TypeScript, it provides a calm, structured platform for sharing personal journey updates with threaded conversations.",
-    "h": "https://markhazleton.github.io/SupportSpark/",
-    "image": "/img/MarkHazleton.jpg",
-    "slug": "supportspark",
-    "summary": "A lightweight, privacy-focused web application for keeping support networks informed without social media noise. Features secure authentication, journey updates, threaded conversations, and invitation-based access. Try the GitHub Pages preview with localStorage to experience the full UI without a server.",
-    "keywords": "SupportSpark, support network, React 19, Express 5, TypeScript, compassionate technology, privacy-focused, Spark series",
+    "p": "ApiTestSpark",
+    "d": "From API contracts to feature stories: OpenAPI-powered exploration with real request and response examples for agent-ready implementation context.",
+    "h": "https://apitest.makeboldspark.com",
+    "image": "",
+    "slug": "apitest",
     "promotion": {
-      "status": "Active"
-    }
+      "status": "Featured Initiative"
+    },
+    "icon": "⚡",
+    "summary": "From API Contracts to Feature Stories",
+    "deliveryPattern": "OpenAPI Contracts -> Feature Stories -> Client Implementation",
+    "categoryId": "flagship-initiatives",
+    "category": "Flagship Initiatives",
+    "categoryDescription": "Primary Make Bold Spark initiatives that define the platform vision and most directly express the ecosystem message.",
+    "categorySortOrder": 10,
+    "initiativeType": "supporting-initiative",
+    "hostType": "azure",
+    "hostTag": "Azure",
+    "keywords": "OpenAPI exploration, remote API support, request and response examples, workflow understanding, hallucination reduction",
+    "technologies": [
+      "OpenAPI exploration",
+      "remote API support",
+      "request and response examples",
+      "workflow understanding",
+      "hallucination reduction"
+    ],
+    "relatedInitiatives": ["dev", "httpclientutility", "httpclientdecorator"],
+    "featured": true
+  },
+  {
+    "id": 30,
+    "p": "Chat",
+    "d": "Real-time chat and AI-powered conversation interfaces built on SignalR.",
+    "h": "https://chat.makeboldspark.com",
+    "image": "",
+    "slug": "chat",
+    "promotion": {
+      "status": "Reference Implementation"
+    },
+    "icon": "💬",
+    "summary": "Conversation Interfaces as Context",
+    "deliveryPattern": "Conversations -> Interaction Context -> Guided Follow-up",
+    "categoryId": "context-ai",
+    "category": "Context and AI",
+    "categoryDescription": "Tools and patterns for prompt context, conversation context, and AI-assisted workflows.",
+    "categorySortOrder": 20,
+    "initiativeType": "reference-implementation",
+    "hostType": "azure",
+    "hostTag": "Azure",
+    "keywords": "SignalR, real-time workflows, conversation context",
+    "technologies": ["SignalR", "real-time workflows", "conversation context"],
+    "relatedInitiatives": ["dev", "simpleblog"],
+    "featured": false
+  },
+  {
+    "id": 60,
+    "p": "GitSpark",
+    "d": "npm package and reporting utility for analyzing any Git repository and generating interactive reports with contributor statistics, commit history, code change patterns, and file analysis.",
+    "h": "https://git-spark.makeboldspark.com",
+    "image": "",
+    "slug": "git-spark",
+    "promotion": {
+      "status": "Git Utility"
+    },
+    "icon": "🔥",
+    "summary": "Git Repository Reporting for Any Repo",
+    "deliveryPattern": "Any Git Repository -> Commit Analysis -> Interactive Delivery Report",
+    "categoryId": "git-stats-reporting",
+    "category": "GitHub and Git Utilities",
+    "categoryDescription": "Git repository analysis, GitHub user statistics, owned-repository reporting, and contribution visibility tools.",
+    "categorySortOrder": 25,
+    "initiativeType": "git-utility",
+    "hostType": "github",
+    "hostTag": "GitHub Pages",
+    "keywords": "npm package, Git repository analytics, commit history reporting, contributor statistics, code change analysis",
+    "technologies": [
+      "npm package",
+      "Git repository analytics",
+      "commit history reporting",
+      "contributor statistics",
+      "code change analysis"
+    ],
+    "relatedInitiatives": ["github-stats", "dataanalysis", "dev"],
+    "featured": false
+  },
+  {
+    "id": 50,
+    "p": "Simple Blog",
+    "d": "Mark's Dev Notebook — a simple developer blog on GitHub Pages with Jekyll covering Azure, .NET, and software delivery topics.",
+    "h": "https://simpleblog.makeboldspark.com",
+    "image": "",
+    "slug": "simpleblog",
+    "promotion": {
+      "status": "Supporting Initiative"
+    },
+    "icon": "📝",
+    "summary": "Reusable Technical Insight",
+    "deliveryPattern": "Experience -> Insight -> Reusable Guidance",
+    "categoryId": "context-ai",
+    "category": "Context and AI",
+    "categoryDescription": "Tools and patterns for prompt context, conversation context, and AI-assisted workflows.",
+    "categorySortOrder": 20,
+    "initiativeType": "supporting-initiative",
+    "hostType": "github",
+    "hostTag": "GitHub Pages",
+    "keywords": "technical writing, delivery guidance, developer experience",
+    "technologies": ["technical writing", "delivery guidance", "developer experience"],
+    "relatedInitiatives": ["dev"],
+    "featured": false
+  },
+  {
+    "id": 110,
+    "p": "RequestSpark Pattern: HttpClient Decorator",
+    "d": "Resilience patterns for .NET HTTP clients — retry, circuit breaker, caching, and logging decorators.",
+    "h": "https://httpclientdecorator.makeboldspark.com",
+    "image": "",
+    "slug": "httpclientdecorator",
+    "promotion": {
+      "status": "Reference Implementation"
+    },
+    "icon": "🔗",
+    "summary": "Structured API Resilience",
+    "deliveryPattern": "Integration Need -> Resilience Pattern -> Client Implementation",
+    "categoryId": "api-context-integration",
+    "category": "API Context and Integration",
+    "categoryDescription": "Contracts, clients, request workflows, resilience patterns, examples, and integration guidance.",
+    "categorySortOrder": 30,
+    "initiativeType": "reference-implementation",
+    "hostType": "azure",
+    "hostTag": "Azure",
+    "keywords": "HTTP clients, Polly, retry patterns, circuit breaker, logging",
+    "technologies": ["HTTP clients", "Polly", "retry patterns", "circuit breaker", "logging"],
+    "relatedInitiatives": ["apitest", "httpclientutility"],
+    "featured": false
+  },
+  {
+    "id": 120,
+    "p": "RequestSpark Pattern: HttpClient Utility",
+    "d": "Drop-in HttpClient wrapper for .NET 8-10 with Polly resilience, response caching, OpenTelemetry tracing, and batch execution orchestration.",
+    "h": "https://httpclientutility.makeboldspark.com",
+    "image": "",
+    "slug": "httpclientutility",
+    "promotion": {
+      "status": "Reference Implementation"
+    },
+    "icon": "🔧",
+    "summary": "Reusable API Client Infrastructure",
+    "deliveryPattern": "Client Requirements -> Reusable Utility -> Consistent Integration",
+    "categoryId": "api-context-integration",
+    "category": "API Context and Integration",
+    "categoryDescription": "Contracts, clients, request workflows, resilience patterns, examples, and integration guidance.",
+    "categorySortOrder": 30,
+    "initiativeType": "reference-implementation",
+    "hostType": "github",
+    "hostTag": "GitHub Pages",
+    "keywords": "HTTP clients, resilience, OpenTelemetry, caching, batch execution",
+    "technologies": ["HTTP clients", "resilience", "OpenTelemetry", "caching", "batch execution"],
+    "relatedInitiatives": ["apitest", "httpclientdecorator"],
+    "featured": false
+  },
+  {
+    "id": 130,
+    "p": "Slurper Spark",
+    "d": "MakeBoldSpark.Slurper NuGet package site — a .NET data extractor for XML, JSON, CSV, and HTML using dynamic objects.",
+    "h": "https://slurper.makeboldspark.com",
+    "image": "",
+    "slug": "slurper",
+    "promotion": {
+      "status": "Reference Implementation"
+    },
+    "icon": "🎯",
+    "summary": "Extracting Structure from Raw Data",
+    "deliveryPattern": "Raw Data -> Structured Extraction -> Application Context",
+    "categoryId": "api-context-integration",
+    "category": "API Context and Integration",
+    "categoryDescription": "Contracts, clients, request workflows, resilience patterns, examples, and integration guidance.",
+    "categorySortOrder": 30,
+    "initiativeType": "reference-implementation",
+    "hostType": "github",
+    "hostTag": "GitHub Pages",
+    "keywords": "data extraction, XML, JSON, CSV, HTML",
+    "technologies": ["data extraction", "XML", "JSON", "CSV", "HTML"],
+    "relatedInitiatives": ["slurper-demo", "apitest"],
+    "featured": false
+  },
+  {
+    "id": 140,
+    "p": "Slurper Demo",
+    "d": "Interactive demo for the MakeBoldSpark.Slurper data extraction library covering XML, JSON, CSV, and HTML parsing.",
+    "h": "https://slurper-demo.makeboldspark.com",
+    "image": "",
+    "slug": "slurper-demo",
+    "promotion": {
+      "status": "Demonstration System"
+    },
+    "icon": "🕵️",
+    "summary": "Data Extraction by Example",
+    "deliveryPattern": "Sample Data -> Extraction Demo -> Implementation Example",
+    "categoryId": "api-context-integration",
+    "category": "API Context and Integration",
+    "categoryDescription": "Contracts, clients, request workflows, resilience patterns, examples, and integration guidance.",
+    "categorySortOrder": 30,
+    "initiativeType": "learning-system",
+    "hostType": "azure",
+    "hostTag": "Azure",
+    "keywords": "interactive examples, data parsing, implementation demonstration",
+    "technologies": ["interactive examples", "data parsing", "implementation demonstration"],
+    "relatedInitiatives": ["slurper"],
+    "featured": false
+  },
+  {
+    "id": 210,
+    "p": "BootstrapSpark",
+    "d": "Component library and theme gallery built on Bootstrap 5, deployed to Azure Static Web Apps.",
+    "h": "https://bootstrap.makeboldspark.com",
+    "image": "",
+    "slug": "bootstrap",
+    "promotion": {
+      "status": "Reference Implementation"
+    },
+    "icon": "🅱️",
+    "summary": "Accelerating Application Delivery",
+    "deliveryPattern": "UI Pattern -> Component Example -> Application Screen",
+    "categoryId": "application-frameworks",
+    "category": "Application Frameworks",
+    "categoryDescription": "Reusable web, UI, publishing, component, and application delivery patterns.",
+    "categorySortOrder": 40,
+    "initiativeType": "reference-implementation",
+    "hostType": "static",
+    "hostTag": "Static Web App",
+    "keywords": "Bootstrap, component library, theme gallery",
+    "technologies": ["Bootstrap", "component library", "theme gallery"],
+    "relatedInitiatives": ["web", "ui", "bootswatch"],
+    "featured": false
+  },
+  {
+    "id": 220,
+    "p": "Bootswatch Themes",
+    "d": "Live preview and comparison of Bootswatch themes across Bootstrap components.",
+    "h": "https://bootswatch.makeboldspark.com",
+    "image": "",
+    "slug": "bootswatch",
+    "promotion": {
+      "status": "Reference Implementation"
+    },
+    "icon": "🎨",
+    "summary": "Theme Decisions by Preview",
+    "deliveryPattern": "Theme Option -> Component Preview -> UI Decision",
+    "categoryId": "application-frameworks",
+    "category": "Application Frameworks",
+    "categoryDescription": "Reusable web, UI, publishing, component, and application delivery patterns.",
+    "categorySortOrder": 40,
+    "initiativeType": "reference-implementation",
+    "hostType": "azure",
+    "hostTag": "Azure",
+    "keywords": "Bootstrap, Bootswatch, theme comparison",
+    "technologies": ["Bootstrap", "Bootswatch", "theme comparison"],
+    "relatedInitiatives": ["bootstrap", "ui"],
+    "featured": false
+  },
+  {
+    "id": 230,
+    "p": "TailwindSpark",
+    "d": "Design system showcase and component gallery built with Tailwind CSS.",
+    "h": "https://tailwind.makeboldspark.com",
+    "image": "",
+    "slug": "tailwind",
+    "promotion": {
+      "status": "Reference Implementation"
+    },
+    "icon": "🌊",
+    "summary": "Modern UI Foundations",
+    "deliveryPattern": "Design Intent -> Tailwind Component -> Application UI",
+    "categoryId": "application-frameworks",
+    "category": "Application Frameworks",
+    "categoryDescription": "Reusable web, UI, publishing, component, and application delivery patterns.",
+    "categorySortOrder": 40,
+    "initiativeType": "reference-implementation",
+    "hostType": "github",
+    "hostTag": "GitHub Pages",
+    "keywords": "Tailwind CSS, design systems, component gallery",
+    "technologies": ["Tailwind CSS", "design systems", "component gallery"],
+    "relatedInitiatives": ["ui", "bootstrap"],
+    "featured": false
+  },
+  {
+    "id": 240,
+    "p": "UI Components",
+    "d": "Reusable UI component library and design system used across Make Bold Spark systems.",
+    "h": "https://ui.makeboldspark.com",
+    "image": "",
+    "slug": "ui",
+    "promotion": {
+      "status": "Platform Component"
+    },
+    "icon": "🖥️",
+    "summary": "Shared Interface Building Blocks",
+    "deliveryPattern": "Reusable Pattern -> Shared Component -> Consistent Experience",
+    "categoryId": "application-frameworks",
+    "category": "Application Frameworks",
+    "categoryDescription": "Reusable web, UI, publishing, component, and application delivery patterns.",
+    "categorySortOrder": 40,
+    "initiativeType": "platform-component",
+    "hostType": "azure",
+    "hostTag": "Azure",
+    "keywords": "UI components, design system, reuse",
+    "technologies": ["UI components", "design system", "reuse"],
+    "relatedInitiatives": ["bootstrap", "tailwind", "web"],
+    "featured": false
+  },
+  {
+    "id": 250,
+    "p": "MakeBoldSpark",
+    "d": "MakeBoldSpark platform — the publishing engine powering content-driven Make Bold Spark systems.",
+    "h": "https://web.makeboldspark.com",
+    "image": "",
+    "slug": "web",
+    "promotion": {
+      "status": "Platform Component"
+    },
+    "icon": "🌐",
+    "summary": "Building Modern Web Applications Faster",
+    "deliveryPattern": "Content Model -> Publishing Platform -> Static-first Experience",
+    "categoryId": "application-frameworks",
+    "category": "Application Frameworks",
+    "categoryDescription": "Reusable web, UI, publishing, component, and application delivery patterns.",
+    "categorySortOrder": 40,
+    "initiativeType": "platform-component",
+    "hostType": "azure",
+    "hostTag": "Azure",
+    "keywords": "publishing, content platform, static-first sites",
+    "technologies": ["publishing", "content platform", "static-first sites"],
+    "relatedInitiatives": ["bootstrap", "ui"],
+    "featured": false
+  },
+  {
+    "id": 260,
+    "p": "Prism",
+    "d": "Code syntax highlighting and documentation tools powered by the Prism.js library.",
+    "h": "https://prism.makeboldspark.com",
+    "image": "",
+    "slug": "prism",
+    "promotion": {
+      "status": "Reference Implementation"
+    },
+    "icon": "🔷",
+    "summary": "Readable Code Examples",
+    "deliveryPattern": "Code Example -> Highlighted Documentation -> Better Understanding",
+    "categoryId": "application-frameworks",
+    "category": "Application Frameworks",
+    "categoryDescription": "Reusable web, UI, publishing, component, and application delivery patterns.",
+    "categorySortOrder": 40,
+    "initiativeType": "reference-implementation",
+    "hostType": "azure",
+    "hostTag": "Azure",
+    "keywords": "syntax highlighting, documentation, code examples",
+    "technologies": ["syntax highlighting", "documentation", "code examples"],
+    "relatedInitiatives": ["web", "simpleblog"],
+    "featured": false
+  },
+  {
+    "id": 310,
+    "p": "AsyncSpark",
+    "d": "Interactive demonstrations of async/await, concurrency, and parallel execution in .NET.",
+    "h": "https://async.makeboldspark.com",
+    "image": "",
+    "slug": "async",
+    "promotion": {
+      "status": "Learning System"
+    },
+    "icon": "⚡",
+    "summary": "Understanding Asynchronous Programming",
+    "deliveryPattern": "Concept -> Working Example -> Implementation Understanding",
+    "categoryId": "learning-demonstration",
+    "category": "Learning and Demonstration",
+    "categoryDescription": "Working applications that make technical concepts, workflows, and behavior visible.",
+    "categorySortOrder": 50,
+    "initiativeType": "learning-system",
+    "hostType": "azure",
+    "hostTag": "Azure",
+    "keywords": "async/await, concurrency, parallel execution, .NET",
+    "technologies": ["async/await", "concurrency", "parallel execution", ".NET"],
+    "relatedInitiatives": ["teach"],
+    "featured": false
+  },
+  {
+    "id": 320,
+    "p": "TeachSpark",
+    "d": "Learning tools and educational content covering software development concepts and practices.",
+    "h": "https://teach.makeboldspark.com",
+    "image": "",
+    "slug": "teach",
+    "promotion": {
+      "status": "Learning System"
+    },
+    "icon": "🎓",
+    "summary": "Educational Technology Demonstrations",
+    "deliveryPattern": "Concept -> Lesson Context -> Practical Understanding",
+    "categoryId": "learning-demonstration",
+    "category": "Learning and Demonstration",
+    "categoryDescription": "Working applications that make technical concepts, workflows, and behavior visible.",
+    "categorySortOrder": 50,
+    "initiativeType": "learning-system",
+    "hostType": "azure",
+    "hostTag": "Azure",
+    "keywords": "education, software concepts, guided learning",
+    "technologies": ["education", "software concepts", "guided learning"],
+    "relatedInitiatives": ["async", "trivia"],
+    "featured": false
+  },
+  {
+    "id": 330,
+    "p": "TriviaSpark",
+    "d": "Interactive trivia engine with categories, scoring, and real-time multiplayer support.",
+    "h": "https://trivia.makeboldspark.com",
+    "image": "",
+    "slug": "trivia",
+    "promotion": {
+      "status": "Learning System"
+    },
+    "icon": "🧠",
+    "summary": "Learning Through Interactive Experiences",
+    "deliveryPattern": "Domain Rules -> Interactive Workflow -> Working Application",
+    "categoryId": "learning-demonstration",
+    "category": "Learning and Demonstration",
+    "categoryDescription": "Working applications that make technical concepts, workflows, and behavior visible.",
+    "categorySortOrder": 50,
+    "initiativeType": "reference-implementation",
+    "hostType": "azure",
+    "hostTag": "Azure",
+    "keywords": "interactive application, real-time workflows, scoring",
+    "technologies": ["interactive application", "real-time workflows", "scoring"],
+    "relatedInitiatives": ["teach"],
+    "featured": false
+  },
+  {
+    "id": 340,
+    "p": "MuseumSpark",
+    "d": "Digital museum experience showcasing curated collections and interactive exhibits.",
+    "h": "https://museum.makeboldspark.com",
+    "image": "",
+    "slug": "museum",
+    "promotion": {
+      "status": "Emerging Initiative"
+    },
+    "icon": "🏛️",
+    "summary": "Curated Knowledge Experiences",
+    "deliveryPattern": "Curated Content -> Exhibit Model -> Interactive Experience",
+    "categoryId": "emerging-initiatives",
+    "category": "Emerging Initiatives",
+    "categoryDescription": "Reference implementations and future-facing systems that extend the ecosystem into adjacent delivery patterns.",
+    "categorySortOrder": 60,
+    "initiativeType": "reference-implementation",
+    "hostType": "github",
+    "hostTag": "GitHub Pages",
+    "keywords": "curation, interactive exhibits, content modeling",
+    "technologies": ["curation", "interactive exhibits", "content modeling"],
+    "relatedInitiatives": ["teach"],
+    "featured": false
+  },
+  {
+    "id": 350,
+    "p": "DataSpark",
+    "d": "Data visualization and analytics tools exploring patterns in real datasets.",
+    "h": "https://dataanalysis.makeboldspark.com",
+    "image": "",
+    "slug": "dataanalysis",
+    "promotion": {
+      "status": "Emerging Initiative"
+    },
+    "icon": "📈",
+    "summary": "Turning Data into Delivery Insight",
+    "deliveryPattern": "Raw Data -> Analysis -> Delivery Insight",
+    "categoryId": "emerging-initiatives",
+    "category": "Emerging Initiatives",
+    "categoryDescription": "Reference implementations and future-facing systems that extend the ecosystem into adjacent delivery patterns.",
+    "categorySortOrder": 60,
+    "initiativeType": "reference-implementation",
+    "hostType": "azure",
+    "hostTag": "Azure",
+    "keywords": "data visualization, analytics, real datasets",
+    "technologies": ["data visualization", "analytics", "real datasets"],
+    "relatedInitiatives": ["github-stats", "git-spark"],
+    "featured": false
+  },
+  {
+    "id": 70,
+    "p": "GitHub Stats Spark",
+    "d": "GitHub user statistics dashboard focused on owned repositories, contribution activity, repository visibility, and profile-level reporting.",
+    "h": "https://github-stats.makeboldspark.com",
+    "image": "",
+    "slug": "github-stats",
+    "promotion": {
+      "status": "GitHub Reporting"
+    },
+    "icon": "📊",
+    "summary": "GitHub User and Owned Repository Stats",
+    "deliveryPattern": "GitHub User -> Owned Repository Stats -> Contribution Dashboard",
+    "categoryId": "git-stats-reporting",
+    "category": "GitHub and Git Utilities",
+    "categoryDescription": "Git repository analysis, GitHub user statistics, owned-repository reporting, and contribution visibility tools.",
+    "categorySortOrder": 25,
+    "initiativeType": "reporting-system",
+    "hostType": "github",
+    "hostTag": "GitHub Pages",
+    "keywords": "GitHub user stats, owned repository reporting, contribution visualization, repository dashboards",
+    "technologies": [
+      "GitHub user stats",
+      "owned repository reporting",
+      "contribution visualization",
+      "repository dashboards"
+    ],
+    "relatedInitiatives": ["git-spark", "dataanalysis", "simpleblog"],
+    "featured": false
+  },
+  {
+    "id": 370,
+    "p": "Keypress Counter",
+    "d": "Track keystrokes, measure WPM, and explore typing patterns in real time.",
+    "h": "https://keypresscounter.makeboldspark.com",
+    "image": "",
+    "slug": "keypresscounter",
+    "promotion": {
+      "status": "Demonstration System"
+    },
+    "icon": "⌨️",
+    "summary": "Real-Time Input Feedback",
+    "deliveryPattern": "Input Events -> Metrics -> Feedback",
+    "categoryId": "learning-demonstration",
+    "category": "Learning and Demonstration",
+    "categoryDescription": "Working applications that make technical concepts, workflows, and behavior visible.",
+    "categorySortOrder": 50,
+    "initiativeType": "learning-system",
+    "hostType": "github",
+    "hostTag": "GitHub Pages",
+    "keywords": "real-time input, metrics, feedback loops",
+    "technologies": ["real-time input", "metrics", "feedback loops"],
+    "relatedInitiatives": ["wpm"],
+    "featured": false
+  },
+  {
+    "id": 380,
+    "p": "WPM Trainer",
+    "d": "Typing speed and accuracy training tool with progressive challenges.",
+    "h": "https://wpm.makeboldspark.com",
+    "image": "",
+    "slug": "wpm",
+    "promotion": {
+      "status": "Learning System"
+    },
+    "icon": "🏃",
+    "summary": "Practice, Measure, Improve",
+    "deliveryPattern": "Practice -> Measurement -> Improvement",
+    "categoryId": "learning-demonstration",
+    "category": "Learning and Demonstration",
+    "categoryDescription": "Working applications that make technical concepts, workflows, and behavior visible.",
+    "categorySortOrder": 50,
+    "initiativeType": "learning-system",
+    "hostType": "azure",
+    "hostTag": "Azure",
+    "keywords": "training workflow, progressive challenge, performance metrics",
+    "technologies": ["training workflow", "progressive challenge", "performance metrics"],
+    "relatedInitiatives": ["keypresscounter"],
+    "featured": false
+  },
+  {
+    "id": 390,
+    "p": "ArtSpark",
+    "d": "Generative art and creative coding reference implementations exploring algorithmic aesthetics.",
+    "h": "https://art.makeboldspark.com",
+    "image": "",
+    "slug": "art",
+    "promotion": {
+      "status": "Emerging Initiative"
+    },
+    "icon": "🎨",
+    "summary": "Creative Coding as Working Software",
+    "deliveryPattern": "Algorithm -> Parameters -> Generated Output",
+    "categoryId": "emerging-initiatives",
+    "category": "Emerging Initiatives",
+    "categoryDescription": "Reference implementations and future-facing systems that extend the ecosystem into adjacent delivery patterns.",
+    "categorySortOrder": 60,
+    "initiativeType": "reference-implementation",
+    "hostType": "azure",
+    "hostTag": "Azure",
+    "keywords": "creative coding, generative systems, algorithmic examples",
+    "technologies": ["creative coding", "generative systems", "algorithmic examples"],
+    "relatedInitiatives": ["museum"],
+    "featured": false
+  },
+  {
+    "id": 400,
+    "p": "SupportSpark",
+    "d": "SupportSpark — a safe, distraction-free space to share your journey through difficult times with the people who matter most. Private, secure, and ad-free.",
+    "h": "https://support.makeboldspark.com",
+    "image": "",
+    "slug": "support",
+    "promotion": {
+      "status": "Reference Implementation"
+    },
+    "icon": "💙",
+    "summary": "Focused Human-Centered Workflows",
+    "deliveryPattern": "Human Need -> Guided Workflow -> Focused Application",
+    "categoryId": "emerging-initiatives",
+    "category": "Emerging Initiatives",
+    "categoryDescription": "Reference implementations and future-facing systems that extend the ecosystem into adjacent delivery patterns.",
+    "categorySortOrder": 60,
+    "initiativeType": "reference-implementation",
+    "hostType": "github",
+    "hostTag": "GitHub Pages",
+    "keywords": "private workflows, human-centered design, focused application",
+    "technologies": ["private workflows", "human-centered design", "focused application"],
+    "relatedInitiatives": ["web", "ui"],
+    "featured": false
   }
 ]

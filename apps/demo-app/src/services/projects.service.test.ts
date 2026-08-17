@@ -19,7 +19,7 @@ vi.mock('../types/projects-api', async importOriginal => {
     PROJECTS_API_CONFIG: {
       ...actual.PROJECTS_API_CONFIG,
       PROD_URL: '/data/projects.json',
-      DEV_URL: '/api/projects.json',
+      DEV_URL: '/api/subsites.json',
       FALLBACK_URL: '/fallback/projects.json',
     },
   };
@@ -41,6 +41,7 @@ const expectedPrimaryUrl = import.meta.env.DEV
 describe('projects.service', () => {
   it('uses a same-origin production snapshot URL', () => {
     expect(PROJECTS_API_CONFIG.PROD_URL).toBe('/data/projects.json');
+    expect(PROJECTS_API_CONFIG.REMOTE_URL).toBe('https://makeboldspark.com/subsites.json');
   });
 
   beforeEach(() => {

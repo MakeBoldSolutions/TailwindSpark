@@ -11,6 +11,7 @@ const mockArticle: Article = {
   category: 'Technology',
   pub_date: '2025-01-15T00:00:00.000Z',
   author: 'Test Author',
+  image_url: 'https://example.com/article.jpg',
 };
 
 describe('ArticleCard', () => {
@@ -22,6 +23,18 @@ describe('ArticleCard', () => {
   it('renders article description', () => {
     render(<ArticleCard article={mockArticle} />);
     expect(screen.getByText(/test article description/i)).toBeInTheDocument();
+  });
+
+  it('renders preview image when provided', () => {
+    render(<ArticleCard article={mockArticle} />);
+    const image = screen.getByRole('img', { name: 'Test Article Title' });
+    expect(image).toHaveAttribute('src', 'https://example.com/article.jpg');
+    expect(image).toHaveAttribute('loading', 'lazy');
+  });
+
+  it('does not render preview image when not provided', () => {
+    render(<ArticleCard article={{ ...mockArticle, image_url: undefined }} />);
+    expect(screen.queryByRole('img')).not.toBeInTheDocument();
   });
 
   it('renders category badge', () => {

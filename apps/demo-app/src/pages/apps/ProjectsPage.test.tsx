@@ -13,9 +13,47 @@ const themeMatrix = [
 ] as const;
 
 const mockProjects = [
-  { id: 1, name: 'Alpha Project', description: 'First project', image_url: '', project_url: 'https://example.com/1', status: 'Active' as const, technologies: ['React'] },
-  { id: 2, name: 'Beta Project', description: 'Second project', image_url: '', project_url: 'https://example.com/2', status: 'Completed' as const, technologies: ['TypeScript'] },
-  { id: 3, name: 'Gamma Project', description: 'Third project', image_url: '', project_url: 'https://example.com/3', status: 'Active' as const, technologies: ['Vue'] },
+  {
+    id: 1,
+    name: 'Alpha Project',
+    description: 'First project',
+    image_url: '',
+    project_url: 'https://example.com/1',
+    status: 'Active' as const,
+    technologies: ['React'],
+    category_id: 'application-frameworks',
+    category: 'Application Frameworks',
+    category_description: 'Reusable application delivery patterns.',
+    category_sort_order: 40,
+    tagline: 'Alpha tagline',
+  },
+  {
+    id: 2,
+    name: 'Beta Project',
+    description: 'Second project',
+    image_url: '',
+    project_url: 'https://example.com/2',
+    status: 'Completed' as const,
+    technologies: ['TypeScript'],
+    category_id: 'context-ai',
+    category: 'Context and AI',
+    category_description: 'Tools and patterns for better context.',
+    category_sort_order: 20,
+    tagline: 'Beta tagline',
+  },
+  {
+    id: 3,
+    name: 'Gamma Project',
+    description: 'Third project',
+    image_url: '',
+    project_url: 'https://example.com/3',
+    status: 'Active' as const,
+    technologies: ['Vue'],
+    category_id: 'application-frameworks',
+    category: 'Application Frameworks',
+    category_description: 'Reusable application delivery patterns.',
+    category_sort_order: 40,
+  },
 ];
 
 vi.mock('../../hooks/useProjects', () => ({
@@ -33,13 +71,15 @@ const renderPage = () =>
       <SEOProvider>
         <ProjectsPage />
       </SEOProvider>
-    </BrowserRouter>,
+    </BrowserRouter>
   );
 
 describe('ProjectsPage', () => {
   it('renders without crashing', () => {
     renderPage();
-    expect(screen.getByRole('heading', { level: 1, name: /Projects/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { level: 1, name: /Initiatives, systems, and platforms/i })
+    ).toBeInTheDocument();
   });
 
   it('displays project cards', () => {
@@ -50,18 +90,46 @@ describe('ProjectsPage', () => {
 
   it('has search input', () => {
     renderPage();
-    expect(screen.getByPlaceholderText(/Search projects/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/Search ecosystem/i)).toBeInTheDocument();
   });
 
   it('filters projects by search term', async () => {
     const user = userEvent.setup();
     renderPage();
 
-    const input = screen.getByPlaceholderText(/Search projects/i);
+    const input = screen.getByPlaceholderText(/Search ecosystem/i);
     await user.type(input, 'Alpha');
 
     expect(screen.getByText('Alpha Project')).toBeInTheDocument();
     expect(screen.queryByText('Beta Project')).not.toBeInTheDocument();
+  });
+
+  it('groups projects by ecosystem category', () => {
+    renderPage();
+    expect(screen.getByRole('heading', { level: 2, name: 'Context and AI' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'Application Frameworks' })
+    ).toBeInTheDocument();
+  });
+
+  it('filters projects by category', async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.selectOptions(screen.getByLabelText(/Filter projects by category/i), 'context-ai');
+
+    expect(screen.getByText('Beta Project')).toBeInTheDocument();
+    expect(screen.queryByText('Alpha Project')).not.toBeInTheDocument();
+  });
+
+  it('filters projects by status', async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.selectOptions(screen.getByLabelText(/Filter projects by status/i), 'Completed');
+
+    expect(screen.getByText('Beta Project')).toBeInTheDocument();
+    expect(screen.queryByText('Alpha Project')).not.toBeInTheDocument();
   });
 
   it('has sort select', () => {
@@ -86,15 +154,20 @@ describe('ProjectsPage', () => {
     expect(results).toHaveNoViolations();
   });
 
-  it.each(themeMatrix)('keeps projects route content available under %s %s mode', (themeId, mode) => {
-    document.documentElement.dataset.theme = themeId;
-    document.documentElement.dataset.themeMode = mode;
-    document.documentElement.classList.toggle('dark', mode === 'dark');
+  it.each(themeMatrix)(
+    'keeps projects route content available under %s %s mode',
+    (themeId, mode) => {
+      document.documentElement.dataset.theme = themeId;
+      document.documentElement.dataset.themeMode = mode;
+      document.documentElement.classList.toggle('dark', mode === 'dark');
 
-    renderPage();
+      renderPage();
 
-    expect(screen.getByRole('heading', { level: 1, name: /Projects/i })).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/Search projects/i)).toBeInTheDocument();
-    expect(screen.getByText(/Showing \d+ of \d+ project/i)).toBeInTheDocument();
-  });
+      expect(
+        screen.getByRole('heading', { level: 1, name: /Initiatives, systems, and platforms/i })
+      ).toBeInTheDocument();
+      expect(screen.getByPlaceholderText(/Search ecosystem/i)).toBeInTheDocument();
+      expect(screen.getByText(/Showing \d+ of \d+ project/i)).toBeInTheDocument();
+    }
+  );
 });

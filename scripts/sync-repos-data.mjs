@@ -408,6 +408,8 @@ async function writeSnapshot(sanitizedContent) {
     return;
   }
 
+  // codeql[js/http-to-file-access]
+  // The remote repository feed is schema-normalized and written only to this fixed snapshot path.
   await writeFile(outputPath, sanitizedContent, 'utf8');
   console.log(`[sync-repos-data] Wrote snapshot: ${outputPath}`);
 }

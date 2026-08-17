@@ -150,6 +150,11 @@ export default defineConfig(({ command, mode }) => {
           changeOrigin: true,
           rewrite: (path: string) => path.replace(/^\/api/, ''),
         },
+        '/api/subsites.json': {
+          target: 'https://makeboldspark.com',
+          changeOrigin: true,
+          rewrite: () => '/subsites.json',
+        },
         '/api/articles.json': {
           target: 'https://markhazleton.com',
           changeOrigin: true,

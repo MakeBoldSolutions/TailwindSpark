@@ -1,6 +1,6 @@
 /**
  * Articles API Contract
- * 
+ *
  * TypeScript types and Zod schemas for Articles JSON API
  * Source: https://markhazleton.com/articles.json
  */
@@ -13,50 +13,88 @@ import { z } from 'zod';
 export interface Article {
   /** Unique article identifier */
   id: string;
-  
+
   /** Article title */
   title: string;
-  
+
   /** Article excerpt or summary */
   description: string;
-  
+
   /** Absolute URL to full article */
   link: string;
-  
+
   /** Article category / section */
   category: string;
-  
+
   /** Publication date (ISO 8601 format) */
   pub_date: string;
-  
+
   /** Article author name */
   author?: string;
-  
+
   /** Featured image URL */
   image_url?: string;
-  
+
   /** Article tags/keywords */
   tags?: string[];
+}
+
+function toAbsoluteArticleUrl(value?: string | null): string | undefined {
+  const normalized = value?.trim();
+  if (!normalized) {
+    return undefined;
+  }
+
+  const baseUrl = 'https://markhazleton.com';
+  return normalized.startsWith('http') ? normalized : `${baseUrl}${normalized}`;
 }
 
 /**
  * Raw API Article Schema
  * Matches the actual response from https://markhazleton.com/articles.json
  */
-export const RawArticleSchema = z.object({
-  id: z.number(),
-  name: z.string().min(1),
-  description: z.string(),
-  slug: z.string(),
-  seo: z.object({
-    canonical: z.string().optional().nullable(),
-  }).passthrough().optional().nullable(),
-  Section: z.string().optional(),
-  publishedDate: z.string().optional(),
-  author: z.string().optional(),
-  img_src: z.string().optional(),
-  keywords: z.string().optional(),
-}).passthrough();
+export const RawArticleSchema = z
+  .object({
+    id: z.number(),
+    name: z.string().min(1),
+    description: z.string(),
+    slug: z.string(),
+    seo: z
+      .object({
+        canonical: z.string().optional().nullable(),
+      })
+      .passthrough()
+      .optional()
+      .nullable(),
+    Section: z.string().optional(),
+    publishedDate: z.string().optional(),
+    author: z.string().optional(),
+    img_src: z.string().optional(),
+    image_metadata: z
+      .object({
+        thumbnail: z.string().optional().nullable(),
+        webp: z.string().optional().nullable(),
+      })
+      .passthrough()
+      .optional()
+      .nullable(),
+    og: z
+      .object({
+        image: z.string().optional().nullable(),
+      })
+      .passthrough()
+      .optional()
+      .nullable(),
+    twitter: z
+      .object({
+        image: z.string().optional().nullable(),
+      })
+      .passthrough()
+      .optional()
+      .nullable(),
+    keywords: z.string().optional(),
+  })
+  .passthrough();
 
 /**
  * Zod schema for the articles collection response.
@@ -70,13 +108,17 @@ export const RawArticlesResponseSchema = z.array(RawArticleSchema);
  * @returns Normalized article entity used by the UI
  */
 export function mapRawArticle(raw: z.infer<typeof RawArticleSchema>): Article {
-  const baseUrl = 'https://markhazleton.com';
   const canonicalLink = raw.seo?.canonical?.trim();
-  const fallbackLink = raw.slug.startsWith('http') ? raw.slug : `${baseUrl}/${raw.slug}`;
+  const fallbackLink = raw.slug.startsWith('http')
+    ? raw.slug
+    : `https://markhazleton.com/${raw.slug}`;
   const link = canonicalLink || fallbackLink;
-  const imageUrl = raw.img_src
-    ? (raw.img_src.startsWith('http') ? raw.img_src : `${baseUrl}${raw.img_src}`)
-    : undefined;
+  const imageUrl =
+    toAbsoluteArticleUrl(raw.image_metadata?.thumbnail) ??
+    toAbsoluteArticleUrl(raw.image_metadata?.webp) ??
+    toAbsoluteArticleUrl(raw.og?.image) ??
+    toAbsoluteArticleUrl(raw.twitter?.image) ??
+    toAbsoluteArticleUrl(raw.img_src);
 
   return {
     id: String(raw.id),
@@ -106,18 +148,21 @@ export interface ArticlesAPIResponse {
  * Articles API Configuration
  */
 export const ARTICLES_API_CONFIG = {
-  /** Production API endpoint (external CORS-enabled source, falls back to local on failure) */
-  PROD_URL: 'https://markhazleton.com/articles.json',
-  
+  /** Production same-origin data endpoint (uses Vite BASE_URL for GitHub Pages compatibility) */
+  PROD_URL: `${import.meta.env.BASE_URL}data/articles.json`,
+
+  /** Remote source used to refresh the local snapshot during builds */
+  REMOTE_URL: 'https://markhazleton.com/articles.json',
+
   /** Development proxy endpoint (configured in vite.config.ts) */
   DEV_URL: '/api/articles.json',
-  
+
   /** Fallback local file path (uses Vite BASE_URL for GitHub Pages compatibility) */
   FALLBACK_URL: `${import.meta.env.BASE_URL}data/articles.json`,
-  
+
   /** Cache key for localStorage */
   CACHE_KEY: 'articles_v2',
-  
+
   /** Cache TTL in milliseconds (5 min dev, 1 hour prod) */
   CACHE_TTL: {
     DEV: 5 * 60 * 1000,
@@ -169,7 +214,7 @@ export const ARTICLE_CATEGORIES = {
 /**
  * Union of known article categories.
  */
-export type ArticleCategory = typeof ARTICLE_CATEGORIES[keyof typeof ARTICLE_CATEGORIES];
+export type ArticleCategory = (typeof ARTICLE_CATEGORIES)[keyof typeof ARTICLE_CATEGORIES];
 
 /**
  * Pagination Configuration
@@ -195,10 +240,10 @@ export const ARTICLES_PAGINATION_CONFIG = {
 export interface RSSParseOptions {
   /** Whether to extract image from content:encoded HTML */
   extractImageFromContent?: boolean;
-  
+
   /** Whether to extract tags from categories */
   extractTags?: boolean;
-  
+
   /** Transform function for article titles */
   transformTitle?: (title: string) => string;
 }

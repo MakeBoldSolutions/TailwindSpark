@@ -19,35 +19,79 @@ const statusClasses: Record<string, string> = {
  */
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
-    <div className="flex flex-col rounded-panel border border-border bg-[var(--card-bg)] shadow-card transition-shadow hover:shadow-lg">
+    <article className="rounded-panel border-border shadow-card flex flex-col border bg-[var(--card-bg)] transition-shadow hover:shadow-lg">
       {project.image_url && (
         <img
           src={project.image_url}
           alt={project.name}
-          className="h-48 w-full rounded-t-panel object-cover"
+          className="rounded-t-panel h-48 w-full object-cover"
           loading="lazy"
         />
       )}
       <div className="flex flex-1 flex-col p-4">
-        <div className="mb-2 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-text" style={{ fontFamily: 'var(--font-display)' }}>
-            {project.name}
-          </h2>
+        <div className="mb-3 flex items-start gap-3">
+          {!project.image_url && project.icon && (
+            <div
+              className="rounded-panel bg-brand/10 flex h-11 w-11 shrink-0 items-center justify-center text-2xl"
+              aria-hidden="true"
+            >
+              {project.icon}
+            </div>
+          )}
+          <div className="min-w-0 flex-1">
+            <h2
+              className="text-text text-lg font-semibold"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              {project.name}
+            </h2>
+            {project.tagline && <p className="text-text-muted mt-1 text-sm">{project.tagline}</p>}
+          </div>
+        </div>
+
+        <div className="mb-3 flex flex-wrap gap-2">
           <span
             className={`rounded-full px-2 py-0.5 text-xs font-medium ${statusClasses[project.status] ?? 'bg-surface-alt text-text-muted'}`}
           >
             {project.status}
           </span>
+          {project.category && (
+            <span className="bg-brand/10 text-brand rounded-full px-2 py-0.5 text-xs font-medium">
+              {project.category}
+            </span>
+          )}
+          {project.host_tag && (
+            <span className="bg-surface-alt text-text-muted rounded-full px-2 py-0.5 text-xs font-medium">
+              {project.host_tag}
+            </span>
+          )}
         </div>
-        <p className="mb-4 flex-1 text-sm text-text-muted">{project.description}</p>
+        <p className="text-text-muted mb-4 flex-1 text-sm">{project.description}</p>
+        {project.delivery_pattern && (
+          <p className="rounded-panel bg-surface-alt text-text mb-4 px-3 py-2 text-xs font-medium">
+            {project.delivery_pattern}
+          </p>
+        )}
         {project.technologies && project.technologies.length > 0 && (
           <div className="mb-4 flex flex-wrap gap-1">
             {project.technologies.map(tech => (
               <span
                 key={tech}
-                className="rounded-control bg-surface-alt px-2 py-0.5 text-xs text-text-muted"
+                className="rounded-control bg-surface-alt text-text-muted px-2 py-0.5 text-xs"
               >
                 {tech}
+              </span>
+            ))}
+          </div>
+        )}
+        {project.related_initiatives && project.related_initiatives.length > 0 && (
+          <div className="mb-4 flex flex-wrap gap-1">
+            {project.related_initiatives.slice(0, 3).map(initiative => (
+              <span
+                key={initiative}
+                className="rounded-control border-border text-text-muted border px-2 py-0.5 text-xs"
+              >
+                {initiative}
               </span>
             ))}
           </div>
@@ -56,11 +100,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           href={project.project_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center rounded-control bg-brand px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-hover"
+          className="rounded-control bg-brand hover:bg-brand-hover inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white transition-colors"
         >
-          View Project
+          Open Site
         </a>
       </div>
-    </div>
+    </article>
   );
 };

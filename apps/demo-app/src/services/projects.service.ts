@@ -1,5 +1,9 @@
 import type { Project } from '../types/projects-api';
-import { PROJECTS_API_CONFIG, RawProjectsResponseSchema, mapRawProject } from '../types/projects-api';
+import {
+  PROJECTS_API_CONFIG,
+  RawProjectsResponseSchema,
+  mapRawProjectsResponse,
+} from '../types/projects-api';
 import { clearCache, getFromCache, setInCache } from './cache.service';
 import { getPublicJsonFetchOptions } from './fetchOptions';
 
@@ -7,7 +11,7 @@ const { CACHE_KEY, CACHE_TTL, PROD_URL, FALLBACK_URL } = PROJECTS_API_CONFIG;
 
 function parseAndMapProjects(json: unknown): Project[] {
   const raw = RawProjectsResponseSchema.parse(json);
-  return raw.map(mapRawProject);
+  return mapRawProjectsResponse(raw);
 }
 
 async function fetchProjectsFromUrl(url: string): Promise<Project[]> {

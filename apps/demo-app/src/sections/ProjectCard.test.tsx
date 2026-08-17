@@ -11,6 +11,12 @@ const mockProject: Project = {
   project_url: 'https://example.com/project',
   status: 'Active',
   technologies: ['React', 'TypeScript'],
+  category: 'Application Frameworks',
+  tagline: 'Reusable UI Patterns',
+  icon: '*',
+  delivery_pattern: 'Pattern -> Example -> Delivery',
+  host_tag: 'GitHub Pages',
+  related_initiatives: ['dev', 'web'],
 };
 
 describe('ProjectCard', () => {
@@ -29,6 +35,16 @@ describe('ProjectCard', () => {
     expect(screen.getByText('Active')).toBeInTheDocument();
   });
 
+  it('renders ecosystem metadata', () => {
+    render(<ProjectCard project={{ ...mockProject, image_url: '' }} />);
+    expect(screen.getByText('*')).toBeInTheDocument();
+    expect(screen.getByText('Reusable UI Patterns')).toBeInTheDocument();
+    expect(screen.getByText('Application Frameworks')).toBeInTheDocument();
+    expect(screen.getByText('GitHub Pages')).toBeInTheDocument();
+    expect(screen.getByText('Pattern -> Example -> Delivery')).toBeInTheDocument();
+    expect(screen.getByText('dev')).toBeInTheDocument();
+  });
+
   it('renders technology tags', () => {
     render(<ProjectCard project={mockProject} />);
     expect(screen.getByText('React')).toBeInTheDocument();
@@ -42,9 +58,9 @@ describe('ProjectCard', () => {
     expect(img).toHaveAttribute('src', 'https://example.com/image.png');
   });
 
-  it('renders View Project link', () => {
+  it('renders Open Site link', () => {
     render(<ProjectCard project={mockProject} />);
-    const link = screen.getByRole('link', { name: /View Project/i });
+    const link = screen.getByRole('link', { name: /Open Site/i });
     expect(link).toHaveAttribute('href', 'https://example.com/project');
     expect(link).toHaveAttribute('target', '_blank');
     expect(link).toHaveAttribute('rel', 'noopener noreferrer');

@@ -51,6 +51,52 @@ function normalizeOptionalUrl(value, fieldName, index) {
   return normalized;
 }
 
+function normalizeOptionalNumber(value, fieldName, index) {
+  if (value === undefined || value === null) {
+    return undefined;
+  }
+
+  if (typeof value !== 'number' || !Number.isFinite(value)) {
+    throw new Error(`Article at index ${index} has an invalid ${fieldName}`);
+  }
+
+  return value;
+}
+
+function normalizeImageMetadata(value, index) {
+  if (value === undefined || value === null) {
+    return undefined;
+  }
+
+  if (!isRecord(value)) {
+    throw new Error(`Article at index ${index} has an invalid image_metadata object`);
+  }
+
+  const metadata = {};
+  const thumbnail = normalizeOptionalUrl(value.thumbnail, 'image_metadata.thumbnail', index);
+  if (thumbnail !== undefined) {
+    metadata.thumbnail = thumbnail;
+  }
+
+  const webp = normalizeOptionalUrl(value.webp, 'image_metadata.webp', index);
+  if (webp !== undefined) {
+    metadata.webp = webp;
+  }
+
+  for (const fieldName of ['width', 'height', 'thumbnailWidth', 'thumbnailHeight']) {
+    const normalized = normalizeOptionalNumber(
+      value[fieldName],
+      `image_metadata.${fieldName}`,
+      index
+    );
+    if (normalized !== undefined) {
+      metadata[fieldName] = normalized;
+    }
+  }
+
+  return Object.keys(metadata).length > 0 ? metadata : undefined;
+}
+
 function assertValidArticle(article, index) {
   if (!isRecord(article)) {
     throw new Error(`Article at index ${index} must be an object`);
@@ -71,13 +117,24 @@ function assertValidArticle(article, index) {
   if (article.seo !== undefined && article.seo !== null && !isRecord(article.seo)) {
     throw new Error(`Article at index ${index} has an invalid seo object`);
   }
+
+  if (
+    article.image_metadata !== undefined &&
+    article.image_metadata !== null &&
+    !isRecord(article.image_metadata)
+  ) {
+    throw new Error(`Article at index ${index} has an invalid image_metadata object`);
+  }
 }
 
 function normalizeArticle(article, index) {
   assertValidArticle(article, index);
 
   const normalizedArticle = {
-    id: typeof article.id === 'number' ? article.id : normalizeRequiredString(article.id, 'id', index),
+    id:
+      typeof article.id === 'number'
+        ? article.id
+        : normalizeRequiredString(article.id, 'id', index),
     name: normalizeRequiredString(article.name, 'name', index),
     description: String(article.description),
     slug: normalizeRequiredString(article.slug, 'slug', index),
@@ -103,6 +160,11 @@ function normalizeArticle(article, index) {
     normalizedArticle.img_src = imageSource;
   }
 
+  const imageMetadata = normalizeImageMetadata(article.image_metadata, index);
+  if (imageMetadata !== undefined) {
+    normalizedArticle.image_metadata = imageMetadata;
+  }
+
   const keywords = normalizeOptionalString(article.keywords, 'keywords', index);
   if (keywords !== undefined) {
     normalizedArticle.keywords = keywords;
@@ -120,7 +182,9 @@ function normalizeArticle(article, index) {
 function sanitizeArticlesSnapshot(jsonText) {
   const byteLength = Buffer.byteLength(jsonText, 'utf8');
   if (byteLength > maxSnapshotBytes) {
-    throw new Error(`Articles snapshot exceeds max size: ${byteLength} bytes > ${maxSnapshotBytes} bytes`);
+    throw new Error(
+      `Articles snapshot exceeds max size: ${byteLength} bytes > ${maxSnapshotBytes} bytes`
+    );
   }
 
   const parsed = JSON.parse(jsonText);
@@ -155,13 +219,15 @@ async function writeSnapshot(sanitizedContent) {
     return;
   }
 
+  // codeql[js/http-to-file-access]
+  // The remote article feed is schema-normalized and written only to this fixed snapshot path.
   await writeFile(outputPath, sanitizedContent, 'utf8');
   console.log(`[sync-articles-data] Wrote snapshot: ${outputPath}`);
 }
 
 async function writeEmptyFallback() {
   const emptySnapshot = '[\n]\n';
-  
+
   if (await hasExistingSnapshot(outputPath)) {
     const current = await readFile(outputPath, 'utf8');
     if (current === emptySnapshot) {
@@ -200,7 +266,7 @@ async function main() {
   }
 }
 
-main().catch((error) => {
+main().catch(error => {
   console.error('[sync-articles-data] Fatal error:', error);
   process.exit(1);
 });
