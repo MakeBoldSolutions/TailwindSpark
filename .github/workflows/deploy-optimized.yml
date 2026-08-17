@@ -163,5 +163,5 @@ jobs:
         if: ${{ success() && steps.deployment.outcome == 'success' }}
         run: |
           echo "::notice title=Deployment Status::Deployment completed with CDN optimization"
-          echo "::notice title=Website URL::https://markhazleton.github.io/TailwindSpark/"
+          echo "::notice title=Website URL::https://makeboldsolutions.github.io/TailwindSpark/"
           echo "::notice title=Cache Strategy::Static assets cached for 1 year, HTML cached for 1 hour"

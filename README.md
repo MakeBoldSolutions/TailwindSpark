@@ -52,18 +52,8 @@ TailwindSpark/
 ├── packages/
 │   ├── design-tokens/          # Shared design system
 │   └── ui-components/          # Reusable UI components
-├──🏗️ Project Structure
-
+└── .documentation/             # Guides, governance, and history
 ```
-
-TailwindSpark/
-├── apps/demo-app/ # Showcase application
-├── packages/
-│ ├── design-tokens/ # Tailwind CSS 4 @theme definitions
-│ └── ui-components/ # Reusable component library
-└── .documentation/ # Guides, governance, and history
-
-````
 
 ## 📚 Documentation
 
@@ -89,8 +79,8 @@ npm run build        # Production build (all packages)
 npm run sync:data    # Explicitly refresh tracked content snapshots
 npm run version:bump # Explicit release version update
 npm run test         # Vitest with coverage reporting
-npm run lint         # ESLint + custom rules
-````
+npm run lint         # Oxlint + custom rules
+```
 
 For detailed technical specifications, architecture decisions, and development quality metrics, see the [Repository Story](./.documentation/repo-story/repo-story-2026-04-11.md) for details.
 

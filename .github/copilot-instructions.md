@@ -246,7 +246,7 @@ const seoTags = {
   description: 'Comprehensive description for search engines',
   keywords: 'tailwind, react, typescript, demo',
   ogImage: '/og-image.svg',
-  canonicalUrl: 'https://markhazleton.github.io/TailwindSpark/',
+  canonicalUrl: 'https://makeboldsolutions.github.io/TailwindSpark/',
 };
 ```
 
