@@ -133,15 +133,15 @@ interface SearchComponentProps {
 
 /**
  * Full-featured search component with keyboard navigation and filtering.
- * 
+ *
  * Provides instant search across components, animations, demos, and pages
  * with arrow key navigation and Enter to select functionality.
- * 
+ *
  * @param root0 - Component props
  * @param root0.isOpen - Controls visibility of the search modal
  * @param root0.onClose - Callback to close the search modal
  * @returns Search component modal
- * 
+ *
  * @example
  * ```tsx
  * <SearchComponent isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
@@ -192,10 +192,10 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center bg-[color:var(--modal-overlay)] pt-20 backdrop-blur-sm">
-      <div className="mx-4 w-full max-w-2xl rounded-panel border border-border bg-[var(--card-bg)] shadow-modal">
+      <div className="rounded-panel border-border shadow-modal mx-4 w-full max-w-2xl border bg-[var(--card-bg)]">
         {/* Search Header */}
-        <div className="flex items-center gap-3 border-b border-border p-4">
-          <Search className="h-5 w-5 text-muted" />
+        <div className="border-border flex items-center gap-3 border-b p-4">
+          <Search className="text-muted h-5 w-5" />
           <input
             type="text"
             placeholder="Search components, animations, demos..."
@@ -205,32 +205,31 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
               setSelectedIndex(0);
             }}
             onKeyDown={handleKeyDown}
-            className="flex-1 border-none bg-transparent text-text placeholder-muted outline-none"
+            className="text-text placeholder-muted flex-1 border-none bg-transparent outline-none"
             /* eslint-disable-next-line jsx-a11y/no-autofocus */
             autoFocus
           />
           <button
             onClick={onClose}
-            className="rounded-control p-1 transition-colors hover:bg-surface-hover"
+            className="rounded-control hover:bg-surface-hover p-1 transition-colors"
             aria-label="Close search"
           >
-            <X className="h-5 w-5 text-muted" />
+            <X className="text-muted h-5 w-5" />
           </button>
         </div>
 
         {/* Search Results */}
         <div className="max-h-96 overflow-y-auto">
           {query.trim() && filteredResults.length === 0 && (
-            <div className="p-4 text-center text-muted">
-              No results found for "{query}"
-            </div>
+            <div className="text-muted p-4 text-center">No results found for "{query}"</div>
           )}
 
           {filteredResults.map((result, index) => (
             <button
               key={`${result.url}-${index}`}
               onClick={() => handleResultClick(result)}
-              className={`w-full p-4 text-left transition-colors hover:bg-surface-hover ${
+              aria-label={`Open ${result.title}`}
+              className={`hover:bg-surface-hover w-full p-4 text-left transition-colors ${
                 index === selectedIndex ? 'bg-surface-hover' : ''
               }`}
             >
@@ -247,15 +246,14 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
                   }`}
                 />
                 <div className="flex-1">
-                  <div className="font-medium text-text" style={{ fontFamily: 'var(--font-display)' }}>
+                  <div
+                    className="text-text font-medium"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
                     {result.title}
                   </div>
-                  <div className="mt-1 text-sm text-muted">
-                    {result.description}
-                  </div>
-                  <div className="mt-1 text-xs capitalize text-muted">
-                    {result.category}
-                  </div>
+                  <div className="text-muted mt-1 text-sm">{result.description}</div>
+                  <div className="text-muted mt-1 text-xs capitalize">{result.category}</div>
                 </div>
               </div>
             </button>
@@ -264,7 +262,7 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({ isOpen, onClos
 
         {/* Search Tips */}
         {query.trim() && filteredResults.length > 0 && (
-          <div className="border-t border p-4 text-xs text-muted">
+          <div className="text-muted border border-t p-4 text-xs">
             <div className="flex items-center justify-between">
               <span>Use ↑↓ to navigate, Enter to select, Esc to close</span>
               <span>

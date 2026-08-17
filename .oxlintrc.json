@@ -1,0 +1,61 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2026": true,
+    "serviceworker": true
+  },
+  "plugins": ["typescript", "react", "jsx-a11y", "jsdoc", "vitest", "import"],
+  "jsPlugins": [
+    {
+      "name": "no-raw-primary-class",
+      "specifier": "./eslint-rules/no-raw-primary-class.js"
+    }
+  ],
+  "settings": {
+    "react": {
+      "version": "19.2.8"
+    }
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-non-null-assertion": "warn",
+    "eslint/no-console": ["warn", { "allow": ["warn", "error"] }],
+    "eslint/no-var": "error",
+    "eslint/prefer-const": "error",
+    "import/no-unassigned-import": "off",
+    "jsdoc/check-tag-names": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "jsx-a11y/prefer-tag-over-role": "off",
+    "react/react-in-jsx-scope": "off",
+    "typescript/no-floating-promises": "off",
+    "typescript/no-unsafe-type-assertion": "off",
+    "typescript/unbound-method": "off",
+    "vitest/no-conditional-expect": "off",
+    "vitest/expect-expect": "off",
+    "vitest/require-mock-type-parameters": "off",
+    "no-raw-primary-class/no-raw-primary-class": "error"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.ts", "**/*.test.tsx", "**/vitest.config.ts"],
+      "env": {
+        "vitest": true
+      }
+    }
+  ],
+  "ignorePatterns": [
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/.turbo/**",
+    "**/.next/**",
+    "**/build/**",
+    "**/coverage/**",
+    "**/.archive/**"
+  ]
+}

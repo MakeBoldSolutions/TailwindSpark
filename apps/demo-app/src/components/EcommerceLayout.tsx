@@ -31,10 +31,10 @@ interface EcommerceLayoutProps {
 
 /**
  * E-commerce store layout with navigation, cart, and search functionality.
- * 
+ *
  * Provides complete shopping experience with category navigation, cart preview,
  * and product search. Includes mobile-responsive design and cart management.
- * 
+ *
  * @param root0 - Component props
  * @param root0.children - Child elements to render within the e-commerce layout
  * @param root0.cart - Current shopping cart items
@@ -42,11 +42,11 @@ interface EcommerceLayoutProps {
  * @param root0.searchQuery - Current search query string
  * @param root0.setSearchQuery - Function to update the search query
  * @returns E-commerce layout component
- * 
+ *
  * @example
  * ```tsx
- * <EcommerceLayout 
- *   cart={cart} 
+ * <EcommerceLayout
+ *   cart={cart}
  *   setCart={setCart}
  *   searchQuery={query}
  *   setSearchQuery={setQuery}
@@ -121,7 +121,7 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
   }, []);
 
   return (
-    <div className="min-h-screen bg-surface-alt">
+    <div className="bg-surface-alt min-h-screen">
       {/* Navigation */}
       <header className="relative z-40 bg-white shadow-sm">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -142,7 +142,7 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
                   <Link
                     key={category.name}
                     to={category.href}
-                    className="rounded-md px-3 py-2 text-sm font-medium text-text transition-colors hover:bg-surface-alt/80 hover:text-text"
+                    className="text-text hover:bg-surface-alt/80 hover:text-text rounded-md px-3 py-2 text-sm font-medium transition-colors"
                   >
                     {category.name}
                   </Link>
@@ -155,7 +155,7 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
               <div className="relative">
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                   <svg
-                    className="h-5 w-5 text-text-muted"
+                    className="text-text-muted h-5 w-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -172,7 +172,7 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
                   type="text"
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
-                  className="block w-full rounded-md border border-border bg-surface py-2 pl-10 pr-3 leading-5 placeholder-text-muted focus:border-focus-ring focus:placeholder-text-muted/70 focus:outline-none focus:ring-1 focus:ring-focus-ring sm:text-sm"
+                  className="border-border bg-surface placeholder-text-muted focus:border-focus-ring focus:placeholder-text-muted/70 focus:ring-focus-ring block w-full rounded-md border py-2 pr-3 pl-10 leading-5 focus:ring-1 focus:outline-none sm:text-sm"
                   placeholder="Search products..."
                 />
               </div>
@@ -182,7 +182,8 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
             <div className="flex items-center space-x-4">
               {/* Wishlist */}
               <button
-                className="rounded-full p-2 text-text transition-colors hover:bg-surface-alt hover:text-brand"
+                className="text-text hover:bg-surface-alt hover:text-brand rounded-full p-2 transition-colors"
+                aria-label="View wishlist"
                 title="View wishlist"
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -197,7 +198,8 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
 
               {/* Account */}
               <button
-                className="rounded-full p-2 text-text transition-colors hover:bg-surface-alt hover:text-brand"
+                className="text-text hover:bg-surface-alt hover:text-brand rounded-full p-2 transition-colors"
+                aria-label="Open account settings"
                 title="Account settings"
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -213,7 +215,7 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
               {/* Cart */}
               <button
                 onClick={() => setIsCartOpen(true)}
-                className="relative rounded-full p-2 text-text transition-colors hover:bg-surface-alt hover:text-brand"
+                className="text-text hover:bg-surface-alt hover:text-brand relative rounded-full p-2 transition-colors"
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
@@ -224,7 +226,7 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
                   />
                 </svg>
                 {totalItems > 0 && (
-                  <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand text-xs text-white">
+                  <span className="bg-brand absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full text-xs text-white">
                     {totalItems}
                   </span>
                 )}
@@ -233,7 +235,7 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
               {/* Mobile menu button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="rounded-full p-2 text-text transition-colors hover:bg-surface-alt hover:text-brand md:hidden"
+                className="text-text hover:bg-surface-alt hover:text-brand rounded-full p-2 transition-colors md:hidden"
                 title="Toggle mobile menu"
                 aria-label="Toggle mobile menu"
               >
@@ -261,12 +263,12 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
           {/* Mobile menu */}
           {isMobileMenuOpen && (
             <div className="md:hidden">
-              <div className="space-y-1 border-t border-border bg-surface px-2 pb-3 pt-2 sm:px-3">
+              <div className="border-border bg-surface space-y-1 border-t px-2 pt-2 pb-3 sm:px-3">
                 {categories.map(category => (
                   <Link
                     key={category.name}
                     to={category.href}
-                    className="block rounded-md px-3 py-2 text-base font-medium text-text transition-colors hover:bg-surface-alt hover:text-text"
+                    className="text-text hover:bg-surface-alt hover:text-text block rounded-md px-3 py-2 text-base font-medium transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {category.name}
@@ -287,15 +289,15 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
               className="absolute inset-0 bg-black/50 transition-opacity"
               onClick={() => setIsCartOpen(false)}
             />
-            <section className="absolute right-0 top-0 h-full w-full max-w-md transform transition-transform">
+            <section className="absolute top-0 right-0 h-full w-full max-w-md transform transition-transform">
               <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                 <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                   <div className="flex items-start justify-between">
-                    <h2 className="text-lg font-medium text-text">Shopping cart</h2>
+                    <h2 className="text-text text-lg font-medium">Shopping cart</h2>
                     <div className="ml-3 flex h-7 items-center">
                       <button
                         type="button"
-                        className="-m-2 p-2 text-text-muted hover:text-text"
+                        className="text-text-muted hover:text-text -m-2 p-2"
                         onClick={() => setIsCartOpen(false)}
                       >
                         <span className="sr-only">Close panel</span>
@@ -321,7 +323,7 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
                       {cart.length === 0 ? (
                         <div className="py-12 text-center">
                           <svg
-                            className="mx-auto h-12 w-12 text-text-muted"
+                            className="text-text-muted mx-auto h-12 w-12"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -333,21 +335,19 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
                               d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
                             />
                           </svg>
-                          <h3 className="mt-2 text-sm font-medium text-text">
-                            Your cart is empty
-                          </h3>
-                          <p className="mt-1 text-sm text-text-muted">
+                          <h3 className="text-text mt-2 text-sm font-medium">Your cart is empty</h3>
+                          <p className="text-text-muted mt-1 text-sm">
                             Start adding some items to your cart!
                           </p>
                         </div>
                       ) : (
-                        <ul className="-my-6 divide-y divide-border">
+                        <ul className="divide-border -my-6 divide-y">
                           {cart.map(item => (
                             <li
                               key={`${item.id}-${item.selectedColor}-${item.selectedSize}`}
                               className="flex py-6"
                             >
-                              <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-border">
+                              <div className="border-border h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border">
                                 <img
                                   src={item.image}
                                   alt={item.name}
@@ -357,13 +357,13 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
 
                               <div className="ml-4 flex flex-1 flex-col">
                                 <div>
-                                  <div className="flex justify-between text-base font-medium text-text">
+                                  <div className="text-text flex justify-between text-base font-medium">
                                     <h3>{item.name}</h3>
                                     <p className="ml-4">
                                       ${(item.price * item.quantity).toFixed(2)}
                                     </p>
                                   </div>
-                                  <p className="mt-1 text-sm text-text-muted">
+                                  <p className="text-text-muted mt-1 text-sm">
                                     {item.selectedColor} • {item.selectedSize}
                                   </p>
                                 </div>
@@ -378,7 +378,7 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
                                           item.quantity - 1
                                         )
                                       }
-                                      className="flex h-8 w-8 items-center justify-center rounded-full border border-border hover:bg-surface-alt"
+                                      className="border-border hover:bg-surface-alt flex h-8 w-8 items-center justify-center rounded-full border"
                                     >
                                       -
                                     </button>
@@ -392,7 +392,7 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
                                           item.quantity + 1
                                         )
                                       }
-                                      className="flex h-8 w-8 items-center justify-center rounded-full border border-border hover:bg-surface-alt"
+                                      className="border-border hover:bg-surface-alt flex h-8 w-8 items-center justify-center rounded-full border"
                                     >
                                       +
                                     </button>
@@ -409,7 +409,7 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
                                           0
                                         )
                                       }
-                                      className="font-medium text-brand hover:text-brand-hover"
+                                      className="text-brand hover:text-brand-hover font-medium"
                                     >
                                       Remove
                                     </button>
@@ -425,25 +425,25 @@ const EcommerceLayout: React.FC<EcommerceLayoutProps> = ({
                 </div>
 
                 {cart.length > 0 && (
-                  <div className="border-t border-border px-4 py-6 sm:px-6">
-                    <div className="flex justify-between text-base font-medium text-text">
+                  <div className="border-border border-t px-4 py-6 sm:px-6">
+                    <div className="text-text flex justify-between text-base font-medium">
                       <p>Subtotal</p>
                       <p>${totalPrice.toFixed(2)}</p>
                     </div>
-                    <p className="mt-0.5 text-sm text-text-muted">
+                    <p className="text-text-muted mt-0.5 text-sm">
                       Shipping and taxes calculated at checkout.
                     </p>
                     <div className="mt-6">
-                      <button className="flex w-full items-center justify-center rounded-md border border-transparent bg-brand px-6 py-3 text-base font-medium text-white shadow-sm transition-colors hover:bg-brand-hover">
+                      <button className="bg-brand hover:bg-brand-hover flex w-full items-center justify-center rounded-md border border-transparent px-6 py-3 text-base font-medium text-white shadow-sm transition-colors">
                         Checkout
                       </button>
                     </div>
-                    <div className="mt-6 flex justify-center text-center text-sm text-text-muted">
+                    <div className="text-text-muted mt-6 flex justify-center text-center text-sm">
                       <p>
                         or{' '}
                         <button
                           type="button"
-                          className="font-medium text-brand hover:text-brand-hover"
+                          className="text-brand hover:text-brand-hover font-medium"
                           onClick={() => setIsCartOpen(false)}
                         >
                           Continue Shopping

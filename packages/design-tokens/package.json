@@ -7,7 +7,7 @@
     "email": "mark@markhazleton.com",
     "url": "https://markhazleton.com"
   },
-  "homepage": "https://markhazleton.github.io/TailwindSpark/",
+  "homepage": "https://makeboldsolutions.github.io/TailwindSpark/",
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
@@ -22,7 +22,7 @@
     "type-check": "echo 'Design tokens type-checked'"
   },
   "devDependencies": {
-    "tailwindcss": "^4.3.2",
-    "typescript": "^6.0.3"
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
   }
 }

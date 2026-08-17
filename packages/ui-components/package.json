@@ -8,7 +8,7 @@
     "email": "mark@markhazleton.com",
     "url": "https://markhazleton.com"
   },
-  "homepage": "https://markhazleton.github.io/TailwindSpark/",
+  "homepage": "https://makeboldsolutions.github.io/TailwindSpark/",
   "main": "dist/index.es.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
@@ -20,7 +20,7 @@
     "dev": "vite build --watch",
     "clean": "rimraf dist",
     "type-check": "tsc --noEmit",
-    "lint": "eslint src --max-warnings 0",
+    "lint": "oxlint -c ../../.oxlintrc.json src --type-aware",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage"
@@ -32,30 +32,26 @@
   "dependencies": {
     "@tailwindspark/design-tokens": "*",
     "clsx": "^2.1.1",
-    "lucide-react": "^1.23.0"
+    "lucide-react": "^1.31.0"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^14.6.1",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.3",
+    "@testing-library/user-event": "^14.6.4",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.0.5",
     "@vitest/ui": "^4.1.10",
-    "autoprefixer": "^10.5.2",
-    "eslint": "^10.6.0",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.3",
-    "happy-dom": "^20.10.6",
-    "jsdom": "^29.1.1",
-    "postcss": "^8.5.16",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "tailwindcss": "^4.3.2",
-    "typescript": "^6.0.3",
-    "typescript-eslint": "^8.63.0",
-    "vite": "^8.1.4",
+    "autoprefixer": "^10.5.4",
+    "happy-dom": "^20.11.2",
+    "jsdom": "^30.0.1",
+    "postcss": "^8.5.26",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.1",
     "vitest": "^4.1.10"
   }
 }
