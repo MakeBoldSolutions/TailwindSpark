@@ -11,7 +11,7 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const targetDirArg = process.argv[2];
 const OUTPUT_DIR = targetDirArg ? join(process.cwd(), targetDirArg) : join(__dirname, '../dist');
-const BASE_URL = 'https://markhazleton.github.io/TailwindSpark';
+const BASE_URL = 'https://makeboldsolutions.github.io/TailwindSpark';
 const today = new Date().toISOString().split('T')[0];
 
 // Central route manifest for published routes.

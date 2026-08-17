@@ -5,14 +5,22 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const outputPath = path.resolve(__dirname, '../apps/demo-app/public/data/repositories.json');
 const sourceUrl =
-  'https://raw.githubusercontent.com/markhazleton/github-stats-spark/refs/heads/main/data/users/markhazleton/repositories.json';
+  'https://raw.githubusercontent.com/MakeBoldSolutions/github-stats-spark/refs/heads/main/data/users/makeboldsolutions/repositories.json';
 const maxSnapshotBytes = 2 * 1024 * 1024;
 
 // --- Primitive normalizers — each creates a new value, breaking the CodeQL taint chain ---
-function ns(v) { return typeof v === 'string' ? String(v) : ''; }
-function nns(v) { return typeof v === 'string' ? String(v) : null; }
-function nn(v) { return typeof v === 'number' && Number.isFinite(v) ? +v : 0; }
-function nb(v) { return !!v; }
+function ns(v) {
+  return typeof v === 'string' ? String(v) : '';
+}
+function nns(v) {
+  return typeof v === 'string' ? String(v) : null;
+}
+function nn(v) {
+  return typeof v === 'number' && Number.isFinite(v) ? +v : 0;
+}
+function nb(v) {
+  return !!v;
+}
 
 function normalizeCommitSize(v) {
   if (typeof v !== 'object' || v === null) {
@@ -48,8 +56,10 @@ function normalizeCommitHistory(v) {
 
 function normalizeCommitMetrics(v) {
   if (typeof v !== 'object' || v === null) return {};
-  const dist = typeof v.commit_size_distribution === 'object' && v.commit_size_distribution !== null
-    ? v.commit_size_distribution : {};
+  const dist =
+    typeof v.commit_size_distribution === 'object' && v.commit_size_distribution !== null
+      ? v.commit_size_distribution
+      : {};
   return {
     avg_size: nn(v.avg_size),
     total_commits: nn(v.total_commits),
@@ -87,7 +97,9 @@ function normalizeTechStack(v) {
       Object.entries(langs).map(([k, val]) => [String(k), typeof val === 'number' ? +val : 0])
     ),
     frameworks: Array.isArray(v.frameworks) ? v.frameworks.map(f => String(f)) : [],
-    dependencies: Array.isArray(v.dependencies) ? v.dependencies.map(d => normalizeDependency(d)) : [],
+    dependencies: Array.isArray(v.dependencies)
+      ? v.dependencies.map(d => normalizeDependency(d))
+      : [],
     total_dependencies: nn(v.total_dependencies),
     outdated_count: nn(v.outdated_count),
     currency_score: nn(v.currency_score),
@@ -114,13 +126,21 @@ function normalizeAlertCounts(v) {
 function normalizeAttentionMetrics(v) {
   if (typeof v !== 'object' || v === null) return {};
   const comps = typeof v.components === 'object' && v.components !== null ? v.components : {};
-  const pr = typeof comps.pull_requests === 'object' && comps.pull_requests !== null ? comps.pull_requests : {};
+  const pr =
+    typeof comps.pull_requests === 'object' && comps.pull_requests !== null
+      ? comps.pull_requests
+      : {};
   const sec = typeof comps.security === 'object' && comps.security !== null ? comps.security : {};
-  const stale = typeof comps.staleness === 'object' && comps.staleness !== null ? comps.staleness : {};
-  const deps = typeof comps.dependencies === 'object' && comps.dependencies !== null ? comps.dependencies : {};
-  const secFeatureStatus = typeof sec.feature_status === 'object' && sec.feature_status !== null
-    ? Object.fromEntries(Object.entries(sec.feature_status).map(([k, val]) => [String(k), String(val)]))
-    : undefined;
+  const stale =
+    typeof comps.staleness === 'object' && comps.staleness !== null ? comps.staleness : {};
+  const deps =
+    typeof comps.dependencies === 'object' && comps.dependencies !== null ? comps.dependencies : {};
+  const secFeatureStatus =
+    typeof sec.feature_status === 'object' && sec.feature_status !== null
+      ? Object.fromEntries(
+          Object.entries(sec.feature_status).map(([k, val]) => [String(k), String(val)])
+        )
+      : undefined;
   return {
     score: nn(v.score),
     tier: ns(v.tier),
@@ -180,9 +200,12 @@ function normalizePullRequestSummary(v) {
 
 function normalizeSecuritySummary(v) {
   if (typeof v !== 'object' || v === null) return {};
-  const featureStatus = typeof v.feature_status === 'object' && v.feature_status !== null
-    ? Object.fromEntries(Object.entries(v.feature_status).map(([k, val]) => [String(k), String(val)]))
-    : undefined;
+  const featureStatus =
+    typeof v.feature_status === 'object' && v.feature_status !== null
+      ? Object.fromEntries(
+          Object.entries(v.feature_status).map(([k, val]) => [String(k), String(val)])
+        )
+      : undefined;
   return {
     availability: ns(v.availability),
     reason: ns(v.reason),
@@ -217,7 +240,14 @@ function normalizeScreenshot(v) {
 
 function normalizeSummary(v) {
   if (typeof v !== 'object' || v === null) {
-    return { text: '', ai_generated: false, generation_method: '', generated_at: '', model_used: null, confidence_score: 0 };
+    return {
+      text: '',
+      ai_generated: false,
+      generation_method: '',
+      generated_at: '',
+      model_used: null,
+      confidence_score: 0,
+    };
   }
   const result = {
     text: ns(v.text),
@@ -254,7 +284,8 @@ function normalizeRepository(repo, index) {
     throw new Error(`Repository at index ${index} has an invalid rank`);
   }
 
-  const rawLangs = typeof repo.languages === 'object' && repo.languages !== null ? repo.languages : {};
+  const rawLangs =
+    typeof repo.languages === 'object' && repo.languages !== null ? repo.languages : {};
   const screenshot = normalizeScreenshot(repo.screenshot);
   const normalized = {
     name: String(repo.name).trim(),
@@ -398,7 +429,9 @@ async function main() {
     await writeSnapshot(sanitized);
   } catch (error) {
     if (await hasExistingSnapshot(outputPath)) {
-      console.warn(`[sync-repos-data] Using existing snapshot after refresh failure: ${String(error)}`);
+      console.warn(
+        `[sync-repos-data] Using existing snapshot after refresh failure: ${String(error)}`
+      );
       return;
     }
 

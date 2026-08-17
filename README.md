@@ -1,6 +1,6 @@
 # TailwindSpark ✨
 
-[![Version](https://img.shields.io/badge/version-1.0.18-blue.svg)](https://github.com/markhazleton/TailwindSpark)
+[![Version](https://img.shields.io/badge/version-1.0.18-blue.svg)](https://github.com/MakeBoldSolutions/TailwindSpark)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![React](https://img.shields.io/badge/React-19.1.1-61dafb.svg)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
@@ -10,7 +10,7 @@ A comprehensive Tailwind CSS showcase and learning resource built as a productio
 
 **Live Site**: [Tailwind.makeboldspark.com](https://Tailwind.makeboldspark.com) • **[Full Documentation](./.documentation/guides/)** • **[Repository Story](./.documentation/repo-story/repo-story-2026-04-11.md)**
 
-![TailwindSpark Demo](https://raw.githubusercontent.com/markhazleton/TailwindSpark/main/apps/demo-app/public/TailwindSpark.png)
+![TailwindSpark Demo](https://raw.githubusercontent.com/MakeBoldSolutions/TailwindSpark/main/apps/demo-app/public/TailwindSpark.png)
 
 ## About
 
@@ -36,7 +36,7 @@ TailwindSpark demonstrates modern React patterns with Tailwind CSS 4's `@theme` 
 ## 🚀 Quick Start
 
 ```bash
-git clone https://github.com/markhazleton/TailwindSpark.git
+git clone https://github.com/MakeBoldSolutions/TailwindSpark.git
 cd TailwindSpark
 npm install
 npm run dev
@@ -52,17 +52,7 @@ TailwindSpark/
 ├── packages/
 │   ├── design-tokens/          # Shared design system
 │   └── ui-components/          # Reusable UI components
-├──🏗️ Project Structure
-
-```
-
-TailwindSpark/
-├── apps/demo-app/              # Showcase application
-├── packages/
-│   ├── design-tokens/          # Tailwind CSS 4 @theme definitions
-│   └── ui-components/          # Reusable component library
 └── .documentation/             # Guides, governance, and history
-
 ```
 
 ## 📚 Documentation
@@ -89,7 +79,7 @@ npm run build        # Production build (all packages)
 npm run sync:data    # Explicitly refresh tracked content snapshots
 npm run version:bump # Explicit release version update
 npm run test         # Vitest with coverage reporting
-npm run lint         # ESLint + custom rules
+npm run lint         # Oxlint + custom rules
 ```
 
 For detailed technical specifications, architecture decisions, and development quality metrics, see the [Repository Story](./.documentation/repo-story/repo-story-2026-04-11.md) for details.
@@ -104,7 +94,7 @@ Mark Hazleton
 
 ---
 
-**[View Live Site](https://Tailwind.makeboldspark.com)** • **[Documentation](./.documentation/guides/)** • **[Report Bug](https://github.com/markhazleton/TailwindSpark/issues)**
+**[View Live Site](https://Tailwind.makeboldspark.com)** • **[Documentation](./.documentation/guides/)** • **[Report Bug](https://github.com/MakeBoldSolutions/TailwindSpark/issues)**
 
 Built with ❤️ using React, TypeScript, and Tailwind CSS
 Contributions welcome! Review the [Constitution](./.documentation/memory/constitution.md) for coding standards.

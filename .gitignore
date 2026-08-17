@@ -37,6 +37,13 @@ yarn-error.log*
 logs
 *.log
 
+# Test command output artifacts
+test-output.txt
+apps/demo-app/test-results.json
+apps/demo-app/test-results-final.txt
+apps/demo-app/final-test.txt
+apps/demo-app/coverage-output.txt
+
 # Runtime data
 pids
 *.pid

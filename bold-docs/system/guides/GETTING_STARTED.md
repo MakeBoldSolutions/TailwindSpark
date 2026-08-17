@@ -13,7 +13,7 @@
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/markhazleton/TailwindSpark.git
+   git clone https://github.com/MakeBoldSolutions/TailwindSpark.git
    cd TailwindSpark
    ```
 

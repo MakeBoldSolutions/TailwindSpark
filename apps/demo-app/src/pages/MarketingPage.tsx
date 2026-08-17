@@ -4,12 +4,12 @@ import { portfolioItems, services, testimonials } from '../data/marketing-data';
 
 /**
  * Marketing landing page with hero, services, portfolio, and testimonials.
- * 
+ *
  * Agency-style marketing page featuring parallax scrolling, animated sections,
  * service highlights, portfolio showcase, and rotating testimonials.
- * 
+ *
  * @returns Marketing page component
- * 
+ *
  * @example
  * ```tsx
  * <MarketingPage />
@@ -91,15 +91,15 @@ export const MarketingPage: React.FC = () => {
       {/* Hero Section */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
         {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-data-viz-3 via-brand to-brand-hover">
+        <div className="from-data-viz-3 via-brand to-brand-hover absolute inset-0 bg-gradient-to-br">
           <div className="bg-pattern-dots parallax-element absolute inset-0 transform opacity-30 transition-transform duration-1000 ease-out" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
           <div className="translate-y-10 animate-[fadeInUp_1s_ease-out_0.2s_both] opacity-0">
-            <h1 className="mb-6 text-5xl font-bold leading-tight text-white md:text-7xl">
+            <h1 className="mb-6 text-5xl leading-tight font-bold text-white md:text-7xl">
               Ignite Your Brand's
-              <span className="block bg-gradient-to-r from-data-viz-7 to-data-viz-5 bg-clip-text text-transparent">
+              <span className="from-data-viz-7 to-data-viz-5 block bg-gradient-to-r bg-clip-text text-transparent">
                 Digital Spark
               </span>
             </h1>
@@ -113,7 +113,7 @@ export const MarketingPage: React.FC = () => {
           </div>
 
           <div className="flex translate-y-10 animate-[fadeInUp_1s_ease-out_0.6s_both] flex-col justify-center gap-4 opacity-0 sm:flex-row">
-            <button className="transform rounded-full border border-border bg-surface px-8 py-4 font-semibold text-text shadow-card transition-all duration-300 hover:scale-105 hover:bg-surface-alt hover:shadow-lg">
+            <button className="border-border bg-surface text-text shadow-card hover:bg-surface-alt transform rounded-full border px-8 py-4 font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg">
               Start Your Project
             </button>
             <button className="rounded-full border border-white/40 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-white/10">
@@ -134,8 +134,8 @@ export const MarketingPage: React.FC = () => {
       <section className="bg-surface-alt py-20" id="services">
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-4xl font-bold text-text md:text-5xl">Our Services</h2>
-            <p className="mx-auto max-w-3xl text-xl text-text-muted">
+            <h2 className="text-text mb-4 text-4xl font-bold md:text-5xl">Our Services</h2>
+            <p className="text-text-muted mx-auto max-w-3xl text-xl">
               We offer comprehensive digital solutions to elevate your brand and drive business
               growth
             </p>
@@ -145,18 +145,18 @@ export const MarketingPage: React.FC = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group transform rounded-2xl bg-surface p-8 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                className="group bg-surface transform rounded-2xl p-8 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
               >
                 <div className="mb-6 text-6xl transition-transform duration-300 group-hover:scale-110">
                   {service.icon}
                 </div>
-                <h3 className="mb-4 text-2xl font-bold text-text">{service.title}</h3>
-                <p className="mb-6 leading-relaxed text-text-muted">{service.description}</p>
+                <h3 className="text-text mb-4 text-2xl font-bold">{service.title}</h3>
+                <p className="text-text-muted mb-6 leading-relaxed">{service.description}</p>
                 <ul className="space-y-2">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-text">
+                    <li key={idx} className="text-text flex items-center">
                       <svg
-                        className="mr-3 h-5 w-5 text-success"
+                        className="text-success mr-3 h-5 w-5"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -180,8 +180,8 @@ export const MarketingPage: React.FC = () => {
       <section className="bg-surface py-20" id="portfolio">
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-4xl font-bold text-text md:text-5xl">Our Portfolio</h2>
-            <p className="mx-auto max-w-3xl text-xl text-text-muted">
+            <h2 className="text-text mb-4 text-4xl font-bold md:text-5xl">Our Portfolio</h2>
+            <p className="text-text-muted mx-auto max-w-3xl text-xl">
               Discover the impact of our work through these selected case studies
             </p>
           </div>
@@ -200,7 +200,7 @@ export const MarketingPage: React.FC = () => {
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/75">
                   <div className="translate-y-4 transform p-6 text-center text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                    <span className="mb-2 inline-block rounded-full bg-brand px-3 py-1 text-sm font-medium text-[var(--button-primary-fg)]">
+                    <span className="bg-brand mb-2 inline-block rounded-full px-3 py-1 text-sm font-medium text-[var(--button-primary-fg)]">
                       {item.category}
                     </span>
                     <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
@@ -217,21 +217,19 @@ export const MarketingPage: React.FC = () => {
       <section className="bg-surface-alt py-20" id="testimonials">
         <div className="mx-auto max-w-4xl px-4">
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-4xl font-bold text-text md:text-5xl">
-              What Our Clients Say
-            </h2>
-            <p className="text-xl text-text-muted">
+            <h2 className="text-text mb-4 text-4xl font-bold md:text-5xl">What Our Clients Say</h2>
+            <p className="text-text-muted text-xl">
               Don't just take our word for it - hear from our satisfied clients
             </p>
           </div>
 
           <div className="relative">
-            <div className="rounded-2xl bg-surface p-8 shadow-2xl md:p-12">
+            <div className="bg-surface rounded-2xl p-8 shadow-2xl md:p-12">
               <div className="mb-6 flex items-center">
                 {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
                   <svg
                     key={i}
-                    className="mr-1 h-5 w-5 text-warning"
+                    className="text-warning mr-1 h-5 w-5"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -240,7 +238,7 @@ export const MarketingPage: React.FC = () => {
                 ))}
               </div>
 
-              <blockquote className="mb-8 text-xl italic leading-relaxed text-text-muted md:text-2xl">
+              <blockquote className="text-text-muted mb-8 text-xl leading-relaxed italic md:text-2xl">
                 "{testimonials[activeTestimonial].content}"
               </blockquote>
 
@@ -251,9 +249,7 @@ export const MarketingPage: React.FC = () => {
                   className="mr-4 h-16 w-16 rounded-full object-cover"
                 />
                 <div>
-                  <h4 className="font-bold text-text">
-                    {testimonials[activeTestimonial].name}
-                  </h4>
+                  <h4 className="text-text font-bold">{testimonials[activeTestimonial].name}</h4>
                   <p className="text-text-muted">{testimonials[activeTestimonial].role}</p>
                 </div>
               </div>
@@ -265,6 +261,7 @@ export const MarketingPage: React.FC = () => {
                 <button
                   key={index}
                   onClick={() => setActiveTestimonial(index)}
+                  aria-label={`Show testimonial ${index + 1}`}
                   className={`h-3 w-3 rounded-full transition-colors duration-300 ${
                     index === activeTestimonial ? 'bg-brand' : 'bg-border-strong'
                   }`}
@@ -276,10 +273,7 @@ export const MarketingPage: React.FC = () => {
       </section>
 
       {/* Contact Section */}
-      <section
-        className="bg-gradient-to-br from-brand to-data-viz-3 py-20"
-        id="contact"
-      >
+      <section className="from-brand to-data-viz-3 bg-gradient-to-br py-20" id="contact">
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-16 text-center">
             <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">
@@ -292,12 +286,12 @@ export const MarketingPage: React.FC = () => {
 
           <div className="grid gap-12 lg:grid-cols-2">
             {/* Contact Form */}
-            <div className="rounded-2xl bg-surface p-8 shadow-2xl">
-              <h3 className="mb-6 text-2xl font-bold text-text">Send us a message</h3>
+            <div className="bg-surface rounded-2xl p-8 shadow-2xl">
+              <h3 className="text-text mb-6 text-2xl font-bold">Send us a message</h3>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="mb-2 block text-sm font-medium text-text">
+                  <label htmlFor="name" className="text-text mb-2 block text-sm font-medium">
                     Full Name *
                   </label>
                   <input
@@ -309,17 +303,15 @@ export const MarketingPage: React.FC = () => {
                     className={`w-full rounded-lg border-2 px-4 py-3 transition-colors duration-300 ${
                       formErrors.name
                         ? 'border-error focus:border-error focus:ring-error'
-                        : 'border focus:border-brand focus:ring-brand'
+                        : 'focus:border-brand focus:ring-brand border'
                     }`}
                     placeholder="Your full name"
                   />
-                  {formErrors.name && (
-                    <p className="mt-1 text-sm text-error">{formErrors.name}</p>
-                  )}
+                  {formErrors.name && <p className="text-error mt-1 text-sm">{formErrors.name}</p>}
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="mb-2 block text-sm font-medium text-text">
+                  <label htmlFor="email" className="text-text mb-2 block text-sm font-medium">
                     Email Address *
                   </label>
                   <input
@@ -331,17 +323,17 @@ export const MarketingPage: React.FC = () => {
                     className={`w-full rounded-lg border-2 px-4 py-3 transition-colors duration-300 ${
                       formErrors.email
                         ? 'border-error focus:border-error focus:ring-error'
-                        : 'border focus:border-brand focus:ring-brand'
+                        : 'focus:border-brand focus:ring-brand border'
                     }`}
                     placeholder="your@email.com"
                   />
                   {formErrors.email && (
-                    <p className="mt-1 text-sm text-error">{formErrors.email}</p>
+                    <p className="text-error mt-1 text-sm">{formErrors.email}</p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="mb-2 block text-sm font-medium text-text">
+                  <label htmlFor="company" className="text-text mb-2 block text-sm font-medium">
                     Company
                   </label>
                   <input
@@ -350,13 +342,13 @@ export const MarketingPage: React.FC = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full rounded-lg border-2 border px-4 py-3 transition-colors duration-300 focus:border-brand focus:ring-brand"
+                    className="focus:border-brand focus:ring-brand w-full rounded-lg border border-2 px-4 py-3 transition-colors duration-300"
                     placeholder="Your company name"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="mb-2 block text-sm font-medium text-text">
+                  <label htmlFor="message" className="text-text mb-2 block text-sm font-medium">
                     Message *
                   </label>
                   <textarea
@@ -368,12 +360,12 @@ export const MarketingPage: React.FC = () => {
                     className={`w-full resize-none rounded-lg border-2 px-4 py-3 transition-colors duration-300 ${
                       formErrors.message
                         ? 'border-error focus:border-error focus:ring-error'
-                        : 'border focus:border-brand focus:ring-brand'
+                        : 'focus:border-brand focus:ring-brand border'
                     }`}
                     placeholder="Tell us about your project..."
                   />
                   {formErrors.message && (
-                    <p className="mt-1 text-sm text-error">{formErrors.message}</p>
+                    <p className="text-error mt-1 text-sm">{formErrors.message}</p>
                   )}
                 </div>
 
@@ -382,15 +374,15 @@ export const MarketingPage: React.FC = () => {
                   disabled={formStatus === 'submitting'}
                   className={`w-full rounded-lg px-6 py-4 font-semibold transition-all duration-300 ${
                     formStatus === 'success'
-                      ? 'bg-success text-white hover:bg-success/90'
+                      ? 'bg-success hover:bg-success/90 text-white'
                       : formStatus === 'submitting'
-                        ? 'cursor-not-allowed bg-muted text-white'
-                        : 'transform bg-brand text-white shadow-lg hover:scale-105 hover:bg-brand-hover hover:shadow-xl'
+                        ? 'bg-muted cursor-not-allowed text-white'
+                        : 'bg-brand hover:bg-brand-hover transform text-white shadow-lg hover:scale-105 hover:shadow-xl'
                   }`}
                 >
                   {formStatus === 'submitting' && (
                     <svg
-                      className="-ml-1 mr-3 inline h-5 w-5 animate-spin text-white"
+                      className="mr-3 -ml-1 inline h-5 w-5 animate-spin text-white"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"

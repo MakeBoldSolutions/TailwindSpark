@@ -1,10 +1,10 @@
 # Coding Standards
 
 > **TL;DR for the Product Owner**
-> *What*: The full detail behind each backbone principle — sub-rules, evidence in the codebase, and the reasoning.
-> *Why*: `backbone.md` states the rule tersely; this is where the "why" and the specifics live.
-> *Status*: Migrated from DevSpark's constitution.md, current as of migration.
-> *Decision needed*: none.
+> _What_: The full detail behind each backbone principle — sub-rules, evidence in the codebase, and the reasoning.
+> _Why_: `backbone.md` states the rule tersely; this is where the "why" and the specifics live.
+> _Status_: Migrated from DevSpark's constitution.md, current as of migration.
+> _Decision needed_: none.
 
 Each section corresponds to the same-numbered principle in `bold-docs/backbone.md`. Original DevSpark severity levels (CRITICAL/HIGH/MEDIUM/RECOMMENDED) are preserved here for reference — Bold itself doesn't use this scale, see backbone.md's "Deliberately not carried forward."
 
@@ -14,7 +14,7 @@ Each section corresponds to the same-numbered principle in `bold-docs/backbone.m
 - All React components must use TypeScript interfaces for props (CRITICAL)
 - Components must use the `React.FC` pattern for functional components (CRITICAL)
 - Explicit return types must be provided for all exported functions (HIGH)
-- `@typescript-eslint/no-explicit-any` violations are warnings; justify usage in comments (MEDIUM)
+- TypeScript-aware lint warnings such as `no-explicit-any` must be justified in comments (MEDIUM)
 
 **Evidence**: `apps/demo-app/tsconfig.app.json` has strict mode enabled; all components follow the interface pattern (e.g. `ButtonProps`, `CardProps`).
 
@@ -36,25 +36,25 @@ Each section corresponds to the same-numbered principle in `bold-docs/backbone.m
 
 - All components must use semantic design tokens from `packages/design-tokens` (CRITICAL)
 - Raw Tailwind color classes (e.g. `bg-blue-600`, `text-gray-900`) are forbidden (CRITICAL)
-- Custom ESLint rule `no-raw-primary-class` must pass; violations are blocking errors (CRITICAL)
+- Custom lint rule `no-raw-primary-class` must pass; violations are blocking errors (CRITICAL)
 - Dark mode must be implemented using the `.dark` class strategy with CSS variables (CRITICAL)
 - All colors must use semantic names: `brand`, `surface`, `text`, `success`, `warning`, `error` (HIGH)
 - Tailwind CSS 4.1's `@theme` directive must be used for token definitions (HIGH)
 
-**Evidence**: `packages/design-tokens/theme.css` contains centralized `@theme` definitions; `eslint-rules/no-raw-primary-class.js` enforces semantic usage.
+**Evidence**: `packages/design-tokens/theme.css` contains centralized `@theme` definitions; `.oxlintrc.json` loads `eslint-rules/no-raw-primary-class.js` as an Oxlint JS plugin to enforce semantic usage.
 
 **Rationale**: Semantic tokens enable consistent theming, dark mode support, and demonstrate modern design system practices crucial for this educational resource.
 
 ## 4. Accessibility Standards
 
 - All components must meet WCAG AA standards (CRITICAL)
-- ESLint `jsx-a11y` plugin rules are blocking errors (CRITICAL)
+- Oxlint jsx-a11y-compatible rules are blocking errors, with documented false-positive exclusions in `.oxlintrc.json` (CRITICAL)
 - Interactive elements must have appropriate ARIA attributes (CRITICAL)
 - Keyboard navigation must be supported for all interactive components (HIGH)
 - Color contrast ratios must meet WCAG AA minimums (4.5:1 text, 3:1 UI) (HIGH)
 - Semantic HTML elements must be used where applicable (HIGH)
 
-**Evidence**: `eslint.config.js` configures `jsx-a11y` with error-level rules; extensive ARIA usage in `Modal.tsx` and `DashboardLayout.tsx`.
+**Evidence**: `.oxlintrc.json` enables the `jsx-a11y` plugin; extensive ARIA usage in `Modal.tsx` and `DashboardLayout.tsx`.
 
 **Rationale**: Accessibility is non-negotiable — TailwindSpark serves as an educational example and must demonstrate inclusive design practices.
 
@@ -74,15 +74,15 @@ Each section corresponds to the same-numbered principle in `bold-docs/backbone.m
 
 ## 6. Code Quality & Formatting
 
-- All code must pass ESLint (including custom rules) and be Prettier-formatted per project config (CRITICAL)
-- ESLint violations are blocking errors in CI/CD (CRITICAL)
+- All code must pass Oxlint (including custom rules) and be Prettier-formatted per project config (CRITICAL)
+- Oxlint errors are blocking errors in CI/CD (CRITICAL)
 - Prettier configuration must not be overridden per-file (HIGH)
 - Pre-commit hooks should run linting and formatting (RECOMMENDED)
 - `console.log` is discouraged in favor of `console.warn`/`console.error` (MEDIUM)
 - Dead code is deleted, never commented out; entire unused files are deleted (CRITICAL/HIGH)
 - Version control is the archive for removed code — don't preserve dead code "for reference" (HIGH)
 
-**Evidence**: `.prettierrc` (single quotes, 100 char width, Tailwind plugin); `eslint.config.js`.
+**Evidence**: `.prettierrc` (single quotes, 100 char width, Tailwind plugin); `.oxlintrc.json`.
 
 **Rationale**: Consistent formatting and linting reduce cognitive load and eliminate style debates. Commented-out code creates confusion about intent and degrades readability — git history already preserves every prior implementation.
 
@@ -129,6 +129,7 @@ Each section corresponds to the same-numbered principle in `bold-docs/backbone.m
 ## 10. Component Organization
 
 Components are organized into three categories:
+
 - `components/` — reusable UI components used across multiple pages
 - `pages/` — route-specific page components
 - `sections/` — feature-specific sections within pages

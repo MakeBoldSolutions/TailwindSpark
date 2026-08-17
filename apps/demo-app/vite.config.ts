@@ -1,34 +1,35 @@
 import react from '@vitejs/plugin-react';
-import { resolve } from 'path';
+import { fileURLToPath } from 'node:url';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
+import type { PluginOption } from 'vite';
 
 // https://vite.dev/config/
 export default defineConfig(({ command, mode }) => {
   // Use explicit base URL for GitHub Pages deployment
   // Falls back to VITE_BASE_URL env var, then defaults to '/' for local dev
   const basePath = command === 'build' ? (process.env.VITE_BASE_URL ?? '/TailwindSpark/') : '/';
+  const plugins = react() as unknown as PluginOption[];
+
+  if (command === 'build' && mode === 'analyze') {
+    plugins.push(
+      visualizer({
+        filename: '../../reports/bundle-analysis.html',
+        open: false, // Don't auto-open in browser
+        gzipSize: true,
+        brotliSize: true,
+        template: 'treemap', // Options: treemap, sunburst, network
+      }) as unknown as PluginOption
+    );
+  }
 
   return {
-    plugins: [
-      react(),
-      // Bundle analyzer is opt-in so standard builds stay git-clean.
-      command === 'build' &&
-        mode === 'analyze' &&
-        visualizer({
-          filename: '../../reports/bundle-analysis.html',
-          open: false, // Don't auto-open in browser
-          gzipSize: true,
-          brotliSize: true,
-          template: 'treemap', // Options: treemap, sunburst, network
-        }),
-    ].filter(Boolean),
+    plugins,
     resolve: {
       alias: {
         // Use package source in the workspace during app development so Vite handles JSX runtime imports directly.
-        '@tailwindspark/ui-components': resolve(
-          __dirname,
-          '../../packages/ui-components/src/index.ts'
+        '@tailwindspark/ui-components': fileURLToPath(
+          new URL('../../packages/ui-components/src/index.ts', import.meta.url)
         ),
       },
     },

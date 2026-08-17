@@ -17,10 +17,10 @@
     "email": "mark@markhazleton.com",
     "url": "https://markhazleton.com"
   },
-  "homepage": "https://markhazleton.github.io/TailwindSpark/",
+  "homepage": "https://tailwind.makeboldspark.com/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/markhazleton/TailwindSpark.git"
+    "url": "https://github.com/MakeBoldSolutions/TailwindSpark.git"
   },
   "private": true,
   "type": "module",
@@ -48,38 +48,36 @@
     "performance:test": "node scripts/performance-test.mjs"
   },
   "devDependencies": {
-    "@axe-core/react": "^4.12.1",
+    "@axe-core/react": "^4.13.0",
     "@tailwindcss/forms": "^0.5.11",
-    "@tailwindcss/postcss": "^4.3.2",
+    "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/typography": "^0.5.20",
-    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^14.6.1",
+    "@testing-library/user-event": "^14.6.4",
     "@types/jest-axe": "^3.5.9",
     "@vitest/coverage-v8": "^4.1.10",
     "@vitest/ui": "^4.1.10",
-    "eslint": "^10.6.0",
-    "eslint-plugin-jsdoc": "^63.0.12",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "jest-axe": "^10.0.0",
-    "jsdom": "^29.1.1",
-    "prettier": "^3.9.4",
-    "prettier-plugin-tailwindcss": "^0.8.0",
+    "jest-axe": "^11.0.0",
+    "jsdom": "^30.0.1",
+    "oxlint": "^1.78.0",
+    "oxlint-tsgolint": "^7.0.2001",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "rimraf": "^6.1.3",
-    "tailwindcss": "^4.3.2",
-    "tsx": "^4.23.0",
-    "turbo": "^2.10.4",
-    "typescript": "^6.0.3",
-    "typescript-eslint": "^8.63.0",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.12",
+    "turbo": "^2.10.10",
+    "typescript": "^7.0.2",
     "vitest": "^4.1.10"
   },
-  "packageManager": "npm@11.17.0",
+  "packageManager": "npm@12.0.2",
   "engines": {
-    "node": ">=18"
+    "node": ">=26.0.0"
   },
   "dependencies": {
     "ajv": "^8.20.0",
-    "web-vitals": "^5.3.0"
+    "web-vitals": "^6.1.1"
   },
   "overrides": {
     "tmp": ">=0.2.6",

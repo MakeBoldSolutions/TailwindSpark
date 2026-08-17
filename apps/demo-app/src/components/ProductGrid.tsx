@@ -33,11 +33,11 @@ interface ProductGridProps {
 
 /**
  * Responsive product grid with cards, images, and interactive actions.
- * 
+ *
  * Displays products in a responsive grid with hover effects, wishlist toggle,
  * quick view, and add to cart functionality. Includes loading skeletons and
  * empty state handling.
- * 
+ *
  * @param root0 - Component props
  * @param root0.products - Array of products to display
  * @param root0.onAddToCart - Callback when adding product to cart
@@ -46,7 +46,7 @@ interface ProductGridProps {
  * @param root0.onQuickView - Callback to open quick view modal for a product
  * @param root0.isLoading - Loading state indicator
  * @returns Product grid component
- * 
+ *
  * @example
  * ```tsx
  * <ProductGrid
@@ -74,16 +74,16 @@ const ProductGrid: React.FC<ProductGridProps> = ({
   };
 
   const ProductSkeleton = () => (
-    <div className="group animate-pulse overflow-hidden rounded-lg border border bg-white shadow-sm">
-  <div className="aspect-[4/3] bg-surface-alt">
-        <div className="h-48 w-full bg-surface-alt"></div>
+    <div className="group animate-pulse overflow-hidden rounded-lg border bg-white shadow-sm">
+      <div className="bg-surface-alt aspect-[4/3]">
+        <div className="bg-surface-alt h-48 w-full"></div>
       </div>
       <div className="p-4">
-        <div className="mb-2 h-4 rounded bg-surface-alt"></div>
-        <div className="mb-2 h-3 w-2/3 rounded bg-surface-alt"></div>
+        <div className="bg-surface-alt mb-2 h-4 rounded"></div>
+        <div className="bg-surface-alt mb-2 h-3 w-2/3 rounded"></div>
         <div className="flex items-center justify-between">
-          <div className="h-6 w-1/3 rounded bg-surface-alt"></div>
-          <div className="h-8 w-1/4 rounded bg-surface-alt"></div>
+          <div className="bg-surface-alt h-6 w-1/3 rounded"></div>
+          <div className="bg-surface-alt h-8 w-1/4 rounded"></div>
         </div>
       </div>
     </div>
@@ -103,7 +103,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
     return (
       <div className="py-12 text-center">
         <svg
-          className="mx-auto h-12 w-12 text-muted"
+          className="text-muted mx-auto h-12 w-12"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -115,8 +115,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({
             d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2 2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
           />
         </svg>
-        <h3 className="mt-4 text-lg font-medium text-text">No products found</h3>
-        <p className="mt-2 text-muted">Try adjusting your search or filter criteria.</p>
+        <h3 className="text-text mt-4 text-lg font-medium">No products found</h3>
+        <p className="text-muted mt-2">Try adjusting your search or filter criteria.</p>
       </div>
     );
   }
@@ -126,12 +126,12 @@ const ProductGrid: React.FC<ProductGridProps> = ({
       {products.map(product => (
         <div
           key={product.id}
-          className="group relative overflow-hidden rounded-lg border border bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg"
+          className="group relative overflow-hidden rounded-lg border bg-white shadow-sm transition-shadow duration-300 hover:shadow-lg"
         >
           {/* Product Image */}
-          <div className="aspect-[4/3] relative overflow-hidden">
+          <div className="relative aspect-[4/3] overflow-hidden">
             {!imageLoadStates[product.id] && (
-              <div className="absolute inset-0 animate-pulse bg-surface-alt"></div>
+              <div className="bg-surface-alt absolute inset-0 animate-pulse"></div>
             )}
             {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
             <img
@@ -145,14 +145,14 @@ const ProductGrid: React.FC<ProductGridProps> = ({
 
             {/* Sale Badge */}
             {product.salePrice && (
-              <div className="absolute left-2 top-2 rounded bg-error px-2 py-1 text-xs font-semibold text-white">
+              <div className="bg-error absolute top-2 left-2 rounded px-2 py-1 text-xs font-semibold text-white">
                 SALE
               </div>
             )}
 
             {/* Stock Badge */}
             {!product.inStock && (
-              <div className="absolute right-2 top-2 rounded bg-surface-inverse px-2 py-1 text-xs font-semibold text-white">
+              <div className="bg-surface-inverse absolute top-2 right-2 rounded px-2 py-1 text-xs font-semibold text-white">
                 OUT OF STOCK
               </div>
             )}
@@ -160,12 +160,15 @@ const ProductGrid: React.FC<ProductGridProps> = ({
             {/* Wishlist Button */}
             <button
               onClick={() => onWishlistToggle(product.id)}
-              className="absolute right-2 top-2 transform rounded-full bg-white p-2 opacity-0 shadow-md transition-opacity duration-200 hover:scale-110 group-hover:opacity-100"
+              aria-label={
+                wishlist.includes(product.id) ? 'Remove from wishlist' : 'Add to wishlist'
+              }
+              className="absolute top-2 right-2 transform rounded-full bg-white p-2 opacity-0 shadow-md transition-opacity duration-200 group-hover:opacity-100 hover:scale-110"
               title={wishlist.includes(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}
             >
               <svg
                 className={`h-5 w-5 ${
-                  wishlist.includes(product.id) ? 'fill-current text-error' : 'text-muted'
+                  wishlist.includes(product.id) ? 'text-error fill-current' : 'text-muted'
                 }`}
                 fill={wishlist.includes(product.id) ? 'currentColor' : 'none'}
                 viewBox="0 0 24 24"
@@ -183,7 +186,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
             {/* Quick View Button */}
             <button
               onClick={() => onQuickView(product)}
-              className="absolute inset-x-0 bottom-0 bg-black bg-opacity-75 py-2 text-sm font-medium text-white opacity-0 transition-opacity duration-200 hover:bg-opacity-90 group-hover:opacity-100"
+              className="bg-opacity-75 hover:bg-opacity-90 absolute inset-x-0 bottom-0 bg-black py-2 text-sm font-medium text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100"
             >
               Quick View
             </button>
@@ -192,10 +195,10 @@ const ProductGrid: React.FC<ProductGridProps> = ({
           {/* Product Info */}
           <div className="p-4">
             <div className="mb-2">
-              <h3 className="line-clamp-2 text-sm font-medium text-text transition-colors group-hover:text-brand">
+              <h3 className="text-text group-hover:text-brand line-clamp-2 text-sm font-medium transition-colors">
                 {product.name}
               </h3>
-              <p className="text-sm text-muted">{product.brand}</p>
+              <p className="text-muted text-sm">{product.brand}</p>
             </div>
 
             {/* Rating */}
@@ -214,7 +217,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
                   </svg>
                 ))}
               </div>
-              <span className="ml-1 text-sm text-muted">({product.reviewCount})</span>
+              <span className="text-muted ml-1 text-sm">({product.reviewCount})</span>
             </div>
 
             {/* Colors */}
@@ -224,7 +227,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
               {product.colors.slice(0, 4).map(color => (
                 <div
                   key={color}
-                  className={`h-4 w-4 rounded-full border border ${
+                  className={`h-4 w-4 rounded-full border ${
                     color.toLowerCase() === 'black'
                       ? 'bg-black'
                       : color.toLowerCase() === 'white'
@@ -257,7 +260,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
                 />
               ))}
               {product.colors.length > 4 && (
-                <span className="text-xs text-muted">+{product.colors.length - 4}</span>
+                <span className="text-muted text-xs">+{product.colors.length - 4}</span>
               )}
             </div>
             {/* eslint-enable no-raw-primary-class/no-raw-primary-class */}
@@ -267,11 +270,11 @@ const ProductGrid: React.FC<ProductGridProps> = ({
               <div className="flex items-center space-x-2">
                 {product.salePrice ? (
                   <>
-                    <span className="text-lg font-bold text-error">${product.salePrice}</span>
-                    <span className="text-sm text-muted line-through">${product.price}</span>
+                    <span className="text-error text-lg font-bold">${product.salePrice}</span>
+                    <span className="text-muted text-sm line-through">${product.price}</span>
                   </>
                 ) : (
-                  <span className="text-lg font-bold text-text">${product.price}</span>
+                  <span className="text-text text-lg font-bold">${product.price}</span>
                 )}
               </div>
 
@@ -281,7 +284,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
                 className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
                   product.inStock
                     ? 'bg-brand text-brand-fg hover:bg-brand-hover'
-                    : 'cursor-not-allowed bg-border text-muted'
+                    : 'bg-border text-muted cursor-not-allowed'
                 }`}
                 title={product.inStock ? 'Add to cart' : 'Out of stock'}
               >
@@ -291,9 +294,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
 
             {/* Stock Count */}
             {product.inStock && product.stockCount <= 10 && (
-              <p className="mt-2 text-xs text-warning">
-                Only {product.stockCount} left in stock!
-              </p>
+              <p className="text-warning mt-2 text-xs">Only {product.stockCount} left in stock!</p>
             )}
           </div>
         </div>
