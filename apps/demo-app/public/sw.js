@@ -1,6 +1,6 @@
 // Bump this version when theme runtime assets or boot behavior change so clients
 // can recover coherently from stale caches without a manual cache clear.
-const THEME_RUNTIME_VERSION = 'theme-platform-v1';
+const THEME_RUNTIME_VERSION = 'theme-platform-v2';
 const CACHE_NAME = `tailwindspark-${THEME_RUNTIME_VERSION}`;
 const STATIC_CACHE = `static-${THEME_RUNTIME_VERSION}`;
 const RUNTIME_CACHE = `runtime-${THEME_RUNTIME_VERSION}`;
@@ -62,6 +62,8 @@ const cachePatterns = {
   images: /\.(png|jpg|jpeg|gif|webp|svg|ico)$/,
   // API calls (if any)
   api: /\/api\//,
+  // Local feed snapshots should stay fresh after deployments and data syncs
+  dataJson: /\/data\/.*\.json$/,
   // Google Fonts
   fonts: /^https:\/\/fonts\.(googleapis|gstatic)\.com\//,
   // Google Analytics
@@ -86,6 +88,7 @@ const getCacheStrategy = url => {
     return { cache: STATIC_CACHE, duration: CACHE_DURATION.STATIC };
   if (cachePatterns.analytics.test(url)) return null; // Don't cache analytics
   if (cachePatterns.jokeAPI.test(url)) return null; // Don't cache jokes (need fresh content)
+  if (cachePatterns.dataJson.test(pathname)) return null; // Don't cache data snapshots
 
   return { cache: RUNTIME_CACHE, duration: CACHE_DURATION.RUNTIME };
 };
@@ -95,19 +98,21 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches
       .open(STATIC_CACHE)
-      .then(cache => Promise.all(
-        buildPrecacheUrls().map(async url => {
-          try {
-            const response = await fetch(url, { cache: 'no-store' });
-            if (response.ok) {
-              await cache.put(url, response.clone());
+      .then(cache =>
+        Promise.all(
+          buildPrecacheUrls().map(async url => {
+            try {
+              const response = await fetch(url, { cache: 'no-store' });
+              if (response.ok) {
+                await cache.put(url, response.clone());
+              }
+            } catch {
+              return null;
             }
-          } catch {
             return null;
-          }
-          return null;
-        })
-      ))
+          })
+        )
+      )
       .then(() => self.skipWaiting())
   );
 });
@@ -117,18 +122,20 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches
       .keys()
-      .then(cacheNames => Promise.all(
-        cacheNames
-          .filter(isTailwindSparkCacheName)
-          .filter(
-            cacheName =>
-              cacheName !== CACHE_NAME &&
-              cacheName !== STATIC_CACHE &&
-              cacheName !== RUNTIME_CACHE &&
-              cacheName !== IMAGES_CACHE
-          )
-          .map(cacheName => caches.delete(cacheName))
-      ))
+      .then(cacheNames =>
+        Promise.all(
+          cacheNames
+            .filter(isTailwindSparkCacheName)
+            .filter(
+              cacheName =>
+                cacheName !== CACHE_NAME &&
+                cacheName !== STATIC_CACHE &&
+                cacheName !== RUNTIME_CACHE &&
+                cacheName !== IMAGES_CACHE
+            )
+            .map(cacheName => caches.delete(cacheName))
+        )
+      )
       .then(() => self.clients.claim())
       .then(() => self.clients.matchAll({ includeUncontrolled: true }))
       .then(clients => {
@@ -187,7 +194,10 @@ self.addEventListener('fetch', event => {
         .catch(async () => {
           const cache = await caches.open(RUNTIME_CACHE);
           const cachedResponse = await cache.match(request);
-          return cachedResponse || caches.match(new URL('./index.html', self.registration.scope).toString());
+          return (
+            cachedResponse ||
+            caches.match(new URL('./index.html', self.registration.scope).toString())
+          );
         })
     );
     return;
@@ -220,13 +230,13 @@ self.addEventListener('fetch', event => {
               const headers = new Headers(responseToCache.headers);
               headers.set('cached-date', Date.now().toString());
 
-              const cachedResponse = new Response(responseToCache.body, {
+              const timestampedResponse = new Response(responseToCache.body, {
                 status: responseToCache.status,
                 statusText: responseToCache.statusText,
                 headers: headers,
               });
 
-              cache.put(request, cachedResponse);
+              cache.put(request, timestampedResponse);
             }
             return networkResponse;
           })

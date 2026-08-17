@@ -24,7 +24,9 @@
     "type-check": "tsc --noEmit",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "e2e": "playwright test --config ../../playwright.config.ts",
+    "e2e:ui": "playwright test --config ../../playwright.config.ts --ui"
   },
   "dependencies": {
     "@microsoft/signalr": "^10.0.11",

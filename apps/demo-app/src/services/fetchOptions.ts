@@ -6,6 +6,7 @@
 export function getPublicJsonFetchOptions(): RequestInit {
   return {
     method: 'GET',
+    cache: 'no-store',
     mode: 'cors',
     credentials: 'omit',
     headers: {

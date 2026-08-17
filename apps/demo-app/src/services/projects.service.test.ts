@@ -54,7 +54,16 @@ describe('projects.service', () => {
   });
 
   it('returns cached data when available', async () => {
-    const cached = [{ id: 1, name: 'Cached' }];
+    const cached = [
+      {
+        id: 1,
+        name: 'Cached',
+        description: 'Cached project',
+        image_url: 'https://example.com/img.png',
+        project_url: 'https://example.com',
+        status: 'Active',
+      },
+    ];
     vi.mocked(getFromCache).mockReturnValue(cached);
 
     const result = await getProjects();

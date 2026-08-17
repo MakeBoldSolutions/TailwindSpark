@@ -275,7 +275,7 @@ export const PROJECTS_API_CONFIG = {
   FALLBACK_URL: `${import.meta.env.BASE_URL}data/projects.json`,
 
   /** Cache key for localStorage */
-  CACHE_KEY: 'projects_v1',
+  CACHE_KEY: 'projects_v2',
 
   /** Cache TTL in milliseconds (5 min dev, 1 hour prod) */
   CACHE_TTL: {

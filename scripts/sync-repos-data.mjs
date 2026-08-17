@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const outputPath = path.resolve(__dirname, '../apps/demo-app/public/data/repositories.json');
 const sourceUrl =
-  'https://raw.githubusercontent.com/MakeBoldSolutions/github-stats-spark/refs/heads/main/data/users/makeboldsolutions/repositories.json';
+  'https://raw.githubusercontent.com/MakeBoldSolutions/github-stats-spark/main/data/users/makeboldsolutions/repositories.json';
 const maxSnapshotBytes = 2 * 1024 * 1024;
 
 // --- Primitive normalizers — each creates a new value, breaking the CodeQL taint chain ---

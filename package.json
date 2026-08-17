@@ -45,10 +45,13 @@
     "test": "turbo run test",
     "test:ui": "turbo run test:ui",
     "test:coverage": "turbo run test:coverage",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
     "performance:test": "node scripts/performance-test.mjs"
   },
   "devDependencies": {
     "@axe-core/react": "^4.13.0",
+    "@playwright/test": "^1.62.1",
     "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/typography": "^0.5.20",

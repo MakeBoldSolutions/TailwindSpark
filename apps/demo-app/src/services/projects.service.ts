@@ -9,6 +9,39 @@ import { getPublicJsonFetchOptions } from './fetchOptions';
 
 const { CACHE_KEY, CACHE_TTL, PROD_URL, FALLBACK_URL } = PROJECTS_API_CONFIG;
 
+function isProject(value: unknown): value is Project {
+  if (!value || typeof value !== 'object') {
+    return false;
+  }
+
+  const project = value as Partial<Project>;
+  return (
+    typeof project.id === 'number' &&
+    typeof project.name === 'string' &&
+    typeof project.description === 'string' &&
+    typeof project.image_url === 'string' &&
+    typeof project.project_url === 'string' &&
+    typeof project.status === 'string' &&
+    (project.technologies === undefined ||
+      (Array.isArray(project.technologies) &&
+        project.technologies.every(technology => typeof technology === 'string')))
+  );
+}
+
+function getCachedProjects(): Project[] | null {
+  const cached = getFromCache<unknown>(CACHE_KEY, CACHE_TTL.DEV, CACHE_TTL.PROD);
+  if (!cached) {
+    return null;
+  }
+
+  if (Array.isArray(cached) && cached.every(isProject)) {
+    return cached;
+  }
+
+  clearCache(CACHE_KEY);
+  return null;
+}
+
 function parseAndMapProjects(json: unknown): Project[] {
   const raw = RawProjectsResponseSchema.parse(json);
   return mapRawProjectsResponse(raw);
@@ -40,7 +73,7 @@ async function fetchFallbackProjects(primaryUrl: string): Promise<Project[]> {
  * @returns Normalized project list
  */
 export async function getProjects(): Promise<Project[]> {
-  const cached = getFromCache<Project[]>(CACHE_KEY, CACHE_TTL.DEV, CACHE_TTL.PROD);
+  const cached = getCachedProjects();
   if (cached) return cached;
 
   const primaryUrl = import.meta.env.DEV ? PROJECTS_API_CONFIG.DEV_URL : PROD_URL;

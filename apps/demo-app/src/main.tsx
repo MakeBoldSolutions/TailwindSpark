@@ -7,7 +7,7 @@ import { initializeThemeBoot } from './utils/themeBoot';
 import { getTailwindSparkCacheNames } from './utils/themeRuntimeCache';
 
 const FORCE_CACHE_CLEAR_KEY = 'tailwindspark:force-cache-clear';
-const THEME_RUNTIME_VERSION = 'theme-platform-v1';
+const THEME_RUNTIME_VERSION = 'theme-platform-v2';
 
 async function clearBrowserCaches(): Promise<void> {
   clearAllCaches();

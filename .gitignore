@@ -43,6 +43,8 @@ apps/demo-app/test-results.json
 apps/demo-app/test-results-final.txt
 apps/demo-app/final-test.txt
 apps/demo-app/coverage-output.txt
+apps/demo-app/test-results/
+apps/demo-app/playwright-report/
 
 # Runtime data
 pids

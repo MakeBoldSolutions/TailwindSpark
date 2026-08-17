@@ -10,10 +10,20 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
     css: true,
+    exclude: ['node_modules/', 'dist/', 'e2e/'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html', 'lcov'],
-      exclude: ['node_modules/', 'dist/', 'src/test/', '**/*.d.ts', '**/*.config.*', '**/*.test.tsx', '**/*test.ts'],
+      exclude: [
+        'node_modules/',
+        'dist/',
+        'e2e/',
+        'src/test/',
+        '**/*.d.ts',
+        '**/*.config.*',
+        '**/*.test.tsx',
+        '**/*test.ts',
+      ],
       thresholds: {
         // Temporary completion gate for spec 003-reactspark-migration.
         // Re-evaluate and raise in a future spec once broader legacy areas gain test coverage.

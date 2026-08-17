@@ -175,7 +175,7 @@ describe('repos.service', () => {
 
     it('should fetch from URL when cache is empty', async () => {
       vi.mocked(getFromCache).mockReturnValue(null);
-      
+
       const mockResponse = {
         repositories: [
           {
@@ -420,8 +420,8 @@ describe('repos.service', () => {
       clearReposCache();
 
       expect(clearCache).toHaveBeenCalledTimes(2);
-      expect(clearCache).toHaveBeenCalledWith('repos_v1');
-      expect(clearCache).toHaveBeenCalledWith('repos_v1_profile');
+      expect(clearCache).toHaveBeenCalledWith('repos_v2');
+      expect(clearCache).toHaveBeenCalledWith('repos_v2_profile');
     });
   });
 });
