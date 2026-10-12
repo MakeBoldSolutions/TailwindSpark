@@ -3,11 +3,11 @@
 > **TL;DR for the Product Owner**
 > _What_: Consolidate all ten open Dependabot updates and resolve dependency and code scanning findings.
 > _Why_: Vulnerable dependencies block PR builds; three snapshot writes need documented trust-boundary review.
-> _Status_: In Progress; full dependency refresh requested.
+> _Status_: Complete.
 > _Decision needed_: None. Feature tier and execution approved by the owner on 2026-10-11.
 
 **Tier**: Feature
-**Status**: In Progress
+**Status**: Complete
 
 ## Intent
 
@@ -45,7 +45,7 @@ None. Scope, security targets, failure handling, integration constraints, delive
 - [x] T005 Publish, validate CI, merge the consolidated PR, close superseded Dependabot PRs, and verify default-branch alerts (AC5).
 
 - [x] T006 Apply the owner-requested npm outdated/ncu updates to all workspace package.json files and package-lock.json, including happy-dom 21; validate AC4 and AC7 and update PR #237’s scope.
-- [ ] T007 Merge the refreshed PR after CI passes and repeat default-branch alert/drift verification (AC5, AC7).
+- [x] T007 Merge the refreshed PR after CI passes and repeat default-branch alert/drift verification (AC5, AC7).
 
 ## Verification Results
 
@@ -71,4 +71,4 @@ The owner refreshed root tool versions while this feature was in flight. This mo
 
 The owner explicitly requested npm outdated, ncu, and npm audit on 2026-10-11. Root manifests already match latest; workspace drift includes testing-library packages, React Vite plugin, PostCSS/autoprefixer, jsdom, Lucide, Vite, Zod, and happy-dom 21. Apply the complete latest set and retain the build/security fixes. PR #237 expands from completion records to this dependency refresh; its title/body and validation must reflect the final implementation.
 
-Refresh verification: clean install, normal/forced builds and idempotence, lint, strict types, 924 workspace tests, 38 script tests, coverage, and two Chromium smoke tests pass. npm outdated exits 0 with no results; ncu reports all four manifests current; npm audit reports zero vulnerabilities. PR #237’s title/body now describe the full refresh. T007 awaits CI and merge.
+Refresh verification: clean install, normal/forced builds and idempotence, lint, strict types, 924 workspace tests, 38 script tests, coverage, and two Chromium smoke tests pass. npm outdated exits 0 with no results; ncu reports all four manifests current; npm audit reports zero vulnerabilities. PR #237’s title/body now describe the full refresh. PR #237 merged as ecc1d87a9e177f1a521d43c00eb85f035b8927ae. Default-branch npm outdated exits 0 with no results; ncu reports all root/workspace dependencies latest; npm audit is zero; GitHub has zero open dependency and CodeQL alerts.
