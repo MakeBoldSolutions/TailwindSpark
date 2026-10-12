@@ -24,11 +24,7 @@ as JavaScript. Fixed JSON files and normalized structures prevent arbitrary uplo
 or executable payload installation. URL validation complements this boundary rather
 than assuming that JSON serialization alone makes browser links safe.
 
-Proposed disposition after CI and review: dismiss the three historical findings as
-false positives for an arbitrary/unvalidated file-upload vulnerability, with links to
-this review and the regression tests. This is a per-alert decision; the query remains
-enabled and scripts remain included in scanning. Any additional finding is reviewed
-individually, not automatically dismissed.
+Final disposition: the main-branch CodeQL scan after PR #236 marked alerts #89, #90, and #91 **fixed** at 2026-10-12T02:36:25Z. GitHub reports zero open code scanning alerts. The query and script paths remain enabled. Per-alert dismissal was considered during review, but no dismissal was applied; the final state is established by the completed scan.
 
 ## Evidence
 
