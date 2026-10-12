@@ -24,7 +24,7 @@ The repository is an npm workspace managed from the repository root.
 
 | Requirement         | Value        |
 | ------------------- | ------------ |
-| Package manager     | npm `12.0.2` |
+| Package manager     | npm `12.2.0` |
 | Node.js             | `>=26.0.0`   |
 | Workspace runner    | Turborepo    |
 | Application bundler | Vite         |
@@ -34,6 +34,8 @@ The repository is an npm workspace managed from the repository root.
 | Formatter           | Prettier     |
 
 All root commands assume dependencies have been installed with `npm ci`.
+Root Vite is explicitly declared so hoisted plugins can resolve their Vite peer from the root.
+Vitest, its UI, and its coverage provider use the same major/version family across workspaces.
 
 ### Snapshot ingestion security
 

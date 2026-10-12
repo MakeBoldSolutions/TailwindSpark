@@ -11,7 +11,7 @@
 
 ## Intent
 
-Apply the version changes requested by PRs #216, #218, #224, #226, #228, #230, #231, #233, #234, and #235 in one remediation branch. Allow newer compatible security patches, including fast-uri beyond #218's version. Align the Vitest packages, repair current npm audit findings without blind forced upgrades, and preserve Node 26/npm 12 and existing workspace contracts.
+Apply the version changes requested by PRs #216, #218, #224, #226, #228, #230, #231, #233, #234, and #235 in one remediation branch. Allow newer compatible security patches, including fast-uri beyond #218's version. Align the Vitest packages (now 5.0.3 after the owner refreshed root dependencies), explicitly provide root Vite for the hoisted React plugin, repair current npm audit findings without blind forced upgrades, and preserve Node 26/npm 12 and existing workspace contracts.
 
 Review CodeQL alerts #89–#91 against their actual data flow. Keep fixed output paths and schema normalization; strengthen timeouts, download size limits, and snapshot continuity where needed. Document and dismiss only findings proven to describe intentional validated JSON ingestion, with precise evidence. Do not exclude the scripts or query from scanning.
 
@@ -46,7 +46,7 @@ None. Scope, security targets, failure handling, integration constraints, delive
 
 - Clean `npm ci` succeeds under Node 26.7.0/npm 12.0.2; `npm audit` reports zero vulnerabilities.
 - Lint and workspace/script strict type checks pass; existing app lint warnings remain (41 warnings, zero errors).
-- Workspace coverage: 154 UI-component and 770 demo-app tests pass. UI coverage: 98.19% statements / 96.10% branches / 96.15% functions / 98.18% lines. Demo coverage: 66.35% / 59.15% / 56.85% / 68.72%.
+- Workspace coverage: 154 UI-component and 770 demo-app tests pass. UI coverage: 98.19% statements / 96.10% branches / 96.15% functions / 98.18% lines. Demo coverage: 66.14% / 59.15% / 56.79% / 68.67%.
 - Snapshot tests: 38 pass; shared downloader/URL helper coverage is 100% on all four metrics.
 - Two forced production builds pass with identical tracked diffs. Chromium smoke tests: 2 pass using CI’s VITE_BASE_URL=/ configuration. The initial local smoke invocation used the default /TailwindSpark/ build base, then passed after rebuilding with the CI base; no application regression was found.
 - Targeted Prettier and git diff --check pass. Legacy repository-wide formatting debt is unchanged.
@@ -55,3 +55,7 @@ None. Scope, security targets, failure handling, integration constraints, delive
 ## Waivers
 
 None.
+
+## Build repair after dependency refresh
+
+The owner refreshed root tool versions while this feature was in flight. This moved Vite into workspace-local node_modules directories while the hoisted React plugin resolved from the root, producing ERR_MODULE_NOT_FOUND during npm run build. A direct root Vite devDependency restores peer resolution. UI workspace Vitest/UI are aligned to root Vitest/coverage 5.0.3, and a root install reconciles stale nested packages. The regenerated lockfile resolves one Vite 8.3.4 and one Vitest 5.0.3 across workspaces. Existing owner package upgrades are retained. Clean npm ci, ordinary and forced builds, repeat-build diff checks, 924 workspace coverage tests, 38 script tests, lint, and type checks all pass for this dependency set. Audit remains at zero vulnerabilities. Remote CI is repeated before merge.
