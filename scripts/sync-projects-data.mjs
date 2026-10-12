@@ -1,3 +1,4 @@
+import { downloadSnapshot } from './snapshot-download.ts';
 import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -169,7 +170,8 @@ function normalizeLegacyProject(project, index) {
 function normalizeSubsiteProject(project, index, categories) {
   assertValidSubsiteProject(project, index);
 
-  const projectUrl = project.links?.site ?? project.url;
+  // Use the same candidate that assertValidSubsiteProject validated above.
+  const projectUrl = typeof project.links?.site === 'string' ? project.links.site : project.url;
   const capabilities = normalizeStringArray(project.capabilities);
   const relatedInitiatives = normalizeStringArray(project.relatedInitiatives);
   const categoryId = normalizeOptionalString(project.strategicCategory);
@@ -286,7 +288,6 @@ async function writeSnapshot(sanitizedContent) {
     return;
   }
 
-  // codeql[js/http-to-file-access]
   // The remote project feed is schema-normalized and written only to this fixed snapshot path.
   await writeFile(outputPath, sanitizedContent, 'utf8');
   console.log(`[sync-projects-data] Wrote snapshot: ${outputPath}`);
@@ -294,17 +295,7 @@ async function writeSnapshot(sanitizedContent) {
 
 async function main() {
   try {
-    const response = await fetch(sourceUrl, {
-      headers: {
-        Accept: 'application/json',
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const jsonText = await response.text();
+    const jsonText = await downloadSnapshot(sourceUrl, maxSnapshotBytes);
     const sanitized = sanitizeProjectsSnapshot(jsonText);
     await writeSnapshot(sanitized);
   } catch (error) {

@@ -1,3 +1,4 @@
+import { downloadSnapshot, normalizeSnapshotUrl } from './snapshot-download.ts';
 import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,7 +9,7 @@ const sourceUrl =
   'https://raw.githubusercontent.com/MakeBoldSolutions/github-stats-spark/main/data/users/makeboldsolutions/repositories.json';
 const maxSnapshotBytes = 2 * 1024 * 1024;
 
-// --- Primitive normalizers — each creates a new value, breaking the CodeQL taint chain ---
+// Normalize allowlisted JSON fields; remote strings remain untrusted display data.
 function ns(v) {
   return typeof v === 'string' ? String(v) : '';
 }
@@ -230,7 +231,7 @@ function normalizeScreenshot(v) {
   if (typeof v !== 'object' || v === null) return undefined;
   return {
     path: ns(v.path),
-    url: ns(v.url),
+    url: normalizeSnapshotUrl(v.url) ?? '',
     captured_at: ns(v.captured_at),
     width: nn(v.width),
     height: nn(v.height),
@@ -291,11 +292,11 @@ function normalizeRepository(repo, index) {
     name: String(repo.name).trim(),
     description: nns(repo.description),
     summary: normalizeSummary(repo.summary),
-    url: String(repo.url),
-    homepage: nns(repo.homepage),
+    url: normalizeSnapshotUrl(repo.url) ?? '',
+    homepage: normalizeSnapshotUrl(repo.homepage),
     has_pages: nb(repo.has_pages),
-    pages_url: nns(repo.pages_url),
-    website_url: nns(repo.website_url),
+    pages_url: normalizeSnapshotUrl(repo.pages_url),
+    website_url: normalizeSnapshotUrl(repo.website_url),
     stars: nn(repo.stars),
     forks: nn(repo.forks),
     watchers: nn(repo.watchers),
@@ -408,7 +409,6 @@ async function writeSnapshot(sanitizedContent) {
     return;
   }
 
-  // codeql[js/http-to-file-access]
   // The remote repository feed is schema-normalized and written only to this fixed snapshot path.
   await writeFile(outputPath, sanitizedContent, 'utf8');
   console.log(`[sync-repos-data] Wrote snapshot: ${outputPath}`);
@@ -416,17 +416,7 @@ async function writeSnapshot(sanitizedContent) {
 
 async function main() {
   try {
-    const response = await fetch(sourceUrl, {
-      headers: {
-        Accept: 'application/json',
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const jsonText = await response.text();
+    const jsonText = await downloadSnapshot(sourceUrl, maxSnapshotBytes);
     const sanitized = sanitizeReposSnapshot(jsonText);
     await writeSnapshot(sanitized);
   } catch (error) {
