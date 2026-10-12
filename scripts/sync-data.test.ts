@@ -8,9 +8,24 @@ import { describe, expect, it } from 'vitest';
 
 const run = promisify(execFile);
 const feeds = [
-  { name: 'articles', output: 'articles', valid: '[]' },
-  { name: 'projects', output: 'projects', valid: '[]' },
-  { name: 'repos', output: 'repositories', valid: '{"repositories":[]}' },
+  {
+    name: 'articles',
+    output: 'articles',
+    valid:
+      '[{"id":1,"name":"Article","slug":"article","description":"<script>untrusted text</script>","unknown":"discard"}]',
+  },
+  {
+    name: 'projects',
+    output: 'projects',
+    valid:
+      '{"subsites":[{"id":"project","name":"Project","description":"description","url":"https://example.com/","links":{"site":42},"unknown":"discard"}]}',
+  },
+  {
+    name: 'repos',
+    output: 'repositories',
+    valid:
+      '{"repositories":[{"name":"repo","url":"https://example.com/","rank":1,"composite_score":1,"unknown":"discard"}]}',
+  },
 ] as const;
 
 describe.each(feeds)('$name snapshot ingestion', feed => {
@@ -89,12 +104,19 @@ describe.each(feeds)('$name snapshot ingestion', feed => {
         );
         const content = await readFile(output, 'utf8');
         if (mode === 'valid') {
-          const parsed: unknown = JSON.parse(content);
+          const parsed = JSON.parse(content) as unknown;
           if (feed.name === 'repos') {
-            expect(parsed).toMatchObject({ repositories: [] });
+            expect(parsed).toMatchObject({
+              repositories: [{ name: 'repo', url: 'https://example.com/' }],
+            });
+          } else if (feed.name === 'projects') {
+            expect(parsed).toMatchObject([{ p: 'Project', h: 'https://example.com/' }]);
           } else {
-            expect(parsed).toEqual([]);
+            expect(parsed).toMatchObject([
+              { name: 'Article', slug: 'article', description: '<script>untrusted text</script>' },
+            ]);
           }
+          expect(content).not.toContain('unknown');
         } else {
           expect(content).toBe(previous);
         }

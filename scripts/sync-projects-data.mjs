@@ -170,7 +170,8 @@ function normalizeLegacyProject(project, index) {
 function normalizeSubsiteProject(project, index, categories) {
   assertValidSubsiteProject(project, index);
 
-  const projectUrl = project.links?.site ?? project.url;
+  // Use the same candidate that assertValidSubsiteProject validated above.
+  const projectUrl = typeof project.links?.site === 'string' ? project.links.site : project.url;
   const capabilities = normalizeStringArray(project.capabilities);
   const relatedInitiatives = normalizeStringArray(project.relatedInitiatives);
   const categoryId = normalizeOptionalString(project.strategicCategory);
