@@ -36,6 +36,11 @@ jobs:
       - name: Type check
         run: npm run type-check
 
+      - name: Validate snapshot scripts
+        run: |
+          npm run type-check:scripts
+          npm run test:scripts
+
       - name: Security audit
         run: npm audit --audit-level moderate
 
@@ -121,4 +126,4 @@ jobs:
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5.0.0
+        uses: actions/deploy-pages@v5.0.1

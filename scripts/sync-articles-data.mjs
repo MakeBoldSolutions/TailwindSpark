@@ -1,3 +1,4 @@
+import { downloadSnapshot } from './snapshot-download.ts';
 import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -219,7 +220,6 @@ async function writeSnapshot(sanitizedContent) {
     return;
   }
 
-  // codeql[js/http-to-file-access]
   // The remote article feed is schema-normalized and written only to this fixed snapshot path.
   await writeFile(outputPath, sanitizedContent, 'utf8');
   console.log(`[sync-articles-data] Wrote snapshot: ${outputPath}`);
@@ -243,23 +243,18 @@ async function writeEmptyFallback() {
 
 async function main() {
   try {
-    const response = await fetch(sourceUrl, {
-      headers: {
-        Accept: 'application/json',
-      },
-      // Set a timeout to avoid hanging
-      signal: AbortSignal.timeout(10000),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const jsonText = await response.text();
+    const jsonText = await downloadSnapshot(sourceUrl, maxSnapshotBytes);
     const sanitized = sanitizeArticlesSnapshot(jsonText);
     await writeSnapshot(sanitized);
   } catch (error) {
-    // If fetch fails (CORS, timeout, network error), create empty fallback instead of failing
+    if (await hasExistingSnapshot(outputPath)) {
+      console.warn(
+        `[sync-articles-data] Using existing snapshot after refresh failure: ${String(error)}`
+      );
+      return;
+    }
+
+    // An empty fallback is only needed when no previous snapshot exists.
     console.warn(`[sync-articles-data] Failed to fetch from ${sourceUrl}:`, error.message);
     console.log(`[sync-articles-data] Creating empty fallback instead...`);
     await writeEmptyFallback();
