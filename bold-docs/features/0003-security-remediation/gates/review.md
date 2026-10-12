@@ -24,3 +24,7 @@ have state fixed. No scanner exclusions or alert dismissals were applied.
 
 No open review findings. Existing app lint warnings and unrelated repository-wide
 formatting debt remain documented. Rollback is a revert of the consolidated merge.
+
+## Latest dependency refresh review
+
+The owner-requested npm outdated/ncu pass updates only workspace dependency manifests and the lockfile. Root Vite stays declared and Vitest remains aligned at 5.0.3. happy-dom 21 requires Node >=20, within the repo’s Node 26 contract. Review found no new runtime contract changes. Clean install, build/idempotence, lint, typing, coverage, and smoke tests pass; npm outdated/ncu are current and audit is zero. PR #237 is awaiting CI and merge for this final dependency set.

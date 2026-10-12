@@ -3,11 +3,11 @@
 > **TL;DR for the Product Owner**
 > _What_: Consolidate all ten open Dependabot updates and resolve dependency and code scanning findings.
 > _Why_: Vulnerable dependencies block PR builds; three snapshot writes need documented trust-boundary review.
-> _Status_: Complete.
+> _Status_: In Progress; full dependency refresh requested.
 > _Decision needed_: None. Feature tier and execution approved by the owner on 2026-10-11.
 
 **Tier**: Feature
-**Status**: Complete
+**Status**: In Progress
 
 ## Intent
 
@@ -26,9 +26,11 @@ Publish and merge the consolidated repair only after CI succeeds; then close the
 - AC5: A consolidated PR passes GitHub build and security checks before merge; all ten Dependabot PRs are resolved; default-branch security alert status is verified after rescanning.
 - AC6: Feature artifacts and durable ingestion documentation describe final behavior, validation, alert dispositions, and rollback.
 
+- AC7: npm outdated reports no installed-package drift, ncu --workspaces --root -t latest reports all dependencies match latest versions, and npm audit remains at zero after the owner-requested full refresh.
+
 ## Affected Files
 
-Root and workspace package.json files, package-lock.json, .github/workflows/_.yml, scripts/sync-_-data.mjs, co-located script tests, bold-docs/system/guides/BUILD_SYSTEM.md, and this feature's artifacts.
+Root and workspace package.json files, package-lock.json, `.github/workflows/*.yml`, `scripts/sync-*-data.mjs`, co-located script tests, bold-docs/system/guides/BUILD_SYSTEM.md, and this feature's artifacts.
 
 ## Open Questions
 
@@ -41,6 +43,9 @@ None. Scope, security targets, failure handling, integration constraints, delive
 - [x] T003 Run all acceptance gates and repair regressions in affected files (AC4).
 - [x] T004 Update bold-docs/system/guides/BUILD_SYSTEM.md and feature gate/verification artifacts (AC6).
 - [x] T005 Publish, validate CI, merge the consolidated PR, close superseded Dependabot PRs, and verify default-branch alerts (AC5).
+
+- [x] T006 Apply the owner-requested npm outdated/ncu updates to all workspace package.json files and package-lock.json, including happy-dom 21; validate AC4 and AC7 and update PR #237’s scope.
+- [ ] T007 Merge the refreshed PR after CI passes and repeat default-branch alert/drift verification (AC5, AC7).
 
 ## Verification Results
 
@@ -61,3 +66,9 @@ None.
 ## Build repair after dependency refresh
 
 The owner refreshed root tool versions while this feature was in flight. This moved Vite into workspace-local node_modules directories while the hoisted React plugin resolved from the root, producing ERR_MODULE_NOT_FOUND during npm run build. A direct root Vite devDependency restores peer resolution. UI workspace Vitest/UI are aligned to root Vitest/coverage 5.0.3, and a root install reconciles stale nested packages. The regenerated lockfile resolves one Vite 8.3.4 and one Vitest 5.0.3 across workspaces. Existing owner package upgrades are retained. Clean npm ci, ordinary and forced builds, repeat-build diff checks, 924 workspace coverage tests, 38 script tests, lint, and type checks all pass for this dependency set. Audit remains at zero vulnerabilities. Remote CI and main-branch build/security/deployment checks pass.
+
+## Full dependency refresh
+
+The owner explicitly requested npm outdated, ncu, and npm audit on 2026-10-11. Root manifests already match latest; workspace drift includes testing-library packages, React Vite plugin, PostCSS/autoprefixer, jsdom, Lucide, Vite, Zod, and happy-dom 21. Apply the complete latest set and retain the build/security fixes. PR #237 expands from completion records to this dependency refresh; its title/body and validation must reflect the final implementation.
+
+Refresh verification: clean install, normal/forced builds and idempotence, lint, strict types, 924 workspace tests, 38 script tests, coverage, and two Chromium smoke tests pass. npm outdated exits 0 with no results; ncu reports all four manifests current; npm audit reports zero vulnerabilities. PR #237’s title/body now describe the full refresh. T007 awaits CI and merge.

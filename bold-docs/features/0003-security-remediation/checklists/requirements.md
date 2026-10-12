@@ -8,3 +8,5 @@
 - [x] CHK006 [Measurability] Are required local and remote validation outcomes specified? (AC4, AC5)
 - [x] CHK007 [Completeness] Are rollback and delivery authorization documented? (Intent)
 - [x] CHK008 [Coverage] Do tasks trace to all acceptance criteria? (Tasks)
+
+- [x] CHK009 [Measurability] Are the owner-requested outdated, ncu, and audit refresh outcomes explicit? (AC7, T006/T007)
