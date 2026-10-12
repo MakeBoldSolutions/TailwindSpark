@@ -3,11 +3,11 @@
 > **TL;DR for the Product Owner**
 > _What_: Consolidate all ten open Dependabot updates and resolve dependency and code scanning findings.
 > _Why_: Vulnerable dependencies block PR builds; three snapshot writes need documented trust-boundary review.
-> _Status_: In Progress.
+> _Status_: Complete.
 > _Decision needed_: None. Feature tier and execution approved by the owner on 2026-10-11.
 
 **Tier**: Feature
-**Status**: In Progress
+**Status**: Complete
 
 ## Intent
 
@@ -40,7 +40,7 @@ None. Scope, security targets, failure handling, integration constraints, delive
 - [x] T002 Review alerts and harden scripts/sync-*-data.mjs with co-located regression tests and documented dispositions (AC3).
 - [x] T003 Run all acceptance gates and repair regressions in affected files (AC4).
 - [x] T004 Update bold-docs/system/guides/BUILD_SYSTEM.md and feature gate/verification artifacts (AC6).
-- [ ] T005 Publish, validate CI, merge the consolidated PR, close superseded Dependabot PRs, and verify default-branch alerts (AC5).
+- [x] T005 Publish, validate CI, merge the consolidated PR, close superseded Dependabot PRs, and verify default-branch alerts (AC5).
 
 ## Verification Results
 
@@ -50,7 +50,9 @@ None. Scope, security targets, failure handling, integration constraints, delive
 - Snapshot tests: 38 pass; shared downloader/URL helper coverage is 100% on all four metrics.
 - Two forced production builds pass with identical tracked diffs. Chromium smoke tests: 2 pass using CI’s VITE_BASE_URL=/ configuration. The initial local smoke invocation used the default /TailwindSpark/ build base, then passed after rebuilding with the CI base; no application regression was found.
 - Targeted Prettier and git diff --check pass. Legacy repository-wide formatting debt is unchanged.
-- Remote CI, merge, and alert-state verification are pending in T005.
+- PR #236 merged as 4a2188f93ead947d152ed6ae89b7c028eea479dd after all PR checks passed. All ten superseded Dependabot PRs are closed.
+- Default-branch verification: zero open Dependabot alerts, zero open CodeQL alerts. CodeQL #89, #90, and #91 are fixed by the main-branch scan (not dismissed).
+- Main-branch workflows all passed: build/deploy run 38196338455, security run 38196338448, and optimized deployment run 38196338520.
 
 ## Waivers
 
@@ -58,4 +60,4 @@ None.
 
 ## Build repair after dependency refresh
 
-The owner refreshed root tool versions while this feature was in flight. This moved Vite into workspace-local node_modules directories while the hoisted React plugin resolved from the root, producing ERR_MODULE_NOT_FOUND during npm run build. A direct root Vite devDependency restores peer resolution. UI workspace Vitest/UI are aligned to root Vitest/coverage 5.0.3, and a root install reconciles stale nested packages. The regenerated lockfile resolves one Vite 8.3.4 and one Vitest 5.0.3 across workspaces. Existing owner package upgrades are retained. Clean npm ci, ordinary and forced builds, repeat-build diff checks, 924 workspace coverage tests, 38 script tests, lint, and type checks all pass for this dependency set. Audit remains at zero vulnerabilities. Remote CI is repeated before merge.
+The owner refreshed root tool versions while this feature was in flight. This moved Vite into workspace-local node_modules directories while the hoisted React plugin resolved from the root, producing ERR_MODULE_NOT_FOUND during npm run build. A direct root Vite devDependency restores peer resolution. UI workspace Vitest/UI are aligned to root Vitest/coverage 5.0.3, and a root install reconciles stale nested packages. The regenerated lockfile resolves one Vite 8.3.4 and one Vitest 5.0.3 across workspaces. Existing owner package upgrades are retained. Clean npm ci, ordinary and forced builds, repeat-build diff checks, 924 workspace coverage tests, 38 script tests, lint, and type checks all pass for this dependency set. Audit remains at zero vulnerabilities. Remote CI and main-branch build/security/deployment checks pass.
